@@ -99,7 +99,7 @@ sections:
     order: desc
     subtitle: ""
     text: ""
-    title: Recent Posts
+    title: Nove objave
   design:
     columns: "2"
     view: compact
