@@ -1,2 +1,1 @@
-# grubor
-My Academic Site
+# My Academic Site
