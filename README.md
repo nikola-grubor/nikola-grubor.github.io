@@ -1,2 +1,0 @@
-# grubor
-My Academic Site
