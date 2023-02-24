@@ -5,11 +5,7 @@ theme: "starter-hugo-academic"
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Nikola Grubor # Website name
-<<<<<<< HEAD
-baseURL: 'https://nikola-grubor.github.io' # Website URL
-=======
-baseURL: 'nikola-grubor.github.io' # Website URL
->>>>>>> 3d8c5ac514b8beaff41c8573704f2200d7592874
+baseURL: 'https://grubor.netlify.app' # Website URL
 
 ############################
 ## LANGUAGE
