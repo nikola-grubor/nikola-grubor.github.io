@@ -1,0 +1,23 @@
+# Languages
+#   Create a section for each of your site's languages.
+#   Documentation: https://wowchemy.com/docs/guide/language/
+
+# Default language
+en:
+  languageCode: en-us
+  languageName: English
+  contentDir: content/en
+  # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
+  #contentDir: content/en
+sr:
+  languageCode: sr
+  languageName: Srpski
+  contentDir: content/sr
+  title: Nikola Grubor
+  params:
+    description: 'Ovo je Akademski sajt i CV dr Nikole Grubora.'
+  # menu:
+  #    main:
+  #      - name: O meni
+  #        url: '#about'
+  #        weight: 1
