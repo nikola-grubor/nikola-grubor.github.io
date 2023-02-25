@@ -35,7 +35,7 @@ social:
 #   link: 
 - icon: github
   icon_pack: fab
-  link: https://github.com/herrprof
+  link: https://github.com/nikola-grubor
 - icon: linkedin
   icon_pack: fab
   link: www.linkedin.com/in/herr-grubor
