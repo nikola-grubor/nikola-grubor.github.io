@@ -33,12 +33,12 @@ social:
 # - icon: graduation-cap
 #   icon_pack: fas
 #   link: 
-- icon: github
-  icon_pack: fab
-  link: https://github.com/nikola-grubor
+# - icon: github
+#   icon_pack: fab
+#   link: https://github.com/nikola-grubor
 - icon: linkedin
   icon_pack: fab
-  link: www.linkedin.com/in/herr-grubor
+  link: https://www.linkedin.com/in/herr-grubor/
 - icon: cv
   icon_pack: ai
   link: uploads/resume.pdf
