@@ -16,8 +16,11 @@ sr:
   title: Nikola Grubor
   params:
     description: 'Ovo je Akademski sajt i CV dr Nikole Grubora.'
-  # menu:
-  #    main:
-  #      - name: O meni
-  #        url: '#about'
-  #        weight: 1
+  menu:
+     main:
+       - name: O meni
+         url: '#about'
+         weight: 1
+       - name: Objave
+         url: '#posts'
+         weight: 1
