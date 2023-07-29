@@ -1,17 +1,20 @@
 ---
 title: "Kauzalno zaključivanje je moguće iz opservacionih studija"
 description: "Post description"
-date: "29/07/2023"
+date: 2023-07-29
+date-format: D/MM/YYYY
 lang: sr-Latn
+language: language-sr-Latn.yml
 author:
   - name: Nikola N. Grubor
     url: https://nikola-grubor.github.io
-    affiliation: Belgrade University Medical School
+    affiliation: Univerzutet u Beogradu, Medicinski fakultet
     affiliation-url: https://www.mfub.bg.ac.rs/
 citation: true
 bibliography: biblio.bib
 categories: [statistika, srpski]
 image: ""
+draft: true
 ---
 
 -   [ ] Napisi sta je kauzalno zakljucivanje
@@ -61,8 +64,6 @@ It is a long established fact that a reader will be distracted by the readable c
 $$P(\theta\\\textbf{D}) = P(\theta ) \frac{P(\textbf{D} \\\theta)}{P(\textbf{D})}$$
 
 # Zaključak
-
-
 
 ### Reference
 
