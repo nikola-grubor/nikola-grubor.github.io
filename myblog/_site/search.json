@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Kauzalno zaključivanje je moguće iz opservacionih studija\n\n\n\n\n\n\n\nstatistika\n\n\nsrpski\n\n\n\n\nPost description\n\n\n\n\n\n\nMay 7, 2025\n\n\nNikola N. Grubor\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/kauzalno-zakljucivanje/index.html",
+    "href": "posts/kauzalno-zakljucivanje/index.html",
+    "title": "Kauzalno zaključivanje je moguće iz opservacionih studija",
+    "section": "",
+    "text": "Napisi sta je kauzalno zakljucivanje\nNapisi sta je treca varijabla\n…\n\n\nŠta je kauzalno zaključivanje?\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nObjašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention (\\(X\\)) i ishod (\\(Y\\)), jednačina bi izgledala: \\(Y = aX + b\\). Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave “oblak” u 3D prostoru, i naša regresiona linija postaje ravan \\(Y = aX + bZ + c\\). Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, “adjusted” za Z. Sve što treba da uradimo je da izračunamo ravan (Pearl и Mackenzie 2018).\n\n\n\n\n\n\nWarning\n\n\n\nPonekad regresioni koeficijenti predstavljaju kauzalne efekte, a ponekad ne. Sve zavisi od kauzalnog dijagrama!\n\n\nKauzalni dijagram treba oslikava moguću realnost.\n\n\nKonfaunder, ili nepoželjna treća varijabla\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\nUsmereni, aciklični grafikoni\n\n\n\n\nflowchart LR\n  A[Hard edge] --&gt; B(Round edge)\n  B --&gt; C{Decision}\n  C --&gt; D[Result one]\n  C --&gt; E[Result two]\n  \n\n\n\n\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\n\n\n\n\nNote\n\n\n\nBackdoor Kriterijum. Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili \\(P(Y|do(X))\\). Može se upotrebiti kada se dijagram analizira vizuelno.\nUpotreba: kada smo sigurni da imamo sve podatke o velikom broju (najjačih) konfaundera.\nMetod: Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji.\n\n\n\n\nBajesova teorema\n\\[P(\\theta\\\\\\textbf{D}) = P(\\theta ) \\frac{P(\\textbf{D} \\\\\\theta)}{P(\\textbf{D})}\\]\n\n\n\n\n\n\n\n\nZaključak\n\nPearl, Judea, и Dana Mackenzie. 2018. The Book of Why: The New Science of Cause and Effect. 1st edition. New York: Basic Books.\n\nCitationBibTeX citation:@online{n. grubor2025,\n  author = {N. Grubor, Nikola},\n  title = {Kauzalno zaključivanje je moguće iz opservacionih studija},\n  date = {2025-05-07},\n  langid = {sr}\n}\nFor attribution, please cite this work as:\nN. Grubor, Nikola. 2025. “Kauzalno zaključivanje je moguće iz\nopservacionih studija.” May 7, 2025."
+  }
+]
