@@ -2,34 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nikola-grubor.github.io/about.html</loc>
-    <lastmod>2023-07-29T01:23:22.341Z</lastmod>
+    <lastmod>2023-07-29T01:49:27.033Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/index.html</loc>
-    <lastmod>2023-07-29T01:46:09.870Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/index.sr.html</loc>
-    <lastmod>2023-07-29T01:23:24.045Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/about.html</loc>
-    <lastmod>2023-07-29T01:23:24.877Z</lastmod>
+    <lastmod>2023-07-29T01:49:35.598Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/index.html</loc>
-    <lastmod>2023-07-29T01:42:27.774Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/post-with-code/index.html</loc>
-    <lastmod>2023-07-29T01:23:28.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/welcome/index.html</loc>
-    <lastmod>2023-07-29T01:23:29.176Z</lastmod>
+    <lastmod>2023-07-29T01:49:41.880Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/posts/kauzalno-zakljucivanje/index.html</loc>
-    <lastmod>2023-07-29T01:42:26.788Z</lastmod>
+    <lastmod>2023-07-29T01:49:43.771Z</lastmod>
   </url>
 </urlset>
