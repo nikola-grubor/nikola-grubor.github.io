@@ -1,0 +1,70 @@
+---
+title: "Kauzalno zaključivanje je moguće iz opservacionih studija"
+description: "Post description"
+date: "29/07/2023"
+lang: sr-Latn
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    affiliation: Belgrade University Medical School
+    affiliation-url: https://www.mfub.bg.ac.rs/
+citation: true
+bibliography: biblio.bib
+categories: [statistika, srpski]
+image: ""
+---
+
+-   [ ] Napisi sta je kauzalno zakljucivanje
+-   [ ] Napisi sta je treca varijabla
+-   [ ] ...
+
+# Šta je kauzalno zaključivanje?
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention ($X$) i ishod ($Y$), jednačina bi izgledala: $Y = aX + b$. Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, "adjusted" za Z. Sve što treba da uradimo je da izračunamo ravan [@pearl2018].
+
+::: callout-warning
+Ponekad regresioni koeficijenti predstavljaju kauzalne efekte, a ponekad ne. Sve zavisi od kauzalnog dijagrama!
+:::
+
+Kauzalni dijagram treba oslikava moguću realnost.
+
+# Konfaunder, ili nepoželjna treća varijabla
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+# Usmereni, aciklični grafikoni
+
+```{mermaid}
+
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+  
+```
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+::: callout-note
+**Backdoor Kriterijum.** Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili $P(Y|do(X))$. Može se upotrebiti kada se dijagram analizira vizuelno.
+
+**Upotreba:** kada smo sigurni da imamo sve podatke o velikom broju (najjačih) konfaundera.
+
+**Metod:** Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji.
+:::
+
+# Bajesova teorema
+
+$$P(\theta\\\textbf{D}) = P(\theta ) \frac{P(\textbf{D} \\\theta)}{P(\textbf{D})}$$
+
+# Zaključak
+
+
+
+### Reference
+
+::: {#refs}
+:::

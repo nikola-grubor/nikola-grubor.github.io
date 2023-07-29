@@ -1,11 +1,41 @@
 ---
-title: "mywebsite"
+title: "Nikola N. Grubor, M.D."
+subtitle: "Ph.D. Student"
+about:
+  template: solana
+  image: avatar.jpg
+  image-shape: rounded
+  links:
+    # - icon: twitter
+    #   text: twitter
+    #   href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com/nikola-grubor
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/herr-grubor/
+    - icon: envelope
+      text: Email
+      href: "mailto: nikola.n.grubor@med.bg.ac.rs"
+    # - icon: file-earmark-person-fill
+    #   text: CV
+    #   href: uploads/resume.pdf
 ---
 
-This is a Quarto website.
+Nikola Grubor is a Ph.D. student of Medical Statistics and Bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. His research interests include Bayesian Modeling, Causal Inference, and Metascience.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
 
-```{r}
-1 + 1
-```
+-   **Ph.D. Student (Medical Statistics and Bioinformatics)** \
+    Institute for Statistics and Bioinformatics \| Nov 2022 --- Present\
+    University of Belgrade Medical School
+
+-   **Doctor of Medicine -- M.D.**\
+    University of Belgrade Medical School \| 2015 --- 2022
+
+## Experience
+
+Wengo Analytics \| Head Data Scientist \| April 2018 - present
+
+GeoScynce \| Chief Analyst \| Spet 2012 - April 2018
