@@ -83,6 +83,7 @@ div.csl-indent {
     "search-label": "Pretraži"
   }
 }</script>
+<meta name="mermaid-theme" content="forest">
 <script src="../../../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -188,9 +189,18 @@ div.csl-indent {
     <h2 id="toc-title">Na ovoj stranici</h2>
    
   <ul>
-  <li><a href="#šta-je-kauzalno-zaključivanje" id="toc-šta-je-kauzalno-zaključivanje" class="nav-link active" data-scroll-target="#šta-je-kauzalno-zaključivanje">Šta je kauzalno zaključivanje?</a></li>
+  <li><a href="#kletva-korelacija" id="toc-kletva-korelacija" class="nav-link active" data-scroll-target="#kletva-korelacija">Kletva korelacija</a></li>
+  <li><a href="#šta-je-kauzalno-zaključivanje" id="toc-šta-je-kauzalno-zaključivanje" class="nav-link" data-scroll-target="#šta-je-kauzalno-zaključivanje">Šta je kauzalno zaključivanje?</a></li>
   <li><a href="#konfaunder-ili-nepoželjna-treća-varijabla" id="toc-konfaunder-ili-nepoželjna-treća-varijabla" class="nav-link" data-scroll-target="#konfaunder-ili-nepoželjna-treća-varijabla">Konfaunder, ili nepoželjna treća varijabla</a></li>
-  <li><a href="#usmereni-aciklični-grafikoni" id="toc-usmereni-aciklični-grafikoni" class="nav-link" data-scroll-target="#usmereni-aciklični-grafikoni">Usmereni, aciklični grafikoni</a></li>
+  <li><a href="#usmereni-aciklični-dijagrami" id="toc-usmereni-aciklični-dijagrami" class="nav-link" data-scroll-target="#usmereni-aciklični-dijagrami">Usmereni, aciklični dijagrami</a>
+  <ul class="collapse">
+  <li><a href="#backdoor-kriterijum" id="toc-backdoor-kriterijum" class="nav-link" data-scroll-target="#backdoor-kriterijum">Backdoor Kriterijum</a></li>
+  <li><a href="#frontdoor-kriterijum" id="toc-frontdoor-kriterijum" class="nav-link" data-scroll-target="#frontdoor-kriterijum">Frontdoor Kriterijum</a></li>
+  </ul></li>
+  <li><a href="#dr-džon-snou-i-prva-instrumentalna-varijabla" id="toc-dr-džon-snou-i-prva-instrumentalna-varijabla" class="nav-link" data-scroll-target="#dr-džon-snou-i-prva-instrumentalna-varijabla">Dr Džon Snou i prva instrumentalna varijabla</a>
+  <ul class="collapse">
+  <li><a href="#namera-lečenja" id="toc-namera-lečenja" class="nav-link" data-scroll-target="#namera-lečenja">Namera lečenja</a></li>
+  </ul></li>
   <li><a href="#bajesova-teorema" id="toc-bajesova-teorema" class="nav-link" data-scroll-target="#bajesova-teorema">Bajesova teorema</a></li>
   <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak">Zaključak</a>
   <ul class="collapse">
@@ -210,10 +220,18 @@ div.csl-indent {
 <li><input type="checkbox">Napisi sta je treca varijabla</li>
 <li><input type="checkbox">…</li>
 </ul>
+<section id="kletva-korelacija" class="level1">
+<h1>Kletva korelacija</h1>
+<ul class="task-list">
+<li><input type="checkbox">Can doctors fix a radio</li>
+<li><input type="checkbox">Plague of association and correlation</li>
+</ul>
+</section>
 <section id="šta-je-kauzalno-zaključivanje" class="level1">
 <h1>Šta je kauzalno zaključivanje?</h1>
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 <p>Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention (<span class="math inline">\(X\)</span>) i ishod (<span class="math inline">\(Y\)</span>), jednačina bi izgledala: <span class="math inline">\(Y = aX + b\)</span>. Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave “oblak” u 3D prostoru, i naša regresiona linija postaje ravan <span class="math inline">\(Y = aX + bZ + c\)</span>. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, “adjusted” za Z. Sve što treba da uradimo je da izračunamo ravan <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl и Mackenzie 2018</a>)</span>.</p>
+<p>do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -233,24 +251,28 @@ Upozorenje
 <h1>Konfaunder, ili nepoželjna treća varijabla</h1>
 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 </section>
-<section id="usmereni-aciklični-grafikoni" class="level1">
-<h1>Usmereni, aciklični grafikoni</h1>
+<section id="usmereni-aciklični-dijagrami" class="level1">
+<h1>Usmereni, aciklični dijagrami</h1>
 <div class="cell">
 <div class="cell-output-display">
+<div id="fig-backdoor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
 <div>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Hard edge] --&gt; B(Round edge)
-  B --&gt; C{Decision}
-  C --&gt; D[Result one]
-  C --&gt; E[Result two]
+<pre class="mermaid mermaid-js" data-label="fig-backdoor">flowchart LR
+  Z((Pol)) -.-&gt; X &amp; Y
+  X((Lek)) ==&gt; Y((Infarkt))
   
 </pre>
 </div>
+<figcaption class="figure-caption">Figura&nbsp;1: Something.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+<section id="backdoor-kriterijum" class="level2">
+<h2 class="anchored" data-anchor-id="backdoor-kriterijum">Backdoor Kriterijum</h2>
+<p><strong>Backdoor Kriterijum.</strong> Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili <span class="math inline">\(P(Y|do(X))\)</span>. Može se upotrebiti kada se dijagram analizira vizuelno. <strong>Metod:</strong> Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji <a href="#fig-backdoor">Figura&nbsp;1</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -261,15 +283,146 @@ Beleška
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Backdoor Kriterijum.</strong> Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili <span class="math inline">\(P(Y|do(X))\)</span>. Može se upotrebiti kada se dijagram analizira vizuelno.</p>
-<p><strong>Upotreba:</strong> kada smo sigurni da imamo sve podatke o velikom broju (najjačih) konfaundera.</p>
-<p><strong>Metod:</strong> Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji.</p>
+<p><strong>Upotreba:</strong> kada smo sigurni da imamo sve podatke o velikom broju (najuticajnijih) konfaundera.</p>
 </div>
 </div>
 </section>
+<section id="frontdoor-kriterijum" class="level2">
+<h2 class="anchored" data-anchor-id="frontdoor-kriterijum">Frontdoor Kriterijum</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-frontdoor-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-frontdoor-1">flowchart LR
+  Z((Infarkt Gen)) -.-&gt; X &amp; Y
+  X((Lek)) ==&gt; M((Krvni Pritisak)) 
+  M ==&gt; Y((Infarkt))
+  
+</pre>
+</div>
+<figcaption class="figure-caption">Figura&nbsp;2: Something.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-frontdoor-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-frontdoor-2">flowchart LR
+  Z((Infarkt Gen)) -.-&gt; X &amp; Y
+  Z x-.-x M
+  X((Lek)) ==&gt; M((Krvni Pritisak)) 
+  M ==&gt; Y((Infarkt))
+  
+</pre>
+</div>
+<figcaption class="figure-caption">Figura&nbsp;3: Something.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o <code>Leku</code>, <code>Krvnom Pritisku</code> i <code>Infarktu</code>. Ne možemo da iskoristimo backdoor kriterijum jer nemamo podatke o <code>Infarkt Genu</code>. Možemo upotrebiti frontdoor kriterijum.</p>
+<p>Ono što možemo da procenimo je efekat <code>Leka</code> na <code>Krvni pritisak</code>. Za to nam ne treba nikakav adjustment. Samo možemo da uočimo da je <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Lek})\)</span> i <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})\)</span>, i razlika između njih će biti prosečan efekat <code>Leka</code> na <code>Krvni Pritisak</code>.</p>
+<p>Takođe, <a href="#fig-frontdoor-1">Figura&nbsp;2</a> pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt. Tu možemo da iskoristimo backdoor kriterijum da blokiramo efekat <code>Leka</code> na <code>Krvni Pritisak</code>. Tako ćemo dobiti <span class="math inline">\(P(\text{Infarkt}\,|\,do\text{(Lek)})\)</span> i <span class="math inline">\(P(\text{Infarkt}\,|\,do\text{(Bez Leka)})\)</span>.</p>
+<p>Time smo saznali prosečan efekat <code>Leka</code> na <code>Krvni Pritisak</code> i prosečan efekat <code>Krvnog Pritiska</code> na <code>Infarkt</code>. Kombinacijom ova dva efekta možemo posrednim putem da dobijemo efekat <code>Leka</code> na <code>Infarkt</code> izuzetog od genetskog uticaja <code>Infarkt Gena</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beleška
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Proces izražavanja <span class="math inline">\(P(\text{Infarkt}\,|\,do\text{(Lek)})\)</span> preko do-free verovatnoća se zove Frontdoor kriterijum.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beleška
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Upotreba:</strong> Frontdoor kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla <em>zaštićena</em> od uticaja konfaundera (uporediti dijagrame <a href="#fig-frontdoor-1">Figura&nbsp;2</a> i <a href="#fig-frontdoor-2">Figura&nbsp;3</a>).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="dr-džon-snou-i-prva-instrumentalna-varijabla" class="level1">
+<h1>Dr Džon Snou i prva instrumentalna varijabla</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Džon Snou je imao brilijatnu ideju da posmatra kompanije koje snabdevaju ljude vodom u Londonu. Instrumentalna varijabla ima tri bitne karakteristike:</p>
+<ul>
+<li>Nema strelice od Mijazme do Kompanije</li>
+<li>Postoji strelica od Kompanije do Cistoce vode</li>
+<li>Nema strelice od Kompanije do Kolere</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div id="fig-john" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="johnsnow.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption class="figure-caption">Figura&nbsp;4: Dr Džon Snou</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p><span class="math inline">\(b = \frac{ \sf{r_{CWC}}} {\sf{r_{WWC}}}\)</span> je dobijeno iz <span class="math inline">\(\frac{ab} {a}\)</span>.</p>
+<section id="namera-lečenja" class="level3">
+<h3 class="anchored" data-anchor-id="namera-lečenja">Namera lečenja</h3>
+<p>Namera je instrumentalna varijabla.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beleška
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Monotonicity: nije bilo pacijenata koji su dodaljeni grupi koja <em>ne</em> dobija Lek (Z = 0), a da su nekako ipak dobili lek (X = 1).</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-instrumental" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-instrumental">flowchart LR
+  M(Mijazma, Siromaštvo,...) -.-&gt; W &amp; C
+  W(Čistoća Vode) ==&gt;|b| C(Kolera)
+  WC(Kompanija) ==&gt;|a| W
+  
+  
+</pre>
+</div>
+<figcaption class="figure-caption">Figura&nbsp;5: Something.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="bajesova-teorema" class="level1">
 <h1>Bajesova teorema</h1>
-<p><span class="math display">\[P(\theta\\\textbf{D}) = P(\theta ) \frac{P(\textbf{D} \\\theta)}{P(\textbf{D})}\]</span></p>
+<p><span class="math display">\[P(\theta|\textbf{D}) = \frac{ P(\theta ) P(\textbf{D} | \\\theta)}{P(\textbf{D})}\]</span></p>
 </section>
 <section id="zaključak" class="level1">
 <h1>Zaključak</h1>
