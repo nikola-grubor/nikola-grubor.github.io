@@ -25,8 +25,12 @@ draft: true
 
 # Kletva korelacija
 
-- [ ] Can doctors fix a radio
-- [ ] Plague of association and correlation
+-   [ ] Can doctors fix a radio
+-   [ ] Plague of association and correlation
+
+- Prvi stepenik -- Asocijacije; "What if I see..."; Sta mi ovaj simptom govori o bolesti?
+- Drugi stepenik -- Intervencija; "What if I do?"; Da li ce me proci glavobolja ako uzmem aspirin?
+- Treci stepenik -- Counterfactiual; "What if I had done? Why?" Da li mi je aspirin zaustavio glavobolju?
 
 # Šta je kauzalno zaključivanje?
 
@@ -36,7 +40,7 @@ Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira 
 
 do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.
 
-::: { .callout-warning}
+::: callout-warning
 Ponekad regresioni koeficijenti predstavljaju kauzalne efekte, a ponekad ne. Sve zavisi od kauzalnog dijagrama!
 :::
 
@@ -45,6 +49,12 @@ Kauzalni dijagram treba oslikava moguću realnost.
 # Konfaunder, ili nepoželjna treća varijabla
 
 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+# do-Račun --- Jezik Intervenisanja
+
+Definisi i objasni sta je do-Račun i cemu sluzi.
+
+Motivacija -> Objasnjenje.
 
 # Usmereni, aciklični dijagrami
 
@@ -64,18 +74,14 @@ It is a long established fact that a reader will be distracted by the readable c
 
 **Backdoor Kriterijum.** Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili $P(Y|do(X))$. Može se upotrebiti kada se dijagram analizira vizuelno. **Metod:** Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji @fig-backdoor.
 
-::: { .callout-note}
-
+::: callout-note
 **Upotreba:** kada smo sigurni da imamo sve podatke o velikom broju (najuticajnijih) konfaundera.
-
 :::
 
 ## Frontdoor Kriterijum
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
-
 ```{mermaid}
 %%| label: fig-frontdoor-1
 %%| fig-cap: "Something."
@@ -86,14 +92,12 @@ flowchart LR
   M ==> Y((Infarkt))
   
 ```
-
 :::
 
 ::: {.column width="10%"}
 :::
 
 ::: {.column width="45%"}
-
 ```{mermaid}
 %%| label: fig-frontdoor-2
 %%| fig-cap: "Something."
@@ -106,8 +110,7 @@ flowchart LR
   
 ```
 :::
-
-::::
+:::
 
 Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o `Leku`, `Krvnom Pritisku` i `Infarktu`. Ne možemo da iskoristimo backdoor kriterijum jer nemamo podatke o `Infarkt Genu`. Možemo upotrebiti frontdoor kriterijum.
 
@@ -117,34 +120,29 @@ Takođe, @fig-frontdoor-1 pokazuje da možemo da procenimo kauzalni efekat Krvno
 
 Time smo saznali prosečan efekat `Leka` na `Krvni Pritisak` i prosečan efekat `Krvnog Pritiska` na `Infarkt`. Kombinacijom ova dva efekta možemo posrednim putem da dobijemo efekat `Leka` na `Infarkt` izuzetog od genetskog uticaja `Infarkt Gena`.
 
-::: { .callout-note}
+::: callout-note
 Proces izražavanja $P(\text{Infarkt}\,|\,do\text{(Lek)})$ preko do-free verovatnoća se zove Frontdoor kriterijum.
 :::
 
-::: {.callout-note}
+::: callout-note
 **Upotreba:** Frontdoor kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla *zaštićena* od uticaja konfaundera (uporediti dijagrame @fig-frontdoor-1 i @fig-frontdoor-2).
 :::
 
-# Dr Džon Snou i prva instrumentalna varijabla
+## Dr Džon Snou i prva instrumentalna varijabla
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-
 Džon Snou je imao brilijatnu ideju da posmatra kompanije koje snabdevaju ljude vodom u Londonu. Instrumentalna varijabla ima tri bitne karakteristike:
 
-- Nema strelice od Mijazme do Kompanije
-- Postoji strelica od Kompanije do Cistoce vode
-- Nema strelice od Kompanije do Kolere
+-   Nema strelice od Mijazme do Kompanije
+-   Postoji strelica od Kompanije do Cistoce vode
+-   Nema strelice od Kompanije do Kolere
 :::
 
 ::: {.column width="50%"}
-
-![Dr Džon Snou](johnsnow.jpg){#fig-john width=60%}
-
+![Dr Džon Snou](johnsnow.jpg){#fig-john width="60%"}
 :::
-
-::::
+:::
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -152,12 +150,11 @@ $b = \frac{ \sf{r_{CWC}}} {\sf{r_{WWC}}}$ je dobijeno iz $\frac{ab} {a}$.
 
 ### Namera lečenja
 
-Namera je instrumentalna varijabla.
+Namera je instrumentalna varijabla. Intention-to-treat.
 
-::: {.callout-note}
+::: callout-note
 Monotonicity: nije bilo pacijenata koji su dodaljeni grupi koja *ne* dobija Lek (Z = 0), a da su nekako ipak dobili lek (X = 1).
 :::
-
 
 ```{mermaid}
 %%| label: fig-instrumental
