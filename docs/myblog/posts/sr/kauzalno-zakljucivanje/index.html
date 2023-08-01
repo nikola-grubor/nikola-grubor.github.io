@@ -202,6 +202,10 @@ div.csl-indent {
   <li><a href="#namera-lečenja" id="toc-namera-lečenja" class="nav-link" data-scroll-target="#namera-lečenja">Namera lečenja</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#interesantne-primene" id="toc-interesantne-primene" class="nav-link" data-scroll-target="#interesantne-primene">Interesantne Primene</a>
+  <ul class="collapse">
+  <li><a href="#case-of-forgotten-scurvy" id="toc-case-of-forgotten-scurvy" class="nav-link" data-scroll-target="#case-of-forgotten-scurvy">Case of Forgotten Scurvy</a></li>
+  </ul></li>
   <li><a href="#bajesova-teorema" id="toc-bajesova-teorema" class="nav-link" data-scroll-target="#bajesova-teorema">Bajesova teorema</a></li>
   <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak">Zaključak</a>
   <ul class="collapse">
@@ -221,10 +225,11 @@ div.csl-indent {
 <li><input type="checkbox">Napisi sta je treca varijabla</li>
 <li><input type="checkbox">…</li>
 </ul>
+<p>Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Istraživač koji bi hteo da ispita prirodu neeksperimentalnim metodama (zato što je izvođenje eksperimenta neetičko ili nemoguće) je bio ograničen na ispitivanje korelacija. Kada u prirodi vidimo dve stvari koje se dešavaju zajedno, ne možemo zasigurno znati koja uzrokuje koju, niti da li su uopšte povezane (takođe, postoje uzroci koji uopšte nisu korelisani). Pozati primeri su broj prodatih sladoleda i stopa kriminala tokom godine; i pušenje i malignitet pluća. Tako je svet medicine, a i nauke njoj sličnoj, bio ograničen na tvrdnje asocijacija. Ono što naučnici žele da kažu je da <span class="math inline">\(A\)</span> uzrokuje <span class="math inline">\(B\)</span> (<span class="math inline">\(A\rightarrow B\)</span>), ali ne smeju, jer su takve tvrdnje prejake za statističke metode koje se koriste. Tako da je medicinska literatura prepuna reči koje izbegavaju uročne tvrdnje – kao što su: veza, asocijacija, korelacija, značajna povezanost <span class="citation" data-cites="hernán2018">(<a href="#ref-hernán2018" role="doc-biblioref">Hernán 2018</a>)</span>. Ispostavilo se da je sasvim moguće samo posmatranjem doći do uzroka stvari. Kako možemo bez ikakvog intervenisanja, tj. samo gledanjem prirode doći do zaključaka šta bi se desilo da zapravo uradimo nešto? Kako je takva stvar moguća?</p>
 <section id="kletva-korelacija" class="level1">
 <h1>Kletva korelacija</h1>
+<p>Francis Galton, Karl Pearson.</p>
 <ul>
-<li><p><input type="checkbox">Can doctors fix a radio</p></li>
 <li><p><input type="checkbox">Plague of association and correlation</p></li>
 <li><p>Prvi stepenik – Asocijacije; “What if I see…”; Sta mi ovaj simptom govori o bolesti?</p></li>
 <li><p>Drugi stepenik – Intervencija; “What if I do?”; Da li ce me proci glavobolja ako uzmem aspirin?</p></li>
@@ -235,6 +240,19 @@ div.csl-indent {
 <h1>Šta je kauzalno zaključivanje?</h1>
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 <p>Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention (<span class="math inline">\(X\)</span>) i ishod (<span class="math inline">\(Y\)</span>), jednačina bi izgledala: <span class="math inline">\(Y = aX + b\)</span>. Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave “oblak” u 3D prostoru, i naša regresiona linija postaje ravan <span class="math inline">\(Y = aX + bZ + c\)</span>. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, “adjusted” za Z. Sve što treba da uradimo je da izračunamo ravan <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl и Mackenzie 2018</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Upozorenje
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu “threashold” efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri <span class="citation" data-cites="pearl2018">Pearl и Mackenzie (<a href="#ref-pearl2018" role="doc-biblioref">2018</a>)</span> pp.&nbsp;286).</p>
+</div>
+</div>
 <p>do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -262,6 +280,7 @@ Upozorenje
 </section>
 <section id="usmereni-aciklični-dijagrami" class="level1">
 <h1>Usmereni, aciklični dijagrami</h1>
+<p>U svom radu “Da li biolozi mogu da poprave radio? — ili, šta sam naucio tokom izučavanje apoptoze,” <span class="citation" data-cites="lazebnik2002">Lazebnik (<a href="#ref-lazebnik2002" role="doc-biblioref">2002</a>)</span> govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Kako bi onda izgledala jedna jasna, formalizovana, transparentna opservaciona studija? Koristila bi <em>usmerene aciklične dijagrame</em> (UAD; eng. Directed Acyclic Graphs, DAGs).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-backdoor" class="quarto-figure quarto-figure-center anchored">
@@ -429,6 +448,18 @@ Beleška
 </section>
 </section>
 </section>
+<section id="interesantne-primene" class="level1">
+<h1>Interesantne Primene</h1>
+<ul>
+<li>Mediation Analysis: If Smoking -&gt; Tar -&gt; Cancer, is all effect of Smoking through Tar? If so, e-cigs could eliminate risk.</li>
+<li>EET (Effect of Treatment on the Treatet): Ilya Shpitser, Johns Hopkins, counterfactual analysis of harm if treated were not treated. Do they benefit the most when treated?</li>
+</ul>
+<p>Mediation Analysis. Povezano sa pitanjem Zasto? Mehanizmi. Reicmo da nam nestane narandza, da li mozemo da sprecimo skorbut? Razlikovanje indirektnih i direktnih efekata (onih koji ne idu kroz medijatora)</p>
+<section id="case-of-forgotten-scurvy" class="level2">
+<h2 class="anchored" data-anchor-id="case-of-forgotten-scurvy">Case of Forgotten Scurvy</h2>
+<p>Citrus -&gt; Acid -&gt; Scurvy Sailors substituting lemon for lime 1/4 Vit C, cooking it South Pole expedition, dry meat no citrus</p>
+</section>
+</section>
 <section id="bajesova-teorema" class="level1">
 <h1>Bajesova teorema</h1>
 <p><span class="math display">\[P(\theta|\textbf{D}) = \frac{ P(\theta ) P(\textbf{D} | \\\theta)}{P(\textbf{D})}\]</span></p>
@@ -438,6 +469,12 @@ Beleška
 <section id="reference" class="level3">
 <h3 class="anchored" data-anchor-id="reference">Reference</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-hernán2018" class="csl-entry" role="listitem">
+Hernán, Miguel A. 2018. <span>„The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data“</span>. <em>American Journal of Public Health</em> 108 (5): 616–19. <a href="https://doi.org/10.2105/AJPH.2018.304337">https://doi.org/10.2105/AJPH.2018.304337</a>.
+</div>
+<div id="ref-lazebnik2002" class="csl-entry" role="listitem">
+Lazebnik, Yuri. 2002. <span>„Can a Biologist Fix a Radio?<span></span>Or, What I Learned While Studying Apoptosis“</span>. <em>Cancer Cell</em> 2 (3): 179–82. <a href="https://doi.org/10.1016/S1535-6108(02)00133-2">https://doi.org/10.1016/S1535-6108(02)00133-2</a>.
+</div>
 <div id="ref-pearl2018" class="csl-entry" role="listitem">
 Pearl, Judea, и Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. 1st edition. New York: Basic Books.
 </div>

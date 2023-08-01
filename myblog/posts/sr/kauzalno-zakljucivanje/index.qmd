@@ -23,20 +23,29 @@ draft: true
 -   [ ] Napisi sta je treca varijabla
 -   [ ] ...
 
+Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Istraživač koji bi hteo da ispita prirodu neeksperimentalnim metodama (zato što je izvođenje eksperimenta neetičko ili nemoguće) je bio ograničen na ispitivanje korelacija. Kada u prirodi vidimo dve stvari koje se dešavaju zajedno, ne možemo zasigurno znati koja uzrokuje koju, niti da li su uopšte povezane (takođe, postoje uzroci koji uopšte nisu korelisani). Pozati primeri su broj prodatih sladoleda i stopa kriminala tokom godine; i pušenje i malignitet pluća. Tako je svet medicine, a i nauke njoj sličnoj, bio ograničen na tvrdnje asocijacija. Ono što naučnici žele da kažu je da $A$ uzrokuje $B$ ($A\rightarrow B$), ali ne smeju, jer su takve tvrdnje prejake za statističke metode koje se koriste. Tako da je medicinska literatura prepuna reči koje izbegavaju uročne tvrdnje -- kao što su: veza, asocijacija, korelacija, značajna povezanost [@hernán2018]. Ispostavilo se da je sasvim moguće samo posmatranjem doći do uzroka stvari. Kako možemo bez ikakvog intervenisanja, tj. samo gledanjem prirode doći do zaključaka šta bi se desilo da zapravo uradimo nešto? Kako je takva stvar moguća?
+
 # Kletva korelacija
 
--   [ ] Can doctors fix a radio
+Francis Galton, Karl Pearson.
+
 -   [ ] Plague of association and correlation
 
-- Prvi stepenik -- Asocijacije; "What if I see..."; Sta mi ovaj simptom govori o bolesti?
-- Drugi stepenik -- Intervencija; "What if I do?"; Da li ce me proci glavobolja ako uzmem aspirin?
-- Treci stepenik -- Counterfactiual; "What if I had done? Why?" Da li mi je aspirin zaustavio glavobolju?
+-   Prvi stepenik -- Asocijacije; "What if I see..."; Sta mi ovaj simptom govori o bolesti?
+
+-   Drugi stepenik -- Intervencija; "What if I do?"; Da li ce me proci glavobolja ako uzmem aspirin?
+
+-   Treci stepenik -- Counterfactiual; "What if I had done? Why?" Da li mi je aspirin zaustavio glavobolju?
 
 # Šta je kauzalno zaključivanje?
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention ($X$) i ishod ($Y$), jednačina bi izgledala: $Y = aX + b$. Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, "adjusted" za Z. Sve što treba da uradimo je da izračunamo ravan [@pearl2018].
+
+::: callout-warning
+Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu "threashold" efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri @pearl2018 pp. 286).
+:::
 
 do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.
 
@@ -54,9 +63,11 @@ It is a long established fact that a reader will be distracted by the readable c
 
 Definisi i objasni sta je do-Račun i cemu sluzi.
 
-Motivacija -> Objasnjenje.
+Motivacija -\> Objasnjenje.
 
 # Usmereni, aciklični dijagrami
+
+U svom radu "Da li biolozi mogu da poprave radio? --- ili, šta sam naucio tokom izučavanje apoptoze," @lazebnik2002 govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Kako bi onda izgledala jedna jasna, formalizovana, transparentna opservaciona studija? Koristila bi *usmerene aciklične dijagrame* (UAD; eng. Directed Acyclic Graphs, DAGs).
 
 ```{mermaid}
 %%| label: fig-backdoor
@@ -167,6 +178,17 @@ flowchart LR
   
   
 ```
+
+# Interesantne Primene
+
+-   Mediation Analysis: If Smoking -\> Tar -\> Cancer, is all effect of Smoking through Tar? If so, e-cigs could eliminate risk.
+-   EET (Effect of Treatment on the Treatet): Ilya Shpitser, Johns Hopkins, counterfactual analysis of harm if treated were not treated. Do they benefit the most when treated?
+
+Mediation Analysis. Povezano sa pitanjem Zasto? Mehanizmi. Reicmo da nam nestane narandza, da li mozemo da sprecimo skorbut? Razlikovanje indirektnih i direktnih efekata (onih koji ne idu kroz medijatora)
+
+## Case of Forgotten Scurvy
+
+Citrus -\> Acid -\> Scurvy Sailors substituting lemon for lime 1/4 Vit C, cooking it South Pole expedition, dry meat no citrus
 
 # Bajesova teorema
 
