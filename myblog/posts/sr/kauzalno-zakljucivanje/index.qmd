@@ -8,8 +8,8 @@ language: language-sr-Latn.yml
 author:
   - name: Nikola N. Grubor
     url: https://nikola-grubor.github.io
-    affiliation: Univerzutet u Beogradu, Medicinski fakultet
-    affiliation-url: https://www.mfub.bg.ac.rs/
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
 citation: true
 bibliography: biblio.bib
 categories: [statistika, srpski]
@@ -27,24 +27,26 @@ Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, eksk
 
 # Kletva korelacija
 
-Francis Galton, Karl Pearson.
+Ono što čoveka najviše razlikuje od životinja je sposobnost da zamisli "bliske moguće svetove." Bliski mogući svetovi su odgovori na pitanje: "Šta bi bilo, kad bi bilo?" Tokom evolucije, bliski pretci modernog čoveka su steli sposobnost da komuniciraju ideje i sarađuju na sve kompleksnije načine. Šta god da je dovelo to ove pojave, dalo je čoveku sposobnost da zamisli nepostojeće --- uz koju je došla i sposobnost planiranja. @pearl2018 u svojoj knjizi opisuje tri stepenika kognitivnog ramišljanja u zavisnosti od toga na kakva pitanja mogu dati odgovor.
 
--   [ ] Plague of association and correlation
+-   Prvi stepenik -- Asocijacije\
+    Šta ako vidim?\
+    Primer: Sta mi ovaj simptom govori o bolesti?
 
--   Prvi stepenik -- Asocijacije; "What if I see..."; Sta mi ovaj simptom govori o bolesti?
+-   Drugi stepenik -- Intervencija\
+    "Šta ako uradim?"\
+    Primer: Da li ce me proci glavobolja ako uzmem aspirin?
 
--   Drugi stepenik -- Intervencija; "What if I do?"; Da li ce me proci glavobolja ako uzmem aspirin?
-
--   Treci stepenik -- Counterfactiual; "What if I had done? Why?" Da li mi je aspirin zaustavio glavobolju?
+-   Treci stepenik -- Kontračinjenice (eng. counterfactual)\
+    "Šta da sam uradio? Zašto?"\
+    Primer: Da li mi je aspirin zaustavio glavobolju?
 
 # Šta je kauzalno zaključivanje?
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention ($X$) i ishod ($Y$), jednačina bi izgledala: $Y = aX + b$. Jedna jedicina povećanja X će, u proseku, povećati Y za a-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, "adjusted" za Z. Sve što treba da uradimo je da izračunamo ravan [@pearl2018].
+Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention ($X$) i ishod ($Y$), jednačina bi izgledala: $Y = aX + b$. Jedna jedicina povećanja X će, u proseku, povećati Y za $a$-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, "adjusted" za Z. Sve što treba da uradimo je da izračunamo ravan [@pearl2018].
 
 ::: callout-warning
-Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu "threashold" efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri @pearl2018 pp. 286).
+Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu "threashold" efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri @pearl2018 p. 286).
 :::
 
 do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.
@@ -192,7 +194,7 @@ Citrus -\> Acid -\> Scurvy Sailors substituting lemon for lime 1/4 Vit C, cookin
 
 # Bajesova teorema
 
-$$P(\theta|\textbf{D}) = \frac{ P(\theta ) P(\textbf{D} | \\\theta)}{P(\textbf{D})}$$
+$$P(\theta|\textbf{D}) = \frac{P(\theta ) P(\textbf{D} | \theta)}{P(\textbf{D})}$$
 
 # Zaključak
 
