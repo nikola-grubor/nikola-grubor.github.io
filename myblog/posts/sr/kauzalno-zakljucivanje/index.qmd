@@ -1,6 +1,6 @@
 ---
 title: "Kauzalno zaključivanje je moguće iz opservacionih studija"
-description: "Post description"
+description: "Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kako možemo kroz opservacije da simuliramo randomizovane eksperimente i da iz njih dobijemo uzroke."
 date: 2023-07-29
 date-format: D/MM/YYYY
 lang: sr-Latn
@@ -12,16 +12,12 @@ author:
     # affiliation-url: https://www.mfub.bg.ac.rs/
 citation: true
 bibliography: biblio.bib
-categories: [statistika, srpski]
+categories: [statistika, kauzalnost, srpski]
 image: ""
 mermaid: 
   theme: forest
 draft: true
 ---
-
--   [ ] Napisi sta je kauzalno zakljucivanje
--   [ ] Napisi sta je treca varijabla
--   [ ] ...
 
 Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Istraživač koji bi hteo da ispita prirodu neeksperimentalnim metodama (zato što je izvođenje eksperimenta neetičko ili nemoguće) je bio ograničen na ispitivanje korelacija. Kada u prirodi vidimo dve stvari koje se dešavaju zajedno, ne možemo zasigurno znati koja uzrokuje koju, niti da li su uopšte povezane (takođe, postoje uzroci koji uopšte nisu korelisani). Pozati primeri su broj prodatih sladoleda i stopa kriminala tokom godine; i pušenje i malignitet pluća. Tako je svet medicine, a i nauke njoj sličnoj, bio ograničen na tvrdnje asocijacija. Ono što naučnici žele da kažu je da $A$ uzrokuje $B$ ($A\rightarrow B$), ali ne smeju, jer su takve tvrdnje prejake za statističke metode koje se koriste. Tako da je medicinska literatura prepuna reči koje izbegavaju uročne tvrdnje -- kao što su: veza, asocijacija, korelacija, značajna povezanost [@hernán2018]. Ispostavilo se da je sasvim moguće samo posmatranjem doći do uzroka stvari. Kako možemo bez ikakvog intervenisanja, tj. samo gledanjem prirode doći do zaključaka šta bi se desilo da zapravo uradimo nešto? Kako je takva stvar moguća?
 
@@ -41,57 +37,204 @@ Ono što čoveka najviše razlikuje od životinja je sposobnost da zamisli "blis
     "Šta da sam uradio? Zašto?"\
     Primer: Da li mi je aspirin zaustavio glavobolju?
 
+Ako se velika većina istraživanja bazira na asocijacijama, niko ne može pretpostaviti šta će se desiti ako uzmemo i uradimo nešto. To je ogroman problem. Skoro smo u Beogradu imali veliko nevreme. Vetar je doslovno odnosio krovove. Te dve stvari je svako mogao da primeti (prvi stepenik, asocijacija; $\rho = \text{corr}(vetar, odnošenje\,krova)$), međutim ako bi se neko popeo na svoj krov i počeo da baca crepove, ma koliko se trudio ne bi prizvao vetar (kauzalna strelica ide $vetar \rightarrow odnošenje \,krova$, a ne suprotno). Koncept kauzalne strelice ćemo dodatno istražiti u narednim poglavljima, pogotovo kada budemo pričali o kauzalnim dijagramima. Elem, jedno po jedno.
+
 # Šta je kauzalno zaključivanje?
 
-Objašnjenje regresije: Francis Galton je otkrio regresionu liniju. Interpolira najbolju liniju kroz oblak podataka. Intervention ($X$) i ishod ($Y$), jednačina bi izgledala: $Y = aX + b$. Jedna jedicina povećanja X će, u proseku, povećati Y za $a$-jedinica. Ako nema nikakvih konfoundera onda je to procena naše intervencije. Onda a daje prosečan trend, sto je korelacija, a ne kauzalni efekat. Ako imamo konfaunder Z. Onda X, Y, Z prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$. Ono sto koeficijent a onda predstavlja je parcijalni regresioni koeficijent, "adjusted" za Z. Sve što treba da uradimo je da izračunamo ravan [@pearl2018].
+Kauzalno, uzročno-posledično zaključivanje je pravi naučni cilj. Ponekad je dobro imati predviđanja, ali uglavnom ono što želimo je da razumemo fenomen kako bismo mogli da intervenišemo tj. promenimo nešto. Produžimo životni vek, sprečimo bolest, smanjimo rizik, planiramo projekat, itd. U tom slučaju ne možemo vršiti zaključivanja uz pomoć prvog stepenika, već pričamo o drugom stepeniku --- intervencijama. Tad nas [korelacije mogu zavarati](https://www.tylervigen.com/spurious-correlations). Treba nam način da otkrijemo kako su stvari zapravo povezane, a da se ne zavaramo lažnim asocijacijama. Interesantno je kako je Francis Galton (1822-1911), Britanski učenjak, u svojoj potrazi za uzrocima, nabasao prvo na korelaciju ($\rho$). Tim putem moramo proći i mi.
 
-::: callout-warning
-Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu "threashold" efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri @pearl2018 p. 286).
+## Galton otkriva regresiju
+
+Francis Galton je tražio uzročno objašnjenje naslednosti visine kod ljudi.[^1] Elem, Galton je primetio da viši očevi imaju prosečno više sinove, ali ne i više od sebe. Sinovi niskih očeva su bili, u proseku, niži ali ne i niski kao svoji očevi (@fig-regresija-1). Galton je ovaj fenomen nazvao "regresija ka mediokritetu."[^2] Regresija ka proseku (kako je danas poznata) je statistička pojava prisutna svuda oko nas --- u tom trenutku Galton nije to prepoznao, već je mislio da je nabasao na zakon nasleđivanja. Do 1889. je shvatio da je zapravo otkrio korelaciju. Dve varijable (visina očeva i sinova) su korelisane ako jedna "predviđa" drugu.
+
+[^1]: Njegova motivacija je jasnija kad sazamo da je on bio prvi rođak Čarlsa Darvina. Zapravo, Galtona je zanimala naslednost inteligencije, kao i većinu tadašnjeg Britanskog noblesa opsednutog razlikama između sebe i "prostog" naroda.
+
+[^2]: Kompleksi vrve.
+
+```{r}
+#| echo: false
+#| output: false
+library(tidyverse)
+library(ggdag)
+library(cowplot)
+
+set.seed(2642)
+N <- 100
+fathers <- rnorm(N, mean = 170, sd = 5)
+sons <- rnorm(N, mean = fathers, sd = 5)
+d <- data.frame(fathers, sons)
+```
+
+```{r}
+#| label: fig-regresija
+#| layout-ncol: 2
+#| fig-cap: "Regresija."
+#| fig-subcap:
+#|  - "Something."
+#|  - "Something inversed."
+#| echo: false
+#| warning: false
+
+d %>% 
+  ggplot(aes(x = fathers, y = sons)) +
+  geom_point() +
+  geom_segment(x = -Inf, xend = 170.9416	, y = 165.9377, yend = 165.9377, color = "red", linetype = 2) +
+  geom_segment(x = 170.9416	, xend = 170.9416	, y = -Inf, yend = 165.9377, color = "red", linetype = 2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal_grid() +
+  labs(
+    title = "Očevi predviđaju sinove",
+    x = "X = Otac (cm)",
+    y = "Y = Sin (cm)"
+  )
+
+d %>% 
+  ggplot(aes(y = fathers, x = sons)) +
+  geom_point() +
+  geom_segment(x = -Inf, xend = 165.9377	, y = 170.9416, yend = 170.9416, color = "red", linetype = 2) +
+  geom_segment(x = 165.9377	, xend = 165.9377	, y = -Inf, yend = 170.9416, color = "red", linetype = 2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal_grid() +
+  labs(
+    title = "Sinovi predviđaju očeve",
+    x = "X = Sin (cm)",
+    y = "Y = Otac (cm)"
+  )
+```
+
+Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent ($\rho$ ili $r$) koji je poznat naučnicima svuda u svetu. Insistiranje na korišćenju korelacija zarad neke fiktivne "objektivnosti" je unazadilo nauku desedinama godina. Ako pogledamo @fig-regresija-1 i @fig-regresija-2, videćemo da su potpuno simetrične. Očevi predviđaju visinu sina, i visina sina predviđa visinu oca. U takvom odnosu nema nikakvih uzroka. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal --- jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Da, mogu poslužiti za predviđanja, ali nemaju nikakvu eksplanatornu vrednost. Planiranje intervencija takođe je nepouzdano. Da provučemo kroz skupštinu zakon o zabrani prodaje sladoleda leti, ne bismo time smanjili kriminal.
+
+Zašto su prodaja sladoleda i kriminal povezani; gde se kriju uzroci?
+
+## Konfaunder, ili skrivena treća varijabla
+
+Konfaunder, od Latinskog *confundere* što zanči "umešano", je varijabla čiji efekat utiče na izloženost i ishod, stvarajući lažnu asocijaciju. Na primer, ako procenjujemo efekat leka na bolest ($Lek \rightarrow Bolest$), ali nam je kontrolna grupa starija od ispitne, $Starost$ postaje konfaunder ($Lek \leftarrow Starost \rightarrow Bolest$) --- u ovom slučaju je ispitivač sam stvorio lažnu asocijaciju. Svaki uticaj $Leka$ sad će biti lažno izmenjem uticajem $Starosti$. Srećom, ako smo prikupili podatke o starosti pacijenata, lako možemo raspetljati neželjeni efekat treće varijable od željenog.
+
+::: {.callout-note collapse="true"}
+## Dodatak: matematičko objašnjenje kontrolisanja treće varijable
+
+Regresijom povlačimo najbolju liniju kroz oblak podataka. Za objašnjenje ($X$) i ishod ($Y$), jednačina regresione linije bi izgledala: $Y = aX + b$. U tom slučaju, jedna jedicina povećanja $X$ će, u proseku, povećati $Y$ za $a$-jedinica. Ako nema nikakvih konfaundera onda je to procena naše intervencije. Ukoliko postoji neka treća varijabla, onda $a$ daje prosečan trend, tj. korelaciju, a ne kauzalni efekat. Ako pretpostavimo da imamo konfaunder $Z$, onda varijable $X, Y, Z$ prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$ ukoliko uvrstimo $Z$ u regresionu jednačinu. Ono sto koeficijent $a$ onda predstavlja je parcijalni regresioni koeficijent "kontrolisan" za $Z$. Tako smo uklonili neželjeni efekat $Z$ i dobili pravi efekat $X$ na $Y$ [@pearl2018].
 :::
 
-do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe.
+<!-- ::: callout-warning -->
+
+<!-- Problemi sa linearnim prepostavkama su sledeći: (1) Ne mogu da pretpostave nelinearne odnose izmedju varijabli. (2) Ne mogu da opišu "threashold" efekte, npr. lek koji prestaje da deluje iznad neke doze. (3) Ne mogu da opišu interakcije između varijabli (proveri @pearl2018 p. 286). -->
+
+<!-- ::: -->
+
+## Kauzalna Salata
+
+::: columns
+::: {.column width="50%"}
+Kada znamo da je moguće kontrolisati za lažne asocijacija, da li to znači da treba da kontrolišemo za što više stvari kako bi naši efekti bili tačniji? Nažalost, ubacivanje varijabli bez razmišljanja nam može uništiti procenu. Retki su statistički kursevi koji uče istraživače kako da biraju kontrolne varijable, a njihovo nasumično ubacivanje može dovesti do katastrofalnih posledica. Kontrolom nekih varijabli može se dobiti pristrasna (pogrešna) procena efekta, a ponekad i kompletno obrnutog znaka, tj. smera efekta [@cinelli2020].
+:::
+
+::: {.column width="50%"}
+![Naučnik trpa sve varijable u svoju salatu.](salad.webp)
+:::
+:::
+
+**Kauzalna salata** je procedura (ne samo regresija) kojom se uzima lista varijabli i na osnovu njih vrši nekakvo kauzalno zaključivanje. Nijedna veličina uzorka neće pretvoriti salatu u smisao. Ali postoji rešenje, **kauzalni dijagrami**.
+
+# Kauzalni dijagrami
+
+U svom radu "Da li biolozi mogu da poprave radio? --- ili, šta sam naucio tokom izučavanje apoptoze," @lazebnik2002 govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Jedan od načina da se formalizuju pretpostavke u opservacionim studijama, tj. prirodnim eksperimentima su *usmereni aciklični dijagrami* (eng. Directed Acyclic Graphs, DAGs). Putem ovih dijagrama mogu se predstaviti uticaji za koje naučnik smatra da leže u osnovi nekog procesa (@fig-confounder).
+
+Džudea Perl je popularizovao način kako možemo kroz opservacije da simuliramo randomizovane eksperimente, i da iz njih dobijemo uzroke. Naime, definisanjem kauzalnog dijagrama naučnik može saznati koje mu varijable trebaju za dobije odgovor na svoje pitanje. Ne samo to, jednom definisan, kauzalni dijagram eliminiše bilo kakvu zbunjenost koje kontrolne varijable treba uključiti u regresiju, a koje ne.[^3]
+
+[^3]: Ne samo regresiju, već bilo koji proces analize. Uključujuci i nelinearne metode.
+
+```{r}
+#| label: fig-confounder
+#| fig-cap: "Counfounder."
+#| fig-height: 3
+#| fig-width: 5
+#| echo: false
+tidy_ggdag <- dagify(
+  Y ~ X,
+  X ~ Z,
+  Y ~ Z,
+  exposure = "X",
+  outcome = "Y",
+  coords =list(
+    x = c(X = 1, Y = 2, Z = 1.5),
+    y = c(X = 0, Y = 0, Z = 1))
+  ) %>%
+  tidy_dagitty() %>% 
+  mutate(linetype = ifelse(name == "Z", "solid", "solid")
+         # name = case_when(
+         #   name == "X" ~ "Lek",
+         #   name == "Y" ~ "TA",
+         #   name == "Z" ~ "Pol"
+         ) %>% 
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  geom_dag_point() + 
+  geom_dag_text() + 
+  geom_dag_edges(aes(edge_linetype = linetype), show.legend = FALSE) +
+  theme_dag()
+
+tidy_ggdag
+```
+
+Ovakvi kauzalni dijagrami se prave naučnim razmišljanjem. Uzroci se ne mogu dobiti iz podataka bez pretpostavki, a kauzalni dijagrami predstavljaju model procesa koji stoji iza podataka. Uz pomoć kauzalnog dijagrama naučnik može transparentno da definiše uticaje koji prožimaju fenomen koji istražuje. Kauzalni dijagram kojim se predstavi interakcija u opservacionoj studiji se onda može transformisati u randomizovani eksperiment uz pomoć do-Računa (eng. do-Calculus)! Uz ovaj koristan alat možemo analizirati uzroke iz prirodnih eksperimenata. Mnoge vrste zaključaka nam onda postaju dostupne, obuhvatajući i istraživanja naučnih pitanja za koje nije bilo moguće napraviti randomizovani eksperiment.
 
 ::: callout-warning
 Ponekad regresioni koeficijenti predstavljaju kauzalne efekte, a ponekad ne. Sve zavisi od kauzalnog dijagrama!
 :::
 
-Kauzalni dijagram treba oslikava moguću realnost.
+## do-Račun: Jezik Intervenisanja
 
-# Konfaunder, ili nepoželjna treća varijabla
+Recimo da smo posmatranjem prikupili podatke o uzimanju određenog leka u populaciji, i da nas zanima kako on utiče na pojavu infarkta. Takođe ćemo pretpostaviti da pol utiče na uzimanje leka. @fig-backdoor daje potencijalni kauzalni dijagram za ovaj scenario. Savršeni randomizovani eksperiment bi jednako dodelio Lek svakom polu, ali pretpostavimo da je lakše da uradimo opservacionu studiju. Do-Račun koristi matematičku operaciju koje se obeležava sa $do(x)$ da označi intervenciju ili kontračinjenicu. $do(x)$ simulira fizičku intervenciju fiksiranja izabrane varijable menjajući je sa konstantom ($X = x$), dok ostatak kauzalnog modela ostaje nepromenjen.
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+Ono što mi želimo da procenimo je efekat leka na infarkt i to možemo da izrazimo sa $P(Infarkt\,|\,do(Lek))$. Prevedno, ovaj izraz znači: "Verovatnoća da se infarkt desio, ukoliko smo dali lek." Do-Račun nam omogućava da statistički izolujemo efekat $Leka$ na $Infarkt$, ukoliko nam, naravno, kauzalni dijagram oslikava moguću realnost. Time smo dobili transformisali kauzalni dijagram u @fig-backdoor-adj, gde se jasno vidi obrisan uticaj $Pola$ na $Lek$.
 
-# do-Račun --- Jezik Intervenisanja
+Kriterijumi po kojim se mogu odrediti dobre kontrolne varijable, za bilo koji kauzalni dijagram su **Backdoor** i **Front-door** kriterijum.
 
-Definisi i objasni sta je do-Račun i cemu sluzi.
+<!-- Do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe. -->
 
-Motivacija -\> Objasnjenje.
-
-# Usmereni, aciklični dijagrami
-
-U svom radu "Da li biolozi mogu da poprave radio? --- ili, šta sam naucio tokom izučavanje apoptoze," @lazebnik2002 govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Kako bi onda izgledala jedna jasna, formalizovana, transparentna opservaciona studija? Koristila bi *usmerene aciklične dijagrame* (UAD; eng. Directed Acyclic Graphs, DAGs).
-
+::: columns
+::: {.column width="45%"}
 ```{mermaid}
 %%| label: fig-backdoor
 %%| fig-cap: "Something."
 
 flowchart LR
-  Z((Pol)) -.-> X & Y
+  Z((Pol)) --> X & Y
   X((Lek)) ==> Y((Infarkt))
   
 ```
+:::
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+::: {.column width="10%"}
+:::
 
-## Backdoor Kriterijum
+::: {.column width="45%"}
+```{mermaid}
+%%| label: fig-backdoor-adj
+%%| fig-cap: "Something."
 
-**Backdoor Kriterijum.** Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili $P(Y|do(X))$. Može se upotrebiti kada se dijagram analizira vizuelno. **Metod:** Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji @fig-backdoor.
+flowchart LR
+  Z((Pol)) --> Y
+  Z((Pol)) x-.-x X
+  X(("do(Lek)")) ==> Y((Infarkt))
+  
+```
+:::
+:::
+
+### Backdoor Kriterijum
+
+Pravilo o pronalaženju skupa varijabli za stratifikaciju kako bi dobili $P(Y\,|\,do(X))$. Može se upotrebiti kada se dijagram analizira vizuelno. Ovaj kriterijum se najčešće koristi.
+
+<!-- **Metod:** Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji @fig-backdoor. -->
 
 ::: callout-note
 **Upotreba:** kada smo sigurni da imamo sve podatke o velikom broju (najuticajnijih) konfaundera.
 :::
 
-## Frontdoor Kriterijum
+### Front-door Kriterijum
+
+Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o $Leku$, $Krvnom\,Pritisku$ i $Infarktu$. Ne možemo da iskoristimo backdoor kriterijum jer nemamo podatke o $Infarkt\,Gen$-u, te ga ne možemo blokirati. Preostaje nam da upotrebimo frontdoor kriterijum.
 
 ::: columns
 ::: {.column width="45%"}
@@ -100,9 +243,10 @@ It is a long established fact that a reader will be distracted by the readable c
 %%| fig-cap: "Something."
 
 flowchart LR
-  Z((Infarkt Gen)) -.-> X & Y
+  Z((Infarkt Gen)) --> X & Y
   X((Lek)) ==> M((Krvni Pritisak)) 
   M ==> Y((Infarkt))
+  style Z stroke-dasharray: 5 5, fill:#edffc4
   
 ```
 :::
@@ -116,40 +260,33 @@ flowchart LR
 %%| fig-cap: "Something."
 
 flowchart LR
-  Z((Infarkt Gen)) -.-> X & Y
+  Z((Infarkt Gen)) --> X & Y
   Z x-.-x M
   X((Lek)) ==> M((Krvni Pritisak)) 
   M ==> Y((Infarkt))
+  style Z stroke-dasharray: 5 5, fill:#edffc4
   
 ```
 :::
 :::
 
-Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o `Leku`, `Krvnom Pritisku` i `Infarktu`. Ne možemo da iskoristimo backdoor kriterijum jer nemamo podatke o `Infarkt Genu`. Možemo upotrebiti frontdoor kriterijum.
+Ono što možemo da procenimo je efekat $Leka$ na $Krvni\,pritisak$. Za to nam ne treba nikakva kontrolna varijabla (@fig-frontdoor-1 pokazuje da nema strelice iz $Infarkt\,Gena$ u $Krvni\,pritisak$). Možemo da uočimo da je razlika između $P(\text{Krvni Pritisak}\,|\,\text{Lek})$ i $P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})$, prosečan efekat $Leka$ na $Krvni Pritisak$.
 
-Ono što možemo da procenimo je efekat `Leka` na `Krvni pritisak`. Za to nam ne treba nikakav adjustment. Samo možemo da uočimo da je $P(\text{Krvni Pritisak}\,|\,\text{Lek})$ i $P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})$, i razlika između njih će biti prosečan efekat `Leka` na `Krvni Pritisak`.
+Takođe, @fig-frontdoor-1 pokazuje da možemo da procenimo kauzalni efekat $Krvnog\,Pritiska$ na $Infarkt$. Tu možemo da upotrebimo *backdoor kriterijum* da blokiramo efekat $Leka$ na $Krvni Pritisak$. Tako ćemo dobiti $P(\text{Infarkt}\,|\,do\text{(Lek)})$ i $P(\text{Infarkt}\,|\,do\text{(Bez Leka)})$.
 
-Takođe, @fig-frontdoor-1 pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt. Tu možemo da iskoristimo backdoor kriterijum da blokiramo efekat `Leka` na `Krvni Pritisak`. Tako ćemo dobiti $P(\text{Infarkt}\,|\,do\text{(Lek)})$ i $P(\text{Infarkt}\,|\,do\text{(Bez Leka)})$.
+Time smo saznali prosečan efekat $Leka$ na $Krvni\,Pritisak$ i prosečan efekat $Krvnog\,Pritiska$ na $Infarkt$. Kombinacijom ova dva efekta možemo posrednim putem da dobijemo efekat $Leka$ na $Infarkt$ izuzetog od genetskog uticaja $Infarkt Gena$.
 
-Time smo saznali prosečan efekat `Leka` na `Krvni Pritisak` i prosečan efekat `Krvnog Pritiska` na `Infarkt`. Kombinacijom ova dva efekta možemo posrednim putem da dobijemo efekat `Leka` na `Infarkt` izuzetog od genetskog uticaja `Infarkt Gena`.
-
-::: callout-note
-Proces izražavanja $P(\text{Infarkt}\,|\,do\text{(Lek)})$ preko do-free verovatnoća se zove Frontdoor kriterijum.
-:::
+Proces izražavanja $P(\text{Infarkt}\,|\,do\text{(Lek)})$ preko verovatnoća koje ne sadrže do-operaciju je zapravo Front-door kriterijum.
 
 ::: callout-note
-**Upotreba:** Frontdoor kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla *zaštićena* od uticaja konfaundera (uporediti dijagrame @fig-frontdoor-1 i @fig-frontdoor-2).
+**Upotreba:** Front-door kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla *zaštićena* od uticaja konfaundera (uporediti dijagrame @fig-frontdoor-1 i @fig-frontdoor-2).
 :::
 
-## Dr Džon Snou i prva instrumentalna varijabla
+### Dr Džon Snou i prva instrumentalna varijabla
 
 ::: columns
 ::: {.column width="50%"}
-Džon Snou je imao brilijatnu ideju da posmatra kompanije koje snabdevaju ljude vodom u Londonu. Instrumentalna varijabla ima tri bitne karakteristike:
-
--   Nema strelice od Mijazme do Kompanije
--   Postoji strelica od Kompanije do Cistoce vode
--   Nema strelice od Kompanije do Kolere
+Jedna od poznatijih priča je kako je Džon Snou zaključio da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je urokovana mijazmom (česticama lošeg vazduha) ili siromaštvom. Ova epidemija je odnela skoro 3,000 Života --- bilo je bitno da se otrije uzrok. Kako uzročnik, *Vibrio cholerae*, još uvek nije bio otkriven Džon Snou je pred sobom imao nekoliko mogućih objašenja. Teorija mijazme, koje je bila popularna u to vreme, je tvrdila da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao klučan momenat u otkrivanju uzroka. Međutim, gašenje pumpe je jedva promenilo tok epidemije.
 :::
 
 ::: {.column width="50%"}
@@ -157,16 +294,20 @@ Džon Snou je imao brilijatnu ideju da posmatra kompanije koje snabdevaju ljude 
 :::
 :::
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Najbitnija odluka koju je Džon Snou doneo je bila kauzalne prirode je i prikazana je na @fig-instrumental. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu (uzvodno). Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, ustvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu.
 
-$b = \frac{ \sf{r_{CWC}}} {\sf{r_{WWC}}}$ je dobijeno iz $\frac{ab} {a}$.
+Varijabla koja prirodno randomizuje opservacije naziva se **instrumentalna varijabla**. Takva varijabla po definiciji ispunjava Backdoor kriterijum, tj. nema nikakve sopstvene uzroke. @fig-instrumental pokazuje da varijabla $Kompanija$ ispunjava sledeće:
 
-### Namera lečenja
+-   Nema strelice od $Mijazme$ do $Kompanije$
+-   Postoji strelica od $Kompanije$ do $Čistoće\,vode$
+-   Nema strelice od $Kompanije$ do $Dijareje$
 
-Namera je instrumentalna varijabla. Intention-to-treat.
+Instrumentalna varijabla nam omogućava da uradimo isti trik kao i sa Front-door kriterijumom. Uz pomoć varijable $Kompanija$ moguće je odrediti kauzalni efekat $Čistoće vode$ na $Dijareju$ bez kontrolisanja ili prikupljanja dodatnih podataka.
 
 ::: callout-note
-Monotonicity: nije bilo pacijenata koji su dodaljeni grupi koja *ne* dobija Lek (Z = 0), a da su nekako ipak dobili lek (X = 1).
+## Namera lečenja
+
+U modernom dizajnu istraživanja, namera lečenja (eng. intention-to-treat) vriši funkciju instrumentalne varijable. Kako istraživači ne mogu da kontrolišu da li će se pacijenti zapravo pridržavati dodeljene terapije, svaki procenjeni efekat terapije nakon randomizacije će biti pristrasan. Pogtovo ako ima dosta pacijenata koji odustanu od lečenja. Tako da je zapravo bolje govoriti o "efektu" dodeljivanja terapijskoj grupi. Ovo kao što možete pretpostaviti ima problema sa generalizacijom na okruženja van studije.
 :::
 
 ```{mermaid}
@@ -175,26 +316,36 @@ Monotonicity: nije bilo pacijenata koji su dodaljeni grupi koja *ne* dobija Lek 
 
 flowchart LR
   M(Mijazma, Siromaštvo,...) -.-> W & C
-  W(Čistoća Vode) ==>|b| C(Kolera)
-  WC(Kompanija) ==>|a| W
+  W(Čistoća Vode) ==> C(Dijareja)
+  WC(Kompanija) ==> W
+  style M stroke-dasharray: 5 5, fill:#edffc4
   
   
 ```
 
-# Interesantne Primene
+<!-- $b = \frac{ \sf{r_{CWC}}} {\sf{r_{WWC}}}$ je dobijeno iz $\frac{ab} {a}$. -->
 
--   Mediation Analysis: If Smoking -\> Tar -\> Cancer, is all effect of Smoking through Tar? If so, e-cigs could eliminate risk.
--   EET (Effect of Treatment on the Treatet): Ilya Shpitser, Johns Hopkins, counterfactual analysis of harm if treated were not treated. Do they benefit the most when treated?
+<!-- ::: callout-note -->
 
-Mediation Analysis. Povezano sa pitanjem Zasto? Mehanizmi. Reicmo da nam nestane narandza, da li mozemo da sprecimo skorbut? Razlikovanje indirektnih i direktnih efekata (onih koji ne idu kroz medijatora)
+<!-- Monotonicity: nije bilo pacijenata koji su dodaljeni grupi koja *ne* dobija Lek (Z = 0), a da su nekako ipak dobili lek (X = 1). -->
 
-## Case of Forgotten Scurvy
+<!-- ::: -->
 
-Citrus -\> Acid -\> Scurvy Sailors substituting lemon for lime 1/4 Vit C, cooking it South Pole expedition, dry meat no citrus
+<!-- # Interesantne Primene -->
 
-# Bajesova teorema
+<!-- -   Mediation Analysis: If Smoking -\> Tar -\> Cancer, is all effect of Smoking through Tar? If so, e-cigs could eliminate risk. -->
 
-$$P(\theta|\textbf{D}) = \frac{P(\theta ) P(\textbf{D} | \theta)}{P(\textbf{D})}$$
+<!-- -   EET (Effect of Treatment on the Treatet): Ilya Shpitser, Johns Hopkins, counterfactual analysis of harm if treated were not treated. Do they benefit the most when treated? -->
+
+<!-- Mediation Analysis. Povezano sa pitanjem Zasto? Mehanizmi. Reicmo da nam nestane narandza, da li mozemo da sprecimo skorbut? Razlikovanje indirektnih i direktnih efekata (onih koji ne idu kroz medijatora) -->
+
+<!-- ## Case of Forgotten Scurvy -->
+
+<!-- Citrus -\> Acid -\> Scurvy Sailors substituting lemon for lime 1/4 Vit C, cooking it South Pole expedition, dry meat no citrus -->
+
+<!-- # Bajesova teorema -->
+
+<!-- $$P(\theta|\textbf{D}) = \frac{P(\theta ) P(\textbf{D} | \theta)}{P(\textbf{D})}$$ -->
 
 # Zaključak
 
