@@ -1,6 +1,6 @@
 ---
 title: "Kauzalno zaključivanje je moguće iz opservacionih studija"
-description: "Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično zaključivanje, je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja."
+description: "Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja."
 date: 2023-08-07
 date-format: D/MM/YYYY
 lang: sr-latn
@@ -24,7 +24,7 @@ Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, eksk
 
 # Kletva korelacija
 
-Ono što čoveka najviše razlikuje od životinja je sposobnost da zamisli *bliske moguće svetove*. Bliski mogući svetovi su odgovori na pitanje: "Šta bi bilo, kad bi bilo?" Tokom evolucije, bliski pretci modernog čoveka su stekli sposobnost da komuniciraju ideje i sarađuju na sve kompleksnije načine. Šta god da je dovelo to ove prosocijalne pojave, dalo je čoveku sposobnost da zamisli nepostojeće --- uz koju je došla i sposobnost planiranja. @pearl2018 u svojoj knjizi opisuju tri stepenika kognitivnog razmišljanja u zavisnosti od toga na kakva pitanja ono može dati odgovor.
+Ono što čoveka najviše razlikuje od životinja je sposobnost da zamisli *bliske moguće svetove*. Bliski mogući svetovi su odgovori na pitanje: "Šta bi bilo, kad bi bilo?" Tokom evolucije, bliski pretci modernog čoveka su stekli sposobnost da komuniciraju ideje i sarađuju na sve kompleksnije načine. Šta god da je dovelo do ove prosocijalne pojave, dalo je čoveku mogućnost da zamisli nepostojeće --- uz koju je došla i sposobnost planiranja. @pearl2018 u svojoj knjizi opisuju tri stepenika kognitivnog razmišljanja u zavisnosti od toga na kakva pitanja ono može dati odgovor.
 
 -   Prvi stepenik -- Asocijacije\
     Šta ako vidim?\
@@ -46,7 +46,7 @@ Kauzalno, uzročno-posledično zaključivanje, je pravi naučni cilj. Ponekad je
 
 ## Galton otkriva regresiju
 
-Francis Galton je tražio uzročno objašnjenje naslednosti visine kod ljudi.[^2] Elem, Galton je primetio da viši očevi imaju prosečno više sinove, ali ne i više od sebe. Sinovi niskih očeva su bili, u proseku, niži ali ne i niski kao svoji očevi (@fig-regresija-1). Galton je ovaj fenomen nazvao "regresija ka mediokritetu."[^3] Regresija ka proseku (kako je danas poznata) je statistička pojava prisutna svuda oko nas --- u tom trenutku Galton je nije prepoznao, već je mislio da je nabasao na zakon nasleđivanja. Do 1889. je shvatio da je zapravo otkrio korelaciju, a da je regresija ka proseku posledica sreće ($Visina = Prava\,visina + sreća$). Zapravo postoje dve regresione linije (@fig-regresija-1 i @fig-regresija-2) koje predviđaju jednako dobro, i ako su jednačine regresionih linija različite, situacija je simetrična. Regresija ka proseku ne može biti uzrok jer ne razlikuje nikakav redosled događaja. Dve varijable (visina očeva i sinova) su korelisane ako jedna "predviđa" drugu, a koeficijent korelacije je veći što su obe varijable bliže pravoj liniji. Da je savršena korelacija ($\rho = 1$) između visine očeva i njihovih sinova, svaki dodatni centimetar visine oca bi deterministički bio prenesen na sina.
+Francis Galton je tražio uzročno objašnjenje naslednosti visine ljudi.[^2] Elem, Galton je primetio da viši očevi imaju prosečno više sinove, ali ne više od sebe. Sinovi niskih očeva bili su, u proseku, niži ali ne niski kao svoji očevi (@fig-regresija-1). Galton je ovaj fenomen nazvao "regresija ka mediokritetu."[^3] Regresija ka proseku (kako je danas poznata) je statistička pojava prisutna svuda oko nas --- u tom trenutku Galton je nije prepoznao, već je mislio da je nabasao na zakon nasleđivanja. Do 1889. je shvatio da je zapravo otkrio korelaciju, a da je regresija ka proseku posledica sreće ($Visina = Prava\,visina + sreća$). Zapravo postoje dve regresione linije (@fig-regresija-1 i @fig-regresija-2). Obe linije predviđaju jednako dobro. Jednačine regresionih linija su različite, ali je situacija potpuno simetrična. Regresija ka proseku ne može biti uzrok jer ne razlikuje nikakav redosled događaja. Dve varijable (visina očeva i sinova) su korelisane ako jedna "predviđa" drugu, a koeficijent korelacije je veći što su obe varijable bliže pravoj liniji. U slučaju savršene korelacije ($\rho = 1$) između visine očeva i njihovih sinova, svaki dodatni centimetar visine oca bi deterministički bio prenesen na sina, što nije slučaj.
 
 [^2]: Njegova motivacija je jasnija kad saznamo da je on bio prvi rođak Čarlsa Darvina. Zapravo, Galtona je zanimala naslednost inteligencije, kao i većinu tadašnjeg Britanskog noblesa opsednutog razlikama između sebe i "prostog" naroda.
 
@@ -101,7 +101,7 @@ d %>%
   )
 ```
 
-Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent ($\rho$ ili $r$) koji je dobro poznat svakom naučniku. Insistiranje na korišćenju korelacija zarad neke fiktivne "objektivnosti" je unazadilo nauku desetinama godina. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal --- jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Mogu poslužiti za predviđanja, ali nemaju nikakvu eksplanatornu vrednost. Planiranje intervencija je nepouzdano. Provlačenjem kroz skupštinu zakona o zabrani prodaje sladoleda, ne bismo smanjili kriminal.
+Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent ($\rho$ ili $r$) koji je dobro poznat svakom naučniku. Insistiranje na korišćenju korelacija zarad neke fiktivne "objektivnosti" je unazadilo nauku desetinama godina. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal --- jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Mogu poslužiti u predviđannjima, ali nemaju nikakvu eksplanatornu vrednost. Zaključivanje o intervencijama je nepouzdano. Provlačenjem kroz skupštinu zakona o zabrani prodaje sladoleda, ne bismo smanjili kriminal.
 
 Zašto su prodaja sladoleda i kriminal povezani; gde se kriju uzroci?
 
