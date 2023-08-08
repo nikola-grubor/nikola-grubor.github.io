@@ -259,12 +259,12 @@ Primer: Da li mi je aspirin zaustavio glavobolju?</p></li>
 <p></p><figcaption class="figure-caption">Figura&nbsp;1: Galtonova regresija visina očeva i sinova. Crvena isprekidana linija prikazuje istu tačku u obe figure. Plava regresiona linija je najbolje predviđanje za datu visinu. Populacija visokih očeva ima niže sinove, dok populacija visokih sinova ima niže očeve.</figcaption><p></p>
 </figure>
 </div>
-<p>Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent (<span class="math inline">\(\rho\)</span> ili <span class="math inline">\(r\)</span>) koji je dobro poznat svakom naučniku. Insistiranje na korišćenju korelacija zarad neke fiktivne “objektivnosti” je unazadilo nauku desetinama godina. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal — jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Mogu poslužiti u predviđannjima, ali nemaju nikakvu eksplanatornu vrednost. Zaključivanje o intervencijama je nepouzdano. Provlačenjem kroz skupštinu zakona o zabrani prodaje sladoleda, neće smanjiti kriminal.</p>
+<p>Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent (<span class="math inline">\(\rho\)</span> ili <span class="math inline">\(r\)</span>) koji je dobro poznat svakom naučniku. Insistiranje na korišćenju korelacija zarad neke fiktivne “objektivnosti” je unazadilo nauku desetinama godina. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal — jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Mogu poslužiti u predviđanjima, ali nemaju nikakvu eksplanatornu vrednost. Zaključivanje o intervencijama je nepouzdano. Provlačenjem kroz skupštinu zakona o zabrani prodaje sladoleda, neće smanjiti kriminal.</p>
 <p>Zašto su prodaja sladoleda i kriminal povezani; gde se kriju uzroci?</p>
 </section>
 <section id="konfaunder-ili-skrivena-treća-varijabla" class="level2">
 <h2 class="anchored" data-anchor-id="konfaunder-ili-skrivena-treća-varijabla">Konfaunder, ili skrivena treća varijabla</h2>
-<p>Konfaunder, od Latinskog <em>confundere</em>, što znači “umešano”, je varijabla čiji efekat utiče na izloženost i ishod, stvarajući lažnu asocijaciju. Na primer, ako procenjujemo efekat leka na bolest (<span class="math inline">\(Lek \rightarrow Bolest\)</span>), ali nam je kontrolna grupa starija od ispitne, <span class="math inline">\(Starost\)</span> postaje konfaunder (<span class="math inline">\(Lek \leftarrow Starost \rightarrow Bolest\)</span>) — ispitivač je sam stvorio lažnu asocijaciju. Svaki uticaj <span class="math inline">\(Leka\)</span> sad će biti lažno izmenjen uticajem <span class="math inline">\(Starosti\)</span>. Srećom, ako smo prikupili podatke o starosti pacijenata, lako možemo raspetljati neželjene efekte treće varijable od <span class="math inline">\(Leka\)</span>.</p>
+<p>Konfaunder, od Latinskog <em>confundere</em>, što znači “umešano”, je varijabla čiji efekat utiče na izloženost i ishod, stvarajući lažnu asocijaciju. Na primer, ako procenjujemo efekat leka na bolest (<span class="math inline">\(Lek \rightarrow Bolest\)</span>), ali nam je kontrolna grupa starija od ispitne, <span class="math inline">\(Starost\)</span> postaje konfaunder (<span class="math inline">\(Lek \leftarrow Starost \rightarrow Bolest\)</span>) — ispitivač je sam stvorio lažnu asocijaciju. Svaki uticaj <span class="math inline">\(Leka\)</span> sad će biti lažno izmenjen uticajem <span class="math inline">\(Starosti\)</span>. Srećom, ako smo prikupili podatke o starosti pacijenata, lako možemo raspetljati efekte treće varijable od <span class="math inline">\(Leka\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -299,7 +299,7 @@ Dodatak: matematičko objašnjenje kontrolisanja treće varijable
 </div>
 </div>
 </div>
-<p><strong>Kauzalna salata</strong> je procedura (ne samo regresija) kojom se uzima lista varijabli i na osnovu njih vrši nekakvo kauzalno zaključivanje. Nijedna veličina uzorka neće pretvoriti salatu u smisao. Ali postoji rešenje za biranje kontrolnih varijabli, <strong>kauzalni dijagrami</strong>.</p>
+<p><strong>Kauzalna salata</strong> je procedura (ne samo regresija) kojom se uzima lista varijabli i na osnovu njih vrši nekakvo kauzalno zaključivanje <span class="citation" data-cites="mcelreath2021">(<a href="#ref-mcelreath2021" role="doc-biblioref">McElreath 2021</a>)</span>. Nijedna veličina uzorka neće pretvoriti salatu u smisao. Ali postoji rešenje za biranje kontrolnih varijabli, <strong>kauzalni dijagrami</strong>.</p>
 </section>
 </section>
 <section id="kauzalni-dijagrami" class="level1">
@@ -549,6 +549,9 @@ Hernán, Miguel A. 2018. <span>„The C-Word: Scientific Euphemisms Do Not Impro
 </div>
 <div id="ref-lazebnik2002" class="csl-entry" role="listitem">
 Lazebnik, Yuri. 2002. <span>„Can a Biologist Fix a Radio?<span></span>Or, What I Learned While Studying Apoptosis“</span>. <em>Cancer Cell</em> 2 (3): 179–82. <a href="https://doi.org/10.1016/S1535-6108(02)00133-2">https://doi.org/10.1016/S1535-6108(02)00133-2</a>.
+</div>
+<div id="ref-mcelreath2021" class="csl-entry" role="listitem">
+McElreath, Richard. 2021. <span>„Regression, Fire, and Dangerous Things (1/3)“</span>. <a href="https://elevanth.org/blog/2021/06/15/regression-fire-and-dangerous-things-1-3/">https://elevanth.org/blog/2021/06/15/regression-fire-and-dangerous-things-1-3/</a>.
 </div>
 <div id="ref-pearl2018" class="csl-entry" role="listitem">
 Pearl, Judea, и Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. 1st edition. New York: Basic Books.
