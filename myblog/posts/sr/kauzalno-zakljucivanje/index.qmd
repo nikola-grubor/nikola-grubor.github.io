@@ -116,9 +116,9 @@ Zašto su prodaja sladoleda i kriminal povezani; gde se kriju uzroci?
 Konfaunder, od Latinskog *confundere*, što znači "umešano", je varijabla čiji efekat utiče na izloženost i ishod, stvarajući lažnu asocijaciju. Na primer, ako procenjujemo efekat leka na bolest ($Lek \rightarrow Bolest$), ali nam je kontrolna grupa starija od ispitne, $Starost$ postaje konfaunder ($Lek \leftarrow Starost \rightarrow Bolest$) --- ispitivač je sam stvorio lažnu asocijaciju. Svaki uticaj $Leka$ sad će biti lažno izmenjen uticajem $Starosti$. Srećom, ako smo prikupili podatke o starosti pacijenata, lako možemo raspetljati efekte treće varijable od $Leka$.
 
 ::: {.callout-note collapse="true"}
-## Dodatak: matematičko objašnjenje kontrolisanja treće varijable
+## Dodatak: Matematičko objašnjenje kontrolisanja treće varijable
 
-Regresijom povlačimo najbolju liniju kroz oblak podataka. Za objašnjenje ($X$) i ishod ($Y$), jednačina regresione linije bi izgledala: $Y = aX + b$. U tom slučaju, jedna jedinica povećanja $X$ će, u proseku, povećati $Y$ za $a$-jedinica. Ako nema nikakvih konfaundera onda je to procena naše intervencije. Ukoliko postoji neka treća varijabla, onda $a$ daje prosečan trend, tj. korelaciju, a ne kauzalni efekat. Ako pretpostavimo da imamo konfaunder $Z$, onda varijable $X, Y, Z$ prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$ ukoliko uvrstimo $Z$ u regresionu jednačinu. Ono sto koeficijent $a$ onda predstavlja je parcijalni regresioni koeficijent "kontrolisan" za $Z$. Tako smo uklonili neželjeni efekat $Z$ i dobili pravi efekat $X$ na $Y$ [@pearl2018].
+Regresijom povlačimo najbolju liniju kroz oblak podataka. Za objašnjenje ($X$) i ishod ($Y$), jednačina regresione linije bi izgledala: $Y = aX + b$. U tom slučaju, jedna jedinica povećanja $X$ će, u proseku, povećati $Y$ za $a$-jedinica. Ako nema nikakvih konfaundera onda je to procena naše intervencije. Ukoliko postoji neka treća varijabla, onda $a$ daje prosečan trend, tj. korelaciju, a ne kauzalni efekat. Ako pretpostavimo da imamo konfaunder $Z$, onda varijable $X, Y, Z$ prave "oblak" u 3D prostoru, i naša regresiona linija postaje ravan $Y = aX + bZ + c$, ukoliko uvrstimo $Z$ u regresionu jednačinu. Koeficijent $a$ onda predstavlja parcijalni regresioni koeficijent "kontrolisan" za $Z$. Tako smo uklonili neželjeni efekat $Z$ i dobili pravi efekat $X$ na $Y$ [@pearl2018].
 :::
 
 <!-- ::: callout-warning -->
@@ -181,7 +181,7 @@ tidy_ggdag <- dagify(
 tidy_ggdag
 ```
 
-Kauzalni dijagrami se prave naučnim razmišljanjem. Uzroci se ne mogu dobiti iz podataka bez pretpostavki. Kauzalni dijagrami su naučni model procesa koji stoji iza podataka i realizuje ih. Uz pomoć kauzalnog dijagrama naučnik može transparentno da definiše uticaje koji prožimaju fenomen koji istražuje. Interakcije u opservacionoj studiji se onda mogu transformisati u randomizovani eksperiment uz pomoć do-Računa (eng. do-Calculus)! Do-Račun je alat kojim možemo analizirati uzroke iz prirodnih eksperimenata. Mnoge vrste zaključaka nam onda postaju dostupne, kao i istraživanja naučnih pitanja za koje nije moguće napraviti randomizovani eksperiment.
+Kauzalni dijagrami se prave naučnim razmišljanjem. Uzroci se ne mogu dobiti iz podataka bez pretpostavki. Kauzalni dijagrami su naučni model procesa koji stoji iza podataka i realizuje ih. Uz pomoć kauzalnog dijagrama naučnik može transparentno da definiše uticaje koji prožimaju fenomen koji istražuje. Interakcije u opservacionoj studiji se onda mogu transformisati u randomizovani eksperiment uz pomoć do-Računa (eng. do-Calculus)! Do-Račun je matematički alat kojim možemo analizirati uzroke iz prirodnih eksperimenata. Mnoge vrste zaključaka nam onda postaju dostupne, kao i istraživanja naučnih pitanja za koje nije moguće napraviti randomizovani eksperiment.
 
 ::: callout-warning
 Ponekad regresioni koeficijenti predstavljaju kauzalne efekte, a ponekad ne. Sve zavisi od kauzalnog dijagrama! Štaviše, ne smeju se svi regresioni koeficijenti iz jedne jednačine tretirati kao kauzalni efekti [@westreich2013].
@@ -283,7 +283,7 @@ flowchart LR
 
 Ono što možemo da procenimo je kauzalni efekat Leka na Krvni Pritisak ($Lek\,{\color{blue}\rightarrow}\,Krvni\,pritisak$). Za to nam ne treba nikakva kontrolna varijabla (@fig-frontdoor-1 pokazuje da nema strelice iz Infarkt Gena u Krvni Pritisak ($Infarkt\,Gen \nrightarrow Krvni\,pritisak$). Takođe, možemo da uočimo da je razlika između $P(\text{Krvni Pritisak}\,|\,\text{Lek})$ i $P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})$, prosečan efekat Leka na Krvni Pritisak.
 
-@fig-frontdoor-1 pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt ($Krvnog\,Pritiska \,{\color{red}\rightarrow}\,Infarkt$). Upotrebom *Backdoor kriterijuma* možemo da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.
+@fig-frontdoor-1 pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt ($Krvni\,Pritisak \,{\color{red}\rightarrow}\,Infarkt$). *Backdoor kriterijum* omogućava da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.
 
 <!-- Tako ćemo dobiti $P(\text{Infarkt}\,|\,do\text{(Lek)})$ i $P(\text{Infarkt}\,|\,do\text{(Bez Leka)})$. -->
 
@@ -293,11 +293,11 @@ Kombinacijom ova dva efekta prostim množenjem (ukoliko je veza linearna) možem
 **Upotreba:** Front-door kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla *zaštićena* od uticaja konfaundera (uporediti dijagrame @fig-frontdoor-1 i @fig-frontdoor-2).
 :::
 
-### Dr Džon Snou i prva instrumentalna varijabla
+## Dr Džon Snou i prva instrumentalna varijabla
 
 ::: columns
 ::: {.column width="50%"}
-Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je uzrokovana mijazmom (česticama lošeg vazduha) ili siromaštvom, je dobra ilustracija kauzalnog zaključivanja. Ova epidemija je odnela skoro 3,000 Života --- uzrok je bilo bitno otkriti. Kako uzročnik, *Vibrio cholerae*, još uvek nije bio poznat Džon Snou je pred sobom imao nekoliko mogućih objašnjenja. Teorija mijazme, koje je bila popularna, tvrdila je da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao ključan momenat u borbi protiv epidemije. Međutim, gašenje pumpe je jedva promenilo njen tok.
+Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je uzrokovana mijazmom (česticama lošeg vazduha) ili siromaštvom, je dobra ilustracija kauzalnog zaključivanja. Ova epidemija je odnela skoro 3,000 Života --- uzrok je bilo bitno otkriti. Kako uzročnik, *Vibrio cholerae*, još uvek nije bio poznat Džon Snou je pred sobom imao nekoliko mogućih objašnjenja. Teorija mijazme, koje je bila popularna, tvrdila je da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao ključan momenat u borbi protiv epidemije. Međutim, gašenje pumpe je jedva promenilo njen tok [@pearl2018 p. 246].
 :::
 
 ::: {.column width="50%"}
@@ -305,7 +305,7 @@ Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu poti�
 :::
 :::
 
-Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kazzalnom dijagramu prikazan je na @fig-instrumental.
+Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kauzalnom dijagramu prikazan je na @fig-instrumental.
 
 Varijabla koja prirodno randomizuje opservacije naziva se **instrumentalna varijabla**. Takva varijabla po definiciji ispunjava Backdoor kriterijum, tj. nema nikakve sopstvene uzroke. @fig-instrumental pokazuje da varijabla $Kompanija$ ispunjava sledeće:
 
@@ -319,7 +319,7 @@ Varijabla koja prirodno randomizuje opservacije naziva se **instrumentalna varij
 Instrumentalna varijabla nam omogućava da uradimo isti trik kao i sa Front-door kriterijumom. Uz pomoć varijable $Kompanija$ moguće je odrediti kauzalni efekat $Čistoće\,vode$ na $Dijareju$ bez kontrolisanja ili prikupljanja dodatnih podataka.
 
 ::: callout-note
-## Namera lečenja
+## Dodatak: Namera lečenja
 
 U modernom dizajnu istraživanja, namera lečenja (eng. intention-to-treat) vriši funkciju instrumentalne varijable. Kako istraživači ne mogu da kontrolišu da li će se pacijenti zapravo pridržavati dodeljene terapije, svaki procenjeni efekat terapije nakon randomizacije će biti pristrasan. Pogotovo ako ima dosta pacijenata koji odustanu od lečenja. Tako da je zapravo bolje govoriti o "efektu" dodeljivanja terapijskoj grupi. Ovo kao što možete pretpostaviti ima problema sa generalizacijom na okruženja van studije.
 :::

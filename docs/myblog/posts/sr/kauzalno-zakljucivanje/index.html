@@ -194,8 +194,8 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#backdoor-kriterijum" id="toc-backdoor-kriterijum" class="nav-link" data-scroll-target="#backdoor-kriterijum">Backdoor Kriterijum</a></li>
   <li><a href="#front-door-kriterijum" id="toc-front-door-kriterijum" class="nav-link" data-scroll-target="#front-door-kriterijum">Front-door Kriterijum</a></li>
-  <li><a href="#dr-džon-snou-i-prva-instrumentalna-varijabla" id="toc-dr-džon-snou-i-prva-instrumentalna-varijabla" class="nav-link" data-scroll-target="#dr-džon-snou-i-prva-instrumentalna-varijabla">Dr Džon Snou i prva instrumentalna varijabla</a></li>
   </ul></li>
+  <li><a href="#dr-džon-snou-i-prva-instrumentalna-varijabla" id="toc-dr-džon-snou-i-prva-instrumentalna-varijabla" class="nav-link" data-scroll-target="#dr-džon-snou-i-prva-instrumentalna-varijabla">Dr Džon Snou i prva instrumentalna varijabla</a></li>
   </ul></li>
   <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak">Zaključak</a>
   <ul class="collapse">
@@ -271,13 +271,13 @@ Primer: Da li mi je aspirin zaustavio glavobolju?</p></li>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Dodatak: matematičko objašnjenje kontrolisanja treće varijable
+Dodatak: Matematičko objašnjenje kontrolisanja treće varijable
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Regresijom povlačimo najbolju liniju kroz oblak podataka. Za objašnjenje (<span class="math inline">\(X\)</span>) i ishod (<span class="math inline">\(Y\)</span>), jednačina regresione linije bi izgledala: <span class="math inline">\(Y = aX + b\)</span>. U tom slučaju, jedna jedinica povećanja <span class="math inline">\(X\)</span> će, u proseku, povećati <span class="math inline">\(Y\)</span> za <span class="math inline">\(a\)</span>-jedinica. Ako nema nikakvih konfaundera onda je to procena naše intervencije. Ukoliko postoji neka treća varijabla, onda <span class="math inline">\(a\)</span> daje prosečan trend, tj. korelaciju, a ne kauzalni efekat. Ako pretpostavimo da imamo konfaunder <span class="math inline">\(Z\)</span>, onda varijable <span class="math inline">\(X, Y, Z\)</span> prave “oblak” u 3D prostoru, i naša regresiona linija postaje ravan <span class="math inline">\(Y = aX + bZ + c\)</span> ukoliko uvrstimo <span class="math inline">\(Z\)</span> u regresionu jednačinu. Ono sto koeficijent <span class="math inline">\(a\)</span> onda predstavlja je parcijalni regresioni koeficijent “kontrolisan” za <span class="math inline">\(Z\)</span>. Tako smo uklonili neželjeni efekat <span class="math inline">\(Z\)</span> i dobili pravi efekat <span class="math inline">\(X\)</span> na <span class="math inline">\(Y\)</span> <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl и Mackenzie 2018</a>)</span>.</p>
+<p>Regresijom povlačimo najbolju liniju kroz oblak podataka. Za objašnjenje (<span class="math inline">\(X\)</span>) i ishod (<span class="math inline">\(Y\)</span>), jednačina regresione linije bi izgledala: <span class="math inline">\(Y = aX + b\)</span>. U tom slučaju, jedna jedinica povećanja <span class="math inline">\(X\)</span> će, u proseku, povećati <span class="math inline">\(Y\)</span> za <span class="math inline">\(a\)</span>-jedinica. Ako nema nikakvih konfaundera onda je to procena naše intervencije. Ukoliko postoji neka treća varijabla, onda <span class="math inline">\(a\)</span> daje prosečan trend, tj. korelaciju, a ne kauzalni efekat. Ako pretpostavimo da imamo konfaunder <span class="math inline">\(Z\)</span>, onda varijable <span class="math inline">\(X, Y, Z\)</span> prave “oblak” u 3D prostoru, i naša regresiona linija postaje ravan <span class="math inline">\(Y = aX + bZ + c\)</span>, ukoliko uvrstimo <span class="math inline">\(Z\)</span> u regresionu jednačinu. Koeficijent <span class="math inline">\(a\)</span> onda predstavlja parcijalni regresioni koeficijent “kontrolisan” za <span class="math inline">\(Z\)</span>. Tako smo uklonili neželjeni efekat <span class="math inline">\(Z\)</span> i dobili pravi efekat <span class="math inline">\(X\)</span> na <span class="math inline">\(Y\)</span> <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl и Mackenzie 2018</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -316,7 +316,7 @@ Dodatak: matematičko objašnjenje kontrolisanja treće varijable
 </div>
 </div>
 </div>
-<p>Kauzalni dijagrami se prave naučnim razmišljanjem. Uzroci se ne mogu dobiti iz podataka bez pretpostavki. Kauzalni dijagrami su naučni model procesa koji stoji iza podataka i realizuje ih. Uz pomoć kauzalnog dijagrama naučnik može transparentno da definiše uticaje koji prožimaju fenomen koji istražuje. Interakcije u opservacionoj studiji se onda mogu transformisati u randomizovani eksperiment uz pomoć do-Računa (eng. do-Calculus)! Do-Račun je alat kojim možemo analizirati uzroke iz prirodnih eksperimenata. Mnoge vrste zaključaka nam onda postaju dostupne, kao i istraživanja naučnih pitanja za koje nije moguće napraviti randomizovani eksperiment.</p>
+<p>Kauzalni dijagrami se prave naučnim razmišljanjem. Uzroci se ne mogu dobiti iz podataka bez pretpostavki. Kauzalni dijagrami su naučni model procesa koji stoji iza podataka i realizuje ih. Uz pomoć kauzalnog dijagrama naučnik može transparentno da definiše uticaje koji prožimaju fenomen koji istražuje. Interakcije u opservacionoj studiji se onda mogu transformisati u randomizovani eksperiment uz pomoć do-Računa (eng. do-Calculus)! Do-Račun je matematički alat kojim možemo analizirati uzroke iz prirodnih eksperimenata. Mnoge vrste zaključaka nam onda postaju dostupne, kao i istraživanja naučnih pitanja za koje nije moguće napraviti randomizovani eksperiment.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -446,7 +446,7 @@ Beleška
 </div>
 </div>
 <p>Ono što možemo da procenimo je kauzalni efekat Leka na Krvni Pritisak (<span class="math inline">\(Lek\,{\color{blue}\rightarrow}\,Krvni\,pritisak\)</span>). Za to nam ne treba nikakva kontrolna varijabla (<a href="#fig-frontdoor-1">Figura&nbsp;5</a> pokazuje da nema strelice iz Infarkt Gena u Krvni Pritisak (<span class="math inline">\(Infarkt\,Gen \nrightarrow Krvni\,pritisak\)</span>). Takođe, možemo da uočimo da je razlika između <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Lek})\)</span> i <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})\)</span>, prosečan efekat Leka na Krvni Pritisak.</p>
-<p><a href="#fig-frontdoor-1">Figura&nbsp;5</a> pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt (<span class="math inline">\(Krvnog\,Pritiska \,{\color{red}\rightarrow}\,Infarkt\)</span>). Upotrebom <em>Backdoor kriterijuma</em> možemo da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.</p>
+<p><a href="#fig-frontdoor-1">Figura&nbsp;5</a> pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt (<span class="math inline">\(Krvni\,Pritisak \,{\color{red}\rightarrow}\,Infarkt\)</span>). <em>Backdoor kriterijum</em> omogućava da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.</p>
 <!-- Tako ćemo dobiti $P(\text{Infarkt}\,|\,do\text{(Lek)})$ i $P(\text{Infarkt}\,|\,do\text{(Bez Leka)})$. -->
 <p>Kombinacijom ova dva efekta prostim množenjem (ukoliko je veza linearna) možemo posrednim putem da dobijemo efekat Leka na Infarkt izuzetog od genetskog uticaja Infarkt Gena. Proces izražavanja <span class="math inline">\(P(\text{Infarkt}\,|\,do\text{(Lek)})\)</span> preko verovatnoća koje ne sadrže do-operaciju je zapravo Front-door kriterijum.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -463,11 +463,12 @@ Beleška
 </div>
 </div>
 </section>
-<section id="dr-džon-snou-i-prva-instrumentalna-varijabla" class="level3">
-<h3 class="anchored" data-anchor-id="dr-džon-snou-i-prva-instrumentalna-varijabla">Dr Džon Snou i prva instrumentalna varijabla</h3>
+</section>
+<section id="dr-džon-snou-i-prva-instrumentalna-varijabla" class="level2">
+<h2 class="anchored" data-anchor-id="dr-džon-snou-i-prva-instrumentalna-varijabla">Dr Džon Snou i prva instrumentalna varijabla</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je uzrokovana mijazmom (česticama lošeg vazduha) ili siromaštvom, je dobra ilustracija kauzalnog zaključivanja. Ova epidemija je odnela skoro 3,000 Života — uzrok je bilo bitno otkriti. Kako uzročnik, <em>Vibrio cholerae</em>, još uvek nije bio poznat Džon Snou je pred sobom imao nekoliko mogućih objašnjenja. Teorija mijazme, koje je bila popularna, tvrdila je da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao ključan momenat u borbi protiv epidemije. Međutim, gašenje pumpe je jedva promenilo njen tok.</p>
+<p>Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je uzrokovana mijazmom (česticama lošeg vazduha) ili siromaštvom, je dobra ilustracija kauzalnog zaključivanja. Ova epidemija je odnela skoro 3,000 Života — uzrok je bilo bitno otkriti. Kako uzročnik, <em>Vibrio cholerae</em>, još uvek nije bio poznat Džon Snou je pred sobom imao nekoliko mogućih objašnjenja. Teorija mijazme, koje je bila popularna, tvrdila je da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao ključan momenat u borbi protiv epidemije. Međutim, gašenje pumpe je jedva promenilo njen tok <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl и Mackenzie 2018</a> p.&nbsp;246)</span>.</p>
 </div><div class="column" style="width:50%;">
 <div id="fig-john" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -477,7 +478,7 @@ Beleška
 </div>
 </div>
 </div>
-<p>Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kazzalnom dijagramu prikazan je na <a href="#fig-instrumental">Figura&nbsp;8</a>.</p>
+<p>Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kauzalnom dijagramu prikazan je na <a href="#fig-instrumental">Figura&nbsp;8</a>.</p>
 <p>Varijabla koja prirodno randomizuje opservacije naziva se <strong>instrumentalna varijabla</strong>. Takva varijabla po definiciji ispunjava Backdoor kriterijum, tj. nema nikakve sopstvene uzroke. <a href="#fig-instrumental">Figura&nbsp;8</a> pokazuje da varijabla <span class="math inline">\(Kompanija\)</span> ispunjava sledeće:</p>
 <ul>
 <li>Nema strelice od <span class="math inline">\(Mijazme\)</span> do <span class="math inline">\(Kompanije\)</span><br>
@@ -494,7 +495,7 @@ Beleška
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Namera lečenja
+Dodatak: Namera lečenja
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -532,7 +533,6 @@ Namera lečenja
 <!-- Citrus -\> Acid -\> Scurvy Sailors substituting lemon for lime 1/4 Vit C, cooking it South Pole expedition, dry meat no citrus -->
 <!-- # Bajesova teorema -->
 <!-- $$P(\theta|\textbf{D}) = \frac{P(\theta ) P(\textbf{D} | \theta)}{P(\textbf{D})}$$ -->
-</section>
 </section>
 </section>
 <section id="zaključak" class="level1">
