@@ -3,7 +3,7 @@ title: "Kauzalno zaključivanje je moguće iz opservacionih studija"
 description: "Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja."
 date: 2023-08-07
 date-format: D/MM/YYYY
-lang: sr-latn
+lang: sr-Latn
 language: language-sr-Latn.yml
 author:
   - name: Nikola N. Grubor
