@@ -1,0 +1,32 @@
+---
+title: "Priče iza podataka"
+description: "To resolve this problem, we once again turn to the story behind the data."
+date: today
+date-format: D/MM/YYYY
+lang: hr
+language: language-sr-Latn.yml
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+citation:
+  language: sr-Latn
+bibliography: biblio.bib
+categories: [statistika, kauzalnost, srpski]
+image: ""
+mermaid: 
+  theme: forest
+draft: true
+---
+
+The answer to the question "why study causation?" is almost as immediate as the answer to "why study statistics." We study causation because we need to make sense of data, to guide actions and policies, and to learn from our success and failures. We need to estimate the effect of smoking on lung cancer, of education on salaries, of carbon emissions on the climate. Most ambitiously, we also need to understand how and why causes influence their effects, which is not less valuable. For example, knowing whether malaria is transmitted by mosquitoes or "mal-air," as many believed in the past, tells us whether we should pack mosquito nets or breathing masks on our next trip to the swamps [@pearl2016].
+
+# Opservacioni proces
+
+# Generativni model
+
+## Simpsonov Paradoks
+
+Named after Edward Simpson (born 1922), the statistician who first popularized it, the paradox refers to the existence of data in which a statistical association that holds for an entire popu- lation is reversed in every subpopulation.
