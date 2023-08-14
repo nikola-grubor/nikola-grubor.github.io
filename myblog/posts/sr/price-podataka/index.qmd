@@ -14,19 +14,45 @@ csl: apa.csl
 citation:
   language: sr-Latn
 bibliography: biblio.bib
-categories: [statistika, kauzalnost, srpski]
+categories: [statistika, kauzalnost, medicina, srpski]
 image: ""
 mermaid: 
   theme: forest
 draft: true
 ---
 
+Postoji primetan manjak praktično upotrebljivih naučnih eksplanatornih modela u medicini. Rudolf Virhov se interesovao za fenomen formiranja krvnih ugrušaka (trombova)... našao zaintrigiran ime se asocira sa jednostavnim modelom hiperkoagulacije (stanje lakog formiranja trombova). U čovekovom telu postoji jedan robustan dinamički sistem koji reguliše kada se začepljavaju rupe na krvnim sudovima.
+
+Oštećenje zida krvnog suda, promena toka krvi i hiperkoaguabilnost predstavljaju najjednostavniji model formiranja ugrušaka. Pitanje je, da li je takav model koristan? Koliko je upotrebljiv? I da li kliničari mogu, uz pomoć njega da odgovore na kontračinjenična (eng. counterfactual) pitanja, kao i da vrše predviđanje.
+
+Kako bi testirali mentalni model, uvek je dobro pogledati uporediti ekstremne vrednosti sa intuicijom. Kada bi zaustavili krv, to je pitanje sudske medicine; da ubrzamo krv ona bi prešla iz laminarnog toka u turbulentni. Ovo je malo teže prediveti.
+
+William Harvery i njegova teorija cirkulacije [@ribatti2009].
+
+Antiseptična teorija Listera [@michaleas].
+
+@reiss2022 daju pregled korisnosti teorija u medicini.
+
 The answer to the question "why study causation?" is almost as immediate as the answer to "why study statistics." We study causation because we need to make sense of data, to guide actions and policies, and to learn from our success and failures. We need to estimate the effect of smoking on lung cancer, of education on salaries, of carbon emissions on the climate. Most ambitiously, we also need to understand how and why causes influence their effects, which is not less valuable. For example, knowing whether malaria is transmitted by mosquitoes or "mal-air," as many believed in the past, tells us whether we should pack mosquito nets or breathing masks on our next trip to the swamps [@pearl2016].
 
-# Opservacioni proces
+Models are approximations of the complex dynamics that drive the observable phenomena in the world around us. They provide the setting in which we can formalize learning and decision making and hence are a foundational aspect to any rigorous analysis. In this section we review latent observational processes, the data generating processes they induce, and the statistical models that offer a spectrum of possible data generating behaviors.
 
-# Generativni model
+# Latentni Opservacioni Proces
+
+A typical abstraction in applied analysis is to assume that we are making decisions about how to interact with some latent *phenomenon*. Our inferential target is then the phenomenon itself.
+
+No material phenomenon, however, exists in isolation. Any phenomenon relevant to statistical inquiry instead manifests within some latent system that includes, at the very least, the mechanisms with which we can interact with it. In other words we can observe the phenomenon of interest only through its surrounding *environment*. In order to make the desired inferences we need an observational *probe* that explores the environment and, hopefully, the phenomenon of interest. The interaction of the probe with the environment and the phenomenon defines an *observational process* which examines the latent system and induces explicit observations that are sensitive to the phenomenon of interest.
+
+By definition an observational processes is only a conceptual
+abstraction. In order for it to take form as an explicit mathematical
+object we need to define exactly how observations are *realized* from an observational process. This process, however, is subtle and results not in constant outcomes but rather a *variation* of possible outcomes within an *observation space*, Y [@betancourt2019].
+
+# Proces Generisanja Podataka
 
 ## Simpsonov Paradoks
 
 Named after Edward Simpson (born 1922), the statistician who first popularized it, the paradox refers to the existence of data in which a statistical association that holds for an entire popu- lation is reversed in every subpopulation.
+
+## Monti Hol Problem
+
+Podaci su agnosticni po pitanju uzroka. Isti podaci mogu odgovarati vise modela.
