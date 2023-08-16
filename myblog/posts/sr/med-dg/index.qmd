@@ -1,0 +1,79 @@
+---
+title: "Postavljanje medicinskih dijagnoza je probabilistički poduhvat"
+description: "Desc."
+date: today
+date-format: D/MM/YYYY
+lang: hr
+language: language-sr-Latn.yml
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+citation:
+  language: sr-Latn
+bibliography: biblio.bib
+categories: [medicina, statistika, srpski]
+image: ""
+mermaid: 
+  theme: forest
+draft: true
+---
+Artur Konan Dojl je popularnog lika Šerloka Holmsa bazirao na detektivskom radu lekara. Uvod u kliničku vinjetu. Urinarna infekcija.
+
+Sistem 1 i Sistem 2 rezonovanja. Analitički i heuristički.
+
+# Verovatnoće kao jačina ubeđenja
+
+Taleb i kolege... test doktora.
+
+::: {#exm-sist}
+## Sistematski pregled
+
+Dolazi pacijent bez ikakvih tegoba i želi da uradi krvnu sliku.
+
+:::
+
+# Radna Hipoteza
+
+## Glavna Tegoba kao Vodilja
+
+::: {#exm-giht}
+## Bol u kolenu
+
+Primer za diskriminaciju vs jedinstvene siptome.
+
+:::
+
+Pisali smo anamneze ali nam niko izričito nije rekao.
+
+## Alarmni simptomi
+
+Rizik greške je prevelik. Uvek proveriti.
+
+# Mentalna Organizacija Bolesti
+
+## 
+
+# Česte Greške
+
+## Usidravanje
+
+### Rešenja
+
+::: { .solution}
+
+## @exm-sist
+
+Ovde ide odgovor.
+
+:::
+
+::: { .solution}
+
+## @exm-giht
+
+Ovde ide odgovor.
+
+:::

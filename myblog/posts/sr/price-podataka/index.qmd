@@ -5,14 +5,14 @@ date: today
 date-format: D/MM/YYYY
 lang: hr
 language: language-sr-Latn.yml
+citation:
+  language: sr-Latn
 author:
   - name: Nikola N. Grubor
     url: https://nikola-grubor.github.io
     # affiliation: Univerzutet u Beogradu, Medicinski fakultet
     # affiliation-url: https://www.mfub.bg.ac.rs/
 csl: apa.csl
-citation:
-  language: sr-Latn
 bibliography: biblio.bib
 categories: [statistika, kauzalnost, medicina, srpski]
 image: ""
@@ -20,6 +20,10 @@ mermaid:
   theme: forest
 draft: true
 ---
+
+Consider the purpose of a scientific model.
+
+There is a noticable paucity of practially useful explanatory scientific models in medicine. Rudolf Virchow's triad is one such proposed model for thrombus formation. It aims to give an actionable framework for describing the causes of thrombi. The human body has a dynamic system for regulating how and when blood vessels will be sealed off.
 
 Postoji primetan manjak praktično upotrebljivih naučnih eksplanatornih modela u medicini. Rudolf Virhov se interesovao za fenomen formiranja krvnih ugrušaka (trombova)... našao zaintrigiran ime se asocira sa jednostavnim modelom hiperkoagulacije (stanje lakog formiranja trombova). U čovekovom telu postoji jedan robustan dinamički sistem koji reguliše kada se začepljavaju rupe na krvnim sudovima.
 
@@ -43,9 +47,7 @@ A typical abstraction in applied analysis is to assume that we are making decisi
 
 No material phenomenon, however, exists in isolation. Any phenomenon relevant to statistical inquiry instead manifests within some latent system that includes, at the very least, the mechanisms with which we can interact with it. In other words we can observe the phenomenon of interest only through its surrounding *environment*. In order to make the desired inferences we need an observational *probe* that explores the environment and, hopefully, the phenomenon of interest. The interaction of the probe with the environment and the phenomenon defines an *observational process* which examines the latent system and induces explicit observations that are sensitive to the phenomenon of interest.
 
-By definition an observational processes is only a conceptual
-abstraction. In order for it to take form as an explicit mathematical
-object we need to define exactly how observations are *realized* from an observational process. This process, however, is subtle and results not in constant outcomes but rather a *variation* of possible outcomes within an *observation space*, Y [@betancourt2019].
+By definition an observational processes is only a conceptual abstraction. In order for it to take form as an explicit mathematical object we need to define exactly how observations are *realized* from an observational process. This process, however, is subtle and results not in constant outcomes but rather a *variation* of possible outcomes within an *observation space*, Y [@betancourt2019].
 
 # Proces Generisanja Podataka
 
