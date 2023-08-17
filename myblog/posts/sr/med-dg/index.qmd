@@ -1,5 +1,5 @@
 ---
-title: "O kliničkom rezonu kao veštini"
+title: "Klinički rezon je kocka"
 description: "Desc."
 date: today
 date-format: D/MM/YYYY
@@ -20,47 +20,87 @@ mermaid:
   theme: forest
 draft: true
 ---
-Postavljanje medicinskih dijagnoza je probabilistički poduhvat
 
-Artur Konan Dojl je popularnog lika Šerloka Holmsa bazirao na detektivskom radu lekara. Uvod u kliničku vinjetu. Urinarna infekcija.
+::: columns
+::: {.column width="50%"}
+Artur Konan Dojl je inspriaciju za popularnog lika Šerloka Holmsa dobio gledajući dektektivski rad Džosefa Bela, hirurga u Edinburgu. "Koristite svoje oči! Koristite oči," govorio je Bel svojim studentima medicine. Nije ni čudo kako se inspiracija za najpopularnijeg detektiva baš našla među lekarima, jer nema očiglednije upotrebe dedukcije i indukcije od postavljanje dijagnoze. Priče pacijenta, opservacije i (od skoro) raznih testovi pretstavljaju izazov svakom dobrom rezonu.
 
-Sistem 1 i Sistem 2 rezonovanja. Analitički i heuristički.
-
-# Verovatnoće kao jačina ubeđenja
-
-Taleb i kolege... test doktora.
-
-::: {#exm-sist}
-## Sistematski pregled
-
-Dolazi pacijent bez ikakvih tegoba i želi da uradi krvnu sliku.
+Iskusni kliničari su u stanju da intuitivno daju tačnu dijagnozu. Međutim, nije svaki kliničar u stanju da artikuliše eksplicitno svoj rezon --- način na koji je došao do dijagnoze, korak po korak. @kahneman2013, u svojoj knjizi "Misliti, brzo i sporo," opisuje dva kognitivna sistema.[^1] Jedan čest, emotivan, brz, koji koristi naučene kognitivne prečice kako bi brzo doneo zaključak; i drugi, spor, kalkulisan, naporan sistem koji može prevazići kognitivne greške ako smo njih svesni.
 :::
 
-::: {.callout-note collapse=true}
+::: {.column width="50%"}
+![Šerlok Holmes je bio inspirisan Edinburškim lekarom Džosefom Belom.](sherlock.jpg)
+:::
+:::
+
+[^1]: Bitno je napomenuti da je su delovi ove knjige osporeni kada je psihologiju zahvatila replikaciona kriza. Svakako, teorija dualnih kognitivnih procesa je dobar konceptualni model razmišljanja za koji postoje dokazi. Dovoljno za ovu diskusiju.
+
+Kako kliničar od novajlije ka ekspertizi akumulira iskustvo, tako sve više koristi brzi kognitivni sistem. Tada je jako teško promeniti ustaljenu praksu, a još teže ispraviti greške ako su one nastale. Možda i najtragičnije od svega je što iskusan kliničar više nije u stanju da prenese jednom stečen rezon na mlađe kolege. Kletva znanja je uzela maha i ekspert se sada više ne seća kako je bilo biti početnik --- tj. sa kojim problemima se on muči. Veštinom kliničkog zaključivanja sad mora svaki student da ovlada sam.
+
+U narednim poglavljima ćemo se upoznati sa probabilističim pogledom na postavljanje dijagnoza, i kako analitičnost može da doprinese boljoj praksi.
+
+# Postavljanje dijagnoze je probabilistički poduhvat
+
+## Apriorna verovatnoća
+
+Apriorna verovatnoća pretstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako sve verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako i naše pretpostavke razlikuju u jačini.[^2] Kako bi bilo što tačniji u svojim dijagnozama trebali bi da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji.
+
+[^2]: Ovaj subjektivni pogled na verovatnoće kao nivo ličnog ubeđenja se zove Bajesova interpretacija verovatnoća. Postoje škole mišljenja koja se ne slažu sa ovom pretpostavkom.
+
+Svaka osoba u našem okruženju ima neku apriornu verovatnoću za određenu bolest. Stariji čovek ima veći rizik od infarkta miokarda od mlađeg, dok mlađi imaju veći rizik od nekih infektivnih agenasa na koje još nisu stekli imunitet. Apriorna verovatnoća je *veoma* bitna. Onog momenata kada se u dijagnostiči proces upletu različiti testovi,
+
+## A gde su dokazi?
+
+Kako bismo uvideli efekat apriorne verovatnoće da korisnost medicinskih testova pogledaćemo pitanje koje je @eddy1982 deo kliničarima.
+
+::: {#exm-rak}
+## Uticaj apriorne verovatnoće
+
+Žena vam ulazi u ordinaciju. Čula je da sve više žena oboleva od raka dojke i zabrinuta je. Verovatnoća da žena od 40 god. koja dolazi na redovan skrining ima rak dojke je 1%. Vi kao kliničar je pošaljete na kontrolnu mamografiju. Mamografija ima senzitivnost 90%, i specifičnost od 91%. Na sledećoj kontroli je vidno uspaničena jer je test bio pozitivan. Koja je verovatnoća da ona stvarno ima rak dojke ($P(\text{Rak}\,|\,+$)?
+:::
+
+::: {.callout-note collapse="true"}
 ## Rešenje
 
-Ovde ide odgovor.
+$\frac{1}{11}$ ili $9.1\%$. Verovatnoća raka dojke kada je mamografija pozitivna ($P(\text{Rak}\,|\,+$) uveliko zavsi od apriorne verovatnoće. Da je prevalenca (uverenje) raka dojke kod 40 god. žena 10%, verovatnoća bi skočila malo preko $50\%$. 
 
 :::
 
-# Radna Hipoteza
+## Ažuriranje uverenja
+
+Iz @exm-rak smo videli da medicinsko testiranje utiče na krajnju verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim. U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
+
+::: {#exm-uti}
+## Ažuriranje uverenja
+
+Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnoom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti, što ide u prilog infekciji. Na genitalnom brisu je izolovana *Ureaplasma spp.* Koja je verovatnoća da je *Ureaplasma* uzročnik urinarnih tegoba?
+:::
+
+```{mermaid}
+flowchart LR
+  A("Urinarna tegobe") --> B("Infekcija")
+```
+
+
+# Kako se formira diferencijalna dijagnoza
 
 ## Glavna Tegoba kao Vodilja
 
-Reprezentacija problema je najbitniji deo dijagnostičkog procesa. Iz narativa pacijenta treba prvo prepoznati ključne elemente, i onda iskoristiti znanje kako bi se ti elementi apstrahovali. Primer reprezentacije problema ja dat ispod [@penner2023].
+Reprezentacija problema je najbitniji deo dijagnostičkog procesa. Iz narativa pacijenta treba prvo prepoznati ključne elemente, i onda iskoristiti znanje kako bi se ti elementi grupisali u jedinstven medicinski termin. Primer reprezentacije problema ja dat ispod [@penner2023].
 
-::: {#exm-aml}
-## AML
+::: {#exm-rp}
+## Reprezentacija problema
 
-A 50-year-old woman with a new diagnosis of acute myeloid leukemia undergoing induction chemotherapy who presents with chills and malaise for 1 day. Her temperature was 101.8°F with labs showing a white blood cell count of 0.8 per mm3 and an absolute neutrophilic count of \< 100 per mm3. Her urinalysis was normal and her chest x-ray was clear
+50-godišnja žena sa novom dijagnozom akutne mijeloidne leukemije započinje lečenje hemioterapijom. Nakon 1. dana počinje da se oseća grozničavo i malaksalo. Njena telesna temperatura je $>38.8^{\circ}\text{C}$, sa leukocitima od $0.8/\text{mm}^3$ i neutrofilima od $< 100/\text{mm}^3$. Analize urina i radiografija pluća su uredne. *Izdvojiti i grupisati ključne elemente u jedinstven medicinski termin.*
 :::
 
-::: {.callout-note collapse=true}
+::: {.callout-note collapse="true"}
 ## Rešenje
 
 Ovde ide odgovor.
-
 :::
+
+Svaki student medicine poznaje deo anamneze (istorije) pacijenta koji se odnosi na glavne tegobe. Retko se uloga tog praznog polja na papiru izričito ističe.
 
 Detaljnon navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita ispod X ml/dL je neutropenija u svakom smislu.
 
@@ -70,11 +110,10 @@ Detaljnon navođenje parametara se može dodatno tražiti pod uslovom da su krit
 Primer za diskriminaciju vs jedinstvene siptome.
 :::
 
-::: {.callout-note collapse=true}
+::: {.callout-note collapse="true"}
 ## Rešenje
 
 Ovde ide odgovor.
-
 :::
 
 Pisali smo anamneze ali nam niko izričito nije rekao.
@@ -90,5 +129,3 @@ Rizik greške je prevelik. Uvek proveriti.
 ## Usidravanje
 
 Tekst oko usidravanja.
-
-
