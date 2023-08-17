@@ -32,7 +32,7 @@ Nikola Grubor is a Ph.D. student of Medical Statistics and Bioinformatics at the
     University of Belgrade Medical School
 
 -   **Advanced Teaching Skills**\
-    Harvard Medical School Postgraduate Medical Education \| Jun 2023 \
+    Harvard Medical School Postgraduate Medical Education \| Jun 2023\
     Brigham and Women's Hospital
 
 -   **Regenerative Medicine and Surgery, Fundamentals & Advanced Courses**\
@@ -43,8 +43,10 @@ Nikola Grubor is a Ph.D. student of Medical Statistics and Bioinformatics at the
 
 ## Experience
 
--   **Clinical Research**\
-    Clinic for Digestive Surgery (First Surgical Clinic), University Clinical Center of Serbia \| Nov 2022 --- Present
+-   **Research**\
+    Clinic for Digestive Surgery (First Surgical Clinic), University Clinical Center of Serbia\
+    Department for Medical Statistics and Informatics, Belgrade University Medical School\
+    Institute for Biological Research "Siniša Stanković" \| Nov 2022 --- Present
 
 -   **Clinical Internship**\
     University Clinical Center of Serbia \| Sept 2022 --- Mar 2023

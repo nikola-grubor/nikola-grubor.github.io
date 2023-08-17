@@ -1,5 +1,5 @@
 ---
-title: "Postavljanje medicinskih dijagnoza je probabilistički poduhvat"
+title: "O kliničkom rezonu kao veštini"
 description: "Desc."
 date: today
 date-format: D/MM/YYYY
@@ -20,6 +20,8 @@ mermaid:
   theme: forest
 draft: true
 ---
+Postavljanje medicinskih dijagnoza je probabilistički poduhvat
+
 Artur Konan Dojl je popularnog lika Šerloka Holmsa bazirao na detektivskom radu lekara. Uvod u kliničku vinjetu. Urinarna infekcija.
 
 Sistem 1 i Sistem 2 rezonovanja. Analitički i heuristički.
@@ -32,6 +34,12 @@ Taleb i kolege... test doktora.
 ## Sistematski pregled
 
 Dolazi pacijent bez ikakvih tegoba i želi da uradi krvnu sliku.
+:::
+
+::: {.callout-note collapse=true}
+## Rešenje
+
+Ovde ide odgovor.
 
 :::
 
@@ -39,10 +47,33 @@ Dolazi pacijent bez ikakvih tegoba i želi da uradi krvnu sliku.
 
 ## Glavna Tegoba kao Vodilja
 
+Reprezentacija problema je najbitniji deo dijagnostičkog procesa. Iz narativa pacijenta treba prvo prepoznati ključne elemente, i onda iskoristiti znanje kako bi se ti elementi apstrahovali. Primer reprezentacije problema ja dat ispod [@penner2023].
+
+::: {#exm-aml}
+## AML
+
+A 50-year-old woman with a new diagnosis of acute myeloid leukemia undergoing induction chemotherapy who presents with chills and malaise for 1 day. Her temperature was 101.8°F with labs showing a white blood cell count of 0.8 per mm3 and an absolute neutrophilic count of \< 100 per mm3. Her urinalysis was normal and her chest x-ray was clear
+:::
+
+::: {.callout-note collapse=true}
+## Rešenje
+
+Ovde ide odgovor.
+
+:::
+
+Detaljnon navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita ispod X ml/dL je neutropenija u svakom smislu.
+
 ::: {#exm-giht}
 ## Bol u kolenu
 
 Primer za diskriminaciju vs jedinstvene siptome.
+:::
+
+::: {.callout-note collapse=true}
+## Rešenje
+
+Ovde ide odgovor.
 
 :::
 
@@ -54,26 +85,10 @@ Rizik greške je prevelik. Uvek proveriti.
 
 # Mentalna Organizacija Bolesti
 
-## 
-
 # Česte Greške
 
 ## Usidravanje
 
-### Rešenja
+Tekst oko usidravanja.
 
-::: { .solution}
 
-## @exm-sist
-
-Ovde ide odgovor.
-
-:::
-
-::: { .solution}
-
-## @exm-giht
-
-Ovde ide odgovor.
-
-:::
