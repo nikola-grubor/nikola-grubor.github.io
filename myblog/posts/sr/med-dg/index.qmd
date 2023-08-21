@@ -21,63 +21,86 @@ mermaid:
 draft: true
 ---
 
--   [ ] Opisati mehanizam u @exm-rak.
--   [ ] Popravi jednacinu u @exm-uti.
-
 ::: columns
 ::: {.column width="50%"}
-Artur Konan Dojl je inspriaciju za popularnog lika Šerloka Holmsa dobio gledajući dektektivski rad Džosefa Bela, hirurga u Edinburgu. "Koristite svoje oči! Koristite oči," govorio je Bel svojim studentima medicine. Nije ni čudo kako se inspiracija za najpopularnijeg detektiva baš našla među lekarima, jer nema očiglednije upotrebe dedukcije i indukcije od postavljanje dijagnoze. Priče pacijenta, opservacije i (od skoro) raznih testovi pretstavljaju izazov svakom dobrom rezonu.
+Artur Konan Dojl je dobio inspiraciju za popularnog lika Šerloka Holmsa gledajući dektektivski rad Dr Džosefa Bela, hirurga u Edinburgu. "Koristite svoje oči! Koristite oči," govorio je Bel svojim studentima medicine. Nije ni čudo kako se inspiracija za najpopularnijeg detektiva baš našla među lekarima, jer nema očiglednije upotrebe dedukcije i indukcije od postavljanje dijagnoze. Priče pacijenta, opservacije i (od relativno skoro) raznih testovi predstavljaju izazov svakom dobrom rezonu.
 
 Iskusni kliničari su u stanju da intuitivno daju tačnu dijagnozu. Međutim, nije svaki kliničar u stanju da artikuliše eksplicitno svoj rezon --- način na koji je došao do dijagnoze, korak po korak. @kahneman2013, u svojoj knjizi "Misliti, brzo i sporo," opisuje dva kognitivna sistema.[^1] Jedan čest, emotivan, brz, koji koristi naučene kognitivne prečice kako bi brzo doneo zaključak; i drugi, spor, kalkulisan, naporan sistem koji može prevazići kognitivne greške ako smo njih svesni.
 :::
 
 ::: {.column width="50%"}
-![Šerlok Holmes je bio inspirisan Edinburškim lekarom Džosefom Belom.](sherlock.jpg)
+![Šerlok Holmes je inspirisan Edinburškim lekarom Džosefom Belom.](sherlock.jpg)
 :::
 :::
 
 [^1]: Bitno je napomenuti da je su delovi ove knjige osporeni kada je psihologiju zahvatila replikaciona kriza. Svakako, teorija dualnih kognitivnih procesa je dobar konceptualni model razmišljanja za koji postoje dokazi. Dovoljno za ovu diskusiju.
 
-Kako kliničar od novajlije ka ekspertizi akumulira iskustvo, tako sve više koristi brzi kognitivni sistem. Tada je jako teško promeniti ustaljenu praksu, a još teže ispraviti greške ako su one nastale. Možda i najtragičnije od svega je što iskusan kliničar više nije u stanju da prenese jednom stečen rezon na mlađe kolege. Kletva znanja je uzela maha i ekspert se sada više ne seća kako je bilo biti početnik --- tj. sa kojim problemima se on muči. Veštinom kliničkog zaključivanja mora svaki student da ovlada sam, ali to ne znači da mu se ne može olakšati.
+Kako kliničar akumulira iskustvo i prelazi od novajlije ka ekspertizi, tako sve više koristi brži kognitivni sistem. Tada je jako teško promeniti ustaljenu praksu, a još teže ispraviti ukorenjene greške. Možda i najtragičnije od svega je što mnogi iskusni kliničari nisu u stanju da prenesu svoj stečen rezon na mlađe kolege. Kletva znanja je uzela maha i ekspert se sada više ne seća kako je bilo biti početnik --- tj. sa kojim problemima se on muči. Veštinom kliničkog zaključivanja mora svaki student da ovlada sam, ali to ne znači da mu se put ne može olakšati.
 
-U narednim poglavljima ćemo se upoznati sa probabilističim pogledom na postavljanje dijagnoza, i kako analitičnost može da doprinese boljoj praksi. Proćićemo kroz primere vezane za uticaj dijagnostičih testova, simptoma i znakova na naše početne pretpostavke o mogućoj dijagnozi. Na kraju, pogledaćemo neke od najčešćih kognitivnih grešaka koje se desavaju tokom medicinskog zaključivanja.
+U narednim poglavljima ćemo se upoznati sa probabilističim pogledom na postavljanje dijagnoza, i kako analitičnost može da doprinese boljoj praksi. Proći ćemo kroz primere vezane za uticaj dijagnostičkih testova, simptoma i znakova na naše početne pretpostavke o mogućoj dijagnozi. Na kraju, pogledaćemo jedan od mogućih didaktičkih alata za savladavanje kliničkog zaključivanja --- skripte o bolestima (engl. illness scripts).
 
 # Postavljanje dijagnoze je probabilistički poduhvat
 
+> *Dokazi ne treba da određuju ubeđenja, već da ih ažuriraju.* --- Grant Sanderson
+
 ## Apriorna verovatnoća
 
-Apriorna verovatnoća pretstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako sve verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.[^2] Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji.
+Apriorna verovatnoća predstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.[^2] Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji, zatim postajati sve sigurniji u svoju pretpostavku sakupljanjem dokaza.
 
-[^2]: Ovaj subjektivni pogled na verovatnoće kao nivo ličnog ubeđenja se zove Bajesova interpretacija verovatnoća. Postoje škole mišljenja koja se ne slažu sa ovom pretpostavkom.
+[^2]: Ovaj subjektivni pogled na verovatnoće kao nivo ličnog ubeđenja se zove Bajesova interpretacija verovatnoća. Frekventistička interpretacija se ne slaže sa ovom filozofskom pretpostavkom.
 
-Svaka osoba u našem okruženju ima neku apriornu verovatnoću za određenu bolest. Stariji čovek ima veći rizik od infarkta miokarda od mlađeg, dok mlađi imaju veći rizik od nekih infektivnih agenasa na koje još nisu stekli imunitet. Apriorna verovatnoća postaje *veoma* bitna onog momenata kada se u dijagnostiči proces upletu različiti testovi.
+Svaka osoba u našem okruženju ima neku apriornu verovatnoću za određenu bolest. Stariji čovek ima veći rizik od infarkta miokarda od mlađeg, dok mlađi imaju veći rizik od nekih infektivnih agensa na koje još nisu stekli imunitet. Apriorna verovatnoća postaje *veoma* bitna onog momenata kada se u dijagnostički proces upletu različiti testovi.
 
-Kako bismo uvideli efekat apriorne verovatnoće da korisnost medicinskih testova pogledaćemo (parafrazirano) pitanje koje je @eddy1982 deo kliničarima.
+```{mermaid}
+%%| label: fig-prior
+%%| fig-cap: "Prevalenca, simptomi i znakovi bolesti povećavaju apriornu (inicijalnu) verovatnoću, i posledično korisnost dijagnostičkog testa."
+
+flowchart TD
+  S(Simptom) --> A("Apriorna Verovatnoća")
+  Z(Znak) --> A
+  P(Prevlenca) --> A
+  A --> T{"Dijagnostički test"}
+  T --> AP("Aposteriorna Verovatnoća")
+  style S stroke-dasharray: 5 5, fill:#edffc4
+  style Z stroke-dasharray: 5 5, fill:#edffc4
+  style P stroke-dasharray: 5 5, fill:#edffc4
+
+```
+
+Kako bismo uvideli efekat apriorne verovatnoće na korisnost medicinskih testova pogledaćemo (parafrazirano) pitanje koje je @eddy1982 deo kliničarima.
 
 ::: {#exm-rak}
 ## Uticaj apriorne verovatnoće
 
-Žena vam ulazi u ordinaciju. Čula je da sve više žena oboleva od raka dojke i zabrinuta je. Verovatnoća da žena od 40 god. koja dolazi na redovan skrining ima rak dojke je 1%. Vi kao kliničar je pošaljete na kontrolnu mamografiju. Mamografija ima senzitivnost 90%, i specifičnost od 91%. Na sledećoj kontroli je vidno uspaničena jer je test bio pozitivan. Koja je verovatnoća da ona stvarno ima rak dojke ukoliko je test bio pozitivan ($P(\text{Rak}\,|\,+$)?
+Žena vam ulazi u ordinaciju. Čula je da sve više žena oboleva od raka dojke i zabrinuta je. Verovatnoća da žena od 40 god. koja dolazi na redovan skrining ima rak dojke je 1%. Vi kao kliničar je pošaljete na kontrolnu mamografiju. Mamografija ima senzitivnost 90%, i specifičnost od 91%.[^3] Na sledećoj kontroli je vidno uspaničena jer je test bio pozitivan. Koja je verovatnoća da ona stvarno ima rak dojke ukoliko je test bio pozitivan ($P(\text{Rak}\,|\,+$)?
 :::
+
+[^3]: Svi medicinski testovi su vrsta merenja i kao takvi imaju određenu mogućnost greške. Senzitivnost nam govori o verovatnoći da test uspešno identifikuje bolesne ($P(+ \mid \text{Bolestan})$), dok nam specifičnost govori o verovatnoći da test uspešno identifikuje zdrave ($(P(- \mid \text{Zdrav})$).
 
 ::: {.callout-note collapse="true"}
-## Rešenje: @exm-rak
+## Rešenje
 
-$\frac{1}{11}$ ili $9.1\%$. Verovatnoća raka dojke kada je mamografija pozitivna ($P(\text{Rak}\,|\,+$) uveliko zavsi od apriorne verovatnoće. Da je prevalenca (uverenje) raka dojke kod 40 god. žena 10%, verovatnoća bi skočila malo preko $50\%$.
+$\frac{1}{11}$ ili $9.1\%$. Verovatnoća raka dojke kada je mamografija pozitivna ($P(\text{Rak}\,|\,+$) uveliko zavisi od apriorne verovatnoće. Da je prevalenca (uverenje) raka dojke kod 40 god. žena 10%, verovatnoća bi skočila na $\approx 53\%$.
 :::
+
+::: callout-important
+Interesantno je da sistematski pregledi asimptomatičnih ljudi ne smanjuju smrtnost i morbiditet [@krogsbøll2019]. Mnogi skrining testovi (testovi namenjeni da otkriju bolest u ranim fazama) jednostavno nisu dovoljno korisni ("moćni") da ažuriraju početne verovatnoće kod ljudi bez ikakvih simptoma ili znakova bolesti.[^7] U tim slučajevima su češći *lažno pozitivni* rezultati, i treba biti pažljiv.
+:::
+
+[^7]: Na primer, rutinsko uzimanje krve slike nema neke preterane koristi.
 
 ## Ažuriranje uverenja
 
-Iz @exm-rak smo videli da medicinsko testiranje utiče na krajnju verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim. U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
+@exm-rak nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim. U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
 
 ::: {#exm-uti}
 ## Ažuriranje uverenja
 
-Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnoom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana *Ureaplasma spp.* Koja je verovatnoća da je *Ureaplasma* uzročnik urinarnih tegoba?
+Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana *Ureaplasma spp.* Koja je verovatnoća da je *Ureaplasma* uzročnik urinarnih tegoba?
 :::
 
 ::: {.callout-note collapse="true"}
-## Rešenje 1: @exm-uti
+## Rešenje 1
 
 Bez dodatnih informacija jedino što možemo zaključiti je da je *Ureaplasma* uzročnik tegoba. Uspešnost lečenja nam onda potvrđuje dijagnozu.
 :::
@@ -85,31 +108,37 @@ Bez dodatnih informacija jedino što možemo zaključiti je da je *Ureaplasma* u
 *Ureaplasma spp.* je poznat kolonizator seksualno aktivnih zdravih žena [@mccormack1973]. Uz tu informaciju, šta ako dodatno saznamo da je pacijentkinja pila antibiotike u periodu pre uzimanja brisa. Kao i da je u dugoj monogamskoj vezi. Kako to menja naše uverenje da je *Ureaplasma spp.* uzročnik?
 
 ::: {.callout-note collapse="true"}
-## Rešenje 2: @exm-uti
+## Rešenje 2
 
-U ovom slučaju je verovatnoća da je uzročnik *Ureaplasma spp.* mnogo manji nego da je antibiotikom uklonila prvobitnog uzročnika ($P(\text{Uzrok: Ureaplasma} \mid \text{Antibiotik, Monogamija}) \ll P(\text{Uzrok: Ureaplasma} \mid \text{Bez Antibiotika})$).
+U ovom slučaju je verovatnoća da je uzročnik *Ureaplasma spp.* mnogo manji nego da je antibiotikom uklonila prvobitnog uzročnika ($P(\text{Uzrok: Ureaplasma} \mid \text{Antibiotik, Monogamija}) \ll P(\text{Uzrok: Ureaplasma} \mid \text{Bez Antibiotika})$). U tom slučaju nam je zaključak dijametralno suprotan.
 :::
 
-Neke informacije drastično menjaju interpretaciju. Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^4]
+Neke informacije drastično menjaju interpretaciju. Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^4]
 
 [^4]: Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba potceniti, jer je jako važna za proces lečenja. Međutim, ta tema prevazilazi okvir ovog članka.
 
 ```{mermaid}
 %%| label: fig-updating
-%%| fig-cap: "Something."
+%%| fig-cap: "Očigledno je da se ažuriranje uverenja može dešavati na više nivoa. Jednom kada smo dovoljno ubeđeni da, recimo, postoji `infekcija` možemo tražiti dokaze o uzročnicima."
 
 flowchart LR
-  A("Urinarna tegobe") --> B("Infekcija?")
+  A("Urinarna tegobe") --> B{"Infekcija?"}
   C["Leukociturija"] --> B
   B --> U{"Uzročnik?"}
   U --> D["Ureaplasma spp."]
   AB("Korišćenje antibiotika") --> U
   M("Monogamija") --> U
   U --> N["Nepoznat uzročnik"]
+  style A stroke-dasharray: 5 5, fill:#edffc4
+  style C stroke-dasharray: 5 5, fill:#edffc4
+  style AB stroke-dasharray: 5 5, fill:#edffc4
+  style M stroke-dasharray: 5 5, fill:#edffc4
   
 ```
 
 # Kako se formira diferencijalna dijagnoza
+
+> *Racionalnost nije poznavanje činjenica, već prepoznavanje koje činjenice su relevantne.* --- Grant Sanderson
 
 ## Glavna Tegoba kao Vodilja
 
@@ -128,44 +157,79 @@ Reprezentacija problema je najbitniji deo dijagnostičkog procesa. Iz narativa p
 
 Ovo je reprezentacija kliničkog problema sa visokim nivoom apstrakcije. Ako razložimo svaki termin pojedinačno videćemo kolika količina informacija se prenosi samo u ovoj jednoj rečenici.
 
-- Prvu: Vremenski počela pre 1 dana. Ima drugačije implikacije od rekurentne ili prezistentne (održane).
-- Visoko rizična: Febrilne neutropenije se dele na visoko/nisko rizične u zavisnosti od verovatnoće ozbiljnih komplikacija na osvonu raznih kriterijuma. Ova klasifikacija je bitna jer *utiče na terapiju*. 
-- Nelokalizovana: Fokus (izvor) infekcije nije pronađen dijagnostičkim testovima i pregledom. Različit je rizik za pacijente kojima nije pronađen fokus u odnosu na one kojima je mikrobiološki potvrđena infekcija.
-- Febrilna: Definicija febrilnosti prodrazumeva jednu izmerenu oralnu temperaturu od $>38.3^{\circ}\text{C}$ ili $> 38.0^{\circ}\text{C}$ u trajanju od minimum 1 sat. 
-- Neutropenija: broj neutrofila $< 1500$ ili $< 1000\,\text{ćelija}/\text{mm}^3$. Niže vrednosti nose veći rizik.[^5] 
+-   Prvu: Vremenski počela pre 1 dana. Ima drugačije implikacije od rekurentne ili prezistentne (održane).
+-   Visoko rizična: Febrilne neutropenije se dele na visoko/nisko rizične u zavisnosti od verovatnoće ozbiljnih komplikacija na osnovu raznih kriterijuma. Ova klasifikacija je bitna jer *utiče na terapiju*.
+-   Nelokalizovana: Fokus (izvor) infekcije nije pronađen dijagnostičkim testovima i pregledom. Različit je rizik za pacijente kojima nije pronađen fokus u odnosu na one kojima je mikrobiološki potvrđena infekcija.
+-   Febrilna: Definicija febrilnosti podrazumeva jednu izmerenu oralnu temperaturu od $>38.3^{\circ}\text{C}$ ili $> 38.0^{\circ}\text{C}$ u trajanju od minimum 1 sat.
+-   Neutropenija: broj neutrofila $< 1500$ ili $< 1000\,\text{ćelija}/\text{mm}^3$. Niže vrednosti nose veći rizik.[^5]
 :::
 
-Svaki student medicine poznaje deo anamneze (istorije) pacijenta koji se odnosi na glavne tegobe. Retko se uloga tog polja na papiru izričito ističe. Jednom kada se medicinski problem dobro predstavi, može se formirati dobra diferencijalna dijagnoza. Ukoliko je problem loše identifikovan i sama diferencijalna dijagnoza će biti preopširna ili pogrešna. Na primer, diferencijalna dijagnoza dispneje (otežanog disanja) je dugačka i zahvata kako psihološke tako i organske uzroke. Suprotno, *hronična dispeja u naporu,* ima znatno kraću diferencijalnu dijagnozu.
-
 [^5]: Detaljno navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita na $0.8\,\text{ćelija}/\text{mm}^3$ je neutropenija u svakom smislu.
+
+Svaki student medicine poznaje deo anamneze (istorije) pacijenta koji se odnosi na glavne tegobe. Retko se uloga tog polja na papiru izričito ističe. Jednom kada se medicinski problem dobro predstavi, može se formirati dobra diferencijalna dijagnoza. Ukoliko je problem loše identifikovan i sama diferencijalna dijagnoza će biti preopširna ili pogrešna. Na primer, diferencijalna dijagnoza dispneje (otežanog disanja) je dugačka i obuhvata kako psihološke tako i organske uzroke. Suprotno, *hronična dispeja u naporu,* ima znatno kraću diferencijalnu dijagnozu.
 
 # Mentalna Organizacija Bolesti
 
 ## Skripte Bolesti
 
-Šta su skripte bolesti? 
-Kako ih koristiti.
+Skripte bolesti (engl. illness scripts) su način da se mentalno organizuje znanje o jednoj bolesti. Svaki kliničar poseduje neku mentalnu sliku medicinskih stanja u svojoj glavi. Često ta slika nije formalizovana, tj. postoji kao grupa neorganizovanih činjenica koje se usvoje tokom prakse --- koje se povlače iz pamćenja po potrebi. Skripte bolesti su didaktički alat. One su samo jedan od mnogih metoda kako učitelj može da objasni studentima sistematičnu organizaciju činjenica. Nisu ograničene dužinom, te česta stanja obično imaju više sadržaja od retkih bolesti (čisto radi ekonomičnosti pamćenja). Možda bitnije, jednom kada se nauče mogu se proširiti po potrebi, postajući sve detaljnije. Primer skripte bolesti je da u @tbl-skripta.
 
-## Plan lečenja
++--------------------+------------------------------------------------------+
+| Komponente         | Vanbolnička upala pluća (CAP)                        |
++====================+======================================================+
+| Patofiziologija    | -   Infekcija donjih disajnih puteva                 |
+|                    |                                                      |
+|                    | -   Najčešće *S. pneumoniae*                         |
++--------------------+------------------------------------------------------+
+| Epidemiologija     | Rizici:                                              |
+|                    |                                                      |
+|                    | -   Starost                                          |
+|                    |                                                      |
+|                    | -   Prethodna virusna resp. infekcija                |
+|                    |                                                      |
+|                    | -   Narušena struktura pluća                         |
+|                    |                                                      |
+|                    | -   Immunodeficijencija                              |
++--------------------+------------------------------------------------------+
+| Vreme              | -   Akutna: Dani                                     |
+|                    |                                                      |
+|                    | -   Progresivna ako se ne leči                       |
++--------------------+------------------------------------------------------+
+| Simptomi i znakovi | -   Temperatura                                      |
+|                    |                                                      |
+|                    | -   Kašalj                                           |
+|                    |                                                      |
+|                    | -   Dispneja                                         |
+|                    |                                                      |
+|                    | -   Tahikardija                                      |
+|                    |                                                      |
+|                    | -   Tahipneja                                        |
+|                    |                                                      |
+|                    | -   Hipoksemija                                      |
++--------------------+------------------------------------------------------+
+| Dijagnostika       | Lab. i imidžing:                                     |
+|                    |                                                      |
+|                    | -   Leukocitoza                                      |
+|                    |                                                      |
+|                    | -   Lobarni infiltrat na radiografiji                |
+|                    |                                                      |
+|                    | -   Bakterije u sputumu / hemokulturi                |
++--------------------+------------------------------------------------------+
+| Terapija           | Antibiotici dovode do razrešenja tokom nekoliko dana |
++--------------------+------------------------------------------------------+
 
-Češće razmatrati ciljeve lečenja.
-Da li pacijent ima korist od dijagnostike?
+: Organizacija skripte bolesti. {#tbl-skripta}
 
-# Česte Greške u Zaključivanju
-
-|     Pogrešna Zaključivanja     |                                                     Opis                                                    |
-|:------------------------------:|:-----------------------------------------------------------------------------------------------------------:|
-| Potvrđivanje Pretpostavki      | Fokusiranje na informacije koje podržavaju postojeća uverenja i ignorisanje protivrečnih dokaza.            |
-| Usidravanje        | Preterano oslanjanje na prvu informaciju koja se susretne; često vodi ka uskim diferencijalnim dijagnozama.                 |
-| Heuristika Dostupnosti         | Procena verovatnoće na osnovu toga koliko lako se prisećamo bolesti; potencijalno precenjuje retke bolesti.          |
-| Pristrastnost Prisećanja                | Verovanje da bi se ishod mogao predvideti nakon što se dogodi.              |
-| Previše Samopouzdanja          | Precenjivanje sposobnosti ili dijagnostičke tačnosti, što vodi ka greškama u dijagnozi i lečenju.           |
-| Zanemarivanje Osnovnih Stopa   | Ignorisanje statističke verovatnoće u korist specifičnih detalja slučaja, utiče na tačnu dijagnozu.         |
-| Bias Samousluživanja           | Pripisivanje uspeha svojoj veštini i neuspeha spoljnim faktorima, utiče na samoprocenu.                     |
-| Bias Zbog Investiranog Resursa | Nastavljanje neuspešnog pravca radnje zbog prethodno uloženih resursa, utiče na odluke o lečenju.           |
-| Bias Pripisivanja              | Pripisivanje tuđeg ponašanja ličnosti i svog ponašanja spoljnim faktorima, utiče na razumevanje pacijenata. |
-| Zanemarivanje Verovatnoće      | Ignorisanje stvarnih verovatnoća, potencijalno propuštanje ozbiljnih ali manje verovatnih dijagnoza.        |
+Ovaj skelet se može proširiti na razne načine. Simptomi i znaci koji vrše najbolje predviđanje tačne dijagnoze se mogu istaći. Implikacije patofiziologije se mogu povezati sa fizikalnim pregledom i dodatnom dijagnostikom.
 
 # Zaključak
 
-Dijagnostičkom rezonu se posvećuje manje pažnje nego što je to potrebno. Jedan dobar medicinski kurikulum bi trebao da sadrži praktične vežbe iz dijagnostičkog razmišljanja uz podršku specijalizanata. Ne samo da bi se time studenti upoznali sa čestim medicinskim situacijama, već bi i usvajanja znanja bilo mnogo efikasnije. Zasigurno bi takva praksa napravila još bolje doktore.
+Dijagnostičkom rezonu se posvećuje manje pažnje nego što je to potrebno. Jedan dobar medicinski kurikulum bi trebao da sadrži praktične vežbe iz dijagnostičkog razmišljanja uz podršku specijalizanata. Ne samo da bi se time studenti upoznali sa čestim medicinskim situacijama, već bi i usvajanje znanja bilo mnogo efikasnije. Zasigurno bi takva praksa napravila još bolje doktore.
+
+::: callout-tip
+## Ključne teze
+
+-   Apriorna verovatnoća je početno ubeđenje o postojanju bolesti kod neke osobe
+-   Reprezentacija problema kao vodilja ka dobroj diferencijalnoj dijagnozi
+-   Biranje adekvatnih testova podrazumeva biranje onih testova koji su najkorisniji za potvrđivanje ili osporavanje radne dijagnoze
+:::
