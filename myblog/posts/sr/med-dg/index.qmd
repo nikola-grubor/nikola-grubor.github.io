@@ -1,7 +1,7 @@
 ---
 title: "Klinički rezon je kocka"
-description: "Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici --- kao argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja."
-date: today
+description: "Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja."
+date: 2023-08-21
 date-format: D/MM/YYYY
 lang: hr
 language: language-sr-Latn.yml
@@ -14,11 +14,10 @@ csl: apa.csl
 citation:
   language: sr-Latn
 bibliography: biblio.bib
-categories: [medicina, statistika, srpski]
-image: ""
+categories: [medicina, zaključivanje, srpski]
+image: "think.png"
 mermaid: 
   theme: forest
-draft: true
 ---
 
 ::: columns
@@ -45,7 +44,7 @@ U narednim poglavljima ćemo se upoznati sa probabilističim pogledom na postavl
 
 ## Apriorna verovatnoća
 
-Apriorna verovatnoća predstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.[^2] Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji, zatim postajati sve sigurniji u svoju pretpostavku sakupljanjem dokaza.
+Apriorna verovatnoća predstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.[^2] Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji, zatim ažurirati svoju pretpostavku sakupljanjem dokaza. Na kraju treba pregledati da li je verovatna ili nije uporedo sa drugim mogućim objašnjenima.
 
 [^2]: Ovaj subjektivni pogled na verovatnoće kao nivo ličnog ubeđenja se zove Bajesova interpretacija verovatnoća. Frekventistička interpretacija se ne slaže sa ovom filozofskom pretpostavkom.
 
@@ -81,6 +80,8 @@ Kako bismo uvideli efekat apriorne verovatnoće na korisnost medicinskih testova
 ## Rešenje
 
 $\frac{1}{11}$ ili $9.1\%$. Verovatnoća raka dojke kada je mamografija pozitivna ($P(\text{Rak}\,|\,+$) uveliko zavisi od apriorne verovatnoće. Da je prevalenca (uverenje) raka dojke kod 40 god. žena 10%, verovatnoća bi skočila na $\approx 53\%$.
+
+Isti test, sa istom preciznošću i istim rezultatom može imati različite implikacije za svakog pojedinca. Kontekst pacijenta znači sve. Ovaj fenomen je posledica toga što je greška testa fiksna, tj. test uvek sa istom stopom greške klasifikuje ljude na bolesne i zdrave. Ako su u populaciji bolesni jako retki i/ili smo jako ubeđeni da je osoba zdrava, moraćemo manje verovati rezultatima testa, osim ukoliko test nema izuzetno visoke mere specifičnosti i senzitivnosti.
 :::
 
 ::: callout-important
@@ -91,12 +92,12 @@ Interesantno je da sistematski pregledi asimptomatičnih ljudi ne smanjuju smrtn
 
 ## Ažuriranje uverenja
 
-@exm-rak nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim. U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
+@exm-rak nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim (@fig-prior). U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
 
 ::: {#exm-uti}
 ## Ažuriranje uverenja
 
-Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana *Ureaplasma spp.* Koja je verovatnoća da je *Ureaplasma* uzročnik urinarnih tegoba?
+Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana bakterija *Ureaplasma spp.* Koja je verovatnoća da je *Ureaplasma* uzročnik urinarnih tegoba?
 :::
 
 ::: {.callout-note collapse="true"}
@@ -113,9 +114,9 @@ Bez dodatnih informacija jedino što možemo zaključiti je da je *Ureaplasma* u
 U ovom slučaju je verovatnoća da je uzročnik *Ureaplasma spp.* mnogo manji nego da je antibiotikom uklonila prvobitnog uzročnika ($P(\text{Uzrok: Ureaplasma} \mid \text{Antibiotik, Monogamija}) \ll P(\text{Uzrok: Ureaplasma} \mid \text{Bez Antibiotika})$). U tom slučaju nam je zaključak dijametralno suprotan.
 :::
 
-Neke informacije drastično menjaju interpretaciju. Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^4]
+Neke informacije drastično menjaju interpretaciju (@fig-updating). Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^4]
 
-[^4]: Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba potceniti, jer je jako važna za proces lečenja. Međutim, ta tema prevazilazi okvir ovog članka.
+[^4]: Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba zanemariti, jer je jako važna u procesu lečenja. Ta tema prevazilazi okvir ovog članka.
 
 ```{mermaid}
 %%| label: fig-updating
@@ -229,7 +230,7 @@ Dijagnostičkom rezonu se posvećuje manje pažnje nego što je to potrebno. Jed
 ::: callout-tip
 ## Ključne teze
 
--   Apriorna verovatnoća je početno ubeđenje o postojanju bolesti kod neke osobe
+-   Apriorna verovatnoća je početno ubeđenje o postojanju bolesti kod neke osobe i kao takva utiče da korisnost dijagnostičkog testa
 -   Reprezentacija problema kao vodilja ka dobroj diferencijalnoj dijagnozi
 -   Biranje adekvatnih testova podrazumeva biranje onih testova koji su najkorisniji za potvrđivanje ili osporavanje radne dijagnoze
 :::

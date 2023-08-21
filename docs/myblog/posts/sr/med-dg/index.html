@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikola N. Grubor">
-<meta name="description" content="Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici — kao argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.">
+<meta name="description" content="Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.">
 
 <title>Nikola N. Grubor - Klinički rezon je kocka</title>
 <style>
@@ -93,9 +93,11 @@ div.csl-indent {
 
 <link rel="stylesheet" href="../../../../styles.css">
 <meta name="twitter:title" content="Nikola N. Grubor - Klinički rezon je kocka">
-<meta name="twitter:description" content="Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici — kao argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.">
-<meta name="twitter:image" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.">
+<meta name="twitter:image" content="https://nikola-grubor.github.io/myblog/posts/sr/med-dg/think.png">
+<meta name="twitter:image-height" content="438">
+<meta name="twitter:image-width" content="396">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -141,12 +143,12 @@ div.csl-indent {
       <h1 class="title">Klinički rezon je kocka</h1>
                   <div>
         <div class="description">
-          Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici — kao argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.
+          Dijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">medicina</div>
-                <div class="quarto-category">statistika</div>
+                <div class="quarto-category">zaključivanje</div>
                 <div class="quarto-category">srpski</div>
               </div>
                   </div>
@@ -226,7 +228,7 @@ div.csl-indent {
 </blockquote>
 <section id="apriorna-verovatnoća" class="level2">
 <h2 class="anchored" data-anchor-id="apriorna-verovatnoća">Apriorna verovatnoća</h2>
-<p>Apriorna verovatnoća predstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji, zatim postajati sve sigurniji u svoju pretpostavku sakupljanjem dokaza.</p>
+<p>Apriorna verovatnoća predstavlja jačinu našeg ubeđenja o prisustvu bolesti pre nego što smo dobili ikakve informacije o pacijentu. Kako verovatnoće imaju vrednosti od 0 (verujemo da je neverovatno) do 1 (verujemo da je sigurno) tako se i naše pretpostavke razlikuju u jačini.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Kako bi bili što tačniji u svojim dijagnozama trebamo da podesimo ove pretpostavke što preciznije. Najprostiji način je vezati svaku bolest u odnosu na njenu prevalencu u određenoj populaciji, zatim ažurirati svoju pretpostavku sakupljanjem dokaza. Na kraju treba pregledati da li je verovatna ili nije uporedo sa drugim mogućim objašnjenima.</p>
 <p>Svaka osoba u našem okruženju ima neku apriornu verovatnoću za određenu bolest. Stariji čovek ima veći rizik od infarkta miokarda od mlađeg, dok mlađi imaju veći rizik od nekih infektivnih agensa na koje još nisu stekli imunitet. Apriorna verovatnoća postaje <em>veoma</em> bitna onog momenata kada se u dijagnostički proces upletu različiti testovi.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -267,6 +269,7 @@ Rešenje
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(\frac{1}{11}\)</span> ili <span class="math inline">\(9.1\%\)</span>. Verovatnoća raka dojke kada je mamografija pozitivna (<span class="math inline">\(P(\text{Rak}\,|\,+\)</span>) uveliko zavisi od apriorne verovatnoće. Da je prevalenca (uverenje) raka dojke kod 40 god. žena 10%, verovatnoća bi skočila na <span class="math inline">\(\approx 53\%\)</span>.</p>
+<p>Isti test, sa istom preciznošću i istim rezultatom može imati različite implikacije za svakog pojedinca. Kontekst pacijenta znači sve. Ovaj fenomen je posledica toga što je greška testa fiksna, tj. test uvek sa istom stopom greške klasifikuje ljude na bolesne i zdrave. Ako su u populaciji bolesni jako retki i/ili smo jako ubeđeni da je osoba zdrava, moraćemo manje verovati rezultatima testa, osim ukoliko test nema izuzetno visoke mere specifičnosti i senzitivnosti.</p>
 </div>
 </div>
 </div>
@@ -286,9 +289,9 @@ Bitno
 </section>
 <section id="ažuriranje-uverenja" class="level2">
 <h2 class="anchored" data-anchor-id="ažuriranje-uverenja">Ažuriranje uverenja</h2>
-<p><a href="#exm-rak">Primer&nbsp;1</a> nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu “ažurira” naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim. U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.</p>
+<p><a href="#exm-rak">Primer&nbsp;1</a> nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu “ažurira” naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim (<a href="#fig-prior">Figura&nbsp;1</a>). U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.</p>
 <div id="exm-uti" class="theorem example">
-<p><span class="theorem-title"><strong>Primer 2 (Ažuriranje uverenja) </strong></span>Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana <em>Ureaplasma spp.</em> Koja je verovatnoća da je <em>Ureaplasma</em> uzročnik urinarnih tegoba?</p>
+<p><span class="theorem-title"><strong>Primer 2 (Ažuriranje uverenja) </strong></span>Devojka od 26 god. se žali na urinarne tegobe. Apriorna verovatnoća urinarnih infekcija je toliko velika kod žena u reproduktivnom periodu da je opravdano lečiti ih i bez dodatnog testiranja. Na analizi urina se ističu povišeni leukociti (leukociturija), što ide u prilog infekciji. Na genitalnom brisu je izolovana bakterija <em>Ureaplasma spp.</em> Koja je verovatnoća da je <em>Ureaplasma</em> uzročnik urinarnih tegoba?</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -323,7 +326,7 @@ Rešenje 2
 </div>
 </div>
 </div>
-<p>Neke informacije drastično menjaju interpretaciju. Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Neke informacije drastično menjaju interpretaciju (<a href="#fig-updating">Figura&nbsp;2</a>). Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-updating" class="quarto-figure quarto-figure-center anchored">
@@ -476,7 +479,7 @@ Ključne teze
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Apriorna verovatnoća je početno ubeđenje o postojanju bolesti kod neke osobe</li>
+<li>Apriorna verovatnoća je početno ubeđenje o postojanju bolesti kod neke osobe i kao takva utiče da korisnost dijagnostičkog testa</li>
 <li>Reprezentacija problema kao vodilja ka dobroj diferencijalnoj dijagnozi</li>
 <li>Biranje adekvatnih testova podrazumeva biranje onih testova koji su najkorisniji za potvrđivanje ili osporavanje radne dijagnoze</li>
 </ul>
@@ -511,7 +514,7 @@ Penner, J. C., Shipley, L. C., &amp; Minter, D. J. (2023). Reasoning on Rounds: 
 <li id="fn2"><p>Ovaj subjektivni pogled na verovatnoće kao nivo ličnog ubeđenja se zove Bajesova interpretacija verovatnoća. Frekventistička interpretacija se ne slaže sa ovom filozofskom pretpostavkom.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Svi medicinski testovi su vrsta merenja i kao takvi imaju određenu mogućnost greške. Senzitivnost nam govori o verovatnoći da test uspešno identifikuje bolesne (<span class="math inline">\(P(+ \mid \text{Bolestan})\)</span>), dok nam specifičnost govori o verovatnoći da test uspešno identifikuje zdrave (<span class="math inline">\((P(- \mid \text{Zdrav})\)</span>).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Na primer, rutinsko uzimanje krve slike nema neke preterane koristi.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba potceniti, jer je jako važna za proces lečenja. Međutim, ta tema prevazilazi okvir ovog članka.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba zanemariti, jer je jako važna u procesu lečenja. Ta tema prevazilazi okvir ovog članka.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>Detaljno navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita na <span class="math inline">\(0.8\,\text{ćelija}/\text{mm}^3\)</span> je neutropenija u svakom smislu.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
