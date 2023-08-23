@@ -94,6 +94,35 @@ Interesantno je da sistematski pregledi asimptomatičnih ljudi ne smanjuju smrtn
 
 @exm-rak nam je pokazao da medicinsko testiranje utiče na krajnju (aposteriornu) verovatnoću bolesti, i posredno definitivnu dijagnozu. To nije samo karakteristika testova, zapravo svaka dodatna informacija koju dobijemo o pacijentu "ažurira" naša uverenja i rangira moguće dijagnoze od najverovatnije ka onim manje verovatnim (@fig-prior). U narednom primeru ćemo sagledati uticaj dodatnih informacije na verovatnoću bolesti.
 
+```{r}
+#| label: updating plot
+#| echo: false
+#| warning: false
+#| fig-cap: "Početne pretpostavke su obično nesigurne, ovde predstavljene apriornom distribucijom. Distribucija je široka jer su mnoga objašnjena moguća. Nakon opservacije dokaza, naša uverenja postaju sigurnija --- prikazano užom zelenom distribucijom. Kako postajemo sigurniji tako se sužavaju opcije koje mogu objasniti dokaze."
+#| fig-height: 4
+library(ggplot2)
+library(cowplot)
+library(latex2exp)
+
+ggplot(data.frame(x = c(0, 1)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(0.2, 0.1), color = "grey30", fill = "grey", linewidth = 1) +
+  stat_function(fun = dnorm, args = list(0.8, 0.05), color = "darkgreen", linewidth = 1) +
+  geom_area(stat = "function", fun = dnorm, args = list(0.2, 0.1), fill = "grey", alpha = 0.3) +
+  geom_area(stat = "function", fun = dnorm, args = list(0.8, 0.05), fill = "#edffc4", alpha = 0.3) +
+  geom_segment(aes(x = 0.4, y = 1.5, xend = 0.65, yend = 1.5), size = 2,
+               lineend = "round", 
+               linejoin = "mitre",
+               arrow = arrow(length = unit(0.4, "cm"))) +
+  annotate("text", x = 0.525, y = 1.8, label = "dokazi") +
+  annotate("text", x = 0.2, y = 1.8, label = "apriorna", fontface = "bold.italic", color = "grey30") +
+  annotate("text", x = 0.8, y = 1.8, label = "aposteriorna", fontface = "bold.italic", color = "darkgreen") +
+  coord_cartesian(ylim = c(0.01, 8), expand = FALSE) +
+  theme_nothing() +
+  scale_x_continuous(name = "Verovatnoća") +
+  scale_y_continuous(name = "Učestalost")
+```
+
+
 ::: {#exm-uti}
 ## Ažuriranje uverenja
 
