@@ -2,34 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nikola-grubor.github.io/myblog/index.html</loc>
-    <lastmod>2023-11-06T10:02:30.262Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/sr/med-dg/index.html</loc>
-    <lastmod>2023-11-06T10:03:54.459Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/index.html</loc>
-    <lastmod>2023-11-05T09:09:32.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/talks/posts/sr/kauzalno-zakljucivanje/index.html</loc>
-    <lastmod>2023-10-23T14:07:44.120Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/talks/index.html</loc>
-    <lastmod>2023-11-04T15:29:12.005Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje/index.html</loc>
-    <lastmod>2023-10-23T14:33:35.027Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/talks/posts/sr/01_nedelja_vezbe/index.html</loc>
-    <lastmod>2023-11-04T15:29:14.419Z</lastmod>
+    <lastmod>2023-11-06T10:10:27.989Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/posts/sr/uredni-podaci/index.html</loc>
-    <lastmod>2023-11-06T10:02:29.851Z</lastmod>
+    <lastmod>2023-11-06T10:11:03.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/index.html</loc>
+    <lastmod>2023-11-06T10:10:25.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/talks/posts/sr/01_nedelja_vezbe/index.html</loc>
+    <lastmod>2023-11-06T10:10:04.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/talks/index.html</loc>
+    <lastmod>2023-11-06T10:10:05.146Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/med-dg/index.html</loc>
+    <lastmod>2023-11-06T10:10:54.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje/index.html</loc>
+    <lastmod>2023-11-06T10:10:31.334Z</lastmod>
   </url>
 </urlset>
