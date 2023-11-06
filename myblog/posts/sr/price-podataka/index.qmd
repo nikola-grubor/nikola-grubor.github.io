@@ -1,7 +1,7 @@
 ---
 title: "Priče iza podataka"
 description: "To resolve this problem, we once again turn to the story behind the data."
-date: today
+date: last-modified
 date-format: D/MM/YYYY
 lang: hr
 language: language-sr-Latn.yml

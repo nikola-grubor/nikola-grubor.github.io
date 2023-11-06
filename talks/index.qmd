@@ -1,0 +1,13 @@
+---
+title: "Writing"
+page-layout: full
+title-block-banner: false
+---
+
+## English Writing
+
+## Objave na Srpskom
+
+### Vezbe
+
+[01 Nedelja Vezbe](../talks/posts/sr/01_nedelja_vezbe/index.html)

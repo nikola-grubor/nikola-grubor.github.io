@@ -1,0 +1,17 @@
+---
+title: "Uvod u Statistiku"
+subtitle: "01 Nedelja Vezbe"
+affiliation: "Medicinski Fakultet, Univerzitet u Beogradu"
+author: Dr Nikola N. Grubor
+date: last-modified
+date-format: D/MM/YYYY
+lang: hr
+language: "../language-sr-Latn.yml"
+---
+
+# Uvod
+
+# Praktično
+
+# Zadaci
+

@@ -1,0 +1,177 @@
+---
+title: "Priče Podataka: Otkrivanje Gravitacije"
+description: "Jedini test razumevanja je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom da."
+date: today
+date-format: D/MM/YYYY
+lang: hr
+language: language-sr-Latn.yml
+citation:
+  language: sr-Latn
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+bibliography: biblio.bib
+categories: [statistika, srpski]
+image: ""
+mermaid: 
+  theme: forest
+draft: true
+---
+
+```{r}
+#| echo: false
+#| output: false
+
+library(tidyverse)
+library(brms)
+library(marginaleffects)
+library(tidybayes)
+library(patchwork)
+library(here)
+
+rstan::rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+d <- read.csv("data.csv", sep = ";", header = TRUE, na = "")
+d <- d %>%
+  mutate(height_sd = abs(rnorm(n = 51, 1 / 100, 5 / 1000)),
+         time_sd = abs(rnorm(n = 51, 0.200, 0.050)))
+d
+```
+
+# Model kao prozor u realnost
+
+Na prvi pogled zakoni fizike deluju kao da su pali sa neba. Barem su meni uvek tako delovali. Formule i njihove posledice deluju kao da su izvedene iz nekih aksioma. Gde aksiomi treba da predstavljaju apsolutnu istinu. Gravitacija je neizbežna posledica Njutnovog zakona gravitacije, i ma koliko mi zeleli da skočimo u vis i vinemo se u daljine, to jednostavno nije moguće. Međutim, početna tačka fizike nisu aksiomi (apsolutne istine), već postulati. Već po imenu vidimo da oni ne nose istu težinu kao aksiomi. Postulat vodi svoj koren od latinskog *postulare* što bi u bukvalnom prevodu značilo *upit*. Postulati pretpostavljaju postojanje nečega, ne tvrde apsolutno kao aksiomi. Zbog čega postoji ova razlika?
+
+Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi ustvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti --- konkretno kao posledica merenja. Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (@fig-saturn). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (@fig-fish).
+
+::: {#fig-models}
+![Galileovi crteži Saturna.](saturn.jpeg){#fig-saturn}
+
+![Zlatna ribica tumači svet gledajući ga kroz staklo.](fish.jpg){#fig-fish}
+
+Analogije modela sveta
+:::
+
+## Šta su modeli?
+
+## Ptolomej i geocentrični svet
+Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.
+
+Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo )
+
+# Primer: Gravitaciono ubrzanje u Beogradu
+
+## Odakle dolazi formula gravitacije
+
+## Otkrivanje gravitacionog ubrzanja
+
+# Zaključak
+
+```{r}
+
+get_prior(
+  formula = bf( time ~ sqrt(2 * height / g), g ~ 1, nl = TRUE),
+  data = d
+)
+
+# basic g-model
+m1 <- brm(
+  formula = bf(time ~ sqrt(2 * height / g), g ~ 1, nl = TRUE),
+  family = gaussian(),
+  data = d,
+  prior = c(prior(normal(10, 3), nlpar = "g", lb = 0),
+            prior(exponential(1), class = "sigma")),
+  warmup = 1000,
+  iter = 2000,
+  file = here("posts/sr/gravitacija/fits", "m1")
+)
+
+m1.1 <- brm(
+  formula = bf(time ~ sqrt(2 * height / g), g ~ (1 | height), nl = TRUE),
+  family = gaussian(),
+  data = d,
+  prior = c(prior(normal(10, 3), nlpar = "g", lb = 0),
+            prior(exponential(1), class = "sigma")),
+  warmup = 1000,
+  iter = 2000,
+  file = here("posts/sr/gravitacija/fits", "m1.1")
+)
+
+# model with initial shakiness v0
+m2 <- brm(
+  formula = bf(time ~ v0 + sqrt((2 * height * g) + v0^2) / g, 
+               g ~ 1,
+               v0 ~ 1,
+               nl = TRUE),
+  family = gaussian(),
+  data = d,
+  prior = c(prior(normal(10, 2), nlpar = "g", lb = 0),
+            prior(normal(0, 0.5), nlpar = "v0", lb = 0),
+            prior(exponential(1), class = "sigma")),
+  warmup = 1000,
+  iter = 4000,
+  save_pars = save_pars(latent = TRUE),
+  control = list(adapt_delta = 0.99),
+  file = here("posts/sr/gravitacija/fits", "m2")
+)
+
+# hierarchical variation
+m2.1 <- brm(
+  formula = bf(time ~ v0 + sqrt((2 * height * g) + v0^2) / g, 
+               g ~ (1 | height),
+               v0 ~ 1,
+               nl = TRUE),
+  family = gaussian(),
+  data = d,
+  prior = c(prior(normal(10, 2), nlpar = "g", lb = 0),
+            prior(normal(0, 0.5), nlpar = "v0", lb = 0),
+            prior(exponential(1), class = "sigma")),
+  warmup = 1000,
+  iter = 4000,
+  save_pars = save_pars(latent = TRUE),
+  control = list(adapt_delta = 0.99),
+  file = here("posts/sr/gravitacija/fits", "m2.1")
+)
+```
+
+```{r}
+
+p1 <- m1 %>%
+  spread_draws(b_g_Intercept) %>%
+  ggplot(aes(x = b_g_Intercept)) +
+  stat_halfeye() +
+  labs(
+    x = expression(g~(m/s^2)),
+    y = "Probability"
+  )
+
+p2 <- m1.1 %>%
+  spread_draws(b_g_Intercept) %>%
+  ggplot(aes(x = b_g_Intercept)) +
+  stat_halfeye() +
+  labs(
+    x = expression(g~(m/s^2)),
+    y = "Probability"
+  )
+
+(p1 + p2) +
+  plot_annotation(title = "Regular vs. Hierarchical Model",
+                  caption = "Based on 51 Observations in my Room")
+
+get_variables(m2)
+
+m2 %>%
+  gather_draws(`b_.*`, regex = TRUE) %>% 
+  ggplot(aes(x = .value)) +
+  stat_halfeye() +
+  facet_wrap(~.variable, scales = "free")
+
+m2 %>% 
+  spread_draws(b_g_Intercept) %>% 
+  ggplot(aes(x = b_g_Intercept)) +
+  stat_halfeye()
+```
