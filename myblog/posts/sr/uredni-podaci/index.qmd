@@ -95,7 +95,7 @@ U zavisnosti od kompleksnosti ponovljenih merenja, tj. koliko podataka se prikup
 
 Relacione tabele su pogodne za belezenje velikog broja laboratorijskih analiza, pogotovo ponovljenih merenja. Ostavljaju osnovnu tabelu (koja sadrži opšte informacije koje se neće menjati) čitkom i smanjuju širinu baze, što je čini preglednijom. Laboratorijska merenja pacijenata su povezana sa osnovnim informacijama preko kolone `id` koja je **jedinstveno** (@sec-id) dodeljena svakom pacijentu u momentu kada je on upisan u bazu [@mph2013].
 
-::: columns
+::: {.columns}
 ::: {.column width="45%"}
 | id  | starost | dijagnoza    |
 |-----|---------|--------------|
@@ -132,7 +132,7 @@ flowchart LR
   B --> C(lab_id) & D(datum)
 ```
 
-::: columns
+::: {.columns}
 ::: {.column width="45%"}
 | id  | starost | dijagnoza    |
 |-----|---------|--------------|
