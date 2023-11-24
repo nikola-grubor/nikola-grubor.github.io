@@ -1,0 +1,14 @@
+{
+  "hash": "0f9d977047ed707f00d90e559525cf87",
+  "result": {
+    "markdown": "---\ntitle: \"Power Analysis\"\nformat: html\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(pwr)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: package 'pwr' was built under R version 4.2.3\n```\n:::\n\n```{.r .cell-code}\nlibrary(OptSig)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: package 'OptSig' was built under R version 4.2.3\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\npwr.r.test(r=0.5, n=NULL, sig.level=0.05, power = 0.8, alternative=\"two.sided\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\n     approximate correlation power calculation (arctangh transformation) \n\n              n = 28.24841\n              r = 0.5\n      sig.level = 0.05\n          power = 0.8\n    alternative = two.sided\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

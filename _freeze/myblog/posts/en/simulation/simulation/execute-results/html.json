@@ -1,0 +1,18 @@
+{
+  "hash": "efdf7f07679670df9e9b799df056486f",
+  "result": {
+    "markdown": "---\ntitle: \"Simulation Examples\"\nauthor: \"Nikola N. Grubor\"\nformat: html\n---\n\n::: {.cell}\n\n:::\n\n\n## Simulating from a Causal Diagram\n\nWhen you're doing a simulation, the whole point of it will be to see how an estimator performs under a particular set of data generating assumptions. So we need to know how to make data that satisfies those assumptions.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngrViz(\"\ndigraph {\n  graph [ranksep = 0.2]\n  node [shape = plaintext]\n    X [label = 'X']\n    Y [label = 'Y']\n    W [label = 'W']\n    e [label = 'e']\n  edge [minlen = 2]\n    W->Y\n    X->W\n    X->Y\n    e->W\n  { rank = same; W; Y; e }\n}\n\")\n```\n\n::: {#fig-dag .cell-output-display}\n```{=html}\n<div class=\"grViz html-widget html-fill-item-overflow-hidden html-fill-item\" id=\"htmlwidget-21c8bf3be3a971d7ab27\" style=\"width:100%;height:464px;\"></div>\n<script type=\"application/json\" data-for=\"htmlwidget-21c8bf3be3a971d7ab27\">{\"x\":{\"diagram\":\"\\ndigraph {\\n  graph [ranksep = 0.2]\\n  node [shape = plaintext]\\n    X [label = \\\"X\\\"]\\n    Y [label = \\\"Y\\\"]\\n    W [label = \\\"W\\\"]\\n    e [label = \\\"e\\\"]\\n  edge [minlen = 2]\\n    W->Y\\n    X->W\\n    X->Y\\n    e->W\\n  { rank = same; W; Y; e }\\n}\\n\",\"config\":{\"engine\":\"dot\",\"options\":null}},\"evals\":[],\"jsHooks\":[]}</script>\n```\n\n\nSimulated diagram!\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# If we want the random data to be the same every time, set a seed\nset.seed(1000)\n\n# tibble() creates a tibble; it's like a data.frame\n# We must pick a number of observations, here 200\nd <- tibble(W = runif(200, 0, .1)) %>% # only go from 0 to .1\n    mutate(X = runif(200) < .2 + W) %>%\n    mutate(Y = 3*X + W + rnorm(200)) # True effect of X on Y is 3\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"../../../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js\"></script>\r\n<script src=\"../../../../site_libs/viz-1.8.2/viz.js\"></script>\r\n<link href=\"../../../../site_libs/DiagrammeR-styles-0.2/styles.css\" rel=\"stylesheet\" />\r\n<script src=\"../../../../site_libs/grViz-binding-1.0.10/grViz.js\"></script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
