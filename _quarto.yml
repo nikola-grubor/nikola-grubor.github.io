@@ -28,6 +28,8 @@ website:
         text: Home
       - href: myblog/index.qmd
         text: Blog
+      # - href: consult/index.qmd
+      #   text: Consulting
 
 format:
   html:

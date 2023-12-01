@@ -1,0 +1,35 @@
+---
+title: "Consulting"
+about:
+  template: solana
+  image: avatar.jpg
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto: nikola.n.grubor@med.bg.ac.rs"
+draft: true
+---
+
+If you are a medical student or researcher and require help with statistics,
+get in touch with me via email --- I'd be happy to help.
+
+### Statistical Consulting
+
+------------------------------------------------------------------------
+
+I can provide assistance in a broad area of reseach topics:
+
+- Data cleaning and managment
+- Data-analysis
+- Statistical Modeling
+- Experimental Design
+- Computationally Reproducible Research
+- Version Control
+- Causal directed acyclyic graph data-analysis
+
+### Data Visualization
+
+------------------------------------------------------------------------
+
+I also make high quality visualizations for academic purposes.

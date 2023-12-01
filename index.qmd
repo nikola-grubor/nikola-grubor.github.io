@@ -27,7 +27,7 @@ about:
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ngrubor" data-color="#FFDD00" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 ```
 \
-Nikola Grubor is a Ph.D. student of Medical Statistics and Bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. His research interests include Bayesian Modeling, Causal Inference, and Metascience.
+I am a medical doctor and PhD student of Medical Statistics and Bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. I want to valorize and democratize science. Bayesian scientific modeling offers a unique approach to quantifying uncertainty and incorporating prior knowledge via domain expertise elicitation, which can aid small and underfunded research teams in making a more significant impact. I have experience working in large research teams and managing communication with large groups of students. My involvement in patient care has led me to develop skills in making complex topics more approachable.
 
 ## Education
 

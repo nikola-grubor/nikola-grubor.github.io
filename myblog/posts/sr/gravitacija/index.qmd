@@ -31,15 +31,29 @@ library(marginaleffects)
 library(tidybayes)
 library(patchwork)
 library(here)
+library(cowplot)
 
 rstan::rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
+```
 
+```{r}
+#| echo: false
+#| output: false
 d <- read.csv("data.csv", sep = ";", header = TRUE, na = "")
 d <- d %>%
-  mutate(height_sd = abs(rnorm(n = 51, 1 / 100, 5 / 1000)),
-         time_sd = abs(rnorm(n = 51, 0.200, 0.050)))
-d
+  group_by(height) %>% 
+  mutate(block = cur_group_id()) %>% 
+  ungroup() %>% 
+  group_by(block) %>% 
+  mutate(time_se = sd(time) / sqrt(length(time)))
+
+d %>% ggplot(aes(x = height, y = time, 
+                 ymin = time - time_se, 
+                 ymax = time + time_se)) +
+  geom_pointrange(shape = 20, alpha = 2/3) +
+  coord_flip()
+
 ```
 
 # Model kao prozor u realnost
@@ -59,22 +73,79 @@ Analogije modela sveta
 ## Šta su modeli?
 
 ## Ptolomej i geocentrični svet
+
 Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.
 
-Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo )
+Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu) --- zašto je to tako?
 
 # Primer: Gravitaciono ubrzanje u Beogradu
 
 ## Odakle dolazi formula gravitacije
 
+U osnovnoj školi smo naučili da telo u da se visina tela u slobodnom padu može izraziti sa (detaljnije izvedeno u [Dodatak 1](#sec-dodatak1)):
+
+$$
+h = \frac{1}{2}gt^2
+$$ 
+Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine $h$ i merenje vremena pada $t$ nas ostavlja sa jednom nepoznatom: $g$. Ako pravimo model procesa opšte forme $y = f(x)$, možemo 
+izraziti izmeniti formulu:
+
+$$
+t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
+$$
+Sada se možemo baciti na eksperimentisanje.
+
 ## Otkrivanje gravitacionog ubrzanja
 
-# Zaključak
+U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju,
+napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine.
+Rezultujući podaci su dati u @tbl-data.
 
 ```{r}
+#| label: tbl-data
+#| tbl-cap: "Prikazano je prvih 5 redova podataka iz eksperimenta."
+#| echo: false
+
+d %>% ungroup() %>%  select(-c(block, time_se)) %>% 
+  rename("vreme_s" = "time", "visina_m" = "height") %>%
+  head(5) %>% 
+  knitr::kable()
+```
+## Bajesov model gravitacionog ubrzanja
+
+$$
+t_i = \sqrt\frac{2h_k}{g}
+$$
+$$
+g \sim Normal(10, 3)
+$$
+$$
+\sigma \sim Exponential(1)
+$$
+$$
+\gamma \sim Exponential(1)
+$$
+
+```{r}
+#| label: fig-prior
+#| fig-cap: ""
+
+ggplot() +
+  xlim(0, 20) +
+  geom_function(fun = dnorm, args = list(mean = 10, sd = 3)) +
+  theme_cowplot() +
+  labs(title = "Apriorna raspodela g",
+       x = expression(g~(m/s^2)),
+       y = "gustina")
+```
+
+
+```{r}
+#| echo: false
+#| output: false
 
 get_prior(
-  formula = bf( time ~ sqrt(2 * height / g), g ~ 1, nl = TRUE),
+  formula = bf( time ~ sqrt(2 * height / g), g ~ (1 | height), nl = TRUE),
   data = d
 )
 
@@ -99,6 +170,17 @@ m1.1 <- brm(
   warmup = 1000,
   iter = 2000,
   file = here("posts/sr/gravitacija/fits", "m1.1")
+)
+
+m1.2 <- brm(
+  formula = bf(time | mi(time_se) ~ sqrt(2 * height / g), g ~ (1 | height), nl = TRUE),
+  family = gaussian(),
+  data = d,
+  prior = c(prior(normal(10, 3), nlpar = "g", lb = 0),
+            prior(exponential(1), class = "sigma")),
+  warmup = 1000,
+  iter = 2000,
+  file = here("posts/sr/gravitacija/fits", "m1.2")
 )
 
 # model with initial shakiness v0
@@ -139,39 +221,89 @@ m2.1 <- brm(
 ```
 
 ```{r}
+#| echo: false
+#| label: fig-parameter
+#| fig-subcap: "Lorem ipsum."
+#| fig-width: 8
 
 p1 <- m1 %>%
   spread_draws(b_g_Intercept) %>%
   ggplot(aes(x = b_g_Intercept)) +
-  stat_halfeye() +
+  stat_halfeye(alpha = 2/3, fill = "lightblue") +
   labs(
     x = expression(g~(m/s^2)),
-    y = "Probability"
-  )
+    y = "Verovatnoća"
+  ) + ggtitle("Nelinearni model") +
+  theme_cowplot()
 
 p2 <- m1.1 %>%
   spread_draws(b_g_Intercept) %>%
   ggplot(aes(x = b_g_Intercept)) +
-  stat_halfeye() +
+  stat_halfeye(alpha = 2/3, fill = "lightblue") +
   labs(
     x = expression(g~(m/s^2)),
-    y = "Probability"
-  )
+    y = "Verovatnoća"
+  ) + ggtitle("Nelinearni hijarhiski model") +
+  theme_cowplot()
 
 (p1 + p2) +
-  plot_annotation(title = "Regular vs. Hierarchical Model",
-                  caption = "Based on 51 Observations in my Room")
+  plot_annotation(title = "Procenjeno gravitaciono ubrzanje",
+                  caption = "Na osnovu 51 opservacije iz moje sobe.") +
+  theme_cowplot()
 
-get_variables(m2)
+# get_variables(m2)
 
-m2 %>%
-  gather_draws(`b_.*`, regex = TRUE) %>% 
-  ggplot(aes(x = .value)) +
-  stat_halfeye() +
-  facet_wrap(~.variable, scales = "free")
+# m2 %>%
+#   gather_draws(`b_.*`, regex = TRUE) %>% 
+#   ggplot(aes(x = .value)) +
+#   stat_halfeye() +
+#   facet_wrap(~.variable, scales = "free")
+# 
+# m1.1 %>% 
+#   spread_draws(b_g_Intercept) %>% 
+#   ggplot(aes(x = b_g_Intercept)) +
+#   stat_halfeye()
 
-m2 %>% 
-  spread_draws(b_g_Intercept) %>% 
-  ggplot(aes(x = b_g_Intercept)) +
-  stat_halfeye()
+# model checks
+
+# loo.m1 <- loo(m1)
+# loo.m1.1 <- loo(m1.1)
+# loo.m1.2 <- loo(m1.2)
+# loo.m2 <- loo(m2)
+# loo.m2.1 <- loo(m2.1)
+# 
+# loo_compare(loo.m1, loo.m1.1, loo.m1.2, loo.m2, loo.m2.1)
 ```
+
+# Zaključak
+
+# Dodatci
+
+### Dodatak 1: Izvođenje formula gravitacionog ubrzanja {#sec-dodatak1}
+
+$$
+s = \bar v t
+$$ Srednja brzina $\bar v$, tokom ravnomernog kretanja je jednaka $\frac{\Delta v}{\Delta t}$. Tako da:
+
+$$
+s = \frac{v_0 + v}{2}t
+$$ Ako predstavimo gravitacionu ubrzanje $g$ kao promenu brzine $v$ u jedinici vremena $t$, onda je:
+
+$$
+g = \frac{\Delta v}{\Delta t} 
+$$ Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo $v_0$ u obe jednačine. Takođe, ako nas interesuje $g$ u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme $t_0$. Tako je onda: $$
+s = \frac{\not v_0 + v}{2}t \rightarrow s = \frac{v}{2}t
+$$ $$
+g = \frac{\Delta v}{\Delta t} = \frac{v - \not v_0}{t - \not t_0} \rightarrow 
+g = \frac{v}{t} \rightarrow v = gt
+$$ Kako bi dobili jednačinu slobodnog pada sa visine $h$:
+
+$$
+h = \frac{gt}{2}t = \frac{gt^2}{2}
+$$ Pošto nas zanima nepoznato gravitaciono ubrazanje $g$, možemo ga izraziti preko vremena kao:
+
+$$
+t = \sqrt\frac{2h}{g}
+$$
+
+Ovaj izraz je odgovarajuć jer će naša zavisna varijabla $y$ biti jednaka svakoj realizaciji eksperimenta $t_i$, gde je svaki pad $i$ lopte imao svoje izmereno vreme $t$ pada. Nezavisne varijable visina $h$ i gravitaciono ubrzanje $g$ su eksplanatorne.

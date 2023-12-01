@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -99,6 +99,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 <meta name="twitter:title" content="Nikola N. Grubor - Priče Podataka: Otkrivanje Gravitacije">
@@ -134,9 +136,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/nikola-grubor" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://www.linkedin.com/in/herr-grubor/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/nikola-grubor" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/herr-grubor/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Prekidač za tamnu temu"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -173,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Objavljeno</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">24/11/2023</p>
+        <p class="date">1/12/2023</p>
       </div>
     </div>
     
@@ -198,8 +200,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#odakle-dolazi-formula-gravitacije" id="toc-odakle-dolazi-formula-gravitacije" class="nav-link" data-scroll-target="#odakle-dolazi-formula-gravitacije">Odakle dolazi formula gravitacije</a></li>
   <li><a href="#otkrivanje-gravitacionog-ubrzanja" id="toc-otkrivanje-gravitacionog-ubrzanja" class="nav-link" data-scroll-target="#otkrivanje-gravitacionog-ubrzanja">Otkrivanje gravitacionog ubrzanja</a></li>
+  <li><a href="#bajesov-model-gravitacionog-ubrzanja" id="toc-bajesov-model-gravitacionog-ubrzanja" class="nav-link" data-scroll-target="#bajesov-model-gravitacionog-ubrzanja">Bajesov model gravitacionog ubrzanja</a></li>
   </ul></li>
   <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak">Zaključak</a></li>
+  <li><a href="#dodatci" id="toc-dodatci" class="nav-link" data-scroll-target="#dodatci">Dodatci</a>
+  <ul class="collapse">
+  <li><a href="#sec-dodatak1" id="toc-sec-dodatak1" class="nav-link" data-scroll-target="#sec-dodatak1">Dodatak 1: Izvođenje formula gravitacionog ubrzanja</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -236,150 +243,150 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ptolomej-i-geocentrični-svet" class="level2">
 <h2 class="anchored" data-anchor-id="ptolomej-i-geocentrični-svet">Ptolomej i geocentrični svet</h2>
 <p>Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.</p>
-<p>Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo )</p>
+<p>Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu) — zašto je to tako?</p>
 </section>
 </section>
 <section id="primer-gravitaciono-ubrzanje-u-beogradu" class="level1">
 <h1>Primer: Gravitaciono ubrzanje u Beogradu</h1>
 <section id="odakle-dolazi-formula-gravitacije" class="level2">
 <h2 class="anchored" data-anchor-id="odakle-dolazi-formula-gravitacije">Odakle dolazi formula gravitacije</h2>
+<p>U osnovnoj školi smo naučili da telo u da se visina tela u slobodnom padu može izraziti sa (detaljnije izvedeno u <a href="#sec-dodatak1">Dodatak 1</a>):</p>
+<p><span class="math display">\[
+h = \frac{1}{2}gt^2
+\]</span> Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine <span class="math inline">\(h\)</span> i merenje vremena pada <span class="math inline">\(t\)</span> nas ostavlja sa jednom nepoznatom: <span class="math inline">\(g\)</span>. Ako pravimo model procesa opšte forme <span class="math inline">\(y = f(x)\)</span>, možemo izraziti izmeniti formulu:</p>
+<p><span class="math display">\[
+t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
+\]</span> Sada se možemo baciti na eksperimentisanje.</p>
 </section>
 <section id="otkrivanje-gravitacionog-ubrzanja" class="level2">
 <h2 class="anchored" data-anchor-id="otkrivanje-gravitacionog-ubrzanja">Otkrivanje gravitacionog ubrzanja</h2>
+<p>U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u <a href="#tbl-data">Tabela&nbsp;1</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-data" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Tabela&nbsp;1: Prikazano je prvih 5 redova podataka iz eksperimenta.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">vreme_s</th>
+<th style="text-align: right;">visina_m</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.74</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="bajesov-model-gravitacionog-ubrzanja" class="level2">
+<h2 class="anchored" data-anchor-id="bajesov-model-gravitacionog-ubrzanja">Bajesov model gravitacionog ubrzanja</h2>
+<p><span class="math display">\[
+t_i = \sqrt\frac{2h_k}{g}
+\]</span> <span class="math display">\[
+g \sim Normal(10, 3)
+\]</span> <span class="math display">\[
+\sigma \sim Exponential(1)
+\]</span> <span class="math display">\[
+\gamma \sim Exponential(1)
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>() <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Apriorna raspodela g"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(g<span class="sc">~</span>(m<span class="sc">/</span>s<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"gustina"</span>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-prior" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-prior-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figura&nbsp;2: <strong>?(caption)</strong></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-parameter" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-parameter-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figura&nbsp;3: Lorem ipsum.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="zaključak" class="level1">
 <h1>Zaključak</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_prior</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">bf</span>( time <span class="sc">~</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> height <span class="sc">/</span> g), g <span class="sc">~</span> <span class="dv">1</span>, <span class="at">nl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                prior class      coef group resp dpar nlpar lb ub       source
- student_t(3, 0, 2.5) sigma                                  0         default
-               (flat)     b                               g            default
-               (flat)     b Intercept                     g       (vectorized)</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># basic g-model</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">bf</span>(time <span class="sc">~</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> height <span class="sc">/</span> g), g <span class="sc">~</span> <span class="dv">1</span>, <span class="at">nl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">10</span>, <span class="dv">3</span>), <span class="at">nlpar =</span> <span class="st">"g"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> <span class="st">"sigma"</span>)),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">2000</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"posts/sr/gravitacija/fits"</span>, <span class="st">"m1"</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>m1<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">bf</span>(time <span class="sc">~</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> height <span class="sc">/</span> g), g <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">|</span> height), <span class="at">nl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">10</span>, <span class="dv">3</span>), <span class="at">nlpar =</span> <span class="st">"g"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> <span class="st">"sigma"</span>)),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">2000</span>,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"posts/sr/gravitacija/fits"</span>, <span class="st">"m1.1"</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># model with initial shakiness v0</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">bf</span>(time <span class="sc">~</span> v0 <span class="sc">+</span> <span class="fu">sqrt</span>((<span class="dv">2</span> <span class="sc">*</span> height <span class="sc">*</span> g) <span class="sc">+</span> v0<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> g, </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>               g <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>               v0 <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>               <span class="at">nl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">10</span>, <span class="dv">2</span>), <span class="at">nlpar =</span> <span class="st">"g"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">nlpar =</span> <span class="st">"v0"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> <span class="st">"sigma"</span>)),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">4000</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">save_pars =</span> <span class="fu">save_pars</span>(<span class="at">latent =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">adapt_delta =</span> <span class="fl">0.99</span>),</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"posts/sr/gravitacija/fits"</span>, <span class="st">"m2"</span>)</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># hierarchical variation</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>m2<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">bf</span>(time <span class="sc">~</span> v0 <span class="sc">+</span> <span class="fu">sqrt</span>((<span class="dv">2</span> <span class="sc">*</span> height <span class="sc">*</span> g) <span class="sc">+</span> v0<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> g, </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>               g <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">|</span> height),</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>               v0 <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">nl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">10</span>, <span class="dv">2</span>), <span class="at">nlpar =</span> <span class="st">"g"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">nlpar =</span> <span class="st">"v0"</span>, <span class="at">lb =</span> <span class="dv">0</span>),</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            <span class="fu">prior</span>(<span class="fu">exponential</span>(<span class="dv">1</span>), <span class="at">class =</span> <span class="st">"sigma"</span>)),</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">4000</span>,</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">save_pars =</span> <span class="fu">save_pars</span>(<span class="at">latent =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">adapt_delta =</span> <span class="fl">0.99</span>),</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"posts/sr/gravitacija/fits"</span>, <span class="st">"m2.1"</span>)</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> m1 <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread_draws</span>(b_g_Intercept) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> b_g_Intercept)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(g<span class="sc">~</span>(m<span class="sc">/</span>s<span class="sc">^</span><span class="dv">2</span>)),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> m1<span class="fl">.1</span> <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread_draws</span>(b_g_Intercept) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> b_g_Intercept)) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>() <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(g<span class="sc">~</span>(m<span class="sc">/</span>s<span class="sc">^</span><span class="dv">2</span>)),</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">+</span> p2) <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Regular vs. Hierarchical Model"</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">caption =</span> <span class="st">"Based on 51 Observations in my Room"</span>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_variables</span>(m2)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "b_g_Intercept"  "b_v0_Intercept" "sigma"          "lprior"        
- [5] "lp__"           "accept_stat__"  "stepsize__"     "treedepth__"   
- [9] "n_leapfrog__"   "divergent__"    "energy__"      </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_draws</span>(<span class="st">`</span><span class="at">b_.*</span><span class="st">`</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .value)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.variable, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread_draws</span>(b_g_Intercept) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> b_g_Intercept)) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>()</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+</section>
+<section id="dodatci" class="level1">
+<h1>Dodatci</h1>
+<section id="sec-dodatak1" class="level3">
+<h3 class="anchored" data-anchor-id="sec-dodatak1">Dodatak 1: Izvođenje formula gravitacionog ubrzanja</h3>
+<p><span class="math display">\[
+s = \bar v t
+\]</span> Srednja brzina <span class="math inline">\(\bar v\)</span>, tokom ravnomernog kretanja je jednaka <span class="math inline">\(\frac{\Delta v}{\Delta t}\)</span>. Tako da:</p>
+<p><span class="math display">\[
+s = \frac{v_0 + v}{2}t
+\]</span> Ako predstavimo gravitacionu ubrzanje <span class="math inline">\(g\)</span> kao promenu brzine <span class="math inline">\(v\)</span> u jedinici vremena <span class="math inline">\(t\)</span>, onda je:</p>
+<p><span class="math display">\[
+g = \frac{\Delta v}{\Delta t}
+\]</span> Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo <span class="math inline">\(v_0\)</span> u obe jednačine. Takođe, ako nas interesuje <span class="math inline">\(g\)</span> u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme <span class="math inline">\(t_0\)</span>. Tako je onda: <span class="math display">\[
+s = \frac{\not v_0 + v}{2}t \rightarrow s = \frac{v}{2}t
+\]</span> <span class="math display">\[
+g = \frac{\Delta v}{\Delta t} = \frac{v - \not v_0}{t - \not t_0} \rightarrow
+g = \frac{v}{t} \rightarrow v = gt
+\]</span> Kako bi dobili jednačinu slobodnog pada sa visine <span class="math inline">\(h\)</span>:</p>
+<p><span class="math display">\[
+h = \frac{gt}{2}t = \frac{gt^2}{2}
+\]</span> Pošto nas zanima nepoznato gravitaciono ubrazanje <span class="math inline">\(g\)</span>, možemo ga izraziti preko vremena kao:</p>
+<p><span class="math display">\[
+t = \sqrt\frac{2h}{g}
+\]</span></p>
+<p>Ovaj izraz je odgovarajuć jer će naša zavisna varijabla <span class="math inline">\(y\)</span> biti jednaka svakoj realizaciji eksperimenta <span class="math inline">\(t_i\)</span>, gde je svaki pad <span class="math inline">\(i\)</span> lopte imao svoje izmereno vreme <span class="math inline">\(t\)</span> pada. Nezavisne varijable visina <span class="math inline">\(h\)</span> i gravitaciono ubrzanje <span class="math inline">\(g\)</span> su eksplanatorne.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
   author = {N. Grubor, Nikola},
   title = {Priče Podataka: Otkrivanje Gravitacije},
-  date = {2023-11-24},
+  date = {2023-12-01},
   url = {https://nikola-grubor.github.io/myblog/posts/sr/gravitacija},
   langid = {sr-Latn}
 }
 </code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">Za pripisivanje autoru, molimo navedite ovaj rad sa:</div><div id="ref-n. grubor2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-N. Grubor, N. (2023, November 24). <em>Priče Podataka: Otkrivanje
+N. Grubor, N. (2023, December 1). <em>Priče Podataka: Otkrivanje
 Gravitacije</em>. <a href="https://nikola-grubor.github.io/myblog/posts/sr/gravitacija">https://nikola-grubor.github.io/myblog/posts/sr/gravitacija</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
