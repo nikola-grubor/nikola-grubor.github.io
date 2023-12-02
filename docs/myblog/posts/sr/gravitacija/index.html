@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikola N. Grubor">
-<meta name="description" content="Jedini test razumevanja je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom da.">
+<meta name="description" content="Jedini test razumevanja fenomena je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom — da. Možemo li osnovnoškolskim znanjem da smislimo eksperiment i otkrijemo lokalno gravitaciono ubrzanje u Beogradu?">
 
-<title>Nikola N. Grubor - Priče Podataka: Otkrivanje Gravitacije</title>
+<title>Nikola N. Grubor - Priče iza Podataka: Otkrivanje Gravitacije</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,41 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -103,10 +88,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../../styles.css">
-<meta name="twitter:title" content="Nikola N. Grubor - Priče Podataka: Otkrivanje Gravitacije">
-<meta name="twitter:description" content="Jedini test razumevanja je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom da.">
-<meta name="twitter:image" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nikola N. Grubor - Priče iza Podataka: Otkrivanje Gravitacije">
+<meta name="twitter:description" content="Jedini test razumevanja fenomena je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom — da. Možemo li osnovnoškolskim znanjem da smislimo eksperiment i otkrijemo lokalno gravitaciono ubrzanje u Beogradu?">
+<meta name="twitter:image" content="https://nikola-grubor.github.io/myblog/posts/sr/gravitacija/geocenter.png">
+<meta name="twitter:image-height" content="1920">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -149,10 +136,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Priče Podataka: Otkrivanje Gravitacije</h1>
+      <h1 class="title">Priče iza Podataka: Otkrivanje Gravitacije</h1>
                   <div>
         <div class="description">
-          Jedini test razumevanja je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom da.
+          Jedini test razumevanja fenomena je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom — da. Možemo li osnovnoškolskim znanjem da smislimo eksperiment i otkrijemo lokalno gravitaciono ubrzanje u Beogradu?
         </div>
       </div>
                           <div class="quarto-categories">
@@ -175,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Objavljeno</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">1/12/2023</p>
+        <p class="date">2/12/2023</p>
       </div>
     </div>
     
@@ -198,9 +185,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#primer-gravitaciono-ubrzanje-u-beogradu" id="toc-primer-gravitaciono-ubrzanje-u-beogradu" class="nav-link" data-scroll-target="#primer-gravitaciono-ubrzanje-u-beogradu">Primer: Gravitaciono ubrzanje u Beogradu</a>
   <ul class="collapse">
+  <li><a href="#lokalno-gravitaciono-ubrzanje" id="toc-lokalno-gravitaciono-ubrzanje" class="nav-link" data-scroll-target="#lokalno-gravitaciono-ubrzanje">Lokalno gravitaciono ubrzanje</a></li>
+  <li><a href="#ideja-eksperimenta" id="toc-ideja-eksperimenta" class="nav-link" data-scroll-target="#ideja-eksperimenta">Ideja eksperimenta</a></li>
+  <li><a href="#proces-koji-generiše-podatke" id="toc-proces-koji-generiše-podatke" class="nav-link" data-scroll-target="#proces-koji-generiše-podatke">Proces koji generiše podatke</a></li>
   <li><a href="#odakle-dolazi-formula-gravitacije" id="toc-odakle-dolazi-formula-gravitacije" class="nav-link" data-scroll-target="#odakle-dolazi-formula-gravitacije">Odakle dolazi formula gravitacije</a></li>
   <li><a href="#otkrivanje-gravitacionog-ubrzanja" id="toc-otkrivanje-gravitacionog-ubrzanja" class="nav-link" data-scroll-target="#otkrivanje-gravitacionog-ubrzanja">Otkrivanje gravitacionog ubrzanja</a></li>
   <li><a href="#bajesov-model-gravitacionog-ubrzanja" id="toc-bajesov-model-gravitacionog-ubrzanja" class="nav-link" data-scroll-target="#bajesov-model-gravitacionog-ubrzanja">Bajesov model gravitacionog ubrzanja</a></li>
+  <li><a href="#apriorna-raspodela-gravitacionog-ubrzanja" id="toc-apriorna-raspodela-gravitacionog-ubrzanja" class="nav-link" data-scroll-target="#apriorna-raspodela-gravitacionog-ubrzanja">Apriorna raspodela gravitacionog ubrzanja</a></li>
+  <li><a href="#rezultati" id="toc-rezultati" class="nav-link" data-scroll-target="#rezultati">Rezultati</a></li>
   </ul></li>
   <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak">Zaključak</a></li>
   <li><a href="#dodatci" id="toc-dodatci" class="nav-link" data-scroll-target="#dodatci">Dodatci</a>
@@ -216,10 +208,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="model-kao-prozor-u-realnost" class="level1">
-<h1>Model kao prozor u realnost</h1>
+<div class="cell">
+<style type="text/css">
+.justify {
+  text-align: justify !important
+}
+</style>
+</div>
+<section id="model-kao-prozor-u-realnost" class="level1 justify">
+<h1 class="justify">Model kao prozor u realnost</h1>
 <p>Na prvi pogled zakoni fizike deluju kao da su pali sa neba. Barem su meni uvek tako delovali. Formule i njihove posledice deluju kao da su izvedene iz nekih aksioma. Gde aksiomi treba da predstavljaju apsolutnu istinu. Gravitacija je neizbežna posledica Njutnovog zakona gravitacije, i ma koliko mi zeleli da skočimo u vis i vinemo se u daljine, to jednostavno nije moguće. Međutim, početna tačka fizike nisu aksiomi (apsolutne istine), već postulati. Već po imenu vidimo da oni ne nose istu težinu kao aksiomi. Postulat vodi svoj koren od latinskog <em>postulare</em> što bi u bukvalnom prevodu značilo <em>upit</em>. Postulati pretpostavljaju postojanje nečega, ne tvrde apsolutno kao aksiomi. Zbog čega postoji ova razlika?</p>
-<p>Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi ustvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti — konkretno kao posledica merenja. Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (<a href="#fig-saturn">Figura&nbsp;1 (a)</a>). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (<a href="#fig-fish">Figura&nbsp;1 (b)</a>).</p>
+<p>Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi su u stvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti — konkretno kao posledica merenja.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (<a href="#fig-saturn">Figura&nbsp;1 (a)</a>). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (<a href="#fig-fish">Figura&nbsp;1 (b)</a>).</p>
 <div id="fig-models" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div id="fig-saturn" class="quarto-figure quarto-figure-center anchored">
@@ -239,28 +238,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="šta-su-modeli" class="level2">
 <h2 class="anchored" data-anchor-id="šta-su-modeli">Šta su modeli?</h2>
+<blockquote class="blockquote">
+<p>Svaki model je pogrešan, ali neki su korisni. — George Box</p>
+</blockquote>
+<p>Formalna definicija modela…</p>
 </section>
 <section id="ptolomej-i-geocentrični-svet" class="level2">
 <h2 class="anchored" data-anchor-id="ptolomej-i-geocentrični-svet">Ptolomej i geocentrični svet</h2>
-<p>Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.</p>
-<p>Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu) — zašto je to tako?</p>
+<p>Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao precizna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="geocenter.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Epiciklusi Ptolomejevog modela</figcaption>
+</figure>
+</div>
+<p>Međutim, predviđanja nisu sve. U eri mašinskog učenja, gde smo u stanju da napravimo modele koji predviđaju jako dobro ali nemaju nikakvu eksplanatornu vrednost, ova stavka je bitnija nego ikad. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu na Mars) jer ne predstavlja realnost.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </section>
 </section>
-<section id="primer-gravitaciono-ubrzanje-u-beogradu" class="level1">
-<h1>Primer: Gravitaciono ubrzanje u Beogradu</h1>
+<section id="primer-gravitaciono-ubrzanje-u-beogradu" class="level1 justify">
+<h1 class="justify">Primer: Gravitaciono ubrzanje u Beogradu</h1>
+<section id="lokalno-gravitaciono-ubrzanje" class="level3">
+<h3 class="anchored" data-anchor-id="lokalno-gravitaciono-ubrzanje">Lokalno gravitaciono ubrzanje</h3>
+<p>Stvari koje imaju masu utiču na okolinu preko gravitacionog polja. Što je veća masa to je jača sila privlačenja koja deluje između dva tela. Kako naša planeta nije savršena sfera, privlačna sila neće svuda na Zemlji biti ista. Odradićemo mali eksperiment da pokušamo da je odredimo.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</section>
+<section id="ideja-eksperimenta" class="level3">
+<h3 class="anchored" data-anchor-id="ideja-eksperimenta">Ideja eksperimenta</h3>
+<p>Sve što je potrebno je:</p>
+<ul>
+<li>neka stvar koju ćemo puštati da padne više puta</li>
+<li>štoperica</li>
+<li>metar</li>
+</ul>
+<p>Našao sam najobičniju tenisku lopticu, mada može bilo šta izdržljivo da posluži. Zatim sam izmerio četiri različite visine u stanu i puštao loptu da pada sa različitih visina dok mi nije dosadilo, mereći vreme do udara o pod štopericom. Više podataka je uvek bolje — napravio sam 51 opservaciju.</p>
+</section>
+<section id="proces-koji-generiše-podatke" class="level3">
+<h3 class="anchored" data-anchor-id="proces-koji-generiše-podatke">Proces koji generiše podatke</h3>
+<p>Interesantno je da se u ovom procesu padanja tela na pod krije informacija o tome koliko jako deluje gravitacija na našoj planeti. Bilo koji proces koji stvara podatke nazivamo “procesom koji generiše podatke” (engl. <em>data generating process</em>). Informacija o gravitacionom ubrzanju je skrivena u nekom odnosu vremena i visine. Jedini način da smisleno povežemo ove dve vrednosti je ako prvo imamo razumnu teoriju. To nas vraća u osnovnu školu.</p>
+</section>
 <section id="odakle-dolazi-formula-gravitacije" class="level2">
 <h2 class="anchored" data-anchor-id="odakle-dolazi-formula-gravitacije">Odakle dolazi formula gravitacije</h2>
 <p>U osnovnoj školi smo naučili da telo u da se visina tela u slobodnom padu može izraziti sa (detaljnije izvedeno u <a href="#sec-dodatak1">Dodatak 1</a>):</p>
 <p><span class="math display">\[
 h = \frac{1}{2}gt^2
-\]</span> Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine <span class="math inline">\(h\)</span> i merenje vremena pada <span class="math inline">\(t\)</span> nas ostavlja sa jednom nepoznatom: <span class="math inline">\(g\)</span>. Ako pravimo model procesa opšte forme <span class="math inline">\(y = f(x)\)</span>, možemo izraziti izmeniti formulu:</p>
+\]</span> Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine <span class="math inline">\(h\)</span> i merenje vremena pada <span class="math inline">\(t\)</span> nas ostavlja sa jednom nepoznatom: <span class="math inline">\(g\)</span>. Ako pravimo model procesa opšte forme <span class="math inline">\(y = f(x)\)</span>, odnos možemo izraziti formulom:</p>
 <p><span class="math display">\[
 t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
-\]</span> Sada se možemo baciti na eksperimentisanje.</p>
+\]</span></p>
+<p>Sada možemo prikupiti podatke.</p>
 </section>
 <section id="otkrivanje-gravitacionog-ubrzanja" class="level2">
 <h2 class="anchored" data-anchor-id="otkrivanje-gravitacionog-ubrzanja">Otkrivanje gravitacionog ubrzanja</h2>
-<p>U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u <a href="#tbl-data">Tabela&nbsp;1</a>.</p>
+<p>U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u <a href="#tbl-data">Tabela&nbsp;1</a>. Nelinaran odnos je grafički prikazan na <a href="#fig-datagraph">Figura&nbsp;2</a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-data" class="anchored">
@@ -304,63 +332,128 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-datagraph" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-datagraph-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figura&nbsp;2: Grafički prikaz podataka iz eksperimenta slobodnog pada loptice.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Merenja nisu najkvalitetnija. Plato koji se javlja za najviše visine je verovatno artefakt neke vrste (greške u merenju usled uticaja refleksa, uticaj otpora vazduha, tehnika ispuštanja loptice, itd.). Nastavićemo primer sa ovim podacima, možda se iznenadimo rezultatom.</p>
 </section>
 <section id="bajesov-model-gravitacionog-ubrzanja" class="level2">
 <h2 class="anchored" data-anchor-id="bajesov-model-gravitacionog-ubrzanja">Bajesov model gravitacionog ubrzanja</h2>
-<p><span class="math display">\[
-t_i = \sqrt\frac{2h_k}{g}
-\]</span> <span class="math display">\[
-g \sim Normal(10, 3)
-\]</span> <span class="math display">\[
-\sigma \sim Exponential(1)
-\]</span> <span class="math display">\[
-\gamma \sim Exponential(1)
-\]</span></p>
+<p>Neću ovde ulaziti u razlike između fekventističkih i Bajesovskih modela. Sve što nam je potrebno da bi nastavili dalje je da definišemo apriornu raspodelu gravitacionog ubrzanja <span class="math inline">\(g\)</span> za Beograd. Bajesov pristup ocenjivanja parametara zahteva od nas da jasno kažemo kakve vrednosti su moguće za <span class="math inline">\(g\)</span>.</p>
+<!-- $$ -->
+<!-- t_i = \sqrt\frac{2h_k}{g} -->
+<!-- $$ $$ -->
+<!-- g \sim Normal(10, 3) -->
+<!-- $$ $$ -->
+<!-- \sigma \sim Exponential(1) -->
+<!-- $$  -->
+<!-- $$ -->
+<!-- \gamma \sim Exponential(1) -->
+<!-- $$ -->
+</section>
+<section id="apriorna-raspodela-gravitacionog-ubrzanja" class="level2">
+<h2 class="anchored" data-anchor-id="apriorna-raspodela-gravitacionog-ubrzanja">Apriorna raspodela gravitacionog ubrzanja</h2>
+<p>Biranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena. U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva — gledali smo mnogo stvari kako padaju. Deluje mi da stvari nece ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Sasvim sigurno je da negativni brojevi nisu mogući. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela mogućih vrednosti za <span class="math inline">\(g\)</span> je prikazana na <a href="#fig-prior">Figura&nbsp;3</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">3</span>)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>() <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Apriorna raspodela g"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(g<span class="sc">~</span>(m<span class="sc">/</span>s<span class="sc">^</span><span class="dv">2</span>)),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"gustina"</span>)</span></code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-prior" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-prior-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;2: <strong>?(caption)</strong></figcaption>
+<figcaption class="figure-caption">Figura&nbsp;3: Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja.</figcaption>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="rezultati" class="level2">
+<h2 class="anchored" data-anchor-id="rezultati">Rezultati</h2>
+<p>Iskreno, nisam očekivao da ću sa samo 51 opservacijom (i to poprilično traljavim) moći ovako dobro da odredim gravitaciono ubrzanje. Procena parametra <span class="math inline">\(g\)</span> je data u <a href="#tbl-fixedef">Tabela&nbsp;2</a>. Možemo da uporedimo naš rezultat sa Formulom za Internacionalnu Procenu Gravitacije <span class="citation" data-cites="theoreti2023">(<a href="#ref-theoreti2023" role="doc-biblioref"><em>Theoretical Gravity</em>, 2023</a>)</span> koja procenjuje vrednost lokalnog gravitacionog ubrzanja <span class="math inline">\(g_{Beograd} = 9.806 \; m/s^2\)</span>. Iznenađujuće, rezultat uopšte nije loš!</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-parameter" class="quarto-figure quarto-figure-center anchored">
+<div id="tbl-fixedef" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Tabela&nbsp;2: Rezultat modela. <code>Estimate</code> je najbolja procena parametra. <code>Q2.5</code> i <code>Q97.5</code> su kvantili.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Est.Error</th>
+<th style="text-align: right;">Q2.5</th>
+<th style="text-align: right;">Q97.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">g_Intercept</td>
+<td style="text-align: right;">9.807979</td>
+<td style="text-align: right;">0.74607</td>
+<td style="text-align: right;">8.32866</td>
+<td style="text-align: right;">11.37652</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Posteriorna distribucija je prikazana grafički na <a href="#fig-update">Figura&nbsp;4</a>. Parametar je dosta nesiguran (širina aposteriorne distribucije) ali je većina verovatnoće koncentrisana oko tačne vrednosti. Kada je model video podatke dodelio je parametaru <span class="math inline">\(g\)</span> vrednosti koje su konzistentne sa podacima iz našeg malog eksperimenta.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-update" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-parameter-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figura&nbsp;3: Lorem ipsum.</figcaption>
+<p><img src="index_files/figure-html/fig-update-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figura&nbsp;4: Odnos apriorne i aposteriorne distribucije.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="zaključak" class="level1">
-<h1>Zaključak</h1>
+<section id="zaključak" class="level1 justify">
+<h1 class="justify">Zaključak</h1>
+<p>Ovo je u suštini bio pregled naučnog pristupa. Saznali smo sta su modeli i koji su njihovi ciljevi. Definisali smo istraživačko pitanje i šta je proces koji generiše podatke. Zatim smo iskoristili znanje o gravitaciji iz osnovne škole kako bi znali kakav eksperiment treba da konstruišemo. Naš eksperiment je napravio mogućnost da se ispolji proces koji generiše podatke. Zatim smo taj proces ispitali kako bi procenili kakvo je lokalno gravitaciono ubrzanje.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rezime
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Naučni modeli su prozor u funkcionisanje sveta</li>
+<li>Predviđanje i razumevanje su dva različita cilja</li>
+<li>Prirodni fenomeni su procesi koji generišu podatke</li>
+<li>Potrebna nam je teorija pre nego što započnemo ispitivanje</li>
+<li>Procesi koji generišu podatke kriju informacije o svetu</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="dodatci" class="level1">
-<h1>Dodatci</h1>
+<section id="dodatci" class="level1 justify">
+<h1 class="justify">Dodatci</h1>
 <section id="sec-dodatak1" class="level3">
 <h3 class="anchored" data-anchor-id="sec-dodatak1">Dodatak 1: Izvođenje formula gravitacionog ubrzanja</h3>
 <p><span class="math display">\[
 s = \bar v t
-\]</span> Srednja brzina <span class="math inline">\(\bar v\)</span>, tokom ravnomernog kretanja je jednaka <span class="math inline">\(\frac{\Delta v}{\Delta t}\)</span>. Tako da:</p>
+\]</span></p>
+<p>Srednja brzina <span class="math inline">\(\bar v\)</span>, tokom ravnomernog kretanja je jednaka <span class="math inline">\(\frac{\Delta v}{\Delta t}\)</span>. Tako da:</p>
 <p><span class="math display">\[
 s = \frac{v_0 + v}{2}t
-\]</span> Ako predstavimo gravitacionu ubrzanje <span class="math inline">\(g\)</span> kao promenu brzine <span class="math inline">\(v\)</span> u jedinici vremena <span class="math inline">\(t\)</span>, onda je:</p>
+\]</span></p>
+<p>Ako predstavimo gravitacionu ubrzanje <span class="math inline">\(g\)</span> kao promenu brzine <span class="math inline">\(v\)</span> u jedinici vremena <span class="math inline">\(t\)</span>, onda je:</p>
 <p><span class="math display">\[
 g = \frac{\Delta v}{\Delta t}
-\]</span> Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo <span class="math inline">\(v_0\)</span> u obe jednačine. Takođe, ako nas interesuje <span class="math inline">\(g\)</span> u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme <span class="math inline">\(t_0\)</span>. Tako je onda: <span class="math display">\[
+\]</span> Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo <span class="math inline">\(v_0\)</span> u obe jednačine. Takođe, ako nas interesuje <span class="math inline">\(g\)</span> u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme <span class="math inline">\(t_0\)</span>. Tako je onda:</p>
+<p><span class="math display">\[
 s = \frac{\not v_0 + v}{2}t \rightarrow s = \frac{v}{2}t
 \]</span> <span class="math display">\[
 g = \frac{\Delta v}{\Delta t} = \frac{v - \not v_0}{t - \not t_0} \rightarrow
@@ -375,18 +468,31 @@ t = \sqrt\frac{2h}{g}
 <p>Ovaj izraz je odgovarajuć jer će naša zavisna varijabla <span class="math inline">\(y\)</span> biti jednaka svakoj realizaciji eksperimenta <span class="math inline">\(t_i\)</span>, gde je svaki pad <span class="math inline">\(i\)</span> lopte imao svoje izmereno vreme <span class="math inline">\(t\)</span> pada. Nezavisne varijable visina <span class="math inline">\(h\)</span> i gravitaciono ubrzanje <span class="math inline">\(g\)</span> su eksplanatorne.</p>
 
 
+
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-theoreti2023" class="csl-entry" role="listitem">
+<em>Theoretical gravity</em>. (2023). <a href="https://en.wikipedia.org/w/index.php?title=Theoretical_gravity&amp;oldid=1185162983#International_gravity_formula_1980">https://en.wikipedia.org/w/index.php?title=Theoretical_gravity&amp;oldid=1185162983#International_gravity_formula_1980</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Fusnota</h2>
+
+<ol>
+<li id="fn1"><p>Možda deluje da kao da tvrdim da su opservacije nekako inferiorni oblik saznanja. Naprotiv, eksperimenti i opservacije su preko potrebni ljudskom saznanju. Čovekov mozak ume veoma lako da se prevari — da umisli veze tamo gde one ne postoje. Eksperimenti nam omogućavaju da proverimo naše teorije. I često, ako se rezultati ne poklapaju, možemo da unapredimo naše ideje.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>U industriji je često predikcija cilj sam po sebi (npr. koji tip osobe će kliknuti na reklamu koja mu je servirana). Međutim, istraživači bi trebalo da teže nekom razumevanju sveta. Tu je onda cilj objašnjenje koju pružaju kauzalni modeli. Kada imamo kauzalni model, onda možemo da planiramo intervencije, tj. šta će se desiti ako utičemo na sistem. Oba cilja su korisna, sve zavisi od konteksta.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Sumnjam da ćemo imati dovoljno podataka da precizno odredimo lokalnu gravitacionu konstatnu, ali barem možemo da otkrijemo koliko precizni možemo da budemo.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
   author = {N. Grubor, Nikola},
-  title = {Priče Podataka: Otkrivanje Gravitacije},
-  date = {2023-12-01},
+  title = {Priče iza Podataka: Otkrivanje Gravitacije},
+  date = {2023-12-02},
   url = {https://nikola-grubor.github.io/myblog/posts/sr/gravitacija},
   langid = {sr-Latn}
 }
 </code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">Za pripisivanje autoru, molimo navedite ovaj rad sa:</div><div id="ref-n. grubor2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-N. Grubor, N. (2023, December 1). <em>Priče Podataka: Otkrivanje
+N. Grubor, N. (2023, December 2). <em>Priče iza Podataka: Otkrivanje
 Gravitacije</em>. <a href="https://nikola-grubor.github.io/myblog/posts/sr/gravitacija">https://nikola-grubor.github.io/myblog/posts/sr/gravitacija</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

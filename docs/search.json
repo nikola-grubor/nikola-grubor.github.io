@@ -39,7 +39,7 @@
     "href": "myblog/index.html#objave-na-srpskom",
     "title": "Blog",
     "section": "Objave na Srpskom",
-    "text": "Objave na Srpskom\n\n\n\n\n  \n\n\n\n\nUredni Podaci u Biomedicinskim Naukama\n\n\n\n\n\n\n\nstatistika\n\n\nmedicina\n\n\nsrpski\n\n\n\n\nNeke baze mogu biti toliko neuredne da su praktično neupotrebljive. Ovde ćete naći kratak pregled strategija za pravljenje urednih baza. Više vremena provedeno razmišljajući o analizi, a manje o sređivanju podataka je bolje za nauku.\n\n\n\n\n\n\nNov 5, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\n  \n\n\n\n\nKlinički rezon je kocka\n\n\n\n\n\n\n\nmedicina\n\n\nzaključivanje\n\n\nsrpski\n\n\n\n\nDijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.\n\n\n\n\n\n\nAug 21, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\n  \n\n\n\n\nKauzalno zaključivanje je moguće iz opservacionih studija\n\n\n\n\n\n\n\nstatistika\n\n\nkauzalnost\n\n\nsrpski\n\n\n\n\nEksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja.\n\n\n\n\n\n\nAug 7, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\nNo matching items"
+    "text": "Objave na Srpskom\n\n\n\n\n  \n\n\n\n\nPriče iza Podataka: Otkrivanje Gravitacije\n\n\n\n\n\n\n\nstatistika\n\n\nsrpski\n\n\n\n\nJedini test razumevanja fenomena je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom — da. Možemo li osnovnoškolskim znanjem da smislimo eksperiment i otkrijemo lokalno gravitaciono ubrzanje u Beogradu?\n\n\n\n\n\n\nDec 2, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\n  \n\n\n\n\nUredni Podaci u Biomedicinskim Naukama\n\n\n\n\n\n\n\nstatistika\n\n\nmedicina\n\n\nsrpski\n\n\n\n\nNeke baze mogu biti toliko neuredne da su praktično neupotrebljive. Ovde ćete naći kratak pregled strategija za pravljenje urednih baza. Više vremena provedeno razmišljajući o analizi, a manje o sređivanju podataka je bolje za nauku.\n\n\n\n\n\n\nNov 5, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\n  \n\n\n\n\nKlinički rezon je kocka\n\n\n\n\n\n\n\nmedicina\n\n\nzaključivanje\n\n\nsrpski\n\n\n\n\nDijagnostičkom razmišljanju kao formalnoj disciplini se ne posvećuje dovoljno pažnje. U ovom članku će biti pregledan probabilistički pristup dijagnostici uz argument da obrazovanje budućih lekara treba da sadrži praktične vežbe iz dijagnostičkog razmišljanja.\n\n\n\n\n\n\nAug 21, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\n  \n\n\n\n\nKauzalno zaključivanje je moguće iz opservacionih studija\n\n\n\n\n\n\n\nstatistika\n\n\nkauzalnost\n\n\nsrpski\n\n\n\n\nEksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja.\n\n\n\n\n\n\nAug 7, 2023\n\n\nNikola N. Grubor\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "myblog/posts/sr/kauzalno-zakljucivanje/index.html",
@@ -208,5 +208,75 @@
     "title": "Uredni Podaci u Biomedicinskim Naukama",
     "section": "Fusnota",
     "text": "Fusnota\n\n\nExcel je uneo neverovatnu pometnju u polje genomike, jer uporno tumači imena gena kao datume. Ove greške se uporno provlače jer Excel svoje izmene ne prijavljuje već ih radi “tiho” u pozadini, ne dajući obaveštenje korisniku (Lewis, 2021).↩︎"
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html",
+    "href": "myblog/posts/sr/gravitacija/index.html",
+    "title": "Priče Podataka: Otkrivanje Gravitacije",
+    "section": "",
+    "text": "Na prvi pogled zakoni fizike deluju kao da su pali sa neba. Barem su meni uvek tako delovali. Formule i njihove posledice deluju kao da su izvedene iz nekih aksioma. Gde aksiomi treba da predstavljaju apsolutnu istinu. Gravitacija je neizbežna posledica Njutnovog zakona gravitacije, i ma koliko mi zeleli da skočimo u vis i vinemo se u daljine, to jednostavno nije moguće. Međutim, početna tačka fizike nisu aksiomi (apsolutne istine), već postulati. Već po imenu vidimo da oni ne nose istu težinu kao aksiomi. Postulat vodi svoj koren od latinskog postulare što bi u bukvalnom prevodu značilo upit. Postulati pretpostavljaju postojanje nečega, ne tvrde apsolutno kao aksiomi. Zbog čega postoji ova razlika?\nUz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi su u stvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti — konkretno kao posledica merenja. Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (Figura 1 (a)). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (Figura 1 (b)).\n\n\n\n\n\n(a) Galileovi crteži Saturna.\n\n\n\n\n\n(b) Zlatna ribica tumači svet gledajući ga kroz staklo.\n\n\nFigura 1: Analogije modela sveta\n\n\n\n\n\n\n\nKlaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.\nPredviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu) — zašto je to tako?"
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#ptolomej-i-geocentrični-svet",
+    "href": "myblog/posts/sr/gravitacija/index.html#ptolomej-i-geocentrični-svet",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Ptolomej i geocentrični svet",
+    "text": "Ptolomej i geocentrični svet\nKlaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao precizna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.\n\n\n\nEpiciklusi Ptolomejevog modela\n\n\nMeđutim, predviđanja nisu sve. U eri mašinskog učenja, gde smo u stanju da napravimo modele koji predviđaju jako dobro ali nemaju nikakvu eksplanatornu vrednost, ova stavka je bitnija nego ikad. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu na Mars) jer ne predstavlja realnost.2"
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#odakle-dolazi-formula-gravitacije",
+    "href": "myblog/posts/sr/gravitacija/index.html#odakle-dolazi-formula-gravitacije",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Odakle dolazi formula gravitacije",
+    "text": "Odakle dolazi formula gravitacije\nU osnovnoj školi smo naučili da telo u da se visina tela u slobodnom padu može izraziti sa (detaljnije izvedeno u Dodatak 1):\n\\[\nh = \\frac{1}{2}gt^2\n\\] Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine \\(h\\) i merenje vremena pada \\(t\\) nas ostavlja sa jednom nepoznatom: \\(g\\). Ako pravimo model procesa opšte forme \\(y = f(x)\\), odnos možemo izraziti formulom:\n\\[\nt_i = \\sqrt\\frac{2h_k}{g}, \\; \\text{za i-to bacanje loptice, i k-tu visinu.}\n\\]\nSada možemo prikupiti podatke."
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#otkrivanje-gravitacionog-ubrzanja",
+    "href": "myblog/posts/sr/gravitacija/index.html#otkrivanje-gravitacionog-ubrzanja",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Otkrivanje gravitacionog ubrzanja",
+    "text": "Otkrivanje gravitacionog ubrzanja\nU nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u Tabela 1. Nelinaran odnos je grafički prikazan na Figura 2\n\n\n\n\nTabela 1: Prikazano je prvih 5 redova podataka iz eksperimenta.\n\n\nid\nvreme_s\nvisina_m\n\n\n\n\n1\n0.41\n0.74\n\n\n2\n0.41\n0.74\n\n\n3\n0.55\n0.74\n\n\n4\n0.47\n0.74\n\n\n5\n0.41\n0.74\n\n\n\n\n\n\n\n\n\n\n\nFigura 2: Grafički prikaz podataka iz eksperimenta slobodnog pada loptice.\n\n\n\n\nMerenja nisu najkvalitetnija. Plato koji se javlja za najviše visine je verovatno artefakt neke vrste (greške u merenju usled uticaja refleksa, uticaj otpora vazduha, tehnika ispuštanja loptice, itd.). Nastavićemo primer sa ovim podacima, možda se iznenadimo rezultatom."
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#bajesov-model-gravitacionog-ubrzanja",
+    "href": "myblog/posts/sr/gravitacija/index.html#bajesov-model-gravitacionog-ubrzanja",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Bajesov model gravitacionog ubrzanja",
+    "text": "Bajesov model gravitacionog ubrzanja\nNeću ovde ulaziti u razlike između fekventističkih i Bajesovskih modela. Sve što nam je potrebno da bi nastavili dalje je da definišemo apriornu raspodelu gravitacionog ubrzanja \\(g\\) za Beograd. Bajesov pristup ocenjivanja parametara zahteva od nas da jasno kažemo kakve vrednosti su moguće za \\(g\\)."
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#šta-su-modeli",
+    "href": "myblog/posts/sr/gravitacija/index.html#šta-su-modeli",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Šta su modeli?",
+    "text": "Šta su modeli?\n\nSvaki model je pogrešan, ali neki su korisni. — George Box\n\nFormalna definicija modela…"
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#footnotes",
+    "href": "myblog/posts/sr/gravitacija/index.html#footnotes",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Fusnota",
+    "text": "Fusnota\n\n\nMožda deluje da kao da tvrdim da su opservacije nekako inferiorni oblik saznanja. Naprotiv, eksperimenti i opservacije su preko potrebni ljudskom saznanju. Čovekov mozak ume veoma lako da se prevari — da umisli veze tamo gde one ne postoje. Eksperimenti nam omogućavaju da proverimo naše teorije. I često, ako se rezultati ne poklapaju, možemo da unapredimo naše ideje.↩︎\nU industriji je često predikcija cilj sam po sebi (npr. koji tip osobe će kliknuti na reklamu koja mu je servirana). Međutim, istraživači bi trebalo da teže nekom razumevanju sveta. Tu je onda cilj objašnjenje koju pružaju kauzalni modeli. Kada imamo kauzalni model, onda možemo da planiramo intervencije, tj. šta će se desiti ako utičemo na sistem. Oba cilja su korisna, sve zavisi od konteksta.↩︎\nSumnjam da ćemo imati dovoljno podataka da precizno odredimo lokalnu gravitacionu konstatnu, ali barem možemo da otkrijemo koliko precizni možemo da budemo.↩︎"
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#apriorna-raspodela",
+    "href": "myblog/posts/sr/gravitacija/index.html#apriorna-raspodela",
+    "title": "Priče Podataka: Otkrivanje Gravitacije",
+    "section": "Apriorna raspodela",
+    "text": "Apriorna raspodela\nBiranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena. U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva — gledali smo mnogo stvari kako padaju. Deluje mi da stvari nece ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela je prikazana na Figura 3.\n\n\n\n\n\nFigura 3: Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja."
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#rezultati",
+    "href": "myblog/posts/sr/gravitacija/index.html#rezultati",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Rezultati",
+    "text": "Rezultati\nIskreno, nisam očekivao da ću sa samo 51 opservacijom (i to poprilično traljavim) moći ovako dobro da odredim gravitaciono ubrzanje. Procena parametra \\(g\\) je data u Tabela 2. Možemo da uporedimo naš rezultat sa Formulom za Internacionalnu Procenu Gravitacije (Theoretical Gravity, 2023) koja procenjuje vrednost lokalnog gravitacionog ubrzanja \\(g_{Beograd} = 9.806 \\; m/s^2\\). Iznenađujuće, rezultat uopšte nije loš!\n\n\n\n\nTabela 2: Rezultat modela. Estimate je najbolja procena parametra. Q2.5 i Q97.5 su kvantili.\n\n\n\nEstimate\nEst.Error\nQ2.5\nQ97.5\n\n\n\n\ng_Intercept\n9.807979\n0.74607\n8.32866\n11.37652\n\n\n\n\n\n\nPosteriorna distribucija je prikazana grafički na Figura 4. Parametar je dosta nesiguran (širina aposteriorne distribucije) ali je većina verovatnoće koncentrisana oko tačne vrednosti. Kada je model video podatke dodelio je parametaru \\(g\\) vrednosti koje su konzistentne sa podacima iz našeg malog eksperimenta.\n\n\n\n\n\nFigura 4: Odnos apriorne i aposteriorne distribucije."
+  },
+  {
+    "objectID": "myblog/posts/sr/gravitacija/index.html#apriorna-raspodela-gravitacionog-ubrzanja",
+    "href": "myblog/posts/sr/gravitacija/index.html#apriorna-raspodela-gravitacionog-ubrzanja",
+    "title": "Priče iza Podataka: Otkrivanje Gravitacije",
+    "section": "Apriorna raspodela gravitacionog ubrzanja",
+    "text": "Apriorna raspodela gravitacionog ubrzanja\nBiranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena. U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva — gledali smo mnogo stvari kako padaju. Deluje mi da stvari nece ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Sasvim sigurno je da negativni brojevi nisu mogući. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela mogućih vrednosti za \\(g\\) je prikazana na Figura 3.\n\n\n\n\n\nFigura 3: Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja."
   }
 ]

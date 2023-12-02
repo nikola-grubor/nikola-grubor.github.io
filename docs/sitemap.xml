@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nikola-grubor.github.io/index.html</loc>
-    <lastmod>2023-12-01T13:35:55.347Z</lastmod>
+    <lastmod>2023-12-02T02:42:06.918Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/index.html</loc>
-    <lastmod>2023-12-01T16:31:07.071Z</lastmod>
+    <lastmod>2023-12-02T16:39:33.432Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje/index.html</loc>
@@ -19,5 +19,9 @@
   <url>
     <loc>https://nikola-grubor.github.io/myblog/posts/sr/uredni-podaci/index.html</loc>
     <lastmod>2023-12-01T11:45:54.958Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/gravitacija/index.html</loc>
+    <lastmod>2023-12-02T16:39:32.958Z</lastmod>
   </url>
 </urlset>

@@ -1,7 +1,7 @@
 ---
-title: "Priče Podataka: Otkrivanje Gravitacije"
-description: "Jedini test razumevanja je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom da."
-date: today
+title: "Priče iza Podataka: Otkrivanje Gravitacije"
+description: "Jedini test razumevanja fenomena je da li možemo da predividimo ishod naše intervencije. Ptolomejevim geocentričnim modelom Solarnog sistema nikad ne bismo mogli da sletimo na mesec, ali Keplerovim modelom --- da. Možemo li osnovnoškolskim znanjem da smislimo eksperiment i otkrijemo lokalno gravitaciono ubrzanje u Beogradu?"
+date: 2023-12-02
 date-format: D/MM/YYYY
 lang: hr
 language: language-sr-Latn.yml
@@ -15,11 +15,17 @@ author:
 csl: apa.csl
 bibliography: biblio.bib
 categories: [statistika, srpski]
-image: ""
+image: "geocenter.png"
 mermaid: 
   theme: forest
-draft: true
+draft: false
 ---
+
+```{css, echo = FALSE}
+.justify {
+  text-align: justify !important
+}
+```
 
 ```{r}
 #| echo: false
@@ -48,19 +54,15 @@ d <- d %>%
   group_by(block) %>% 
   mutate(time_se = sd(time) / sqrt(length(time)))
 
-d %>% ggplot(aes(x = height, y = time, 
-                 ymin = time - time_se, 
-                 ymax = time + time_se)) +
-  geom_pointrange(shape = 20, alpha = 2/3) +
-  coord_flip()
-
 ```
 
-# Model kao prozor u realnost
+# Model kao prozor u realnost {.justify}
 
 Na prvi pogled zakoni fizike deluju kao da su pali sa neba. Barem su meni uvek tako delovali. Formule i njihove posledice deluju kao da su izvedene iz nekih aksioma. Gde aksiomi treba da predstavljaju apsolutnu istinu. Gravitacija je neizbežna posledica Njutnovog zakona gravitacije, i ma koliko mi zeleli da skočimo u vis i vinemo se u daljine, to jednostavno nije moguće. Međutim, početna tačka fizike nisu aksiomi (apsolutne istine), već postulati. Već po imenu vidimo da oni ne nose istu težinu kao aksiomi. Postulat vodi svoj koren od latinskog *postulare* što bi u bukvalnom prevodu značilo *upit*. Postulati pretpostavljaju postojanje nečega, ne tvrde apsolutno kao aksiomi. Zbog čega postoji ova razlika?
 
-Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi ustvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti --- konkretno kao posledica merenja. Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (@fig-saturn). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (@fig-fish).
+Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi su u stvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti --- konkretno kao posledica merenja.[^1] Kada je Galileo upotrebio prvi teleskop i ugledao saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara (@fig-saturn). Ta iskrivljena slika realnosti se javlja ma koliko precizan instrument koristili. Čovek je kao zlatna ribica u akvarijumu, osuđen da gleda iskrivljenu sliku sveta (@fig-fish).
+
+[^1]: Možda deluje da kao da tvrdim da su opservacije nekako inferiorni oblik saznanja. Naprotiv, eksperimenti i opservacije su preko potrebni ljudskom saznanju. Čovekov mozak ume veoma lako da se prevari --- da umisli veze tamo gde one ne postoje. Eksperimenti nam omogućavaju da proverimo naše teorije. I često, ako se rezultati ne poklapaju, možemo da unapredimo naše ideje.
 
 ::: {#fig-models}
 ![Galileovi crteži Saturna.](saturn.jpeg){#fig-saturn}
@@ -72,13 +74,41 @@ Analogije modela sveta
 
 ## Šta su modeli?
 
+> Svaki model je pogrešan, ali neki su korisni. --- George Box
+
+Formalna definicija modela...
+
 ## Ptolomej i geocentrični svet
 
-Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već je malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao tačna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.
+Klaudije Ptolomej je bio Helenistički astronom i polimat. Njegovo dostignuće je formalizacija geocentričnog modela kretanja planeta tokom 2. veka nove ere. Ptolomejev sistem orbita planeta zahtevao je neke neobične premise, poput kružnih orbita na još kruznih orbita. Takođe, planeta Zemlja nije mogla biti tačno u centru, već malo izmeštena. Uprkos ovim čudnim pretpostavkama, ovaj model je davao precizna predviđanja kretanja planeta za tada dostupne metode posmatranja. Ptolomejev model Solarnog sistema će biti dominantan sledećih 1000 godina.
 
-Predviđanja nisu sve. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu) --- zašto je to tako?
+![Epiciklusi Ptolomejevog modela](geocenter.png){width="50%"}
 
-# Primer: Gravitaciono ubrzanje u Beogradu
+Međutim, predviđanja nisu sve. U eri mašinskog učenja, gde smo u stanju da napravimo modele koji predviđaju jako dobro ali nemaju nikakvu eksplanatornu vrednost, ova stavka je bitnija nego ikad. Ptolomejev model, i ako dobar u predviđanju, ne bi mogao da nam pomogne da sletimo na mesec (ili pošaljemo istraživačku letelicu na Mars) jer ne predstavlja realnost.[^2]
+
+[^2]: U industriji je često predikcija cilj sam po sebi (npr. koji tip osobe će kliknuti na reklamu koja mu je servirana). Međutim, istraživači bi trebalo da teže nekom razumevanju sveta. Tu je onda cilj objašnjenje koju pružaju kauzalni modeli. Kada imamo kauzalni model, onda možemo da planiramo intervencije, tj. šta će se desiti ako utičemo na sistem. Oba cilja su korisna, sve zavisi od konteksta.
+
+# Primer: Gravitaciono ubrzanje u Beogradu {.justify}
+
+### Lokalno gravitaciono ubrzanje
+
+Stvari koje imaju masu utiču na okolinu preko gravitacionog polja. Što je veća masa to je jača sila privlačenja koja deluje između dva tela. Kako naša planeta nije savršena sfera, privlačna sila neće svuda na Zemlji biti ista. Odradićemo mali eksperiment da pokušamo da je odredimo.[^3]
+
+[^3]: Sumnjam da ćemo imati dovoljno podataka da precizno odredimo lokalnu gravitacionu konstatnu, ali barem možemo da otkrijemo koliko precizni možemo da budemo.
+
+### Ideja eksperimenta
+
+Sve što je potrebno je:
+
+-   neka stvar koju ćemo puštati da padne više puta
+-   štoperica
+-   metar
+
+Našao sam najobičniju tenisku lopticu, mada može bilo šta izdržljivo da posluži. Zatim sam izmerio četiri različite visine u stanu i puštao loptu da pada sa različitih visina dok mi nije dosadilo, mereći vreme do udara o pod štopericom. Više podataka je uvek bolje --- napravio sam 51 opservaciju.
+
+### Proces koji generiše podatke
+
+Interesantno je da se u ovom procesu padanja tela na pod krije informacija o tome koliko jako deluje gravitacija na našoj planeti. Bilo koji proces koji stvara podatke nazivamo "procesom koji generiše podatke" (engl. *data generating process*). Informacija o gravitacionom ubrzanju je skrivena u nekom odnosu vremena i visine. Jedini način da smisleno povežemo ove dve vrednosti je ako prvo imamo razumnu teoriju. To nas vraća u osnovnu školu.
 
 ## Odakle dolazi formula gravitacije
 
@@ -86,20 +116,17 @@ U osnovnoj školi smo naučili da telo u da se visina tela u slobodnom padu mož
 
 $$
 h = \frac{1}{2}gt^2
-$$ 
-Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine $h$ i merenje vremena pada $t$ nas ostavlja sa jednom nepoznatom: $g$. Ako pravimo model procesa opšte forme $y = f(x)$, možemo 
-izraziti izmeniti formulu:
+$$ Kako bismo otkrili kakvo je gravitaciono ubrzanje možemo odraditi eksperiment. Bacanje obične loptice sa poznate visine $h$ i merenje vremena pada $t$ nas ostavlja sa jednom nepoznatom: $g$. Ako pravimo model procesa opšte forme $y = f(x)$, odnos možemo izraziti formulom:
 
 $$
 t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
-$$
-Sada se možemo baciti na eksperimentisanje.
+$$ 
+
+Sada možemo prikupiti podatke.
 
 ## Otkrivanje gravitacionog ubrzanja
 
-U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju,
-napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine.
-Rezultujući podaci su dati u @tbl-data.
+U nadi da ce se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u @tbl-data. Nelinaran odnos je grafički prikazan na [@fig-datagraph]
 
 ```{r}
 #| label: tbl-data
@@ -111,24 +138,51 @@ d %>% ungroup() %>%  select(-c(block, time_se)) %>%
   head(5) %>% 
   knitr::kable()
 ```
+
+```{r}
+#| label: fig-datagraph
+#| fig-cap: "Grafički prikaz podataka iz eksperimenta slobodnog pada loptice."
+#| echo: false
+#| warning: false
+
+
+d %>% ggplot(aes(x = height, y = time, 
+                 ymin = time - time_se, 
+                 ymax = time + time_se)) +
+  geom_point(shape = 20, alpha = 2/3) +
+  geom_smooth(se = T, color = "lightblue", fill = "grey80", method = NULL) +
+  labs(
+    x = "visina (m)",
+    y = "vreme (s)"
+  ) +
+  theme_cowplot()
+```
+
+Merenja nisu najkvalitetnija. Plato koji se javlja za najviše visine je verovatno artefakt neke vrste (greške u merenju usled uticaja refleksa, uticaj otpora vazduha, tehnika ispuštanja loptice, itd.). Nastavićemo primer sa ovim podacima, možda se iznenadimo rezultatom.
+
 ## Bajesov model gravitacionog ubrzanja
 
-$$
-t_i = \sqrt\frac{2h_k}{g}
-$$
-$$
-g \sim Normal(10, 3)
-$$
-$$
-\sigma \sim Exponential(1)
-$$
-$$
-\gamma \sim Exponential(1)
-$$
+Neću ovde ulaziti u razlike između fekventističkih i Bajesovskih modela. Sve što nam je potrebno da bi nastavili dalje je da definišemo apriornu raspodelu gravitacionog ubrzanja $g$ za Beograd. Bajesov pristup ocenjivanja parametara zahteva od nas da jasno kažemo kakve vrednosti su moguće za $g$.
+
+<!-- $$ -->
+<!-- t_i = \sqrt\frac{2h_k}{g} -->
+<!-- $$ $$ -->
+<!-- g \sim Normal(10, 3) -->
+<!-- $$ $$ -->
+<!-- \sigma \sim Exponential(1) -->
+<!-- $$  -->
+<!-- $$ -->
+<!-- \gamma \sim Exponential(1) -->
+<!-- $$ -->
+
+## Apriorna raspodela gravitacionog ubrzanja
+
+Biranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena. U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva --- gledali smo mnogo stvari kako padaju. Deluje mi da stvari nece ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Sasvim sigurno je da negativni brojevi nisu mogući. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela mogućih vrednosti za $g$ je prikazana na [@fig-prior].
 
 ```{r}
 #| label: fig-prior
-#| fig-cap: ""
+#| fig-cap: "Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja."
+#| echo: false
 
 ggplot() +
   xlim(0, 20) +
@@ -138,7 +192,6 @@ ggplot() +
        x = expression(g~(m/s^2)),
        y = "gustina")
 ```
-
 
 ```{r}
 #| echo: false
@@ -220,8 +273,53 @@ m2.1 <- brm(
 )
 ```
 
+## Rezultati
+
+Iskreno, nisam očekivao da ću sa samo 51 opservacijom (i to poprilično traljavim) moći ovako dobro da odredim gravitaciono ubrzanje. Procena parametra $g$ je data u [@tbl-fixedef]. Možemo da uporedimo naš rezultat sa Formulom za Internacionalnu Procenu Gravitacije [@theoreti2023] koja procenjuje vrednost lokalnog gravitacionog ubrzanja $g_{Beograd} = 9.806 \; m/s^2$. Iznenađujuće, rezultat uopšte nije loš!
+
 ```{r}
 #| echo: false
+#| label: tbl-fixedef
+#| tbl-cap: "Rezultat modela. `Estimate` je najbolja procena parametra. `Q2.5` i `Q97.5` su kvantili."
+
+
+fixef(m1.1) %>% knitr::kable()
+```
+
+Posteriorna distribucija je prikazana grafički na [@fig-update]. Parametar je dosta nesiguran (širina aposteriorne distribucije) ali je većina verovatnoće koncentrisana oko tačne vrednosti. Kada je model video podatke dodelio je parametaru $g$ vrednosti koje su konzistentne sa podacima iz našeg malog eksperimenta.
+
+```{r}
+#| label: fig-update
+#| fig-cap: "Odnos apriorne i aposteriorne distribucije."
+#| echo: false
+
+m1.1 %>%
+  spread_draws(b_g_Intercept) %>%
+  ggplot(aes(x = b_g_Intercept)) +
+  xlim(0, 20) +
+  stat_function(fun = dnorm, args = list(mean = 10, sd = 3), 
+                geom = "polygon", alpha = 1/3, color = "grey60", fill = "grey90",
+                linetype = 2) +
+  stat_halfeye(alpha = 2/3, fill = "lightblue") +
+  annotate("text", x = 5, y = 0.125, label = "Apriorna", size = 5) +
+  annotate("text", x = 13, y = 0.5, label = "Aposteriorna", size = 5,
+           color = "lightblue") +
+  labs(
+    x = expression(g~(m/s^2)),
+    y = "Verovatnoća"
+  ) + ggtitle("Ažuriranje apriorne raspodele") +
+  theme_cowplot()
+```
+
+```{r}
+#| echo: false
+#| include: false
+predictions(m1.1, newdata = d)
+```
+
+```{r}
+#| echo: false
+#| include: false
 #| label: fig-parameter
 #| fig-subcap: "Lorem ipsum."
 #| fig-width: 8
@@ -275,23 +373,41 @@ p2 <- m1.1 %>%
 # loo_compare(loo.m1, loo.m1.1, loo.m1.2, loo.m2, loo.m2.1)
 ```
 
-# Zaključak
+# Zaključak {.justify}
 
-# Dodatci
+Ovo je u suštini bio pregled naučnog pristupa. Saznali smo sta su modeli i koji su njihovi ciljevi. Definisali smo istraživačko pitanje i šta je proces koji generiše podatke. Zatim smo iskoristili znanje o gravitaciji iz osnovne škole kako bi znali kakav eksperiment treba da konstruišemo. Naš eksperiment je napravio mogućnost da se ispolji proces koji generiše podatke. Zatim smo taj proces ispitali kako bi procenili kakvo je lokalno gravitaciono ubrzanje.
+
+::: {.callout-note}
+# Rezime
+- Naučni modeli su prozor u funkcionisanje sveta
+- Predviđanje i razumevanje su dva različita cilja
+- Prirodni fenomeni su procesi koji generišu podatke
+- Potrebna nam je teorija pre nego što započnemo ispitivanje
+- Procesi koji generišu podatke kriju informacije o svetu
+:::
+
+# Dodatci {.justify}
 
 ### Dodatak 1: Izvođenje formula gravitacionog ubrzanja {#sec-dodatak1}
 
 $$
 s = \bar v t
-$$ Srednja brzina $\bar v$, tokom ravnomernog kretanja je jednaka $\frac{\Delta v}{\Delta t}$. Tako da:
+$$ 
+
+Srednja brzina $\bar v$, tokom ravnomernog kretanja je jednaka $\frac{\Delta v}{\Delta t}$. Tako da:
 
 $$
 s = \frac{v_0 + v}{2}t
-$$ Ako predstavimo gravitacionu ubrzanje $g$ kao promenu brzine $v$ u jedinici vremena $t$, onda je:
+$$ 
+
+Ako predstavimo gravitacionu ubrzanje $g$ kao promenu brzine $v$ u jedinici vremena $t$, onda je:
 
 $$
 g = \frac{\Delta v}{\Delta t} 
-$$ Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo $v_0$ u obe jednačine. Takođe, ako nas interesuje $g$ u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme $t_0$. Tako je onda: $$
+$$ 
+Ako je telo krenulo da pada iz mirovanja onda mozemo da zanemarimo $v_0$ u obe jednačine. Takođe, ako nas interesuje $g$ u jediničnom vremenu (tj. trenutku) mozemo da zanemarimo i početno vreme $t_0$. Tako je onda: 
+
+$$
 s = \frac{\not v_0 + v}{2}t \rightarrow s = \frac{v}{2}t
 $$ $$
 g = \frac{\Delta v}{\Delta t} = \frac{v - \not v_0}{t - \not t_0} \rightarrow 
