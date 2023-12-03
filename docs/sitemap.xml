@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nikola-grubor.github.io/index.html</loc>
-    <lastmod>2023-12-03T02:46:10.697Z</lastmod>
-  </url>
-  <url>
     <loc>https://nikola-grubor.github.io/myblog/index.html</loc>
-    <lastmod>2023-12-03T14:53:18.474Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje/index.html</loc>
-    <lastmod>2023-12-03T02:25:26.410Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/sr/med-dg/index.html</loc>
-    <lastmod>2023-12-03T02:38:56.915Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nikola-grubor.github.io/myblog/posts/sr/uredni-podaci/index.html</loc>
-    <lastmod>2023-12-03T02:46:56.405Z</lastmod>
+    <lastmod>2023-12-03T15:28:06.167Z</lastmod>
   </url>
   <url>
     <loc>https://nikola-grubor.github.io/myblog/posts/sr/gravitacija/index.html</loc>
-    <lastmod>2023-12-03T14:53:18.004Z</lastmod>
+    <lastmod>2023-12-03T15:28:31.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/uredni-podaci/index.html</loc>
+    <lastmod>2023-12-03T15:28:26.060Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/index.html</loc>
+    <lastmod>2023-12-03T15:28:02.117Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/med-dg/index.html</loc>
+    <lastmod>2023-12-03T15:28:17.296Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje/index.html</loc>
+    <lastmod>2023-12-03T15:28:10.165Z</lastmod>
   </url>
 </urlset>
