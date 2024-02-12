@@ -1,0 +1,34 @@
+---
+title: "Kauzalne strukture u medicini"
+description: "Kauzalna inferenca je teška."
+date: 2024-2-12
+date-format: D/MM/YYYY
+number-sections: true
+number-depth: 2
+lang: hr
+language: language-sr-Latn.yml
+citation:
+  language: sr-Latn
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+categories: [statistika, kauzalnost, medicina, srpski]
+image: ""
+mermaid: 
+  theme: forest
+draft: true
+---
+
+```{css, echo = FALSE}
+.justify {
+  text-align: justify !important
+}
+```
+
+# Kauzalnost i predikcija
+
+# Elementarne veze
+
