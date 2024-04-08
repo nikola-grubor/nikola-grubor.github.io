@@ -1,13 +1,13 @@
 ---
 title: "Blog"
 listing:
-  - id: English
-    contents: posts/en
-    sort: "date desc"
-    type: default
-    categories: true
-    sort-ui: false
-    filter-ui: false
+  # - id: English
+  #   contents: posts/en
+  #   sort: "date desc"
+  #   type: default
+  #   categories: true
+  #   sort-ui: false
+  #   filter-ui: false
   - id: Srpski
     contents: posts/sr
     sort: "date desc"
@@ -19,12 +19,12 @@ page-layout: full
 title-block-banner: false
 ---
 
-## English posts
+<!-- ## English posts -->
 
-:::{#English}
-:::
+<!-- ::: {#English} -->
+<!-- ::: -->
 
 ## Objave na Srpskom
 
-:::{#Srpski}
+::: {#Srpski}
 :::

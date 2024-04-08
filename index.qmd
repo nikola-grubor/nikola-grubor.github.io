@@ -23,10 +23,6 @@ about:
     #   href: uploads/resume.pdf
 ---
 
-```{=html}
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ngrubor" data-color="#FFDD00" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-```
-
 I am a medical doctor and PhD student of Medical Statistics and Bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. I aim to make the science of medicine more approachable to the public and help researchers answer interesting questions. Bayesian scientific modeling offers a unique approach to quantifying uncertainty and incorporating prior knowledge via domain expertise elicitation, which can aid small and underfunded research teams in making a more significant impact. I have experience working in large research teams and managing communication with large groups of students. My involvement in patient care has led me to develop skills in making complex topics more approachable.
 
 ## Education
@@ -51,8 +47,9 @@ I am a medical doctor and PhD student of Medical Statistics and Bioinformatics a
     Department for Medical Statistics and Informatics, Belgrade University Medical School \| Sept 2022 --- Present
 
 -   **Past Collaboration**\
-    1. Clinic for Digestive Surgery (First Surgical Clinic), University Clinical Center of Serbia\
-    2. Institute for Biological Research "Siniša Stanković"
+
+    1.  Clinic for Digestive Surgery (First Surgical Clinic), University Clinical Center of Serbia\
+    2.  Institute for Biological Research "Siniša Stanković"
 
 -   **Clinical Internship**\
     University Clinical Center of Serbia \| Sept 2022 --- Mar 2023

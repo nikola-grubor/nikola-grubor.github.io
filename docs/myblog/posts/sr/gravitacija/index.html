@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -69,7 +70,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Nema rezultata",
     "search-matching-documents-text": "slična dokumenta",
@@ -78,6 +85,7 @@ div.csl-indent {
     "search-more-match-text": "još rezultat u ovom dokumentu",
     "search-more-matches-text": "još rezultata u ovom dokumentu",
     "search-clear-button-title": "Obriši",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Odustani",
     "search-submit-button-title": "Predaj",
     "search-label": "Pretraži"
@@ -86,6 +94,33 @@ div.csl-indent {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 <meta name="twitter:title" content="Nikola N. Grubor - Priče iza Podataka: Model za Otkrivanje Gravitacije">
@@ -99,10 +134,10 @@ div.csl-indent {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Nikola N. Grubor</span>
     </a>
@@ -114,21 +149,21 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../myblog/index.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../../../myblog/index.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/nikola-grubor" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://www.linkedin.com/in/herr-grubor/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/nikola-grubor" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/herr-grubor/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Prekidač za tamnu temu"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -209,6 +244,7 @@ div.csl-indent {
 
 
 
+
 <div class="cell">
 <style type="text/css">
 .justify {
@@ -219,22 +255,34 @@ div.csl-indent {
 <section id="model-kao-prozor-u-realnost" class="level1 justify" data-number="1">
 <h1 class="justify" data-number="1"><span class="header-section-number">1</span> Model kao prozor u realnost</h1>
 <p>Na prvi pogled zakoni fizike deluju kao da su pali sa neba. Barem su meni uvek tako delovali. Formule i njihove posledice deluju kao da su izvedene iz nekih aksioma. Gde aksiomi treba da predstavljaju apsolutnu istinu. Gravitacija je neizbežna posledica Njutnovog zakona gravitacije, i ma koliko mi želeli da skočimo u vis i vinemo se u daljine, to jednostavno nije moguće. Međutim, početna tačka fizike nisu aksiomi (apsolutne istine), već postulati. Već po imenu vidimo da oni ne nose istu težinu kao aksiomi. Postulat vodi svoj koren od latinskog <em>postulare</em> što bi u bukvalnom prevodu značilo <em>upit</em>. Postulati pretpostavljaju postojanje nečega, ne tvrde apsolutno kao aksiomi. Zbog čega postoji ova razlika u disciplinama?</p>
-<p>Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi su u stvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti — konkretno kao posledica merenja.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Kada je Galileo upotrebio prvi teleskop i ugledao Saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara, i pomislio da Saturn ima dva meseca u svojoj orbiti (<a href="#fig-saturn">Figura&nbsp;1 (a)</a>) <span class="citation" data-cites="vanhelden1984">(<a href="#ref-vanhelden1984" role="doc-biblioref">Helden, 1984</a>)</span>. Ta iskrivljena slika realnosti je uslovljena mernim aparatima i javlja se ma koliko precizan instrument koristili. Čovekova pozicija u svetu je poput zlatne ribice u akvarijumu, osuđene da gleda izmenjenu sliku sveta (<a href="#fig-fish">Figura&nbsp;1 (b)</a>).</p>
-<div id="fig-models" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div id="fig-saturn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="saturn.jpeg" class="img-fluid figure-img" data-ref-parent="fig-models"></p>
-<figcaption class="figure-caption">(a) Galileovi crteži Saturna.</figcaption>
+<p>Uz kreativnost i upornost, naučnici (ili prirodni filozofi kao što su se nekad zvali) su uspeli da opišu ponašanje prirode matematičkim formulama. Svi ovi opisi su u stvari posledice opservacija. Kako sve opservacije potiču iz empirije (iskustva), podložne su određenoj distorziji (iskrivljenju) realnosti — konkretno kao posledica merenja.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Kada je Galileo upotrebio prvi teleskop i ugledao Saturnove prstenove, video je mutnu brljotinu, poput kratkovidog čoveka bez naočara, i pomislio da Saturn ima dva meseca u svojoj orbiti (<a href="#fig-saturn" class="quarto-xref">Figura&nbsp;1 (a)</a>) <span class="citation" data-cites="vanhelden1984">(<a href="#ref-vanhelden1984" role="doc-biblioref">Helden, 1984</a>)</span>. Ta iskrivljena slika realnosti je uslovljena mernim aparatima i javlja se ma koliko precizan instrument koristili. Čovekova pozicija u svetu je poput zlatne ribice u akvarijumu, osuđene da gleda izmenjenu sliku sveta (<a href="#fig-fish" class="quarto-xref">Figura&nbsp;1 (b)</a>).</p>
+<div id="fig-models" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-saturn" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-saturn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="saturn.jpeg" class="img-fluid figure-img" data-ref-parent="fig-models">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-saturn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Galileovi crteži Saturna.
+</figcaption>
 </figure>
 </div>
-<div id="fig-fish" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fish.jpg" class="img-fluid figure-img" data-ref-parent="fig-models"></p>
-<figcaption class="figure-caption">(b) Zlatna ribica tumači svet gledajući ga kroz staklo.</figcaption>
+<div id="fig-fish" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-fish-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fish.jpg" class="img-fluid figure-img" data-ref-parent="fig-models">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fish-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Zlatna ribica tumači svet gledajući ga kroz staklo.
+</figcaption>
 </figure>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;1: Analogije modela sveta</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Analogije modela sveta
+</figcaption>
 </figure>
 </div>
 <section id="šta-su-modeli" class="level2" data-number="1.1">
@@ -250,7 +298,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="geocenter.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">Epiciklusi Ptolomejevog geocentričnog modela.</figcaption>
+<figcaption>Epiciklusi Ptolomejevog geocentričnog modela.</figcaption>
 </figure>
 </div>
 </section>
@@ -288,12 +336,16 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </section>
 <section id="otkrivanje-gravitacionog-ubrzanja" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="otkrivanje-gravitacionog-ubrzanja"><span class="header-section-number">2.2</span> Otkrivanje gravitacionog ubrzanja</h2>
-<p>U nadi da će se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u <a href="#tbl-data">Tabela&nbsp;1</a>. Nelinearan odnos je grafički prikazan na <a href="#fig-datagraph">Figura&nbsp;2</a></p>
+<p>U nadi da će se u mojim podacima pronaći informacija o gravitacionom ubrzanju, napravio sam 51 opservaciju vremena potrebnog za slobodan pad sa 4 različite visine. Rezultujući podaci su dati u <a href="#tbl-data" class="quarto-xref">Tabela&nbsp;1</a>. Nelinearan odnos je grafički prikazan na <a href="#fig-datagraph" class="quarto-xref">Figura&nbsp;2</a></p>
 <div class="cell">
+<div id="tbl-data" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1: Prikazano je prvih 5 redova podataka iz eksperimenta.
+</figcaption>
+<div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-data" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Tabela&nbsp;1: Prikazano je prvih 5 redova podataka iz eksperimenta.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
@@ -331,13 +383,19 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-datagraph" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-datagraph-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;2: Grafički prikaz podataka iz eksperimenta slobodnog pada loptice.</figcaption>
+<div id="fig-datagraph" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-datagraph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-datagraph-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-datagraph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Grafički prikaz podataka iz eksperimenta slobodnog pada loptice.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -360,13 +418,17 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </section>
 <section id="apriorna-raspodela-gravitacionog-ubrzanja" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="apriorna-raspodela-gravitacionog-ubrzanja"><span class="header-section-number">2.4</span> Apriorna raspodela gravitacionog ubrzanja</h2>
-<p>Biranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena koji se ispituje.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva — gledali smo mnogo stvari kako padaju. Deluje mi da stvari neće ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Sasvim sigurno je da negativni brojevi nisu mogući. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela mogućih vrednosti za <span class="math inline">\(g\)</span> je prikazana na <a href="#fig-prior">Figura&nbsp;3</a>.</p>
+<p>Biranje apriorne raspodele je naučno-istraživačko pitanje i zavisi od ekspertize, tj. poznavanja domena koji se ispituje.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> U ovom slučaju, naše pretpostavke o brzini kojom stvari padaju dolaze iz iskustva — gledali smo mnogo stvari kako padaju. Deluje mi da stvari neće ubrzavati više od 20 m/s (72 km/h) svake sekunde, a znam da verovatno gravitaciono ubrzanje nije blizu 0. Sasvim sigurno je da negativni brojevi nisu mogući. Zbog toga biram normalnu distribuciju centriranu na 10. Apriorna raspodela mogućih vrednosti za <span class="math inline">\(g\)</span> je prikazana na <a href="#fig-prior" class="quarto-xref">Figura&nbsp;3</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-prior" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-prior-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;3: Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja.</figcaption>
+<div id="fig-prior" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-prior-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apriorna raspodela očekivanih vrednosti gravitacionog ubrzanja.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -374,12 +436,16 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </section>
 <section id="rezultati" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="rezultati"><span class="header-section-number">2.5</span> Rezultati</h2>
-<p>Iskreno, nisam očekivao da ćemo sa samo 51 opservacijom (i to poprilično traljavim) moći ovako precizno da odredimo gravitaciono ubrzanje. Procena parametra <span class="math inline">\(g\)</span> je data u <a href="#tbl-fixedef">Tabela&nbsp;2</a> pod nazivom <code>g_Intercept</code>. Možemo uporediti naš rezultat (<span class="math inline">\(\hat g = 9.808 \; m/s^2\)</span>) sa procenom Formule za Internacionalnu Procenu Gravitacije <span class="citation" data-cites="theoreti2023">(<a href="#ref-theoreti2023" role="doc-biblioref"><em>Theoretical Gravity</em>, 2023</a>)</span> koja nam daje vrednost lokalnog gravitacionog ubrzanja u Beogradu od <span class="math inline">\(g = 9.806 \; m/s^2\)</span>. Iznenađujuće, rezultat uopšte nije mnogo drugačiji od ovog!</p>
+<p>Iskreno, nisam očekivao da ćemo sa samo 51 opservacijom (i to poprilično traljavim) moći ovako precizno da odredimo gravitaciono ubrzanje. Procena parametra <span class="math inline">\(g\)</span> je data u <a href="#tbl-fixedef" class="quarto-xref">Tabela&nbsp;2</a> pod nazivom <code>g_Intercept</code>. Možemo uporediti naš rezultat (<span class="math inline">\(\hat g = 9.808 \; m/s^2\)</span>) sa procenom Formule za Internacionalnu Procenu Gravitacije <span class="citation" data-cites="theoreti2023">(<a href="#ref-theoreti2023" role="doc-biblioref"><em>Theoretical Gravity</em>, 2023</a>)</span> koja nam daje vrednost lokalnog gravitacionog ubrzanja u Beogradu od <span class="math inline">\(g = 9.806 \; m/s^2\)</span>. Iznenađujuće, rezultat uopšte nije mnogo drugačiji od ovog!</p>
 <div class="cell">
+<div id="tbl-fixedef" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fixedef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2: Rezultat modela. <code>Estimate</code> je najbolja procena parametra. <code>Q2.5</code> i <code>Q97.5</code> su kvantili.
+</figcaption>
+<div aria-describedby="tbl-fixedef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-fixedef" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Tabela&nbsp;2: Rezultat modela. <code>Estimate</code> je najbolja procena parametra. <code>Q2.5</code> i <code>Q97.5</code> su kvantili.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -401,14 +467,20 @@ t_i = \sqrt\frac{2h_k}{g}, \; \text{za i-to bacanje loptice, i k-tu visinu.}
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Posteriorna distribucija je prikazana grafički na <a href="#fig-update">Figura&nbsp;4</a>. Parametar je dosta nesiguran (širina aposteriorne distribucije) ali je većina verovatnoće koncentrisana oko najverovatnije vrednosti. Kada je model video podatke dodelio je parametru <span class="math inline">\(g\)</span> vrednosti koje su konzistentne sa podacima iz našeg eksperimenta.</p>
+</div>
+<p>Posteriorna distribucija je prikazana grafički na <a href="#fig-update" class="quarto-xref">Figura&nbsp;4</a>. Parametar je dosta nesiguran (širina aposteriorne distribucije) ali je većina verovatnoće koncentrisana oko najverovatnije vrednosti. Kada je model video podatke dodelio je parametru <span class="math inline">\(g\)</span> vrednosti koje su konzistentne sa podacima iz našeg eksperimenta.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-update" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-update-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;4: Odnos apriorne i aposteriorne distribucije.</figcaption>
+<div id="fig-update" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-update-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-update-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-update-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Odnos apriorne i aposteriorne distribucije.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -474,7 +546,7 @@ t = \sqrt\frac{2h}{g}
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-betancourt2019" class="csl-entry" role="listitem">
 Betancourt, M. (2019). <em>Probabilistic Modeling and Statistical Inference</em>. <a href="https://betanalpha.github.io/assets/case_studies/modeling_and_inference.html">https://betanalpha.github.io/assets/case_studies/modeling_and_inference.html</a>
 </div>
@@ -514,7 +586,7 @@ Scholz, M., &amp; Bürkner, P.-C. (2022). <em>Prediction can be safely used as a
 <li id="fn4"><p>Inspiracija za ovaj eksperiment dolazi iz veoma kvalitetnog članka o principijelnom modeliranju od <span class="citation" data-cites="betancourt2019">Betancourt (<a href="#ref-betancourt2019" role="doc-biblioref">2019</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Apriorna raspodela i njena uloga u medicinskom zaključivanju su detaljnije opisani u <span class="citation" data-cites="n.grubor2023a">N. Grubor (<a href="#ref-n.grubor2023a" role="doc-biblioref">2023b</a>)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
   author = {N. Grubor, Nikola},
   title = {Priče iza Podataka: Model za Otkrivanje Gravitacije},
   date = {2023-12-02},
@@ -566,6 +638,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -634,13 +733,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -719,10 +820,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -732,8 +832,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -746,6 +855,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -789,6 +1017,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -814,6 +1043,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -874,6 +1129,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

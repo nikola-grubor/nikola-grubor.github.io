@@ -1,0 +1,372 @@
+---
+title: "Epidemiološki modeli uz pomoć diferencijalnih jednačina"
+description: "Kratak pregled kompartmanskih modela i diferencijalnih jednačina uz pomoć kojih možemo da napravimo mehanističke (uzročno posledične) opise prirode."
+date: 2024-04-08
+date-format: D/MM/YYYY
+number-sections: true
+number-depth: 2
+lang: hr
+language: language-sr-Latn.yml
+citation:
+  language: sr-Latn
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+categories: [epidemiologija, statistika, kauzalnost, medicina, srpski]
+image: "lorenz.jpg"
+mermaid: 
+  theme: forest
+draft: false
+bibliography: references.bib
+
+echo: false
+warning: false
+---
+
+# Uvod
+
+Recimo da želimo da iskoristimo naše naučno znanje da objasnimo biološko ponašanje epidemije. Konstruisanje naučno inspirisanog biološkog modela ima velike prednosti, jedna od kojih je predviđanje intervencija na sistemu koji opisuje [@grubor2023]. Kada se infektivni agens uvede u populaciju koje je podložna infekciji, on će se širiti sve do momenta dostizanja kritične tačke gde je malo verovatno da će inficiran čovek sresti nekog ko nije već preležao bolest. U tom trenutku epidemija usporava i agens u toj populaciji izumire (ako nema neki mehanizam dormatnog preživljvanja). Tu kritičnu tačku nazivamo kolektivnim imunitetom, i ona zavisi od mnogih parametara samog agensa. Dodatne komplikacije našem naučnom opisu pretstavljaju prisustvo različitih imunskih sistema kod ljudi, inkubacioni period infektivnog agensa, državne mere prevencije širenja epidemije i programi vakcinacije --- jer menjaju način na koji se stvaraju podaci. Pored komplikovanog biološkog sistema, imamo i statističke probleme, gde je tačan broj inficiranih osoba nepoznat. Poslušaćemo savet matematičara Džordža Polje koji kaže da kad imamo kompleksan problem, probamo da identifikujemo i rešimo njegov najjednostavniji oblik [@polya2015].
+
+# Jednostavan model epidemije
+
+Modeli zaraznih bolesti potpadaju pod veliku grupu kompartment modela [@chatzilena2019]. Tipičan kompartment model pretpostavlja jednu jednoličnu grupu entiteta (ljudi, hemikalija) koja prelazi iz jednog kompartmenta (stanja) u sledeće. U našem slučaju, to mogu biti ljudi podložni infekciji koji postaju inficirani prenosioci, koji se zatim oporavljaju (@fig-comp_simpl). Napravićemo nekoliko jakih pretpostavki kako bismo mogli da se bavimo jednostavnijim oblikom ovog problema. ($i$) Pretpostavićemo da je populacija homogena i da su kontatki između svih osoba jednako mogući, ($ii$) da ne postoji inkubacioni period, ($iii$) da se jednom oporavljena osoba ne može zaraziti opet istim agensom.
+
+```{mermaid}
+%%| label: fig-comp_simpl
+%%| fig-cap: "Najjednostavniji kompartment model. Ovaj model opisuje dinamičan prelazak populacije iz jednog stanja u drugo. Gde podložni infekciji postaju inficirani pa zatim stiču imunitet i oporavljaju se."
+flowchart LR
+  A[Podložni]-->|stopa infekcije|B[Inficirani]-->|stopa oporavka|C[Oporavljeni]
+```
+
+Prelazak podložnih u inficirane (pa u oporavljenje) zavisi od samog broja podložnih, koji se menja u vremenu. Sistemi koji se menjaju u vremenu se mogu opisati diferencijalnim jednačinama. Diferencijalne jednačine, za razliku od klasničnih jednačina čije rešenje je broj ($f(x) = 5$), imaju kao rešenje neku drugu funkciju ($f(x) = f'(x)$) koja opisuje kako se unos ($x$) menja u zavisnosti od toga šta je uopšte uneto.
+
+Sistem opisan u @fig-comp_simpl može se predstaviti sledećim sistemom jednačina,
+
+$$
+S' = -\beta \frac{I}{N} S, \; \; \; I' = \beta \frac{I}{N} S  - \gamma I, \; \; \; R' = \gamma I
+$$ {#eq-sir}
+
+gde je:
+
+-   $S'$ funkcija čije rešenje daje broj *podložnih* u bilo kom trenutku vremena,
+-   $I'$ funkcija čije rešenje daje broj *inficiranih* u bilo kom trenutku vremena,
+-   $R'$ funkcija čije rešenje daje broj *oporavljenih* u bilo kom trenutku vremena,
+-   $N$ veličina populacije,
+-   $S$ broj podloznih ljudi koji mogu da dobiju infekciju,
+-   $I$ broj ljudi koji su trenutno inficirani,
+-   $R$ broj ljudi koji su se oporavili,
+-   $\beta \; [\frac{1}{\text{osoba} \times \text{vreme}}]$ konstanta koja predstavlja infektivnost agensa,
+-   $\gamma \; [\frac{1}{\text{vreme}}]$ konstanta koja predstavlja stopu oporavka ljudi od infekcije.
+
+## Intuicija
+
+Kako bismo stekli malo intuicije o @eq-sir, pogledaćemo njene sastavne delove [@mihaljevic2016]. Proporcija inficiranih ljudi u populaciji je $\frac{I}{N}$. Verovatnoća da neko iz opšte populacije postane inficiran je $\beta \frac{I}{N}$. Zbog toga što neće svaki kontakt zasigurno izazvati infekciju, već će uspešna zaraza biti jednaka nekoj proporciji kontakata u zavisnosti od tipa agensa. Kako bismo opisali infektivnost različitih agenasa dodaćemo konstantu $\beta$ koja će nam dati pomenutu proporciju. Kada je $\beta < 1$, agens je slabo infektivan, i broj inficiranih je "praktično" manji nego koliko ih je zapravo, i obrnuto kada je $\beta > 1$. Ono što nam preostaje je da pomnožimo sve sa $S$ kako bismo dali šansu svakom podložnom da bude izložen toj proporciji inficiranih. Minus ispred proizvoda označava da funkcija treba da smanjuje broj podložnih tokom vremena jer oni prelaze u sledeći kompartman. Sve zajedno imamo:
+
+$$
+S' = -\beta\frac{I}{N} S
+$$ {#eq-sir-1}
+
+Kako broj inficiranih u vremenu ($I'$) raste sa padom podložnih on je jednak identičnom proizvodu iz @eq-sir-1, sa dodatkom $\gamma$ koeficijenta. $\gamma$ predstavlja stopu oporavka inficiranih i govori nam o njihovoj brzini prelaska u kompartman oporavljenih. Ukupan broj inficiranih jednak razlici prelaska podložnih u inficirane i prelaska (izlaska) inficiranih u oporavljenje.
+
+$$
+I' = \beta \frac{I}{N} S  - \gamma I
+$$ {#eq-sir-2}
+
+Na kraju, broj oporavljenih je jednak brzini prelaska inficiranih u oporavljene:
+
+$$
+R' = \gamma I
+$$ {#eq-sir-3}
+
+Dinamični model opisan uz pomoć @eq-sir je poznat po imenu SIR (Susceptible-Infected-Recovered) i predstavlja najjednostavniji naučni model zarazne epidemije. Ono što je interesantno je način na koji smo uspeli da predstavimo biološke karakteristike epidemije matematičkim opisom promena u populaciji. Pre nego što pogledamo implikacije modela, treba napomenuti još neka ograničenja:
+
+-   $N$, ukupna populacija je konstantna. Model ignorise umiranje i rađanje,
+-   $R$, oporavljeni ljudi nemaju mogućnost reinfekcije (što znamo da je moguće),
+-   $\beta$ i $\gamma$, infektivnost i stopa oporavka su konstantni, što znamo su isto dinamične karakteristike,
+-   Populacija je homogena,
+-   Ljudi dospevaju u kontakt sa svima uniformno (jednako) nasumično (homogeno mešanje), i oporavak je eksponencijalan sa aritmetičkom sredinom $\frac{1}{\gamma}$
+-   Ako je populacija dovoljno velika, diskretan broj ljudi možemo zameniti sa kontinuiranom aproksimacijom.
+
+## Numerička rešenja diferencijalnih jednačina
+
+Uz pomoć paketa za resavanje sistema diferencijalnih jednačina, i proizvoljno zadatih početnih vrednosti za $S(0) = 1$, $I(0) = 0.01$ (1% populacije naglo dobije infekciju), i $R(0) = 0$, kao i $\beta = 2.0 \frac{1}{\text{osoba} \times \text{dan}}$ i $\gamma = 1.0 \frac{1}{\text{dan}}$ možemo dobiti dinamično rešenje u vremenu [@deSolve]. U praksi, $\beta$ i $\gamma$ se moraju proceniti analizom podataka sa terena, opservacijom broja novoinficiranih tokom vremena.
+
+```{r}
+#| label: fig-sir
+#| fig-cap: "Implikacije SIR modela. Promena proporcija stanja ljudi tokom epidemije. Kolektivni imunitet nastaje kao posledica SIR modela --- broj inficiranih se smanjio na 0 pre nego što je cela populacija bila izložena agensu (proporcija podložnih nije 0)."
+
+library(deSolve)
+library(dplyr)
+library(ggplot2)
+
+I0 = 0.01    # initial fraction infected
+S0 = 1 - I0  # initial fraction susceptible
+R0 = 0       # initial recovered
+beta = 2.0   # 1 / contacts * time
+gamma = 1.0 # 1 / time, 20% per day to recover, 5-day average recovery
+
+params <- list(beta = beta,
+              gamma = gamma)
+
+inits <- c(S0, I0, R0)
+t_min = 0
+t_max = 20
+times = t_min:t_max
+
+SIR <- function(t, y, params) {
+  with(as.list(c(params, y)), {
+    
+    dS = - beta * y[1] * y[2]
+    
+    dI = beta * y[1] * y[2] - gamma * y[2]
+    
+    dR = gamma * y[2]
+    
+    res <- c(dS,dI,dR)
+    list(res)
+  })
+}
+
+# Run the integration:
+out <- ode(inits, times, SIR, params, method="ode45")
+
+# Store the output in a data frame:
+out <- data.frame(out)
+colnames(out) <- c("time", "S", "I", "R")
+
+# quick plot of the epidemic
+plot(NA,NA, xlim = c(t_min, t_max), ylim=c(0, 1), xlab = "Vreme", ylab="Proporcija Populacije")
+lines(out$S ~ out$time, col="black")
+lines(out$I ~ out$time, col="red")
+lines(out$R ~ out$time, col="orange")
+legend(x = 15, y = 0.7, legend = c("Podložni", "Inficirani", "Oporavljeni"), 
+       col = c("black", "red", "orange"), lty = c(1, 1, 1), bty="n")
+```
+
+## Reproduktivni broj $R_0$
+
+Popularna mera u ponašanja epidemije je reproduktivni broj $R_0$. Reproduktivni broj je definisan kao $R_0 = \frac{\beta}{\gamma}$ i predstavlja odnos stopa infektivnosti i stopa oporavka. Posledica je da će se epidemija širiti dokle god je $R_0 > 1$, jer je broj kojim nastaju novoinficirani brži od broja kojim ljudi stiču imunitet. Tako da svaka strategija koja smanjuje brzinu novoinficiranih (smanjenje kontakta, distanciranje) ili povećava broj oporavljenih/imunih (vakcinacija) će uticati na $R_0$. Kada reproduktivni broj padne ispod 1, epidemija usporava i prestaje. Kao što se vidi sa @fig-sir, epidemija može prestati i bez da potpuna populacija postane imuna na infektivni agens. Većina može da zaštiti manjnu, što je veoma bitno za fragilni deo populacija poput starijeg ili imunokompromitovanog[^1] dela populacije.
+
+[^1]: Posebno ranjiv deo populacije koji se leči od autoimunih bolesti ili ima neki drugi poremećaj imuniteta koji im ne dozvoljava da u potpunosti odgovore na infekciju.
+
+# Primer na prvom COVID-19 talasu u Srbiji
+
+Pokušaćemo da procenimo reproduktivni broj tokom prvog talasa pandemije u Srbiji. Ograničićemo se na početak pandemije čisto iz praktičnih razloga. Podatke koje ćemo koristiti su prikazani na @fig-series. Naš početni model će biti veoma prost i odgovaraće SIR modelu iz @eq-sir. Kako bismo statistički ocenili različite nepoznate parametre, upotrebićemo programski jezik koji omogućava probabilističku analizu podataka Stan [@rstan].
+
+```{r}
+library(here)
+library(tidyverse)
+library(rstan)
+library(gridExtra)
+rstan_options (auto_write = TRUE)
+options (mc.cores = parallel::detectCores ())
+
+i_am("imputed_dat.csv")
+
+imputedate <- read.csv(file = here("imputed_dat.csv"))
+  
+```
+
+```{r}
+#| label: fig-series
+#| fig-cap: "Podaci sa incidencama inficiranih tokom prvog talasa 2020 u Srbiji. Nesavršenost ove krive je posledica objavljivanja podataka u diskretnom vremenu, tj. podaci nisu ažurirani kontinuirano, što je i praktično nemoguće u realnom svetu."
+
+imputedate %>%
+  ggplot(aes(x = as_date(date), y = new_cases)) +
+  geom_col(color = "orange4", fill = "orange", alpha = 1/3) + 
+  labs(y = "Novi slučajevi", x = "Vreme",
+       title = "Incidenca Inficiranih",
+       subtitle = "Početak pandemije COVID-19 u Srbiji",
+       caption = "Izvor: ourworldindata.org") +
+  theme_minimal()
+```
+
+## Prvi pokušaj
+
+Cilj nam je da saznamo reproduktivni broj $R_0$ na početku pandemije u Srbiji. Kako se ne bi pogubili u tehničkim detaljima, opisacu ukratko proceduru pronalaženja ovog nepoznatnog parametara [@chatzilena2019]. Ono što je potrebno da definišemo je početnu populaciju u Srbiji ($N$), broj prijavljenih infekcija, kao i početne brojeve za svaki od kompartmana ($S, I, R$). Za svaki broj inficiranih u danu će model napisan u Stan-u inicirati neko nasumično $\beta$ i $\gamma$, koje su zasnovano na našim prethodnim ubeđenjima o mogućim veličinama tih koeficijenata. Na osnovu svih ovih podataka ćemo, nakon numerićke aproksimacije, kao rešenje @eq-sir dobiti očekivane vrednosti inficiranih za svaki dan pandemije. Korak po korak, Stan predlaže parametere koji su najkonzistentniji sa opserviranim podacima, i to u proporciji sa time koliko su verovatni. Nakon završetka, dobijamo vrednosti koje su najverovatnije dovele do podataka koje smo uočili.[^2] @fig-badfit pokazuje kako izgledaju predviđanja iz SIR modela u odnosu na podatke koje imamo.
+
+[^2]: Uslovljenje modelom kojim smo napisali.
+
+```{r}
+cases <- round(imputedate$new_cases)
+N <- sum(imputedate$new_cases);
+n_days <- length(cases) 
+t <- seq(0, n_days, by = 1)
+t0 = 0 
+t <- t[-1]
+
+#initial conditions
+i0 <- 1
+s0 <- N - i0
+r0 <- 0
+y0 = c(S = s0, I = i0, R = r0)
+
+# data for Stan
+data_sir <- list(n_days = n_days, y0 = y0, t0 = t0, ts = t, N = N, cases = cases)
+
+# compile the model
+# model <- stan_model(here("sir.stan"))
+
+# fit model
+
+fit_sir <- read_rds(file = here("sir.rds"))
+
+
+# fit_sir <- sampling(model,
+#                 data = data_sir,
+#                 iter = 2000,
+#                 chains = 4, 
+#                 seed = 0)
+
+# saveRDS(fit_sir, file = "sir.rds")
+```
+
+```{r}
+#| label: fig-badfit
+#| fig-cap: "Nažalost običan SIR model ne uspeva da reprodukuje podatke koje imamo. Ovo može imati više uzroka, ali je najverovatnije u ovom slučaju model pogrešan."
+#| fig-subcap: 
+#|  - "Broj prijavljeno inficiranih."
+#|  - "Procena stvarno inficiranih."
+#| layout-ncol: 2
+pars=c('beta', 'gamma', "R0", "recovery_time")
+
+# print(fit_sir, pars = pars)
+
+# stan_dens(fit_sir, pars = pars, separate_chains = TRUE)
+
+smr_pred <- cbind(as.data.frame(summary(
+  fit_sir, pars = "pred_cases", probs = c(0.05, 0.5, 0.95))$summary), t, cases)
+colnames(smr_pred) <- make.names(colnames(smr_pred)) # to remove % in the col names
+
+ggplot(smr_pred, mapping = aes(x = t)) +
+  geom_ribbon(aes(ymin = X5., ymax = X95.), fill = "orange", alpha = 0.35) +
+  geom_line(mapping = aes(x = t, y = X50.), color = "orange") + 
+  geom_point(mapping = aes(y = cases), alpha = 1/3) +
+  labs(x = "Vreme (Dani)", y = "Broj inficiranih (prijavljeno)") +
+  theme_minimal()
+
+# True number of infected as latent estiamted var
+params <- lapply(t, function(i){sprintf("y[%s,2]", i)}) #number of infected for each day
+smr_y <- as.data.frame(summary(fit_sir, 
+                               pars = params, probs = c(0.05, 0.5, 0.95))$summary)
+colnames(smr_y) <- make.names(colnames(smr_y)) # to remove % in the col names
+
+ggplot(smr_y, mapping = aes(x = t)) +
+  geom_ribbon(aes(ymin = X5., ymax = X95.), fill = "orange", alpha = 0.35) +
+  geom_line(mapping = aes(x = t, y = X50.), color = "orange") + 
+  labs(x = "Vreme (Dani)", y = "Broj inficiranih") +
+  theme_minimal()
+```
+
+Kada se podaci ne poklapaju sa modelom kao u @fig-badfit, mogući su razni uzroci. Kada se predviđanja ne slažu sa podacima, verovatno nam hipoteza o funkcionisanju procesa nije dobra --- što je tipična pretpostavka u naukama. Već smo imali neke ideje kako da poboljšamo ovaj model na početku članka. Probaćemo neke od njih.
+
+## Proširenje modela
+
+Imamo nekoliko očiglednih problema:
+
+-   Broj inficiranih koji je testiran gotovo sigurno nije realan broj stvarno inficiranih u populaciji, tj. imamo greške u merenju --- što od same nepreciznosti testa, što od samoselekcije pacijenata koji su otišli na testiranje.
+-   Država je vrlo brzo nakon početka pandemije uvela mere distanciranja i izolacije inficiranih, ovo zasigurno utiče na parametar $\beta$.
+-   Poznato je iz laboratorijskog istraživanja da je inkubacija SARS-CoV-2 virusa u proseku oko 5 dana, to možemo da iskoristimo.
+-   Broj inicijalno inficiranih je nepoznat, možemo i inicijalni broj inficiranih da predstavimo distribucijom mogućih vrednosti, a ne jednim brojem.
+
+Takođe, ono što će naš model pribiližiti realnosti je da uključimo i period inkubacije upotrebom SEIR (Susceptible-Exposed-Infected-Recovered) modela. SEIR model je prvi kompleksniji epidemiološki model od SIR-a (@fig-seir).
+
+```{mermaid}
+%%| label: fig-seir
+%%| fig-cap: "SEIR model. Ovaj model proširuje SIR model tako što dodaje kompartman za izloženost."
+flowchart LR
+  A[Podložni]-->|stopa infekcije|E[Izloženi]-->|dužina inkubacije|B[Inficirani]-->|stopa oporavka|C[Oporavljeni]
+```
+
+Parametri proširenog modela su dati u @tbl-summary, dok su posteriorne predikcije prikazane na @fig-betterfit. Nakon upoređivanja predviđanja našeg novog modela sa opserviranim podacima, vidimo da je ovaj model mnogo bolji opis događaja. Naravno, model se znatno može upotrebiti uvršćavanjem podataka o senzitivnosti i specifičnosti COVID-19 testa koji je korišćen, kao i dodavanjem eksplicinog kompartmana za populaciju u karantinu. Svakako, ova dodatna proširenja prevazilaze obim ovog članka.
+
+```{r}
+# serbia population
+N <- 6.45e6;
+#initial conditions
+i0 <- 1
+s0 <- N - i0
+r0 <- 0
+y0 = c(S = s0, I = i0, R = r0)
+cases <- round(imputedate$new_cases)
+n_days <- length(cases)
+t <- seq(1, n_days, by = 1)
+t0 = 0
+t <- t
+
+date_switch <- "2020-03-21" # date of introduction of control measures
+tswitch <- imputedate %>%   # convert time to number
+  filter(date < date_switch) %>% 
+  nrow() + 1
+
+data_measures <- list(n_days = n_days, t0 = t0, ts = t, N = N, cases = cases, tswitch = tswitch)
+
+fit_sir_measures <- read_rds(file = here("sir_measures.rds"))
+
+# model_measures <- stan_model(here("sir_extended.stan"))
+
+# fit_sir_measures <- sampling(model_measures,
+#                              data_measures,
+#                              iter=1000,
+#                              seed=4)
+
+# saveRDS(fit_sir_measures, file = "sir_measures.rds")
+
+```
+
+```{r}
+#| label: fig-betterfit
+#| fig-cap: "Posteriorne distribucije predikcija proširenog modela. Osenčene površine predstavljaju intervale poverenja od 90% i 95%. Ocene nesigurnosti su mnogo bolje, očigledno je ovaj model bolji opis podataka."
+#| fig-subcap: 
+#|  - "Broj prijavljeno inficiranih."
+#|  - "Procena stvarno inficiranih."
+#| layout-ncol: 2
+
+pars=c('beta', 'gamma', "R0", "recovery_time", "incubation_time")
+
+# stan_dens(fit_sir_measures, pars = pars, separate_chains = TRUE)
+
+smr_pred <- cbind(as.data.frame(summary(fit_sir_measures, pars = "pred_cases", probs = c(0.025, 0.05, 0.1, 0.5, 0.9, 0.95, 0.975))$summary), t=1:(n_days-1), cases = cases[1:length(cases)-1])
+colnames(smr_pred) <- make.names(colnames(smr_pred)) # to remove % in the col names
+
+
+ggplot(smr_pred, mapping = aes(x = t)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "orange", alpha = 1/4) +
+  geom_ribbon(aes(ymin = X5., ymax = X95.), fill = "orange", alpha = 1/3) +
+  geom_line(mapping = aes(x = t, y = X50.), color = "orange") + 
+  geom_point(mapping = aes(y = cases), alpha = 1/3) +
+  labs(x = "Vreme (Dani)", y = "Broj inficiranih (prijavljeno)") +
+  theme_minimal()
+
+# True number of infected as latent estiamted var
+params <- lapply(t, function(i){sprintf("y[%s,2]", i)}) #number of infected for each day
+smr_y <- as.data.frame(summary(fit_sir_measures, 
+                               pars = params, probs = c(0.025, 0.05, 0.5, 0.95, 0.975))$summary)
+colnames(smr_y) <- make.names(colnames(smr_y)) # to remove % in the col names
+
+ggplot(smr_y, mapping = aes(x = t)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "orange", alpha = 1/4) +
+  geom_ribbon(aes(ymin = X5., ymax = X95.), fill = "orange", alpha = 1/3) +
+  geom_line(mapping = aes(x = t, y = X50.), color = "orange") + 
+  labs(x = "Vreme (Dani)", y = "Broj inficiranih") +
+  theme_minimal()
+```
+```{r}
+#| label: tbl-summary
+#| tbl-cap: "Parametri iz poslednjeg modela."
+
+
+table1 <- cbind(as_tibble(summary(fit_sir_measures, pars = pars, probs = c(0.025, 0.975))$summary),
+as_tibble(x = pars)) %>% 
+  select(value, mean, sd, `2.5%`, `97.5%`) %>% 
+  rename(Variable = value, Mean = mean, SD = sd) %>% 
+  mutate(across(where(is.numeric), round, 2))
+  
+tinytable::tt(table1)
+```
+# Zaključak
+
+Mehanistički opis fenomena je zapravo naučni cilj. Kada imamo opis koji može dobro da predviđa podatke, i uzgred ima tačnu mehaničku strukturu, možemo da ga iskoristimo da otkrijemo šta će se desiti sa sistemom kada preduzmemo neku intervenciju. Naravno, priroda je kompleksna, i potrebna je interdisciplinarna sinteza znanja kako bismo došli do dobrog biološkog opisa. Neverovatan je akademski napredak omogućiti naučnicima iz svih domena da pišu kompleksme modele. Treba ih iskoristiti.

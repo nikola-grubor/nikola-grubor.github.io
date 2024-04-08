@@ -1,0 +1,12 @@
+{
+  "hash": "68cab0119419c7bd1d9623e89f3aee52",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Kauzalne strukture u medicini\"\ndescription: \"Kauzalna inferenca je teška.\"\ndate: 2024-2-12\ndate-format: D/MM/YYYY\nnumber-sections: true\nnumber-depth: 2\nlang: hr\nlanguage: language-sr-Latn.yml\ncitation:\n  language: sr-Latn\nauthor:\n  - name: Nikola N. Grubor\n    url: https://nikola-grubor.github.io\n    # affiliation: Univerzutet u Beogradu, Medicinski fakultet\n    # affiliation-url: https://www.mfub.bg.ac.rs/\ncsl: apa.csl\ncategories: [statistika, kauzalnost, medicina, srpski]\nimage: \"\"\nmermaid: \n  theme: forest\ndraft: true\n---\n\n```{css, echo = FALSE}\n.justify {\n  text-align: justify !important\n}\n```\n\n\n# Kauzalnost i predikcija\n\n# Elementarne veze\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

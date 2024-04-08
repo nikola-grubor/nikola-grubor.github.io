@@ -85,10 +85,10 @@ Isti test, sa istom preciznošću i istim rezultatom može imati različite impl
 :::
 
 ::: callout-important
-Interesantno je da sistematski pregledi asimptomatičnih ljudi ne smanjuju smrtnost i morbiditet [@krogsbøll2019]. Mnogi skrining testovi (testovi namenjeni da otkriju bolest u ranim fazama) jednostavno nisu dovoljno korisni ("moćni") da ažuriraju početne verovatnoće kod ljudi bez ikakvih simptoma ili znakova bolesti.[^7] U tim slučajevima su češći *lažno pozitivni* rezultati, i treba biti pažljiv.
+Interesantno je da sistematski pregledi asimptomatičnih ljudi ne smanjuju smrtnost i morbiditet [@krogsbøll2019]. Mnogi skrining testovi (testovi namenjeni da otkriju bolest u ranim fazama) jednostavno nisu dovoljno korisni ("moćni") da ažuriraju početne verovatnoće kod ljudi bez ikakvih simptoma ili znakova bolesti.[^4] U tim slučajevima su češći *lažno pozitivni* rezultati, i treba biti pažljiv.
 :::
 
-[^7]: Na primer, rutinsko uzimanje krve slike nema neke preterane koristi.
+[^4]: Na primer, rutinsko uzimanje krve slike nema neke preterane koristi.
 
 ## Ažuriranje uverenja
 
@@ -122,7 +122,6 @@ ggplot(data.frame(x = c(0, 1)), aes(x = x)) +
   scale_y_continuous(name = "Učestalost")
 ```
 
-
 ::: {#exm-uti}
 ## Ažuriranje uverenja
 
@@ -143,9 +142,9 @@ Bez dodatnih informacija jedino što možemo zaključiti je da je *Ureaplasma* u
 U ovom slučaju je verovatnoća da je uzročnik *Ureaplasma spp.* mnogo manji nego da je antibiotikom uklonila prvobitnog uzročnika ($P(\text{Uzrok: Ureaplasma} \mid \text{Antibiotik, Monogamija}) \ll P(\text{Uzrok: Ureaplasma} \mid \text{Bez Antibiotika})$). U tom slučaju nam je zaključak dijametralno suprotan.
 :::
 
-Neke informacije drastično menjaju interpretaciju (@fig-updating). Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^4]
+Neke informacije drastično menjaju interpretaciju (@fig-updating). Moć informacije da promeni naše uverenje je proporcionalna njenom preciznošću, tj. tačnosti klasifikacije stvarno bolesnih kao bolesne. Zbog toga su mnogi delovi fizikalnog pregleda zamenjeni preciznijim metodama. Retko koji lekar će danas postaviti dijagnozu samo na osnovu fizikalnog pregleda. Što je i ispravno, jer većina znakova fizikalnog pregleda nije dovoljno pouzdana.[^5]
 
-[^4]: Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba zanemariti, jer je jako važna u procesu lečenja. Ta tema prevazilazi okvir ovog članka.
+[^5]: Uloga fizikalnog pregleda je primarno u uspostavljanju odnosa doktor-pacijent. Tu većinski ritualnu ulogu ne treba zanemariti, jer je jako važna u procesu lečenja. Ta tema prevazilazi okvir ovog članka.
 
 ```{mermaid}
 %%| label: fig-updating
@@ -191,10 +190,10 @@ Ovo je reprezentacija kliničkog problema sa visokim nivoom apstrakcije. Ako raz
 -   Visoko rizična: Febrilne neutropenije se dele na visoko/nisko rizične u zavisnosti od verovatnoće ozbiljnih komplikacija na osnovu raznih kriterijuma. Ova klasifikacija je bitna jer *utiče na terapiju*.
 -   Nelokalizovana: Fokus (izvor) infekcije nije pronađen dijagnostičkim testovima i pregledom. Različit je rizik za pacijente kojima nije pronađen fokus u odnosu na one kojima je mikrobiološki potvrđena infekcija.
 -   Febrilna: Definicija febrilnosti podrazumeva jednu izmerenu oralnu temperaturu od $>38.3^{\circ}\text{C}$ ili $> 38.0^{\circ}\text{C}$ u trajanju od minimum 1 sat.
--   Neutropenija: broj neutrofila $< 1500$ ili $< 1000\,\text{ćelija}/\text{mm}^3$. Niže vrednosti nose veći rizik.[^5]
+-   Neutropenija: broj neutrofila $< 1500$ ili $< 1000\,\text{ćelija}/\text{mm}^3$. Niže vrednosti nose veći rizik.[^6]
 :::
 
-[^5]: Detaljno navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita na $0.8\,\text{ćelija}/\text{mm}^3$ je neutropenija u svakom smislu.
+[^6]: Detaljno navođenje parametara se može dodatno tražiti pod uslovom da su kriterijumi otvoreni za subjektivnu diskusiju. Pad leukocita na $0.8\,\text{ćelija}/\text{mm}^3$ je neutropenija u svakom smislu.
 
 Svaki student medicine poznaje deo anamneze (istorije) pacijenta koji se odnosi na glavne tegobe. Retko se uloga tog polja na papiru izričito ističe. Jednom kada se medicinski problem dobro predstavi, može se formirati dobra diferencijalna dijagnoza. Ukoliko je problem loše identifikovan i sama diferencijalna dijagnoza će biti preopširna ili pogrešna. Na primer, diferencijalna dijagnoza dispneje (otežanog disanja) je dugačka i obuhvata kako psihološke tako i organske uzroke. Suprotno, *hronična dispeja u naporu,* ima znatno kraću diferencijalnu dijagnozu.
 
