@@ -261,7 +261,7 @@ ggplot(smr_y, mapping = aes(x = t)) +
   theme_minimal()
 ```
 
-Kada se podaci ne poklapaju sa modelom kao u @fig-badfit, mogući su razni uzroci. Kada se predviđanja ne slažu sa podacima, verovatno nam hipoteza o funkcionisanju procesa nije dobra --- što je tipična pretpostavka u naukama. Već smo imali neke ideje kako da poboljšamo ovaj model na početku članka. Probaćemo neke od njih.
+Kada se podaci ne poklapaju sa modelom kao u @fig-badfit, mogući su razni uzroci; od neispravnog koda do pogrešnog modela. Ako pretpostavimo da nam je kod uredu, hipoteza o pogrešnom modelu je najverovatnija. Jedna od lepih stvari kod naučno inspirisanih modela je da kada ne rade, obično nas nauče nešto --- makar to bilo da su previše jednostavni, kao što je naš slučaj. Već smo imali neke ideje kako da poboljšamo ovaj model na početku članka. Probaćemo neke od njih.
 
 ## Proširenje modela
 
