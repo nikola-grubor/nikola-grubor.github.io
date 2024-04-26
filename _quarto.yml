@@ -16,7 +16,7 @@ website:
   navbar:
     tools:
       - icon: twitter
-        href: ""
+        href: https://twitter.com/n_grubor
       - icon: github
         href: https://github.com/nikola-grubor
       - icon: linkedin

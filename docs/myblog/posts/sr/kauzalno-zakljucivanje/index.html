@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -69,7 +70,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Nema rezultata",
     "search-matching-documents-text": "slična dokumenta",
@@ -78,6 +85,7 @@ div.csl-indent {
     "search-more-match-text": "još rezultat u ovom dokumentu",
     "search-more-matches-text": "još rezultata u ovom dokumentu",
     "search-clear-button-title": "Obriši",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Odustani",
     "search-submit-button-title": "Predaj",
     "search-label": "Pretraži"
@@ -91,6 +99,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../../styles.css">
 <meta name="twitter:title" content="Nikola N. Grubor - Kauzalno zaključivanje je moguće iz opservacionih studija">
 <meta name="twitter:description" content="Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Džudea Perl je popularizovao način kojim možemo opservacije pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja.">
@@ -101,10 +136,10 @@ div.csl-indent {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Nikola N. Grubor</span>
     </a>
@@ -116,21 +151,21 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../myblog/index.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../../../myblog/index.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/nikola-grubor" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://www.linkedin.com/in/herr-grubor/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/nikola-grubor" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/herr-grubor/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Prekidač za tamnu temu"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -210,6 +245,7 @@ div.csl-indent {
 
 
 
+
 <p>Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Istraživač koji bi hteo da ispita prirodu neeksperimentalnim metodama (zato što je izvođenje eksperimenta neetičko ili nemoguće) je bio ograničen na ispitivanje korelacija. Kada u prirodi vidimo dve stvari koje se dešavaju zajedno, ne možemo zasigurno znati koja uzrokuje koju, niti da li su uopšte povezane (takođe, postoje uzroci koji uopšte nisu korelisani).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Svet medicine, a i nauke njoj sličnoj, bile su ograničene na tvrdnje asocijacija. Naučnici su želeli da kažu <span class="math inline">\(A\)</span> uzrokuje <span class="math inline">\(B\)</span> (<span class="math inline">\(A\rightarrow B\)</span>), ali nisu smeli, jer su takve tvrdnje bile prejake za statističke metode. Medicinska literatura je prepuna reči koje izbegavaju uzročne tvrdnje — kao što su: veza, asocijacija, korelacija, značajna povezanost <span class="citation" data-cites="hernán2018">(<a href="#ref-hernán2018" role="doc-biblioref">Hernán, 2018</a>)</span>. Možemo li bez ikakvog intervenisanja, tj. samo gledanjem prirode, doći do zaključaka šta bi se desilo da zapravo uradimo nešto?</p>
 <section id="kletva-korelacija" class="level1">
 <h1>Kletva korelacija</h1>
@@ -232,31 +268,43 @@ Primer: Da li mi je aspirin zaustavio glavobolju?</p></li>
 <p>Kauzalno, uzročno-posledično, zaključivanje je pravi naučni cilj. Ponekad je dobro imati predviđanja, ali uglavnom ono što želimo je da razumemo fenomen kako bismo mogli da intervenišemo tj. promenimo nešto. Produžimo životni vek, sprečimo bolest, smanjimo rizik, planiramo projekat, itd. U tom slučaju ne možemo vršiti zaključivanja uz pomoć prvog stepenika, već pričamo o drugom stepeniku — intervencijama. Tad nas <a href="https://www.tylervigen.com/spurious-correlations">korelacije mogu zavarati</a>. Treba nam način da otkrijemo kako su stvari zapravo povezane, a da se ne zavaravamo lažnim asocijacijama. Interesantno je kako je Francis Galton (1822-1911), Britanski učenjak, u svojoj potrazi za uzrocima, nabasao prvo na korelaciju (<span class="math inline">\(\rho\)</span>). Tim putem moramo proći i mi.</p>
 <section id="galton-otkriva-regresiju" class="level2">
 <h2 class="anchored" data-anchor-id="galton-otkriva-regresiju">Galton otkriva regresiju</h2>
-<p>Francis Galton je tražio uzročno objašnjenje nasleđivanja visine ljudi.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Elem, Galton je primetio da viši očevi imaju prosečno više sinove, ali ne više od sebe. Sinovi niskih očeva bili su, u proseku, niži ali ne niski kao svoji očevi (<a href="#fig-regresija-1">Figura&nbsp;1 (a)</a>). Galton je ovaj fenomen približavanja visine pojedinca ka prosečnoj vrednosti visine kroz generacije nazvao “regresija ka mediokritetu.”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Na trenutak je delovalo kao da ovaj “zakon” regresije sprečava da visoki ljudi postaju sve viši, a niži ljudi sve niži (dok ne nestanu?). Galtonov pokušaj kauzalnog objašnjenja ponašao se nešto nalik elastičnoj opruzi koja se vraća u svoj prvobitni oblik kada se istegne ili sabije. Galton je pogrešio, ali nije jedini. Mnogli ljudi danas prave sličnu grešku kada traže uzročno objašnjenje, na primer, košarkaškog igrača koji je odigrao dobru prošlu sezonu u odnosu na trenutnu. Neki uzroci sigurno postoje, ali bi se takve pojave dešavle i samo pukom srećom.</p>
+<p>Francis Galton je tražio uzročno objašnjenje nasleđivanja visine ljudi.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Elem, Galton je primetio da viši očevi imaju prosečno više sinove, ali ne više od sebe. Sinovi niskih očeva bili su, u proseku, niži ali ne niski kao svoji očevi (<a href="#fig-regresija-1" class="quarto-xref">Figura&nbsp;1 (a)</a>). Galton je ovaj fenomen približavanja visine pojedinca ka prosečnoj vrednosti visine kroz generacije nazvao “regresija ka mediokritetu.”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Na trenutak je delovalo kao da ovaj “zakon” regresije sprečava da visoki ljudi postaju sve viši, a niži ljudi sve niži (dok ne nestanu?). Galtonov pokušaj kauzalnog objašnjenja ponašao se nešto nalik elastičnoj opruzi koja se vraća u svoj prvobitni oblik kada se istegne ili sabije. Galton je pogrešio, ali nije jedini. Mnogli ljudi danas prave sličnu grešku kada traže uzročno objašnjenje, na primer, košarkaškog igrača koji je odigrao dobru prošlu sezonu u odnosu na trenutnu. Neki uzroci sigurno postoje, ali bi se takve pojave dešavle i samo pukom srećom.</p>
 <p>Galton je ubrzo počeo da meri odnose između visine i raznih drugih vrednosti, poput dužine podlaktice. Svaka od tih merenja je pokazala istu pojavu regresije ka proseku. Očigledno je da visina nije uzrok dužine podlaktice, ili obrnuto (<span class="math inline">\(Visina \nrightarrow Dužina\,podlaktice\)</span> ili <span class="math inline">\(Visina \nleftarrow Dužina\,podlaktice\)</span>). Štaviše, obe vrednosti sigurno imaju genetske i sredinske uzroke. Regresija ka proseku (kako je danas poznata) je statistička pojava prisutna svuda oko nas — u tom trenutku Galton je nije prepoznao, već je mislio da je nabasao na zakon nasleđivanja. Do 1889. je shvatio da je zapravo otkrio korelaciju, a da je regresija ka proseku posledica sreće (<span class="math inline">\(Visina = Prava\,visina + sreća\)</span>).</p>
-<p>Regresija je način da se povežu dve numeričke vrednosti, a fenomen regresije ka proseku nastaje između bilo koje dve korelisane vrednosti. Regresiona linija je ona linija koja najbolje predviđa nepoznatu varijablu kada nam je jedna poznata. Zapravo postoje dve regresione linije (<a href="#fig-regresija-1">Figura&nbsp;1 (a)</a> i <a href="#fig-regresija-2">Figura&nbsp;1 (b)</a>). Obe linije predviđaju jednako dobro. Jednačine regresionih linija su različite, ali je situacija potpuno simetrična. Kada nam je poznata visina oca, možemo predviđati visnu sina; sa poznatom visinom sina možemo predviđati visinu oca. Kada je Galton shvatio da se vremenski redosled može potpuno obrnuti odustao je od bilo kakvog pokušaja da tretira regresiju ka proseku kao uzrok. Regresija ka proseku ne može biti uzrok jer ne razlikuje nikakav redosled događaja.</p>
+<p>Regresija je način da se povežu dve numeričke vrednosti, a fenomen regresije ka proseku nastaje između bilo koje dve korelisane vrednosti. Regresiona linija je ona linija koja najbolje predviđa nepoznatu varijablu kada nam je jedna poznata. Zapravo postoje dve regresione linije (<a href="#fig-regresija-1" class="quarto-xref">Figura&nbsp;1 (a)</a> i <a href="#fig-regresija-2" class="quarto-xref">Figura&nbsp;1 (b)</a>). Obe linije predviđaju jednako dobro. Jednačine regresionih linija su različite, ali je situacija potpuno simetrična. Kada nam je poznata visina oca, možemo predviđati visnu sina; sa poznatom visinom sina možemo predviđati visinu oca. Kada je Galton shvatio da se vremenski redosled može potpuno obrnuti odustao je od bilo kakvog pokušaja da tretira regresiju ka proseku kao uzrok. Regresija ka proseku ne može biti uzrok jer ne razlikuje nikakav redosled događaja.</p>
 <!-- Dve varijable (visina očeva i sinova) su korelisane ako jedna "predviđa" drugu, a koeficijent korelacije je veći što su obe varijable bliže pravoj liniji. U slučaju savršene korelacije ($\rho = 1$) između visine očeva i njihovih sinova, svaki dodatni centimetar visine oca bi deterministički bio prenesen na sina, što nije slučaj. -->
-<div id="fig-regresija" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-regresija-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-regresija-1.png" class="img-fluid figure-img" data-ref-parent="fig-regresija" width="672"></p>
-<figcaption class="figure-caption">(a) Očevi predviđaju sinove</figcaption>
+<div id="fig-regresija" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regresija-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-regresija" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-regresija-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-regresija-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-regresija-1.png" class="img-fluid figure-img" data-ref-parent="fig-regresija" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-regresija-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Očevi predviđaju sinove
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-regresija-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-regresija-2.png" class="img-fluid figure-img" data-ref-parent="fig-regresija" width="672"></p>
-<figcaption class="figure-caption">(b) Sinovi predviđaju očeve</figcaption>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-regresija" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-regresija-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-regresija-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-regresija-2.png" class="img-fluid figure-img" data-ref-parent="fig-regresija" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-regresija-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Sinovi predviđaju očeve
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figura&nbsp;1: Galtonova regresija visina očeva i sinova. Crvena isprekidana linija prikazuje istu tačku u obe figure. Plava regresiona linija je najbolje predviđanje za datu visinu. Populacija visokih očeva ima niže sinove, dok populacija visokih sinova ima niže očeve.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regresija-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Galtonova regresija visina očeva i sinova. Crvena isprekidana linija prikazuje istu tačku u obe figure. Plava regresiona linija je najbolje predviđanje za datu visinu. Populacija visokih očeva ima niže sinove, dok populacija visokih sinova ima niže očeve.
+</figcaption>
 </figure>
 </div>
 <p>Galton je otkrio objektivnu meru povezanosti dve varijable. Kasnije će njegov učenik Karl Pirson definisati Pirsonov koeficijent (<span class="math inline">\(\rho\)</span> ili <span class="math inline">\(r\)</span>) koji je dobro poznat svakom naučniku. Insistiranje na korišćenju korelacija zarad neke fiktivne “objektivnosti” je unazadilo nauku desetinama godina. Prodaja sladoleda je korelisana sa stopom kriminala, ali nikad ne bismo izmislili priču da objasnimo kako prodaja sladoleda utiče na kriminal — jasno nam je da su slučajno povezani. Korelacije ne govore ništa o uzrocima. Mogu poslužiti u predviđanjima, ali nemaju nikakvu eksplanatornu vrednost. Zaključivanje o intervencijama je nepouzdano. Provlačenjem kroz skupštinu zakona o zabrani prodaje sladoleda, neće smanjiti kriminal.</p>
@@ -294,7 +342,7 @@ Dodatak: Matematičko objašnjenje kontrolisanja treće varijable
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="salad.webp" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Naučnik trpa sve varijable u svoju salatu.</figcaption>
+<figcaption>Naučnik trpa sve varijable u svoju salatu.</figcaption>
 </figure>
 </div>
 </div>
@@ -304,14 +352,18 @@ Dodatak: Matematičko objašnjenje kontrolisanja treće varijable
 </section>
 <section id="kauzalni-dijagrami" class="level1">
 <h1>Kauzalni dijagrami</h1>
-<p>U svom radu “Da li biolozi mogu da poprave radio? — ili, šta sam naučio tokom izučavanje apoptoze,” <span class="citation" data-cites="lazebnik2002">Lazebnik (<a href="#ref-lazebnik2002" role="doc-biblioref">2002</a>)</span> govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Jedan od načina da se formalizuju pretpostavke u opservacionim studijama, tj. prirodnim eksperimentima su <em>usmereni aciklični dijagrami</em> (eng. Directed Acyclic Graphs, DAGs). Putem ovih dijagrama mogu se predstaviti uticaji za koje naučnik smatra da su u osnovi nekog procesa (<a href="#fig-confounder">Figura&nbsp;2</a>).</p>
+<p>U svom radu “Da li biolozi mogu da poprave radio? — ili, šta sam naučio tokom izučavanje apoptoze,” <span class="citation" data-cites="lazebnik2002">Lazebnik (<a href="#ref-lazebnik2002" role="doc-biblioref">2002</a>)</span> govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Jedan od načina da se formalizuju pretpostavke u opservacionim studijama, tj. prirodnim eksperimentima su <em>usmereni aciklični dijagrami</em> (eng. Directed Acyclic Graphs, DAGs). Putem ovih dijagrama mogu se predstaviti uticaji za koje naučnik smatra da su u osnovi nekog procesa (<a href="#fig-confounder" class="quarto-xref">Figura&nbsp;2</a>).</p>
 <p>Džudea Perl je popularizovao način kojim možemo opservacije (prvi stepenik) pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja (stepenik dva i tri). Naime, definisanjem kauzalnog dijagrama naučnik može saznati koje mu varijable trebaju da dobije odgovor na postavljeno pitanje. Jednom definisan, kauzalni dijagram eliminiše bilo kakvu zbunjenost koje kontrolne varijable treba uključiti u regresiju, a koje ne.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-confounder" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-confounder-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figura&nbsp;2: Šematski prikaz klasičnog kauzalnog dijagrama sa konfaunderom (<code>Z</code>). Strelice pokazuju tok informacija iz jedne varijable u drugu.</figcaption>
+<div id="fig-confounder" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confounder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-confounder-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Šematski prikaz klasičnog kauzalnog dijagrama sa konfaunderom (<code>Z</code>). Strelice pokazuju tok informacija iz jedne varijable u drugu.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -332,16 +384,17 @@ Upozorenje
 </div>
 <section id="do-račun-jezik-intervenisanja" class="level2">
 <h2 class="anchored" data-anchor-id="do-račun-jezik-intervenisanja">do-Račun: Jezik Intervenisanja</h2>
-<p>Recimo da smo posmatranjem prikupili podatke o uzimanju određenog leka u populaciji. Nas zanima kako on utiče na pojavu infarkta. Takođe ćemo pretpostaviti da pol utiče na uzimanje leka, što nije nemoguća pretpostavka. <a href="#fig-backdoor">Figura&nbsp;3</a> daje potencijalni kauzalni dijagram za ovaj scenario. Savršeni randomizovani eksperiment bi jednako dodelio lek svakom polu, ali trenutno imamo dostupnu samo opservacionu studiju. Do-Račun koristi matematičku operaciju koje se obeležava sa <span class="math inline">\(do(x)\)</span> da označi intervenciju ili kontračinjenicu. <span class="math inline">\(do(x)\)</span> simulira fizičku intervenciju fiksiranja izabrane varijable menjajući je sa konstantom (<span class="math inline">\(X = x\)</span>), dok ostatak kauzalnog modela ostaje nepromenjen.</p>
-<p>Ono što mi želimo da procenimo je efekat leka na infarkt (<span class="math inline">\(Lek \rightarrow Infarkt\)</span>) i to možemo da izrazimo sa <span class="math inline">\(P(Infarkt\,|\,do(Lek))\)</span>. Prevedeno, ovaj izraz znači: “Verovatnoća da se infarkt desio, ukoliko smo mi odredili lek.” Do-Račun nam omogućava da statistički izolujemo efekat <span class="math inline">\(Leka\)</span> na <span class="math inline">\(Infarkt\)</span> ukoliko nam kauzalni dijagram oslikava moguću realnost. Time smo dobili transformisali kauzalni dijagram na <a href="#fig-backdoor-adj">Figura&nbsp;4</a>, gde se jasno vidi obrisan uticaj <span class="math inline">\(Pola\)</span> na <span class="math inline">\(Lek\)</span>.</p>
+<p>Recimo da smo posmatranjem prikupili podatke o uzimanju određenog leka u populaciji. Nas zanima kako on utiče na pojavu infarkta. Takođe ćemo pretpostaviti da pol utiče na uzimanje leka, što nije nemoguća pretpostavka. <a href="#fig-backdoor" class="quarto-xref">Figura&nbsp;3</a> daje potencijalni kauzalni dijagram za ovaj scenario. Savršeni randomizovani eksperiment bi jednako dodelio lek svakom polu, ali trenutno imamo dostupnu samo opservacionu studiju. Do-Račun koristi matematičku operaciju koje se obeležava sa <span class="math inline">\(do(x)\)</span> da označi intervenciju ili kontračinjenicu. <span class="math inline">\(do(x)\)</span> simulira fizičku intervenciju fiksiranja izabrane varijable menjajući je sa konstantom (<span class="math inline">\(X = x\)</span>), dok ostatak kauzalnog modela ostaje nepromenjen.</p>
+<p>Ono što mi želimo da procenimo je efekat leka na infarkt (<span class="math inline">\(Lek \rightarrow Infarkt\)</span>) i to možemo da izrazimo sa <span class="math inline">\(P(Infarkt\,|\,do(Lek))\)</span>. Prevedeno, ovaj izraz znači: “Verovatnoća da se infarkt desio, ukoliko smo mi odredili lek.” Do-Račun nam omogućava da statistički izolujemo efekat <span class="math inline">\(Leka\)</span> na <span class="math inline">\(Infarkt\)</span> ukoliko nam kauzalni dijagram oslikava moguću realnost. Time smo dobili transformisali kauzalni dijagram na <a href="#fig-backdoor-adj" class="quarto-xref">Figura&nbsp;4</a>, gde se jasno vidi obrisan uticaj <span class="math inline">\(Pola\)</span> na <span class="math inline">\(Lek\)</span>.</p>
 <p>Kriterijumi po kojim se mogu odrediti dobre kontrolne varijable, za bilo koji kauzalni dijagram su <strong>Backdoor</strong> i <strong>Front-door</strong> kriterijum.</p>
 <!-- Do-Račun omogućava konstrukciju dokaza, ali ne pomaže da se dokaz pronađe. -->
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-backdoor" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-backdoor" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-backdoor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-backdoor">flowchart LR
   Z((Pol)) --&gt; X &amp; Y
@@ -350,7 +403,10 @@ Upozorenje
   
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;3: Kauzalni dijagram uticaja <code>Pola</code> na <code>Lek</code> i <code>Infakrt</code>. <code>Pol</code> je u ovom slučaju konfaunder pošto nas zanima kauzalni efekat <code>Leka</code> na <code>Infarkt</code></figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-backdoor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Kauzalni dijagram uticaja <code>Pola</code> na <code>Lek</code> i <code>Infakrt</code>. <code>Pol</code> je u ovom slučaju konfaunder pošto nas zanima kauzalni efekat <code>Leka</code> na <code>Infarkt</code>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -358,10 +414,11 @@ Upozorenje
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-backdoor-adj" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-backdoor-adj" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-backdoor-adj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-backdoor-adj">flowchart LR
   Z((Pol)) --&gt; Y
@@ -371,7 +428,10 @@ Upozorenje
   
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;4: Fiksiranjem, tj. brisanjem strelice iz <code>Pol</code> u <code>Lek</code> smo uklonili uticaj konfaundera na <code>Lek</code>. Sada svaka promena u <code>Infarktu</code> uslovljena promenom <code>Leka</code> odgovara kauzalnom efektu <code>Leka</code>.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-backdoor-adj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Fiksiranjem, tj. brisanjem strelice iz <code>Pol</code> u <code>Lek</code> smo uklonili uticaj konfaundera na <code>Lek</code>. Sada svaka promena u <code>Infarktu</code> uslovljena promenom <code>Leka</code> odgovara kauzalnom efektu <code>Leka</code>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -380,7 +440,7 @@ Upozorenje
 </div>
 <section id="backdoor-kriterijum" class="level3">
 <h3 class="anchored" data-anchor-id="backdoor-kriterijum">Backdoor Kriterijum</h3>
-<p>Backdoor kriterijum je pravilo o pronalaženju skupa varijabli, kontrolom kojih bi dobili izolovan efekat izloženosti <span class="math inline">\(X\)</span> na ishod <span class="math inline">\(Y\)</span> — drugačije napisano: <span class="math inline">\(P(Y\,|\,do(X))\)</span>. Intuitivno, blokiranjem svih alternativnih puteva (stelica) kojim je naša varijabla (<span class="math inline">\(X\)</span>) od interesa povezana za ishodom (<span class="math inline">\(Y\)</span>) će izolovati direktnu vezu naše varijable i ishoda (<span class="math inline">\(X \rightarrow Y\)</span>). U tom slučaju, svaka korelacija između <span class="math inline">\(X\)</span> i <span class="math inline">\(Y\)</span> istovremeno odgovara efektu <span class="math inline">\(X\)</span> na <span class="math inline">\(Y\)</span>. Pored toga što je najbitniji kriterijum, izuzetno je intuitivan i može se upotrebiti kada se dijagram analizira vizuelno. Backdoor kriterijum je primenjen na <a href="#fig-backdoor-adj">Figura&nbsp;4</a>.</p>
+<p>Backdoor kriterijum je pravilo o pronalaženju skupa varijabli, kontrolom kojih bi dobili izolovan efekat izloženosti <span class="math inline">\(X\)</span> na ishod <span class="math inline">\(Y\)</span> — drugačije napisano: <span class="math inline">\(P(Y\,|\,do(X))\)</span>. Intuitivno, blokiranjem svih alternativnih puteva (stelica) kojim je naša varijabla (<span class="math inline">\(X\)</span>) od interesa povezana za ishodom (<span class="math inline">\(Y\)</span>) će izolovati direktnu vezu naše varijable i ishoda (<span class="math inline">\(X \rightarrow Y\)</span>). U tom slučaju, svaka korelacija između <span class="math inline">\(X\)</span> i <span class="math inline">\(Y\)</span> istovremeno odgovara efektu <span class="math inline">\(X\)</span> na <span class="math inline">\(Y\)</span>. Pored toga što je najbitniji kriterijum, izuzetno je intuitivan i može se upotrebiti kada se dijagram analizira vizuelno. Backdoor kriterijum je primenjen na <a href="#fig-backdoor-adj" class="quarto-xref">Figura&nbsp;4</a>.</p>
 <!-- **Metod:** Procena artimetičke sredine efekta u svakom stratumu. Onda weighted average svakog stratuma prema prevalenci u populaciji @fig-backdoor. -->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -398,13 +458,14 @@ Beleška
 </section>
 <section id="front-door-kriterijum" class="level3">
 <h3 class="anchored" data-anchor-id="front-door-kriterijum">Front-door Kriterijum</h3>
-<p>Front-door kriterijum je malo komplikovaniji. Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o <span class="math inline">\(Leku\)</span>, <span class="math inline">\(Krvnom\,Pritisku\)</span> i <span class="math inline">\(Infarktu\)</span>. Ako pogledamo <a href="#fig-frontdoor-1">Figura&nbsp;5</a>, videćemo da <span class="math inline">\(Krvni\,Pritisak\)</span> stoji na putu efekta <span class="math inline">\(Leka\)</span> na <span class="math inline">\(Infakrt\)</span>. Takva varijabla se zove <strong>medijator</strong>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Ne možemo iskoristiti Backdoor kriterijum jer nemamo podatke o <span class="math inline">\(Infarkt\,Gen\)</span>-u, te ga ne možemo blokirati.</p>
+<p>Front-door kriterijum je malo komplikovaniji. Recimo da radimo opservacionu studiju, ali ne možemo da prikupimo podatke o genu podložnosti ka infarktu (možda ne znamo da takav postoji). Ono što jesmo prikupili su podaci o <span class="math inline">\(Leku\)</span>, <span class="math inline">\(Krvnom\,Pritisku\)</span> i <span class="math inline">\(Infarktu\)</span>. Ako pogledamo <a href="#fig-frontdoor-1" class="quarto-xref">Figura&nbsp;5</a>, videćemo da <span class="math inline">\(Krvni\,Pritisak\)</span> stoji na putu efekta <span class="math inline">\(Leka\)</span> na <span class="math inline">\(Infakrt\)</span>. Takva varijabla se zove <strong>medijator</strong>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Ne možemo iskoristiti Backdoor kriterijum jer nemamo podatke o <span class="math inline">\(Infarkt\,Gen\)</span>-u, te ga ne možemo blokirati.</p>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-frontdoor-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-frontdoor-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frontdoor-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-frontdoor-1">flowchart LR
   Z((Infarkt Gen)) --&gt; X &amp; Y
@@ -414,7 +475,10 @@ Beleška
   
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;5: Kauzalni dijagram pogodan za Front-door kriterijum. Isprekidanim krugom je obeležena varijabla o kojoj ne znamo ništa, samo spekulišemo da postoji.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frontdoor-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Kauzalni dijagram pogodan za Front-door kriterijum. Isprekidanim krugom je obeležena varijabla o kojoj ne znamo ništa, samo spekulišemo da postoji.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -422,10 +486,11 @@ Beleška
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-frontdoor-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-frontdoor-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frontdoor-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-frontdoor-2">flowchart LR
   Z((Infarkt Gen)) --&gt; X &amp; Y
@@ -438,15 +503,18 @@ Beleška
   
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;6: Veza između <code>Infarkt Gena</code> i <code>Krvnog Pritiska</code> ne sme da postoji kako bi Front-door kriterijum bio validan. Kada se nađemo u situaciji gde je nemoguće iskoristiti Backdoor kriterijum, treba potražiti postojanje zaštićene varijable koje je medijator efekta <code>Leka</code> na <code>Infarkt</code>.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frontdoor-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Veza između <code>Infarkt Gena</code> i <code>Krvnog Pritiska</code> ne sme da postoji kako bi Front-door kriterijum bio validan. Kada se nađemo u situaciji gde je nemoguće iskoristiti Backdoor kriterijum, treba potražiti postojanje zaštićene varijable koje je medijator efekta <code>Leka</code> na <code>Infarkt</code>.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Ono što možemo da procenimo je kauzalni efekat Leka na Krvni Pritisak (<span class="math inline">\(Lek\,{\color{blue}\rightarrow}\,Krvni\,pritisak\)</span>). Za to nam ne treba nikakva kontrolna varijabla (<a href="#fig-frontdoor-1">Figura&nbsp;5</a> pokazuje da nema strelice iz Infarkt Gena u Krvni Pritisak (<span class="math inline">\(Infarkt\,Gen \nrightarrow Krvni\,pritisak\)</span>). Takođe, možemo da uočimo da je razlika između <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Lek})\)</span> i <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})\)</span>, prosečan efekat Leka na Krvni Pritisak.</p>
-<p><a href="#fig-frontdoor-1">Figura&nbsp;5</a> pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt (<span class="math inline">\(Krvni\,Pritisak \,{\color{red}\rightarrow}\,Infarkt\)</span>). <em>Backdoor kriterijum</em> omogućava da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.</p>
+<p>Ono što možemo da procenimo je kauzalni efekat Leka na Krvni Pritisak (<span class="math inline">\(Lek\,{\color{blue}\rightarrow}\,Krvni\,pritisak\)</span>). Za to nam ne treba nikakva kontrolna varijabla (<a href="#fig-frontdoor-1" class="quarto-xref">Figura&nbsp;5</a> pokazuje da nema strelice iz Infarkt Gena u Krvni Pritisak (<span class="math inline">\(Infarkt\,Gen \nrightarrow Krvni\,pritisak\)</span>). Takođe, možemo da uočimo da je razlika između <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Lek})\)</span> i <span class="math inline">\(P(\text{Krvni Pritisak}\,|\,\text{Bez Leka})\)</span>, prosečan efekat Leka na Krvni Pritisak.</p>
+<p><a href="#fig-frontdoor-1" class="quarto-xref">Figura&nbsp;5</a> pokazuje da možemo da procenimo kauzalni efekat Krvnog Pritiska na Infarkt (<span class="math inline">\(Krvni\,Pritisak \,{\color{red}\rightarrow}\,Infarkt\)</span>). <em>Backdoor kriterijum</em> omogućava da blokiramo efekat Leka na Krvni Pritisak. Time smo saznali prosečan efekat prosečan efekat Krvnog Pritiska na Infarkt.</p>
 <!-- Tako ćemo dobiti $P(\text{Infarkt}\,|\,do\text{(Lek)})$ i $P(\text{Infarkt}\,|\,do\text{(Bez Leka)})$. -->
 <p>Kombinacijom ova dva efekta prostim množenjem (ukoliko je veza linearna) možemo posrednim putem da dobijemo efekat Leka na Infarkt izuzetog od genetskog uticaja Infarkt Gena. Proces izražavanja <span class="math inline">\(P(\text{Infarkt}\,|\,do\text{(Lek)})\)</span> preko verovatnoća koje ne sadrže do-operaciju je zapravo Front-door kriterijum.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -459,7 +527,7 @@ Beleška
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Upotreba:</strong> Front-door kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla <em>zaštićena</em> od uticaja konfaundera (uporediti dijagrame <a href="#fig-frontdoor-1">Figura&nbsp;5</a> i <a href="#fig-frontdoor-2">Figura&nbsp;6</a>).</p>
+<p><strong>Upotreba:</strong> Front-door kriterijum treba tražiti kad god ne možemo da uklonimo uticaj konfaundera Backdoor kriterijumom. U tom slučaju nam je potrebna medijatorska varijabla <em>zaštićena</em> od uticaja konfaundera (uporediti dijagrame <a href="#fig-frontdoor-1" class="quarto-xref">Figura&nbsp;5</a> i <a href="#fig-frontdoor-2" class="quarto-xref">Figura&nbsp;6</a>).</p>
 </div>
 </div>
 </section>
@@ -470,16 +538,20 @@ Beleška
 <div class="column" style="width:50%;">
 <p>Poznata priča o Džon Snouovom zaključku da epidemija dijareje u Londonu potiče od zagađenja pijaće vode ljudskim fekalijama, a ne da je uzrokovana mijazmom (česticama lošeg vazduha) ili siromaštvom, je dobra ilustracija kauzalnog zaključivanja. Ova epidemija je odnela skoro 3,000 Života — uzrok je bilo bitno otkriti. Kako uzročnik, <em>Vibrio cholerae</em>, još uvek nije bio poznat Džon Snou je pred sobom imao nekoliko mogućih objašnjenja. Teorija mijazme, koje je bila popularna, tvrdila je da su uzročnik truležne čestice iz vazduha. Pumpa vode, koju je Snou ugasio, se često pominje kao ključan momenat u borbi protiv epidemije. Međutim, gašenje pumpe je jedva promenilo njen tok <span class="citation" data-cites="pearl2018">(<a href="#ref-pearl2018" role="doc-biblioref">Pearl &amp; Mackenzie, 2018</a> p.&nbsp;246)</span>.</p>
 </div><div class="column" style="width:50%;">
-<div id="fig-john" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="johnsnow.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption class="figure-caption">Figura&nbsp;7: Dr Džon Snou</figcaption>
+<div id="fig-john" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-john-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="johnsnow.jpg" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-john-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Dr Džon Snou
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kauzalnom dijagramu prikazan je na <a href="#fig-instrumental">Figura&nbsp;8</a>.</p>
-<p>Varijabla koja prirodno randomizuje opservacije naziva se <strong>instrumentalna varijabla</strong>. Takva varijabla po definiciji ispunjava Backdoor kriterijum, tj. nema nikakve sopstvene uzroke. <a href="#fig-instrumental">Figura&nbsp;8</a> pokazuje da varijabla <span class="math inline">\(Kompanija\)</span> ispunjava sledeće:</p>
+<p>Najbitnij uvid koji je Džon Snou imao je bio kauzalne prirode. Džon Snou je primetio da su se kompanije koje snabdevaju London vodom podelile na one koje su uzimale vodu iz Temze blizu Londonskog mosta (nizvodno od kanalizacije), i one koje nisu. Ove kompanije su, izdelivši grad London u svoje mreže snabdevanja, u stvari randomizovale stanovnike grada na one koji su dobijali zagađenu vodu i one koji nisu. Ti stanovnici su bili raznolikih pozadina po bogatstvu, godinama, statusu, itd. Polozaj kompanije u kauzalnom dijagramu prikazan je na <a href="#fig-instrumental" class="quarto-xref">Figura&nbsp;8</a>.</p>
+<p>Varijabla koja prirodno randomizuje opservacije naziva se <strong>instrumentalna varijabla</strong>. Takva varijabla po definiciji ispunjava Backdoor kriterijum, tj. nema nikakve sopstvene uzroke. <a href="#fig-instrumental" class="quarto-xref">Figura&nbsp;8</a> pokazuje da varijabla <span class="math inline">\(Kompanija\)</span> ispunjava sledeće:</p>
 <ul>
 <li>Nema strelice od <span class="math inline">\(Mijazme\)</span> do <span class="math inline">\(Kompanije\)</span><br>
 (kompanije ne prenose efekat mijazme)</li>
@@ -502,10 +574,11 @@ Dodatak: Namera lečenja
 <p>U modernom dizajnu istraživanja, namera lečenja (eng. intention-to-treat) vriši funkciju instrumentalne varijable. Kako istraživači ne mogu da kontrolišu da li će se pacijenti zapravo pridržavati dodeljene terapije, svaki procenjeni efekat terapije nakon randomizacije će biti pristrasan. Pogotovo ako ima dosta pacijenata koji odustanu od lečenja. Tako da je zapravo bolje govoriti o “efektu” dodeljivanja terapijskoj grupi. Ovo kao što možete pretpostaviti ima problema sa generalizacijom na okruženja van studije.</p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-instrumental" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-instrumental" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-instrumental-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-instrumental">flowchart LR
   M(Mijazma, Siromaštvo,...) -.-&gt; W &amp; C
@@ -516,7 +589,10 @@ Dodatak: Namera lečenja
   
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;8: Kauzalni dijagram epidemije kolere u Londonu. Varijabla <code>Kompanija</code> ima status instrumentalne varijable.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-instrumental-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Kauzalni dijagram epidemije kolere u Londonu. Varijabla <code>Kompanija</code> ima status instrumentalne varijable.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -540,7 +616,7 @@ Dodatak: Namera lečenja
 <p>Ovo je bio kratak konceptualni uvod u kauzalne dijagrame. Pisao sam članak uglavnom sebi kao podsetnik, ali možda posluži kao uvod nekom ko je zainteresovan.</p>
 <section id="reference" class="level3">
 <h3 class="anchored" data-anchor-id="reference">Reference</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-cinelli2020" class="csl-entry" role="listitem">
 Cinelli, C., Forney, A., &amp; Pearl, J. (2020). A Crash Course in Good and Bad Controls. <em>SSRN Electronic Journal</em>. <a href="https://doi.org/10.2139/ssrn.3689437">https://doi.org/10.2139/ssrn.3689437</a>
 </div>
@@ -575,7 +651,7 @@ Westreich, D., &amp; Greenland, S. (2013). The Table&nbsp;2 Fallacy: Presenting 
 <li id="fn4"><p>Ne samo regresiju, već bilo koji proces analize. Uključujući i nelinearne metode.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Dobar primer medijativnog efekta je uticaj Vitamina C na kauzalnom putu: <span class="math inline">\(Citrus \rightarrow Vitamin\,C \rightarrow Skorbut\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
   author = {N. Grubor, Nikola},
   title = {Kauzalno zaključivanje je moguće iz opservacionih studija},
   date = {2023-08-07},
@@ -627,6 +703,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -695,13 +798,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -780,10 +885,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nikola-grubor\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -793,8 +915,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -806,7 +937,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -850,6 +1104,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -875,6 +1130,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -935,6 +1216,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

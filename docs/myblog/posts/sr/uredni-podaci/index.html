@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -69,7 +70,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Nema rezultata",
     "search-matching-documents-text": "slična dokumenta",
@@ -78,6 +85,7 @@ div.csl-indent {
     "search-more-match-text": "još rezultat u ovom dokumentu",
     "search-more-matches-text": "još rezultata u ovom dokumentu",
     "search-clear-button-title": "Obriši",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Odustani",
     "search-submit-button-title": "Predaj",
     "search-label": "Pretraži"
@@ -91,6 +99,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../../styles.css">
 <meta name="twitter:title" content="Nikola N. Grubor - Uredni Podaci u Biomedicinskim Naukama">
 <meta name="twitter:description" content="Neke baze mogu biti toliko neuredne da su praktično neupotrebljive. Ovde ćete naći kratak pregled strategija za pravljenje urednih baza. Više vremena provedeno razmišljajući o analizi, a manje o sređivanju podataka je bolje za nauku.">
@@ -101,10 +136,10 @@ div.csl-indent {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Nikola N. Grubor</span>
     </a>
@@ -116,21 +151,21 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../myblog/index.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../../../myblog/index.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/nikola-grubor" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://www.linkedin.com/in/herr-grubor/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/nikola-grubor" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/herr-grubor/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Prekidač za tamnu temu"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -211,6 +246,7 @@ div.csl-indent {
 
 
 
+
 <section id="šta-su-uredni-podaci" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Šta su uredni podaci</h1>
 <blockquote class="blockquote">
@@ -218,25 +254,33 @@ div.csl-indent {
 </blockquote>
 <p>Uredni podaci su oni podaci koji se mogu analizirati u statističkom softveru bez dodatne obrade. Postoji bezbroj načina da se napravi neuredna baza podataka. Samim tim, sređivanje baze je poduhvat jedinstven za svaku bazu. Neki principi sređivanja se mogu reciklirati, ali uglavnom postoji beskonačan broj načina na koje istraživač može da uneredi svoju bazu podataka čineći je <em>neupotrebljivom</em>. Ovaj članak će preći najbitnije savete za pravljenje urednih baza, sa ciljem da bude funkcionalan podsetnik odgovornim istraživačima. Dobar pregled teorije vezane sa uredne podatke se može pronaći u <span class="citation" data-cites="wickham2014">(<a href="#ref-wickham2014" role="doc-biblioref">Wickham, 2014</a>)</span>.</p>
 <p>Pravljene urednih tabela podataka podrazumeva obimniji posao na početku rada, ali se on višestruko isplati tokom analize podataka. U suprotnom, većina vremena se potroši na sređivanje podataka, a jako malo na konkretnoj nauci. Kvalitet istraživanja opada ako se nedovoljno vremena posveti analizi.</p>
-<p>Prvi deo članka posvećen je <strong>gruboj organizaciji podataka</strong> u uredne tabele (<a href="#sec-grube_forme">Odeljak&nbsp;2</a>), sa savetima za pravljenje tabela namenjenim različitim funkcijama (npr. praćenje pacijenata). Drugi deo članka posvećen je samom <strong>unosu podataka</strong> (<a href="#sec-belezenje_podataka">Odeljak&nbsp;3</a>), tj. pravilnom imenovanju varijabli, pisanju datuma, kodiranju kategorija i slično. Delovi su nezavisni jedan od drugog ali imaju neke zajedničke koncepte.</p>
+<p>Prvi deo članka posvećen je <strong>gruboj organizaciji podataka</strong> u uredne tabele (<a href="#sec-grube_forme" class="quarto-xref">Odeljak&nbsp;2</a>), sa savetima za pravljenje tabela namenjenim različitim funkcijama (npr. praćenje pacijenata). Drugi deo članka posvećen je samom <strong>unosu podataka</strong> (<a href="#sec-belezenje_podataka" class="quarto-xref">Odeljak&nbsp;3</a>), tj. pravilnom imenovanju varijabli, pisanju datuma, kodiranju kategorija i slično. Delovi su nezavisni jedan od drugog ali imaju neke zajedničke koncepte.</p>
 </section>
 <section id="sec-grube_forme" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Grube forme baza</h1>
-<p>Isti podaci se mogu zapisati na više načina (<a href="#tbl-primer1">Tabela&nbsp;1</a>, <a href="#tbl-primer2">Tabela&nbsp;2</a>). Najbolji način organizovanja podataka je onaj gde se svi podaci nalaze na jednom mestu (<a href="#fig-tidydata">Figura&nbsp;1</a>). Kako bi svi podaci bili sadržani u jednoj tabeli oni moraju biti upisani po principu:</p>
+<p>Isti podaci se mogu zapisati na više načina (<a href="#tbl-primer1" class="quarto-xref">Tabela&nbsp;1</a>, <a href="#tbl-primer2" class="quarto-xref">Tabela&nbsp;2</a>). Najbolji način organizovanja podataka je onaj gde se svi podaci nalaze na jednom mestu (<a href="#fig-tidydata" class="quarto-xref">Figura&nbsp;1</a>). Kako bi svi podaci bili sadržani u jednoj tabeli oni moraju biti upisani po principu:</p>
 <ul>
 <li>jedna kolona, jedna varijabla;</li>
 <li>jedan red, jedna opservacija;</li>
 <li>jedna ćelija, jedan podatak.</li>
 </ul>
-<div id="fig-tidydata" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="tidy-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figura&nbsp;1: Uredna organizacija podataka. Svaka kolona ima svoju varijablu. Svaki red opservaciju, a svaka ćelija po jednu vrednost <span class="citation" data-cites="grolemunda">(<a href="#ref-grolemunda" role="doc-biblioref">Grolemund &amp; Garrett, bez dat.</a>)</span>.</figcaption>
+<div id="fig-tidydata" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tidydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tidy-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Uredna organizacija podataka. Svaka kolona ima svoju varijablu. Svaki red opservaciju, a svaka ćelija po jednu vrednost <span class="citation" data-cites="grolemunda">(<a href="#ref-grolemunda" role="doc-biblioref">Grolemund &amp; Garrett, bez dat.</a>)</span>.
+</figcaption>
 </figure>
 </div>
-<div id="tbl-primer1" class="anchored">
+<div id="tbl-primer1" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-primer1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1: Varijanta tabele gde su varijable <code>merenje</code> i <code>merenje_02</code> unešene zasebno.
+</figcaption>
+<div aria-describedby="tbl-primer1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Tabela&nbsp;1: Varijanta tabele gde su varijable <code>merenje</code> i <code>merenje_02</code> unešene zasebno.</caption>
 <thead>
 <tr class="header">
 <th>pacijent</th>
@@ -267,9 +311,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="tbl-primer2" class="anchored">
+</figure>
+</div>
+<div id="tbl-primer2" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-primer2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2: Varijanta tabele, sa istim podacima, gde su različita merenja organizovana unutar varijable <code>tip_merenja</code>. Primetiti da se varijabla <code>pacijent</code> ponavlja i povezuje sva merenja sa odgovarajućim pacijentom.
+</figcaption>
+<div aria-describedby="tbl-primer2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Tabela&nbsp;2: Varijanta tabele, sa istim podacima, gde su različita merenja organizovana unutar varijable <code>tip_merenja</code>. Primetiti da se varijabla <code>pacijent</code> ponavlja i povezuje sva merenja sa odgovarajućim pacijentom.</caption>
 <thead>
 <tr class="header">
 <th>pacijent</th>
@@ -306,13 +356,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <section id="pravougaona-forma" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="pravougaona-forma"><span class="header-section-number">2.1</span> Pravougaona forma</h2>
-<p>Čuvanjem podataka na ovaj način dobijamo pravougaonik forme <span class="math inline">\(red \times kolona\)</span> gde svaka ćelija mora imati neku vrednost, čak i ako ona nedostaje (videti <a href="#sec-missing-data">Odeljak&nbsp;3.3</a>). Jako je bitno da svaka ćelija sadrži tačno jednu informaciju (<a href="#sec-granular">Odeljak&nbsp;3.6</a>). Ukoliko se ovo ne ispoštuje, neminovno će doći do greške pri unosu podataka.</p>
+<p>Čuvanjem podataka na ovaj način dobijamo pravougaonik forme <span class="math inline">\(red \times kolona\)</span> gde svaka ćelija mora imati neku vrednost, čak i ako ona nedostaje (videti <a href="#sec-missing-data" class="quarto-xref">Odeljak&nbsp;3.3</a>). Jako je bitno da svaka ćelija sadrži tačno jednu informaciju (<a href="#sec-granular" class="quarto-xref">Odeljak&nbsp;3.6</a>). Ukoliko se ovo ne ispoštuje, neminovno će doći do greške pri unosu podataka.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="messy-01.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Ovu katastrofu treba izbegavati. Barem su tabele unutar radne sveske pravougaone <span class="citation" data-cites="christiebahlai">(<a href="#ref-christiebahlai" role="doc-biblioref">Christie Bahlai &amp; Aleksandra Pawlik, bez dat.</a>)</span>.</figcaption>
+<figcaption>Ovu katastrofu treba izbegavati. Barem su tabele unutar radne sveske pravougaone <span class="citation" data-cites="christiebahlai">(<a href="#ref-christiebahlai" role="doc-biblioref">Christie Bahlai &amp; Aleksandra Pawlik, bez dat.</a>)</span>.</figcaption>
 </figure>
 </div>
 </section>
@@ -321,10 +373,14 @@ div.csl-indent {
 <p>U zavisnosti od kompleksnosti ponovljenih merenja, tj. koliko podataka se prikuplja, treba razmotriti dve mogućnosti: široke/dugačke tabele ili relacione tabele. Široke tabele su korisne kada nemamo puno ponovljenih merenja ili varijabli. Tada je lako dodati još kolona za svako ponovljeno merenje. Međutim, kada imamo mnogo podataka, radi čitljivosti i fleksibilnosti, trebalo bi koristiti relacione tabele.</p>
 <section id="široke-i-dugačke-tabele" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="široke-i-dugačke-tabele"><span class="header-section-number">2.2.1</span> Široke i dugačke tabele</h3>
-<p>Široke tabele imaju prednost lakšeg popunjavanje (<a href="#tbl-wide">Tabela&nbsp;3</a>). Podaci se upisuju kako čitamo i pišemo, sa leva na desno. Alternativa širokim tabelama su dugačke tabele (<a href="#tbl-tall">Tabela&nbsp;4</a>). Upisivanje je napornije, ali su tabele preglednije.</p>
-<div id="tbl-wide" class="anchored">
+<p>Široke tabele imaju prednost lakšeg popunjavanje (<a href="#tbl-wide" class="quarto-xref">Tabela&nbsp;3</a>). Podaci se upisuju kako čitamo i pišemo, sa leva na desno. Alternativa širokim tabelama su dugačke tabele (<a href="#tbl-tall" class="quarto-xref">Tabela&nbsp;4</a>). Upisivanje je napornije, ali su tabele preglednije.</p>
+<div id="tbl-wide" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;3: Široka tabela gde se ponovljena merenja upisuju kao dodatne kolone.
+</figcaption>
+<div aria-describedby="tbl-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Tabela&nbsp;3: Široka tabela gde se ponovljena merenja upisuju kao dodatne kolone.</caption>
 <colgroup>
 <col style="width: 7%">
 <col style="width: 23%">
@@ -366,9 +422,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="tbl-tall" class="anchored">
+</figure>
+</div>
+<div id="tbl-tall" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;4: Dugačka tabela ima drastično manji broj kolona, ali ima ponovljene unose jedinstvenog indikatora <code>id</code>, koji povezuje merenja sa pacijentom (videti <a href="#sec-id" class="quarto-xref">Odeljak&nbsp;3.4</a>).
+</figcaption>
+<div aria-describedby="tbl-tall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Tabela&nbsp;4: Dugačka tabela ima drastično manji broj kolona, ali ima ponovljene unose jedinstvenog indikatora <code>id</code>, koji povezuje merenja sa pacijentom (videti <a href="#sec-id">Odeljak&nbsp;3.4</a>).</caption>
 <thead>
 <tr class="header">
 <th>id</th>
@@ -405,10 +467,12 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </section>
 <section id="relacione-tabele" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="relacione-tabele"><span class="header-section-number">2.2.2</span> Relacione tabele</h3>
-<p>Relacione tabele su pogodne za belezenje velikog broja laboratorijskih analiza, pogotovo ponovljenih merenja. Ostavljaju osnovnu tabelu (koja sadrži opšte informacije koje se neće menjati) čitkom i smanjuju širinu baze, što je čini preglednijom. Laboratorijska merenja pacijenata su povezana sa osnovnim informacijama preko kolone <code>id</code> koja je <strong>jedinstveno</strong> (<a href="#sec-id">Odeljak&nbsp;3.4</a>) dodeljena svakom pacijentu u momentu kada je on upisan u bazu <span class="citation" data-cites="mph2013">(<a href="#ref-mph2013" role="doc-biblioref">MPH i ostali, 2013</a>)</span>.</p>
+<p>Relacione tabele su pogodne za belezenje velikog broja laboratorijskih analiza, pogotovo ponovljenih merenja. Ostavljaju osnovnu tabelu (koja sadrži opšte informacije koje se neće menjati) čitkom i smanjuju širinu baze, što je čini preglednijom. Laboratorijska merenja pacijenata su povezana sa osnovnim informacijama preko kolone <code>id</code> koja je <strong>jedinstveno</strong> (<a href="#sec-id" class="quarto-xref">Odeljak&nbsp;3.4</a>) dodeljena svakom pacijentu u momentu kada je on upisan u bazu <span class="citation" data-cites="mph2013">(<a href="#ref-mph2013" role="doc-biblioref">MPH i ostali, 2013</a>)</span>.</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <table class="table">
@@ -473,15 +537,19 @@ div.csl-indent {
 <p>Koncept relacionih tabela je lako proširiti po potrebi. Kombinacija dve tabele povezane preko <code>id</code>, gde <span class="math inline">\(\text{tabela sa merenjima}\)</span> sadrži <code>lab_id</code> (jedinstvenu identifikaciju laboratorijskog merenja) i <code>datum</code>, te se može koristiti za praćenje laboratorijskih parametara pacijenata tokom vremena.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-relation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-relation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-relation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-relation">flowchart LR
   A["Osnovna tabela"] --&gt; B["Tabela sa merenjima"]
   B --&gt; C(lab_id) &amp; D(datum)
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;2: Relacioni odnosi između tabela.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-relation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Relacioni odnosi između tabela.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -592,21 +660,25 @@ Legenda
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Jako je korisno napraviti legendu varijabli. Legenda podrazumeva pismeno objašnjenje značenja imena varijabli. Legendu treba napraviti na posebnom listu u Excel-u. Pravljenje legende je korisno jer forsira istraživača da razmisli o značenjima varijabli, i klasifikacijama koje će koristiti (videti <a href="#sec-cat">Odeljak&nbsp;3.5</a>).</p>
+<p>Jako je korisno napraviti legendu varijabli. Legenda podrazumeva pismeno objašnjenje značenja imena varijabli. Legendu treba napraviti na posebnom listu u Excel-u. Pravljenje legende je korisno jer forsira istraživača da razmisli o značenjima varijabli, i klasifikacijama koje će koristiti (videti <a href="#sec-cat" class="quarto-xref">Odeljak&nbsp;3.5</a>).</p>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="legend.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Primer legende <span class="citation" data-cites="broman2018">(<a href="#ref-broman2018" role="doc-biblioref">Broman &amp; Woo, 2018</a>)</span>.</figcaption>
+<figcaption>Primer legende <span class="citation" data-cites="broman2018">(<a href="#ref-broman2018" role="doc-biblioref">Broman &amp; Woo, 2018</a>)</span>.</figcaption>
 </figure>
 </div>
 <section id="sec-naming" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-naming"><span class="header-section-number">3.1</span> Opšta imena varijabli i podataka</h2>
-<p>Imena varijabli trebaju da budu kratka i jasna. Primeri dobrih naziva su dati u <a href="#tbl-imena">Tabela&nbsp;5</a>. Pored imena kolona, potrebno je dobro upisati i vrednosti u redove. Merne jedicine (<code>75 (kg)</code>) ne unositi u polja sa vrednostima, već ih izmestiti u imena varijable (<code>tezina_kg</code>); još je bolje ako se merne jedinice upišu u legendu (<a href="#sec-belezenje_podataka">Odeljak&nbsp;3</a>), a imena varijabli ostanu jednostavna.</p>
-<div id="tbl-imena" class="anchored">
+<p>Imena varijabli trebaju da budu kratka i jasna. Primeri dobrih naziva su dati u <a href="#tbl-imena" class="quarto-xref">Tabela&nbsp;5</a>. Pored imena kolona, potrebno je dobro upisati i vrednosti u redove. Merne jedicine (<code>75 (kg)</code>) ne unositi u polja sa vrednostima, već ih izmestiti u imena varijable (<code>tezina_kg</code>); još je bolje ako se merne jedinice upišu u legendu (<a href="#sec-belezenje_podataka" class="quarto-xref">Odeljak&nbsp;3</a>), a imena varijabli ostanu jednostavna.</p>
+<div id="tbl-imena" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-imena-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;5: Perimeri dobrih i loših imena varijabli.
+</figcaption>
+<div aria-describedby="tbl-imena-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Tabela&nbsp;5: Perimeri dobrih i loših imena varijabli.</caption>
 <thead>
 <tr class="header">
 <th>Dobro</th>
@@ -643,6 +715,8 @@ Legenda
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </section>
 <section id="datumi" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="datumi"><span class="header-section-number">3.2</span> Datumi</h2>
@@ -650,18 +724,22 @@ Legenda
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://imgs.xkcd.com/comics/iso_8601.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Loše formatirani datumi (https://xkcd.com/1179/).</figcaption>
+<figcaption>Loše formatirani datumi (https://xkcd.com/1179/).</figcaption>
 </figure>
 </div>
 </section>
 <section id="sec-missing-data" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-missing-data"><span class="header-section-number">3.3</span> Podaci koji nedostaju</h2>
-<p>Postoji velika razlika između toga da li smo načinili merenje i dobili nulu kao vrednost (<span class="math inline">\(\text{merenje} = 0\)</span>) ili nismo uopšte imali opservaciju (<span class="math inline">\(\text{merenje} = \; ?\)</span>). U prvom slučaju je jasno da laboratorijska vrednost opservirana (tj. viđena) ali je rezultat bio <span class="math inline">\(0\)</span>. U drugom slučaju merenje nikad nije napravljeno pa ne možemo da znamo da li je vrednost <span class="math inline">\(0\)</span> ili bilo koja druga (<a href="#fig-missing-data">Figura&nbsp;3</a>). Zbog toga se upisivanje ovih podataka razlikuje.</p>
+<p>Postoji velika razlika između toga da li smo načinili merenje i dobili nulu kao vrednost (<span class="math inline">\(\text{merenje} = 0\)</span>) ili nismo uopšte imali opservaciju (<span class="math inline">\(\text{merenje} = \; ?\)</span>). U prvom slučaju je jasno da laboratorijska vrednost opservirana (tj. viđena) ali je rezultat bio <span class="math inline">\(0\)</span>. U drugom slučaju merenje nikad nije napravljeno pa ne možemo da znamo da li je vrednost <span class="math inline">\(0\)</span> ili bilo koja druga (<a href="#fig-missing-data" class="quarto-xref">Figura&nbsp;3</a>). Zbog toga se upisivanje ovih podataka razlikuje.</p>
 <p>Najbolje je upisati <span class="math inline">\(\text{NA}\)</span> (eng. <em>not applicable/not available</em>) u polje čija se vrednost ne zna. Moderni statistički programi prepoznaju ovaj unos kao poseban tip podatka različit od <span class="math inline">\(0\)</span>.</p>
-<div id="fig-missing-data" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="missing.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figura&nbsp;3: Prikazane u dve tabele kojima nedostaju podaci. U tabeli A nije potpuno jasno koji datumi idu uz prisutna merenja glukoze. U tabeli B nije jasno kojoj vrsti kulture pripadaju ćelije <span class="citation" data-cites="broman2018">(<a href="#ref-broman2018" role="doc-biblioref">Broman &amp; Woo, 2018</a>)</span>.</figcaption>
+<div id="fig-missing-data" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-missing-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="missing.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-missing-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Prikazane u dve tabele kojima nedostaju podaci. U tabeli A nije potpuno jasno koji datumi idu uz prisutna merenja glukoze. U tabeli B nije jasno kojoj vrsti kulture pripadaju ćelije <span class="citation" data-cites="broman2018">(<a href="#ref-broman2018" role="doc-biblioref">Broman &amp; Woo, 2018</a>)</span>.
+</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -715,17 +793,21 @@ Bitno
 </section>
 <section id="sec-granular" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="sec-granular"><span class="header-section-number">3.6</span> Granularni podaci</h2>
-<p>Granularni podaci podrazumevaju zapisivanje podataka detaljne, precizne i najfinije rezolucije. To znači da je uvek bolje zabeležiti nečiju telesnu visinu i težinu pre nego samo upisati <em>gojazan</em>. Grupisani podaci su isto neuredni. Ako imamo podatak o sistolnom i dijastolnom pritisku <code>120/80 mmHg</code>, potrebno je razdvojiti ove vrednosti u pojedinačne kolone i ukloniti mernu jedinicu iz polja (<a href="#fig-granular">Figura&nbsp;4</a>).</p>
+<p>Granularni podaci podrazumevaju zapisivanje podataka detaljne, precizne i najfinije rezolucije. To znači da je uvek bolje zabeležiti nečiju telesnu visinu i težinu pre nego samo upisati <em>gojazan</em>. Grupisani podaci su isto neuredni. Ako imamo podatak o sistolnom i dijastolnom pritisku <code>120/80 mmHg</code>, potrebno je razdvojiti ove vrednosti u pojedinačne kolone i ukloniti mernu jedinicu iz polja (<a href="#fig-granular" class="quarto-xref">Figura&nbsp;4</a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-granular" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-granular" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-granular-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-granular">flowchart TD
   A["120/80 mmHg"] --&gt; B[120] &amp; C[80]
 </pre>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;4: Razdvajanje grupisanih podataka u granularnu formu.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-granular-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Razdvajanje grupisanih podataka u granularnu formu.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -789,7 +871,7 @@ Rezime
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-broman2018" class="csl-entry" role="listitem">
 Broman, K. W., &amp; Woo, K. H. (2018). Data Organization in Spreadsheets. <em>The American Statistician</em>, <em>72</em>(1), 2–10. <a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>
 </div>
@@ -813,7 +895,7 @@ Wickham, H. (2014). Tidy Data. <em>Journal of Statistical Software</em>, <em>59<
 <ol>
 <li id="fn1"><p>Excel je uneo neverovatnu pometnju u polje genomike, jer uporno tumači imena gena kao datume. Ove greške se uporno provlače jer Excel svoje izmene ne prijavljuje već ih radi “tiho” u pozadini, ne dajući obaveštenje korisniku <span class="citation" data-cites="lewis2021">(<a href="#ref-lewis2021" role="doc-biblioref">Lewis, 2021</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2023,
   author = {N. Grubor, Nikola},
   title = {Uredni Podaci u Biomedicinskim Naukama},
   date = {2023-11-05},
@@ -865,6 +947,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -933,13 +1042,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1018,10 +1129,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nikola-grubor\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1031,8 +1159,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1044,7 +1181,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1088,6 +1348,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1113,6 +1374,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1173,6 +1460,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
