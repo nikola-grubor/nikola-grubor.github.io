@@ -15,7 +15,7 @@ author:
     # affiliation-url: https://www.mfub.bg.ac.rs/
 csl: apa.csl
 bibliography: biblio.bib
-categories: [statistika, medicina, srpski]
+categories: [baze podataka, statistika, medicina, srpski]
 image: "messy-cover.jpg"
 mermaid: 
   theme: forest
@@ -95,7 +95,7 @@ U zavisnosti od kompleksnosti ponovljenih merenja, tj. koliko podataka se prikup
 
 Relacione tabele su pogodne za belezenje velikog broja laboratorijskih analiza, pogotovo ponovljenih merenja. Ostavljaju osnovnu tabelu (koja sadrži opšte informacije koje se neće menjati) čitkom i smanjuju širinu baze, što je čini preglednijom. Laboratorijska merenja pacijenata su povezana sa osnovnim informacijama preko kolone `id` koja je **jedinstveno** (@sec-id) dodeljena svakom pacijentu u momentu kada je on upisan u bazu [@mph2013].
 
-::: {.columns}
+::: columns
 ::: {.column width="45%"}
 | id  | starost | dijagnoza    |
 |-----|---------|--------------|
@@ -132,7 +132,7 @@ flowchart LR
   B --> C(lab_id) & D(datum)
 ```
 
-::: {.columns}
+::: columns
 ::: {.column width="45%"}
 | id  | starost | dijagnoza    |
 |-----|---------|--------------|
@@ -206,8 +206,7 @@ Postoji velika razlika između toga da li smo načinili merenje i dobili nulu ka
 
 Najbolje je upisati $\text{NA}$ (eng. *not applicable/not available*) u polje čija se vrednost ne zna. Moderni statistički programi prepoznaju ovaj unos kao poseban tip podatka različit od $0$.
 
-![Prikazane u dve tabele kojima nedostaju podaci. U tabeli A nije potpuno jasno koji
-datumi idu uz prisutna merenja glukoze. U tabeli B nije jasno kojoj vrsti kulture pripadaju ćelije [@broman2018].](missing.jpg){#fig-missing-data}
+![Prikazane u dve tabele kojima nedostaju podaci. U tabeli A nije potpuno jasno koji datumi idu uz prisutna merenja glukoze. U tabeli B nije jasno kojoj vrsti kulture pripadaju ćelije [@broman2018].](missing.jpg){#fig-missing-data}
 
 ::: callout-warning
 Za upisivanje podataka se najčešće koristi *Microsoft Excel*. Neki autori daju preporuke da se nepoznata polja ostave prazna. Ovo može biti opasno jer se dešava da istraživač tokom upisa slučajno previdi prazno polje i pokvari redosled upisa podataka. Ako se odlučite za prazna polja, budite pažljivi!
@@ -217,8 +216,7 @@ Za upisivanje podataka se najčešće koristi *Microsoft Excel*. Neki autori daj
 
 Svaka opservacija se mora jedinstveno obeležiti kako bi se sve vrednostu u tabeli povezale sa njom. U kliničkoj praksi je najbolje upotrebiti jedinstveni matični broj građanina. Međutim kako je ovo poverljiv podatak, neki istraživači se opredeljuju za broj istorije. Nažalost broj istorije pacijenta nije jedinstven, i mogu se naći različiti pacijenti sa istim brojem, pogotovo ako se podaci prikupljaju sa više izvora.
 
-Rešenje je napraviti jedinstvenu kolonu, najčešće pod nazivom `id`, koja će služiti za identifikaciju opservacija. To mogu biti pacijent, merenje, medicinski aparat, ili drugo. `id` kolonu dodeljuje istaživač po svom nahođenju, jedini uslov je da svaka zasebna opservacija ima jedinstven način identifikacije. Svaki put kada se unose novu podaci u bazu
-treba napisati odgovarajući `id` kako bi se znalo na šta se odnose merenja.
+Rešenje je napraviti jedinstvenu kolonu, najčešće pod nazivom `id`, koja će služiti za identifikaciju opservacija. To mogu biti pacijent, merenje, medicinski aparat, ili drugo. `id` kolonu dodeljuje istaživač po svom nahođenju, jedini uslov je da svaka zasebna opservacija ima jedinstven način identifikacije. Svaki put kada se unose novu podaci u bazu treba napisati odgovarajući `id` kako bi se znalo na šta se odnose merenja.
 
 ::: callout-important
 ## Anonimizacija podataka
@@ -236,8 +234,7 @@ Kategorije se ne moraju beležiti brojevima kao indikatorima (0 i 1). Moderni st
 
 ## Granularni podaci {#sec-granular}
 
-Granularni podaci podrazumevaju zapisivanje podataka detaljne, precizne i najfinije rezolucije. To znači da je uvek bolje zabeležiti nečiju telesnu visinu i težinu pre nego samo upisati *gojazan*. Grupisani podaci su isto neuredni. Ako imamo podatak o sistolnom i dijastolnom pritisku `120/80 mmHg`, potrebno je razdvojiti ove vrednosti u pojedinačne kolone
-i ukloniti mernu jedinicu iz polja (@fig-granular).
+Granularni podaci podrazumevaju zapisivanje podataka detaljne, precizne i najfinije rezolucije. To znači da je uvek bolje zabeležiti nečiju telesnu visinu i težinu pre nego samo upisati *gojazan*. Grupisani podaci su isto neuredni. Ako imamo podatak o sistolnom i dijastolnom pritisku `120/80 mmHg`, potrebno je razdvojiti ove vrednosti u pojedinačne kolone i ukloniti mernu jedinicu iz polja (@fig-granular).
 
 ```{mermaid}
 %%| label: fig-granular
@@ -264,8 +261,7 @@ $$
 180 \; mmHg \not\leftarrow \text{hipertenzivan}
 $$
 
-Ne treba računati u tabelama. To je deo obrade podataka. Telesna visina i telesna težina su podaci. Njihovom kombinacijom se moze izračunati BMI (body mass index) pacijenta, 
-što je izvedena mera. Nema potrebe trošiti vreme na mere izvedene iz podataka.
+Ne treba računati u tabelama. To je deo obrade podataka. Telesna visina i telesna težina su podaci. Njihovom kombinacijom se moze izračunati BMI (body mass index) pacijenta, što je izvedena mera. Nema potrebe trošiti vreme na mere izvedene iz podataka.
 
 ## Beleške
 

@@ -1,0 +1,525 @@
+---
+title: "Kauzalne strukture čestih medicinskih studija"
+description: "Ovaj članak sadrži mustre u Excel-u za česte tipove medicinskih studije pripremljene za laku statističku obradu."
+date: 2024-05-06
+date-format: D/MM/YYYY
+number-sections: true
+number-depth: 2
+lang: sr-Latn
+# language: language-sr-Latn.yml
+citation: true
+  # language: sr-Latn
+author:
+  - name: Nikola N. Grubor
+    url: https://nikola-grubor.github.io
+    # affiliation: Univerzutet u Beogradu, Medicinski fakultet
+    # affiliation-url: https://www.mfub.bg.ac.rs/
+csl: apa.csl
+categories: [dizajn studija, kauzalnost, baze podataka, statistika, medicina, srpski]
+image: ""
+mermaid: 
+  theme: forest
+draft: true
+bibliography: references.bib
+
+echo: false
+warning: false
+---
+
+# Uvod
+
+Opservacione studije imaju dva osnovna tipa dizajna, koji su podeljeni na osnovu **vremena** merenja. U **studijama preseka** sva merenja su zabeležena u jednom trenutku (najčešće je to kratak vremenski period). U **kohortnim studijama** merenja se prikupljaju tokom dužeg vremenskog periodu u grupi ispitanika koja je definisana na početku studije ("kohorta"). 
+
+# Studija preseka
+
+```{r}
+#| label: fig-csdag
+#| fig-cap: "Opis."
+#| fig-height: 3
+#| fig-width: 6
+
+cross_sec_dag <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+"Pridružena varijabla" [pos="0,0"]
+"Prediktor" [exposure,pos="-0.5,1"]
+"Ishod" [outcome,pos="0.5,1"]
+
+"Pridružena varijabla" -> "Prediktor"
+"Pridružena varijabla" -> "Ishod"
+"Prediktor" -> "Ishod"
+}
+
+'
+)
+
+rethinking::drawdag(cross_sec_dag)
+rethinking::drawopenpaths(cross_sec_dag, Z = list("Pridružena varijabla"))
+```
+
+
+::: {.callout-note}
+## Primer istraživačkog pitanja
+Da li postoji odnos između telesne težine i hipertenzije?
+:::
+
+::: {.callout-tip}
+## Prednosti
+- ...
+- ...
+:::
+
+::: {.callout-important}
+## Problemi
+- Praćenje kohorte, loss to followup
+- Ponovljenja merenja, preciznost
+- Cena
+:::
+
+Cross-sectional studies can be used for examining associations, although the choice of which
+variables to label as predictors and which as outcomes depends on the cause-and-effect hypoth-
+eses of the investigator rather than on the study design. This choice is easy for constitutional
+factors such as age, race, and sex; these cannot be altered by other variables and therefore are
+always predictors.  For other variables, however, the choice can go either way.
+
+DAG as a tool for variable selection.
+
+cross-sectional studies provide information about prevalence, the proportion who have a disease
+or condition at one point in time.
+
+When analyzing cross-sectional studies, the prevalence ofthe outcome can be compared in those with and without an exposure, yielding the relativeprevalence of the outcome, the cross-sectional equivalent of relative risk.
+
+Sometimes cross-sectional studies describe the prevalence of ever having done something or
+ever having had a disease or condition. In that case, it is important to make sure that follow-up
+time is the same in those exposed and unexposed.
+
+It’s often difficult to establish causal relationships from
+cross-sectional data. Cross-sectional studies are also impractical for the study of rare diseases,
+unless the sample is drawn from a population of diseased patients rather than the general
+population. A case series of this sort is better suited to describing the characteristics of the
+disease than to analyzing differences between these patients and healthy people, although
+informal comparisons with prior experience can sometimes identify very strong risk factors.
+
+Because cross-sectional studies measure only prevalence, rather than incidence, it is impor-
+tant to be cautious when drawing inferences about the causes, prognosis, or natural history of
+a disease. A factor that is associated with prevalence of disease may be a cause of the disease
+but could also just be associated with duration of the disease. For example, the prevalence of
+chronic renal failure is affected not only by its incidence, but also by survival once it has oc-
+curred. Given the observation that obesity is associated with greater survival among dialysis pa-
+tients (4), a cross-sectional study of the predictors of chronic renal failure might overestimate
+the association between obesity and renal failure.
+
+## Serijske studije preseka (upitnici)
+
+```{r}
+#| label: fig-cssdag
+#| fig-cap: "Serijske (longitudinalne) studije preseka imaju veoma komplikovanu kauzalnu strukturu. Promene u populaciji utiču na preciznost merenja prediktora ($P$) i ishoda ($I$). Zajednička pridružena varijabla $C$, kao i $P$ i $I$ više nisu merene precizno več sa greškama $e_c, e_p, e_i$. Pored toga, zaokružene varijable su nisu opservirane direktno, već su funkcija pomenutih greški i njihovih opserviranih vrednosti $C^*, P^*$ i $I^*$. Mi kao istraživači, imamo samo pristup opserviranim vrednostima koje su merene sa greškom."
+#| fig-height: 3
+#| fig-width: 6
+
+cross_sec_serial_dag <- dagitty::dagitty(
+
+'dag {
+"C*" [pos="0,-0.5"]
+"I*" [outcome, pos="0.5,0.5"]
+"P*" [exposure, pos="-0.5,0.5"]
+C [unobserved, pos="0,0"]
+I [unobserved, pos="0.2,0.5"]
+P [unobserved, pos="-0.2,0.5"]
+Populacija [pos="0,-1.5"]
+e_c [pos="0,-1"]
+e_i [pos="0.75,0"]
+e_p [pos="-0.75,0"]
+C -> "C*"
+C -> I
+C -> P
+I -> "I*"
+P -> "P*"
+P -> I
+Populacija -> e_c
+Populacija -> e_i
+Populacija -> e_p
+e_c -> "C*"
+e_i -> "I*"
+e_p -> "P*"
+}'
+
+)
+
+rethinking::drawdag(cross_sec_serial_dag)
+# rethinking::drawopenpaths(cross_sec_serial_dag, Z = list("Populacija"))
+
+```
+
+
+Occasionally, investigators perform a series of cross-sectional studies in the same population,
+say every 5 years. This design can be used to draw inferences about changing patterns over
+time. Serial cross-sectional surveys have a longitudinal time frame, but they are not the same as a cohort study, because a new sample is drawn each time. As a result, changes within individuals cannot be assessed, and findings may be influenced by people entering or leaving the population (and, thus, the samples) due to births, deaths, and migration.
+
+# Kohortna studija
+
+```{r}
+#| label: fig-kdag
+#| layout-ncol: 3
+#| fig-cap: "Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora ($P$) na ishod ($I$) nije opserviran direktno zbog differencijalnog gubitka pacijenata tokom praćenja. Opserviran je pristrasan ishod ($I^*$) uslovljen različitim uzrocima."
+#| fig-subcap: 
+#|  - "Gubitak pacijenata je nasumičan. ova struktura ima posledica po veličinu uzorka, jer uglavnom možemo da izbacimo slučajeve koji nedostaju ali time smanjujemo uzorak."
+#|  - "Gubitak pacijenata je uslovljen prediktorom (npr. stariji pacijenti neće da nastave lečenje). U ovom slučaju je bitno pogoditi funkcionalnu formu odnosa $P$ i $G$ tačno."
+#|  - "Najteži slučaj (analiza preživljavanja). Gubitak ishoda ($I$) je uslovljen samim sobom (npr. najteži pacijenti odbijaju da se pojave na lečenje hemioterapijom čiji ishod nas zanima)."
+#| fig-height: 3
+#| fig-width: 3
+library(dagitty)
+
+cohort_dag <- dagitty::dagitty(
+'
+dag {
+
+"G" [pos="-0.5,0.5"]
+"P" [exposure,pos="-0.5,0"]
+"I" [unobserved, pos="0.5,0"]
+"I*" [outcome,pos="0.5,0.5"]
+
+
+"P" -> "I"
+"I" -> "I*"
+"G" -> "I*"
+}
+
+'
+)
+
+rethinking::drawdag(cohort_dag)
+# rethinking::drawopenpaths(cohort_dag, Z = list())
+
+
+cohort_dag_benign <- dagitty::dagitty(
+'
+dag {
+
+"G" [pos="-0.5,0.5"]
+"P" [exposure,pos="-0.5,0"]
+"I" [unobserved, pos="0.5,0"]
+"I*" [outcome,pos="0.5,0.5"]
+
+
+"P" -> "I"
+"I" -> "I*"
+"G" -> "I*"
+"P" -> "G"
+}
+
+'
+)
+
+rethinking::drawdag(cohort_dag_benign)
+# rethinking::drawopenpaths(cohort_dag_benign, Z = list())
+
+cohort_dag_hard <- dagitty::dagitty(
+'
+dag {
+
+"G" [pos="-0.5,0.5"]
+"P" [exposure,pos="-0.5,0"]
+"I" [unobserved, pos="0.5,0"]
+"I*" [outcome,pos="0.5,0.5"]
+
+
+"P" -> "I"
+"G" <- "I" -> "I*"
+"G" -> "I*"
+}
+
+'
+)
+
+rethinking::drawdag(cohort_dag_hard)
+```
+
+
+::: {.callout-note}
+## Primer istraživačkog pitanja
+Da li postoji odnos između telesne težine i hipertenzije?
+:::
+
+::: {.callout-tip}
+## Prednosti
+- ...
+- ...
+:::
+
+::: {.callout-important}
+## Problemi
+- Praćenje kohorte, loss to followup
+- Ponovljenja merenja, preciznost
+- Cena
+:::
+
+Osnovne karakteristike kohortnih studija su **definisanje grupe ispitanika na početku istraživanja** i **longitudinalno praćenje**. Postoje prospektivne, retrospektivne i multiple kohortne studije. Česti problemi su retencija kohorte.
+
+Unlike cohort studies, which have a longitudinal time dimension and can be used to
+estimate incidence.
+
+## Prospektivna kohorta
+
+A major advantage of the cohort design is that, unlike cross-sectional designs, it allows the cal-
+culation of incidence—the number of new cases of a condition occuring over time.
+
+Measuring levels of the predictor before the outcome occurs establishes the time sequence of
+the variables, which strengthens the process of inferring the causal basis of an association
+
+expense and inefficiency for studying rare outcomes
+
+Even diseases we think of as relatively
+common, such as breast cancer, happen at such a low rate in any given year that large numbers
+of people must be followed for long periods of time to observe enough outcomes to produce
+meaningful results.
+
+```{r}
+library(tidyverse)
+library(tinytable)
+
+prospektivna_kohorta <- tribble(
+  ~id, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
+  "1", "M", 70, 180, 65, 400, 0, 5,
+  "1", "M", 70, 180, 65, 400, 6, 3,
+  "2", "F", 55, 170, 70, 200, 0, 4,
+  "2", "F", 55, 170, 70, 400, 6.5, 1,
+  "3", "M", 90, 188, 45, 600, 0, 6
+)
+tt(prospektivna_kohorta)
+```
+
+
+## Retrospektivna kohorta
+
+The design of a retrospective cohort study (Figure 7.3) differs from that of a prospective one in
+that the assembly of the cohort, baseline measurements, and follow-up have all happened in the
+past. This type of study is only possible if adequate data about the predictors are available on a
+cohort of subjects that has been assembled for other purposes, such as an electronic clinical or
+administrative database.
+
+advantage of being much less costly and time-consuming. disadvantages are the limited control the investigator has over the approach to sampling and follow-up of the population, and over the nature and the quality of the baseline measurements. The existing data may be incomplete, inaccurate, or measured in ways that are not ideal for answering the research question.
+
+## Multipla kohortna studija
+
+The multiple-cohort design may be the only feasible approach for studying rare exposures to
+potential occupational and environmental hazards. The problem of confounding is accentuated in a multiple-cohort study because the cohorts are assembled from separate populations that can differ in important ways (besides exposure to the predictor variable) that influence the outcomes.
+
+```{r}
+multipla_kohorta <- tribble(
+  ~id, ~grupa, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
+  "1", "izlozen", "M", 70, 180, 65, 400, 0, 5,
+  "1", "izlozen", "M", 70, 180, 65, 400, 6, 3,
+  "2", "kontrola", "F", 55, 170, 70, 200, 0, 4,
+  "2", "kontrola", "F", 55, 170, 70, 400, 6.5, 1,
+  "3", "izlozen", "M", 90, 188, 45, 600, 0, 6
+)
+tt(multipla_kohorta)
+```
+
+
+## Longitudinalna (serijska) studija
+
+# Studija slučaj-kontrola
+
+```{r}
+#| eval: false
+#| label: fig-ccdag
+#| fig-cap: "Opis."
+#| fig-height: 3
+#| fig-width: 6
+
+case_control_dag <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+U [unobserved,pos="0,0"]
+"Faktor rizika" [exposure,pos="-0.5,1"]
+Dostupnost [selected,pos="0.5,1"]
+Bolest [outcome,pos="0,1"]
+
+U -> "Faktor rizika"
+U -> "Dostupnost"
+"Faktor rizika" -> "Bolest"
+"Bolest" -> "Dostupnost"
+}
+
+'
+)
+```
+
+```{r}
+#| label: fig-ccbias
+#| layout-ncol: 2
+#| fig-cap: "Opis."
+#| fig-subcap: 
+#|  - "Osnovna stuktura."
+#|  - "Kontrole birane u bolnici."
+#|  - "Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa."
+#|  - "Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnog populacije registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta."
+#| fig-height: 3
+#| fig-width: 6
+
+case_control_dag <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+U [unobserved,pos="0,0"]
+"Faktor rizika" [exposure,pos="-0.5,1"]
+Dostupnost [selected,pos="0.5,1"]
+Bolest [outcome,pos="0,1"]
+
+U -> "Faktor rizika"
+U -> "Dostupnost"
+"Faktor rizika" -> "Bolest"
+"Bolest" -> "Dostupnost"
+}
+
+'
+)
+
+rethinking::drawdag(case_control_dag)
+rethinking::drawopenpaths(case_control_dag, Z = list("Dostupnost"))
+
+case_control_dag_sol <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+U [unobserved,pos="0,0"]
+"Druga bolest" [pos="0,0.5"]
+"Faktor rizika" [exposure,pos="-0.5,1"]
+Dostupnost [selected,pos="0.5,1"]
+Bolest [outcome,pos="0,1"]
+
+U -> "Druga bolest"
+"Druga bolest" -> "Dostupnost"
+U -> "Faktor rizika"
+U -> "Dostupnost"
+"Faktor rizika" -> "Bolest"
+"Bolest" -> "Dostupnost"
+}
+
+'
+)
+
+rethinking::drawdag(case_control_dag_sol)
+rethinking::drawopenpaths(case_control_dag_sol, Z = list("Dostupnost", "U"))
+
+case_control_dag_sol_bias <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+U [unobserved,pos="0,0"]
+"Druga bolest" [pos="0,0.5"]
+"Faktor rizika" [exposure,pos="-0.5,1"]
+Dostupnost [selected,pos="0.5,1"]
+Bolest [outcome,pos="0,1"]
+
+"Faktor rizika" -> "Druga bolest"
+U -> "Druga bolest"
+"Druga bolest" -> "Dostupnost"
+U -> "Faktor rizika"
+U -> "Dostupnost"
+"Faktor rizika" -> "Bolest"
+"Bolest" -> "Dostupnost"
+}
+
+'
+)
+
+rethinking::drawdag(case_control_dag_sol_bias)
+rethinking::drawopenpaths(case_control_dag_sol_bias, Z = list("Dostupnost", "U"))
+
+case_control_dag_sol_reg <- dagitty::dagitty(
+'
+dag {
+bb="-2,-2,2,2"
+
+U [unobserved,pos="0,0"]
+"Druga bolest" [pos="0,0.5"]
+"Faktor rizika" [exposure,pos="-0.5,1"]
+Registar [selected,pos="0.5,1"]
+Bolest [outcome,pos="0,1"]
+
+U -> "Druga bolest"
+"Druga bolest" -> "Registar"
+U -> "Faktor rizika"
+"Faktor rizika" -> "Bolest"
+"Bolest" -> "Registar"
+}
+
+'
+)
+
+rethinking::drawdag(case_control_dag_sol_reg)
+rethinking::drawopenpaths(case_control_dag_sol_reg, Z = list("Registar", "U"))
+
+```
+
+
+::: {.callout-note}
+## Primer istraživačkog pitanja
+Da li neonatalna profilaksa vitaminom K utiče na razvoj dečije leukemije?
+:::
+
+::: {.callout-tip}
+## Prednosti
+- Dobra za retke ili događaje sa dugim latentnim periodom
+- Velika količina informacija za mali broj ispitanika
+- Laka za izvođenje
+:::
+
+::: {.callout-important}
+## Problemi
+- Incidenca i prevalencu je nemoguće izračunati
+- Samo jedan ishod je moguće analizirati
+- Pristrasnost (odvojeno uzorkovanje i retrospektivno merenje)
+:::
+
+Case–control studies are retrospective. The study identifies one group of
+subjects with the disease and another without it, then looks backward to find differences in
+predictor variables that may explain why the cases got the disease and the controls did not.
+
+in a case–control study the investigator
+works backward. She begins by choosing one sample of people with the outcome (the cases)
+and another sample of people without that outcome (the controls);
+
+### Pristrasnost uzorka
+
+n case–control studies the cases must be sampled
+from patients in whom the disease has already been diagnosed and who are available for study.
+This sample may not be representative of all patients who develop the disease because those
+who are undiagnosed, misdiagnosed, unavailable for study, or dead are unlikely to be included
+
+## Nested slučaj i kontrole (varijanta)
+
+A nested case–control design compares the incident cases nested in a cohort study with controls
+drawn at random from the rest of the cohort; this design controls sampling and measurement
+bias and saves money if the predictors are expensive measurements that can be made on stored
+specimens or images collected at the outset of the cohort study. 
+
+The investigator begins by identifying a cohort of subjects at risk for the outcome that is
+large enough to yield sufficient numbers of cases to answer the research question, and that
+provides the ability to measure the exposure variable, either because specimens have been
+banked or medical records (or subjects) with exposure information are available. 
+
+
+
+## Gustina incidence slučaj i kontrola
+
+An incidence-density case–control
+design allows investigators to analyze risk relationships, taking into account changes over time in
+risk factor levels and loss to follow-up.
+
+## Nested slučaj-kohorta
+
+ And a nested case–cohort design allows a random sample
+of the entire cohort to serve as the control for several different sets of cases.
+
+# Zaključak

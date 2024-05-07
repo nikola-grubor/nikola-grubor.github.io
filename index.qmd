@@ -46,9 +46,8 @@ I am a medical doctor, biostatistics teaching assistant, and PhD student of medi
 -   **Teaching Assistant, Medical Statistics & Informatics**\
     Department for Medical Statistics and Informatics, Belgrade University Medical School \| Apr 2024 --- Present
 
-```{=html}
 <!-- -->
-```
+
 -   **Research**\
     Department for Medical Statistics and Informatics, Belgrade University Medical School \| Sept 2022 --- Present
 
