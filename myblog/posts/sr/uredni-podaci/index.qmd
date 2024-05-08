@@ -22,6 +22,12 @@ mermaid:
 draft: false
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 # Šta su uredni podaci
 
 > Svi uredni podaci su slični, ali svi neuredni podaci su neuredni na svoj način. --- Hadley Wickham

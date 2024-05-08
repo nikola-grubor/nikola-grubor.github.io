@@ -1,14 +1,14 @@
 ---
-title: "Kauzalne strukture čestih medicinskih studija"
-description: "Ovaj članak sadrži mustre u Excel-u za česte tipove medicinskih studije pripremljene za laku statističku obradu."
+title: "Kauzalne strukture opservacionih medicinskih studija"
+description: "Klasično su se opservacione studije u medicini delile u kategorije na osnovu dizajna, međutim didaktički nije uvek jasno zašto su *baš* ti pristupi poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla."
 date: 2024-05-06
 date-format: D/MM/YYYY
 number-sections: true
 number-depth: 2
-lang: sr-Latn
-# language: language-sr-Latn.yml
-citation: true
-  # language: sr-Latn
+lang: hr
+language: language-sr-Latn.yml
+citation:
+  language: sr-Latn
 author:
   - name: Nikola N. Grubor
     url: https://nikola-grubor.github.io
@@ -26,20 +26,69 @@ echo: false
 warning: false
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 # Uvod
 
-Opservacione studije imaju dva osnovna tipa dizajna, koji su podeljeni na osnovu **vremena** merenja. U **studijama preseka** sva merenja su zabeležena u jednom trenutku (najčešće je to kratak vremenski period). U **kohortnim studijama** merenja se prikupljaju tokom dužeg vremenskog periodu u grupi ispitanika koja je definisana na početku studije ("kohorta"). 
+Opservacione studije imaju dva osnovna tipa dizajna, koji su podeljeni na osnovu **vremena** u kojem se prikupljanje podataka dešava. U **studijama preseka** sva merenja se beleže u jednom trenutku (najčešće je to kratak vremenski interval koji obuhvata presek). U **kohortnim studijama** merenja se prikupljaju tokom dužeg vremenskog periodu u grupi ispitanika koja je definisana na početku studije (tzv. "kohorta"). **Studija slučaj-kontrola** počinje od ishoda koji se već desio i traži njegove uzroke unazad kroz vreme.
+
+Usmereni aciklični grafovi (engl. *directed acylic graphs*) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi [@gruborcausal2023]. Čvorovi predstavljaju varijable u pretpostavljenom modelu, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije nepretpostavljaju nikakav specijalan odnos, već samo da postoji funckija ($f(x)$) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (linije) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. *confounder*) [@pearlCausalInferenceStatistics2016a]. 
+
+Vizualni pristup analiziranja ih čini jako pogodnim didaktičkim alatom. U narednim poglavljima ćemo opistai neke tipične medicinske opservacione studije i ilustrovati zašto mogu biti uspešne u analizi uzroka i posledica.
+
+```{r}
+library(tidyverse)
+library(tinytable)
+library(dagitty)
+
+set.seed(123)
+```
+
+
+```{r}
+#| label: fig-dag
+#| fig-cap: "Usmereni aciklični graf. Pretpostavljeni uzrok $X$ utiče na pojavu $Y$, dok pridružena varijabla $C$ svojim efektima utiče na oba. Crvenom bojom je označena linija čiji efekat nas interesuje."
+#| fig-height: 2
+#| fig-width: 4
+dag <- dagitty::dagitty(
+  '
+dag {
+C [pos="0,0"]
+X [exposure,pos="-0.5,1"]
+Y [outcome,pos="0.5,1"]
+
+X <- C -> Y
+X -> Y
+}
+
+'
+)
+
+rethinking::drawdag(dag)
+rethinking::drawopenpaths(dag, Z = list("C"))
+```
+
 
 # Studija preseka
 
+Studije preseka se koriste kako bi se ispitale associjacije [@ClinicalResearch2013a]. Posto asocijacije same po sebi nemaju kauzalnu strukturu (smer uticaja), na istraživaču je da odredi šta smatra ishodom, a šta prediktorom. Posto je presek u vremenu, ne možemo da se oslonimo na vremenski tok da nam pomogne u određivanju uzroka i posledica. Demografski podaci se ne menjaju u odnosu na druge varijable, te su oni uvek prediktori (starost, pol). Još jedna posledica fiksiranosi tu vremenu je ovaj tip studije ne pruža informacije o incidenci (novonastalim slučajevima), već samo o prevalenci (proporcija trenutnih slučajeva).
+
 ```{r}
 #| label: fig-csdag
-#| fig-cap: "Opis."
-#| fig-height: 3
-#| fig-width: 6
+#| fig-cap: "(a\\) Osnovna stuktura varijabli u studiji preseka. Istraživač je taj koji definiše model. (b) Primer gde gojaznost utiče da poboljšano preživaljavanje pacijenata sa bubrežnog insuficijencijom. Bez ispravke uticaja gojaznosti na preživljavanje dobićemo precenjen rizik gojaznosti i hronične bubrežne insuficijencije."
+#| fig-subcap:
+#|   - ""
+#|   - ""
+#| layout-ncol: 2
+#| fig-height: 2
+#| fig-width: 4.5
 
 cross_sec_dag <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -56,62 +105,111 @@ bb="-2,-2,2,2"
 )
 
 rethinking::drawdag(cross_sec_dag)
-rethinking::drawopenpaths(cross_sec_dag, Z = list("Pridružena varijabla"))
+
+cross_sec_dag_c <- dagitty::dagitty(
+  '
+dag {
+"Gojaznost" [pos="0,0"]
+"Bubrežna insuficijencija" [exposure,pos="-0.5,1"]
+"Preživljanje" [outcome,pos="0.5,1"]
+
+"Gojaznost" -> "Bubrežna insuficijencija"
+"Gojaznost" -> "Preživljanje"
+"Bubrežna insuficijencija" -> "Preživljanje"
+}
+
+'
+)
+
+rethinking::drawdag(cross_sec_dag_c)
 ```
 
 
 ::: {.callout-note}
 ## Primer istraživačkog pitanja
-Da li postoji odnos između telesne težine i hipertenzije?
+- "Da li postoji odnos između telesne težine i hipertenzije?"
+- "Kauzalni efekat telesne težine na nastanak hipertenzije?"
+- "Asocijacija *prediktora* i *ishoda*
 :::
 
 ::: {.callout-tip}
 ## Prednosti
-- ...
-- ...
+- Nema čekanja za ishod
+- Nema praćenja pacijenata
+- Mogu se produžiti u kohortne studije
 :::
 
 ::: {.callout-important}
 ## Problemi
-- Praćenje kohorte, loss to followup
-- Ponovljenja merenja, preciznost
-- Cena
+- Nepovoljne za retke ishode
+- Teže je arugmentovati kauzalnost
+- Lako je pomešati uzroke i asocijacije
 :::
 
-Cross-sectional studies can be used for examining associations, although the choice of which
-variables to label as predictors and which as outcomes depends on the cause-and-effect hypoth-
-eses of the investigator rather than on the study design. This choice is easy for constitutional
-factors such as age, race, and sex; these cannot be altered by other variables and therefore are
-always predictors.  For other variables, however, the choice can go either way.
+Usmereni aciklički graf je alat koji nam služi da odgonetnemo moguće odnose u studijama ovog tipa. Uvek je zahvalno opisati istraživani fenomen kauzalnim dijagramom kako se ne bismo zavarali. Pošto ove studije ne mere incidencu, već samo prevalencu, posebno je bitno izmeriti sve pridružene varijable (videti @fig-csdag-2).
 
-DAG as a tool for variable selection.
+<!-- 
 
-cross-sectional studies provide information about prevalence, the proportion who have a disease
-or condition at one point in time.
+Relativna prevalenca ishoda. Rezultat koji dobijamo kada poredimo pisustvo i odsustvo prediktora. Kao relativni rizik.
 
-When analyzing cross-sectional studies, the prevalence ofthe outcome can be compared in those with and without an exposure, yielding the relativeprevalence of the outcome, the cross-sectional equivalent of relative risk.
+Isti followup je bitan kada pravimo tvrdnje ever having done seomthing, ever happened
 
-Sometimes cross-sectional studies describe the prevalence of ever having done something or
-ever having had a disease or condition. In that case, it is important to make sure that follow-up
-time is the same in those exposed and unexposed.
+-->
 
-It’s often difficult to establish causal relationships from
-cross-sectional data. Cross-sectional studies are also impractical for the study of rare diseases,
-unless the sample is drawn from a population of diseased patients rather than the general
-population. A case series of this sort is better suited to describing the characteristics of the
-disease than to analyzing differences between these patients and healthy people, although
-informal comparisons with prior experience can sometimes identify very strong risk factors.
+```{r}
+#| eval: false
+cross_sectional_data <- tibble(
+  patient_id = 1:300, # 300 patients
+  age = sample(20:80, 300, replace = TRUE),
+  gender = sample(c("Male", "Female"), 300, replace = TRUE, prob = c(0.5, 0.5)),
+  bmi = round(runif(300, 18, 35), 1),
+  systolic_bp = sample(90:140, 300, replace = TRUE),
+  diastolic_bp = sample(60:90, 300, replace = TRUE),
+  cholesterol = sample(150:300, 300, replace = TRUE),
+  smoking_status = sample(c("Yes", "No"), 300, replace = TRUE, prob = c(0.3, 0.7)),
+  physical_activity = sample(0:7, 300, replace = TRUE) # Hours per week
+)
 
-Because cross-sectional studies measure only prevalence, rather than incidence, it is impor-
-tant to be cautious when drawing inferences about the causes, prognosis, or natural history of
-a disease. A factor that is associated with prevalence of disease may be a cause of the disease
-but could also just be associated with duration of the disease. For example, the prevalence of
-chronic renal failure is affected not only by its incidence, but also by survival once it has oc-
-curred. Given the observation that obesity is associated with greater survival among dialysis pa-
-tients (4), a cross-sectional study of the predictors of chronic renal failure might overestimate
-the association between obesity and renal failure.
+cross_sectional_data %>%
+  head(5) %>%
+  tt()
+```
+
+
+```{r}
+#| label: tbl-presek
+#| tbl-cap: "`ID` pacijenta se uvek odnosi na istu jedinicu posmatranja. Uvek je potrebno sakupiti osnovne demografske podatke. Za one podatke koje je skupo prikupljati konstruisati kauzalni graf."
+presek <- tribble(
+  ~id, ~pol, ~tezina, ~visina, ~starost, ~meren_prediktor, ~skor_nrs_bol, ~DM, ~HTA, ~Ciroza,
+  "1", "M", 70, 180, 65, 2.5, 5, "Da", "Da", "Ne",
+  "2", "Z", 55, 170, 70, 8, 4, "Ne", "Da", "Ne",
+  "3", "M", 90, 188, 45, 4, 6, "Da", "Da", "Ne",
+)
+tt(presek)
+```
+
+Ovako napisane baze se mogu lako pretvoriti u dugu formu za dodatnu analizu.[^1]
+
+[^1]: Postoje napredne sheme za alternativan unos uz pomoć znakova za razdvajanje `DM|HTA` vs. `DM|HTA|Ciroza` unutar jedne kolone. Upitno je koja metoda je brža.
+
+```{r}
+#| label: tbl-presek_long
+#| tbl-cap: "Duga forma tabele. Ključno je upisivati entitete odvojeno. Prikupljanje podataka nije lak posao."
+presek %>%
+  pivot_longer(
+    names_to = "komorbiditet", values_to = "dijagnoza",
+    cols = DM:Ciroza
+  ) %>%
+  head(6) %>%
+  tt()
+```
+
 
 ## Serijske studije preseka (upitnici)
+
+Popis ili demografski upitnici su primeri serijskih studija preseka. U tom slučaju se studija preseka ponavlja na ujednačen period vremena, recimo, svakih 5 godina. Razlikuje se od kohortnih studija jer se svaki put uzima novi uzorak. Kako uzorak potiče iz populacije koja se menja (migracije, rođenja, smrti), promene na podacima će biti uslovljenje promenama u strukturi početne populacije. Analiza prikazana na @fig-cssdag se može odnositi na vremensku seriju preseka ili više različitih populacija uključenih u analizu. 
+
+Nepristrasna analiza uzroka u ovakvim mrežama prevazilazi obim ovog članka. Slobodno nastivite dalje.
 
 ```{r}
 #| label: fig-cssdag
@@ -120,8 +218,7 @@ the association between obesity and renal failure.
 #| fig-width: 6
 
 cross_sec_serial_dag <- dagitty::dagitty(
-
-'dag {
+  'dag {
 "C*" [pos="0,-0.5"]
 "I*" [outcome, pos="0.5,0.5"]
 "P*" [exposure, pos="-0.5,0.5"]
@@ -145,35 +242,29 @@ e_c -> "C*"
 e_i -> "I*"
 e_p -> "P*"
 }'
-
 )
 
 rethinking::drawdag(cross_sec_serial_dag)
 # rethinking::drawopenpaths(cross_sec_serial_dag, Z = list("Populacija"))
-
 ```
 
-
-Occasionally, investigators perform a series of cross-sectional studies in the same population,
-say every 5 years. This design can be used to draw inferences about changing patterns over
-time. Serial cross-sectional surveys have a longitudinal time frame, but they are not the same as a cohort study, because a new sample is drawn each time. As a result, changes within individuals cannot be assessed, and findings may be influenced by people entering or leaving the population (and, thus, the samples) due to births, deaths, and migration.
-
 # Kohortna studija
+
+Osnovne karakteristike kohortnih studija su **definisanje grupe ispitanika na početku istraživanja** i **longitudinalno praćenje**. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad istim ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda. Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u studijama.
 
 ```{r}
 #| label: fig-kdag
 #| layout-ncol: 3
 #| fig-cap: "Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora ($P$) na ishod ($I$) nije opserviran direktno zbog differencijalnog gubitka pacijenata tokom praćenja. Opserviran je pristrasan ishod ($I^*$) uslovljen različitim uzrocima."
-#| fig-subcap: 
+#| fig-subcap:
 #|  - "Gubitak pacijenata je nasumičan. ova struktura ima posledica po veličinu uzorka, jer uglavnom možemo da izbacimo slučajeve koji nedostaju ali time smanjujemo uzorak."
 #|  - "Gubitak pacijenata je uslovljen prediktorom (npr. stariji pacijenti neće da nastave lečenje). U ovom slučaju je bitno pogoditi funkcionalnu formu odnosa $P$ i $G$ tačno."
 #|  - "Najteži slučaj (analiza preživljavanja). Gubitak ishoda ($I$) je uslovljen samim sobom (npr. najteži pacijenti odbijaju da se pojave na lečenje hemioterapijom čiji ishod nas zanima)."
 #| fig-height: 3
 #| fig-width: 3
-library(dagitty)
 
 cohort_dag <- dagitty::dagitty(
-'
+  '
 dag {
 
 "G" [pos="-0.5,0.5"]
@@ -195,7 +286,7 @@ rethinking::drawdag(cohort_dag)
 
 
 cohort_dag_benign <- dagitty::dagitty(
-'
+  '
 dag {
 
 "G" [pos="-0.5,0.5"]
@@ -217,7 +308,7 @@ rethinking::drawdag(cohort_dag_benign)
 # rethinking::drawopenpaths(cohort_dag_benign, Z = list())
 
 cohort_dag_hard <- dagitty::dagitty(
-'
+  '
 dag {
 
 "G" [pos="-0.5,0.5"]
@@ -240,36 +331,28 @@ rethinking::drawdag(cohort_dag_hard)
 
 ::: {.callout-note}
 ## Primer istraživačkog pitanja
-Da li postoji odnos između telesne težine i hipertenzije?
+- Da li postoji odnos između telesne težine i raka dojke?
+- Koja je stopa nastanka depresije ukoliko je pacijent izložen hroničnom stresu?
+- Kakav je rizik od nastanka leukemije kod dece koja su bila izložena CT skeneru?
+- Koji je kauzalni efekat *prediktora* na prethodno definisan *ishod*
 :::
 
 ::: {.callout-tip}
 ## Prednosti
-- ...
-- ...
+- Vremenski odnos prediktora i ishoda omogućava jače kauzalne argumente
+- Smanjuje uticaj istraživača na ishod
 :::
 
 ::: {.callout-important}
 ## Problemi
-- Praćenje kohorte, loss to followup
-- Ponovljenja merenja, preciznost
-- Cena
+- Praćenje kohorte, gubitak pacijanata
+- Ponovljenja merenja, preciznost merenja
+- Dugo vreme izvođenja studije
 :::
-
-Osnovne karakteristike kohortnih studija su **definisanje grupe ispitanika na početku istraživanja** i **longitudinalno praćenje**. Postoje prospektivne, retrospektivne i multiple kohortne studije. Česti problemi su retencija kohorte.
-
-Unlike cohort studies, which have a longitudinal time dimension and can be used to
-estimate incidence.
 
 ## Prospektivna kohorta
 
-A major advantage of the cohort design is that, unlike cross-sectional designs, it allows the cal-
-culation of incidence—the number of new cases of a condition occuring over time.
-
-Measuring levels of the predictor before the outcome occurs establishes the time sequence of
-the variables, which strengthens the process of inferring the causal basis of an association
-
-expense and inefficiency for studying rare outcomes
+U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu. 
 
 Even diseases we think of as relatively
 common, such as breast cancer, happen at such a low rate in any given year that large numbers
@@ -277,9 +360,8 @@ of people must be followed for long periods of time to observe enough outcomes t
 meaningful results.
 
 ```{r}
-library(tidyverse)
-library(tinytable)
-
+#| label: tbl-pk
+#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte."
 prospektivna_kohorta <- tribble(
   ~id, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
   "1", "M", 70, 180, 65, 400, 0, 5,
@@ -294,20 +376,77 @@ tt(prospektivna_kohorta)
 
 ## Retrospektivna kohorta
 
-The design of a retrospective cohort study (Figure 7.3) differs from that of a prospective one in
-that the assembly of the cohort, baseline measurements, and follow-up have all happened in the
-past. This type of study is only possible if adequate data about the predictors are available on a
-cohort of subjects that has been assembled for other purposes, such as an electronic clinical or
-administrative database.
-
-advantage of being much less costly and time-consuming. disadvantages are the limited control the investigator has over the approach to sampling and follow-up of the population, and over the nature and the quality of the baseline measurements. The existing data may be incomplete, inaccurate, or measured in ways that are not ideal for answering the research question.
+Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori i sastavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je studija praktično već završena i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom podataka i traženim ishodom, te je moguće da podaci nisu dovoljni za odgovaranje na instraživačko pitanje.
 
 ## Multipla kohortna studija
 
-The multiple-cohort design may be the only feasible approach for studying rare exposures to
-potential occupational and environmental hazards. The problem of confounding is accentuated in a multiple-cohort study because the cohorts are assembled from separate populations that can differ in important ways (besides exposure to the predictor variable) that influence the outcomes.
+Multiple kohortna studije je potencijano jedan od retkih dizajnova koji omogućava proučavanje radne i sredinske rizike. Podaci iz administrativnih registara se koriste kao eksterne kontrole kohorti koja je pod praćenjem.
 
 ```{r}
+#| label: fig-kdagmulti
+#| layout-ncol: 2
+#| fig-cap: "Kohorte uzete iz različitih populacija utiču na grešku merenja prediktora ($e_p$). Pored toga, moguće su i druge pridružene varijable koje otežavaju nepristrasnu analizu."
+#| fig-subcap:
+#|  - "Osnovni kauzalni dijagram multiple kohortne studije."
+#|  - "Primer kauzalnog dijagrama studije efekta rada u uranijumskim rudnicima na razvitak karcinoma pluća. Populacija radnika i populacije njima sličnim ljudima je praćena za razvitak ishoda."
+#| fig-height: 3
+#| fig-width: 6
+
+cohort_multi_dag <- dagitty::dagitty(
+  '
+dag {
+
+"Populacija" [pos="-1.5,0"]
+"e_p" [pos="-1,0"]
+"G" [pos="-0.5,0.5"]
+"P*" [exposure, pos="-0.5,0"]
+"P" [unobserved,pos="-0.025,0"]
+"I" [unobserved, pos="0.5,0"]
+"I*" [outcome,pos="0.5,0.5"]
+
+
+"Populacija" -> e_p -> "P*" <- P
+"P" -> "I"
+"I" -> "I*"
+"G" -> "I*"
+}
+
+'
+)
+
+rethinking::drawdag(cohort_multi_dag)
+
+cohort_multi_dag_ex <- dagitty::dagitty(
+  '
+dag {
+
+"Populacija" [pos="-1.5,0"]
+"e_p" [pos="-1,0"]
+"G" [pos="-0.5,0.5"]
+"Uranium*" [exposure, pos="-0.5,0"]
+"Uranium" [pos="-0.025,0"]
+"Ca pluća" [pos="0.5,0"]
+"Ca pluća*" [outcome,pos="0.5,0.5"]
+
+
+"Populacija" -> e_p -> "Uranium*" <- Uranium
+"Uranium" -> "Ca pluća"
+"Ca pluća" -> "Ca pluća*"
+"G" -> "Ca pluća*"
+}
+
+'
+)
+
+rethinking::drawdag(cohort_multi_dag_ex)
+```
+
+
+Naravno, raznolike greške merenja su moguće. Jedna od praktčno opasnih je činjenica da drugačije populacije mogu biti izgubljene iz kohorte različitim stopama, te će to izmeniti asocijaciju ukoliko ne budemo pažljivi. To svakako prevazilazi ovaj pregled. Idemo dalje.
+
+```{r}
+#| label: tbl-multik
+#| tbl-cap: "Tabela podataka prikupljenih za analizu multiple kohorte."
 multipla_kohorta <- tribble(
   ~id, ~grupa, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
   "1", "izlozen", "M", 70, 180, 65, 400, 0, 5,
@@ -319,10 +458,50 @@ multipla_kohorta <- tribble(
 tt(multipla_kohorta)
 ```
 
+# Longitudinalna studija
 
-## Longitudinalna (serijska) studija
+Longitudinalni podaci su multi-dimenzionalna[^2] merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. **Vremenske serije** i **studije preseka** se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).[^3] **Kohortne studije** su podtip longitudinalne studije gde se *definiše kohorta* na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika.
+
+[^2]: Sadrže jako puno varijabli.
+
+[^3]: Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.
+
+Time series data have a natural temporal ordering. This makes time series analysis distinct from cross-sectional studies, in which there is no natural ordering of the observations (e.g. explaining people's wages by reference to their respective education levels, where the individuals' data could be entered in any order).
+
+A stochastic model for a time series will generally reflect the fact that observations close together in time will be more closely related than observations further apart.
+
+```{r}
+panel_data <- tibble(
+  patient_id = rep(1:100, each = 5), # 100 patients, 5 years of data each
+  year = rep(2010:2014, times = 100),
+  age = rep(sample(30:60, 100, replace = TRUE), each = 5) + (2010:2014 - 2010),
+  weight = rep(round(runif(100, 60, 100)), each = 5) + rnorm(500, 0, 3),
+  cholesterol = rep(round(runif(100, 150, 240)), each = 5) + rnorm(500, 0, 10)
+)
+
+panel_data %>%
+  head(8) %>%
+  tt()
+```
+
+```{r}
+cohort_data <- tibble(
+  cohort_id = rep(1:200, each = 3), # 200 individuals, 3 observations each
+  diagnosis_year = rep(2010, 600),
+  follow_up_year = rep(c(2010, 2015, 2020), times = 200),
+  age_at_diagnosis = rep(sample(40:70, 200, replace = TRUE), each = 3),
+  current_age = age_at_diagnosis + (follow_up_year - diagnosis_year),
+  glucose_level = rep(round(runif(200, 120, 180)), each = 3) + rnorm(600, 0, 15)
+)
+
+cohort_data %>%
+  head(5) %>%
+  tt()
+```
 
 # Studija slučaj-kontrola
+
+
 
 ```{r}
 #| eval: false
@@ -332,7 +511,7 @@ tt(multipla_kohorta)
 #| fig-width: 6
 
 case_control_dag <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -354,17 +533,17 @@ U -> "Dostupnost"
 ```{r}
 #| label: fig-ccbias
 #| layout-ncol: 2
-#| fig-cap: "Opis."
-#| fig-subcap: 
-#|  - "Osnovna stuktura."
+#| fig-cap: "Osnovni kauzalni grafovi studije slučaj-kontrola. Neizmerene pridružene varijable ($U$) su zaokružene."
+#| fig-subcap:
+#|  - "Osnovna kauzalna stuktura studije slučaj-kontrola."
 #|  - "Kontrole birane u bolnici."
-#|  - "Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa."
-#|  - "Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnog populacije registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta."
+#|  - "Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa. Preklapanje faktora rizika moze lažno ublažiti ili preuveličati traženu asocijaciju."
+#|  - "Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnost registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta."
 #| fig-height: 3
 #| fig-width: 6
 
 case_control_dag <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -383,10 +562,10 @@ U -> "Dostupnost"
 )
 
 rethinking::drawdag(case_control_dag)
-rethinking::drawopenpaths(case_control_dag, Z = list("Dostupnost"))
+# rethinking::drawopenpaths(case_control_dag, Z = list("Dostupnost"))
 
 case_control_dag_sol <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -408,10 +587,10 @@ U -> "Dostupnost"
 )
 
 rethinking::drawdag(case_control_dag_sol)
-rethinking::drawopenpaths(case_control_dag_sol, Z = list("Dostupnost", "U"))
+# rethinking::drawopenpaths(case_control_dag_sol, Z = list("Dostupnost", "U"))
 
 case_control_dag_sol_bias <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -434,10 +613,10 @@ U -> "Dostupnost"
 )
 
 rethinking::drawdag(case_control_dag_sol_bias)
-rethinking::drawopenpaths(case_control_dag_sol_bias, Z = list("Dostupnost", "U"))
+# rethinking::drawopenpaths(case_control_dag_sol_bias, Z = list("Dostupnost", "U"))
 
 case_control_dag_sol_reg <- dagitty::dagitty(
-'
+  '
 dag {
 bb="-2,-2,2,2"
 
@@ -458,8 +637,7 @@ U -> "Faktor rizika"
 )
 
 rethinking::drawdag(case_control_dag_sol_reg)
-rethinking::drawopenpaths(case_control_dag_sol_reg, Z = list("Registar", "U"))
-
+# rethinking::drawopenpaths(case_control_dag_sol_reg, Z = list("Registar", "U"))
 ```
 
 
@@ -509,6 +687,24 @@ large enough to yield sufficient numbers of cases to answer the research questio
 provides the ability to measure the exposure variable, either because specimens have been
 banked or medical records (or subjects) with exposure information are available. 
 
+```{r}
+case_control_data <- tibble(
+  patient_id = 1:400, # 200 cases, 200 controls
+  age = sample(30:70, 400, replace = TRUE),
+  gender = sample(c("Male", "Female"), 400, replace = TRUE, prob = c(0.5, 0.5)),
+  disease_status = rep(c("Case", "Control"), each = 200),
+  smoking_status = sample(c("Never", "Former", "Current"), 400, replace = TRUE, prob = c(0.4, 0.3, 0.3)),
+  exercise_frequency = sample(c("None", "Occasional", "Regular"), 400, replace = TRUE),
+  family_history = sample(c("Yes", "No"), 400, replace = TRUE, prob = c(0.3, 0.7)),
+  cholesterol = sample(160:300, 400, replace = TRUE)
+)
+
+set.seed(532)
+case_control_data %>%
+  sample_n(5) %>%
+  head(5) %>%
+  tt()
+```
 
 
 ## Gustina incidence slučaj i kontrola
@@ -517,9 +713,23 @@ An incidence-density case–control
 design allows investigators to analyze risk relationships, taking into account changes over time in
 risk factor levels and loss to follow-up.
 
+```{r}
+
+```
+
+
 ## Nested slučaj-kohorta
 
  And a nested case–cohort design allows a random sample
 of the entire cohort to serve as the control for several different sets of cases.
+
+```{r}
+#| eval: false
+nested_cohort_data <- Epi::ccwc(
+  data = cohort_data, entry = 0, exit = time_to_disease, fail = disease_status,
+  include = list(gender, physical_activity, age_at_start)
+)
+```
+
 
 # Zaključak

@@ -20,14 +20,23 @@ mermaid:
   theme: forest
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 ::: columns
-::: {.column width="50%"}
+::: {.column width="45%"}
 Artur Konan Dojl je dobio inspiraciju za popularnog lika Šerloka Holmsa gledajući dektektivski rad Dr Džosefa Bela, hirurga u Edinburgu. "Koristite svoje oči! Koristite oči," govorio je Bel svojim studentima medicine. Nije ni čudo kako se inspiracija za najpopularnijeg detektiva baš našla među lekarima, jer nema očiglednije upotrebe dedukcije i indukcije od postavljanje dijagnoze. Priče pacijenta, opservacije i (od relativno skoro) raznih testovi predstavljaju izazov svakom dobrom rezonu.
 
 Iskusni kliničari su u stanju da intuitivno daju tačnu dijagnozu. Međutim, nije svaki kliničar u stanju da artikuliše eksplicitno svoj rezon --- način na koji je došao do dijagnoze, korak po korak. @kahneman2013, u svojoj knjizi "Misliti, brzo i sporo," opisuje dva kognitivna sistema.[^1] Jedan čest, emotivan, brz, koji koristi naučene kognitivne prečice kako bi brzo doneo zaključak; i drugi, spor, kalkulisan, naporan sistem koji može prevazići kognitivne greške ako smo njih svesni.
 :::
 
-::: {.column width="50%"}
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
 ![Šerlok Holmes je inspirisan Edinburškim lekarom Džosefom Belom.](sherlock.jpg)
 :::
 :::

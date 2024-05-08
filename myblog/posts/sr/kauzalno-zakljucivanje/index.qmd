@@ -20,6 +20,12 @@ mermaid:
   theme: forest
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 Eksperiment je do skoro bio jedini način da se ispitaju prirodni fenomeni, ekskluzivno dostupan samo naukama koje mogu lako da ih izvode. Istraživač koji bi hteo da ispita prirodu neeksperimentalnim metodama (zato što je izvođenje eksperimenta neetičko ili nemoguće) je bio ograničen na ispitivanje korelacija. Kada u prirodi vidimo dve stvari koje se dešavaju zajedno, ne možemo zasigurno znati koja uzrokuje koju, niti da li su uopšte povezane (takođe, postoje uzroci koji uopšte nisu korelisani).[^1] Svet medicine, a i nauke njoj sličnoj, bile su ograničene na tvrdnje asocijacija. Naučnici su želeli da kažu $A$ uzrokuje $B$ ($A\rightarrow B$), ali nisu smeli, jer su takve tvrdnje bile prejake za statističke metode. Medicinska literatura je prepuna reči koje izbegavaju uzročne tvrdnje --- kao što su: veza, asocijacija, korelacija, značajna povezanost [@hernán2018]. Možemo li bez ikakvog intervenisanja, tj. samo gledanjem prirode, doći do zaključaka šta bi se desilo da zapravo uradimo nešto?
 
 [^1]: Poznata mantra statistike: "Korelacija ne znači kauzalnost." Međutim, kauzalnost ne garantuje ni korelaciju.
@@ -145,7 +151,7 @@ Kada znamo da je moguće kontrolisati za lažne asocijacije, da li treba da kont
 
 # Kauzalni dijagrami
 
-U svom radu "Da li biolozi mogu da poprave radio? --- ili, šta sam naučio tokom izučavanje apoptoze," @lazebnik2002 govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Jedan od načina da se formalizuju pretpostavke u opservacionim studijama, tj. prirodnim eksperimentima su *usmereni aciklični dijagrami* (eng. Directed Acyclic Graphs, DAGs). Putem ovih dijagrama mogu se predstaviti uticaji za koje naučnik smatra da su u osnovi nekog procesa (@fig-confounder).
+U svom radu "Da li biolozi mogu da poprave radio? --- ili, šta sam naučio tokom izučavanje apoptoze," @lazebnik2002 govori kako su biološke nauke oštećenje manjkom formalnog pristupa biološkim sistemima. Jedan od načina da se formalizuju pretpostavke u opservacionim studijama, tj. prirodnim eksperimentima su *usmereni aciklični grafovi* (eng. Directed Acyclic Graphs, DAGs). Putem ovih dijagrama mogu se predstaviti uticaji za koje naučnik smatra da su u osnovi nekog procesa (@fig-confounder).
 
 Džudea Perl je popularizovao način kojim možemo opservacije (prvi stepenik) pretvoriti u randomizovane eksperimente, kako bi od njih dobili odgovore na uzročna pitanja (stepenik dva i tri). Naime, definisanjem kauzalnog dijagrama naučnik može saznati koje mu varijable trebaju da dobije odgovor na postavljeno pitanje. Jednom definisan, kauzalni dijagram eliminiše bilo kakvu zbunjenost koje kontrolne varijable treba uključiti u regresiju, a koje ne.[^4]
 

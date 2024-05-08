@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="sr-Latn" xml:lang="sr-Latn"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.553">
@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikola N. Grubor">
-<meta name="description" content="Ovaj članak sadrži mustre u Excel-u za česte tipove medicinskih studije pripremljene za laku statističku obradu.">
+<meta name="description" content="Klasično su se opservacione studije u medicini delile u kategorije na osnovu dizajna, međutim didaktički nije uvek jasno zašto su baš ti pristupi poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla.">
 
-<title>Nikola N. Grubor - Kauzalne strukture čestih medicinskih studija</title>
+<title>Nikola N. Grubor - Kauzalne strukture opservacionih medicinskih studija</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -103,8 +123,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../../../styles.css">
-<meta name="twitter:title" content="Nikola N. Grubor - Kauzalne strukture čestih medicinskih studija">
-<meta name="twitter:description" content="Ovaj članak sadrži mustre u Excel-u za česte tipove medicinskih studije pripremljene za laku statističku obradu.">
+<meta name="twitter:title" content="Nikola N. Grubor - Kauzalne strukture opservacionih medicinskih studija">
+<meta name="twitter:description" content="Klasično su se opservacione studije u medicini delile u kategorije na osnovu dizajna, međutim didaktički nije uvek jasno zašto su baš ti pristupi poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -148,10 +168,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Kauzalne strukture čestih medicinskih studija</h1>
+      <h1 class="title">Kauzalne strukture opservacionih medicinskih studija</h1>
                   <div>
         <div class="description">
-          Ovaj članak sadrži mustre u Excel-u za česte tipove medicinskih studije pripremljene za laku statističku obradu.
+          Klasično su se opservacione studije u medicini delile u kategorije na osnovu dizajna, međutim didaktički nije uvek jasno zašto su <em>baš</em> ti pristupi poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -204,16 +224,16 @@ window.Quarto = {
   <li><a href="#prospektivna-kohorta" id="toc-prospektivna-kohorta" class="nav-link" data-scroll-target="#prospektivna-kohorta"><span class="header-section-number">3.1</span> Prospektivna kohorta</a></li>
   <li><a href="#retrospektivna-kohorta" id="toc-retrospektivna-kohorta" class="nav-link" data-scroll-target="#retrospektivna-kohorta"><span class="header-section-number">3.2</span> Retrospektivna kohorta</a></li>
   <li><a href="#multipla-kohortna-studija" id="toc-multipla-kohortna-studija" class="nav-link" data-scroll-target="#multipla-kohortna-studija"><span class="header-section-number">3.3</span> Multipla kohortna studija</a></li>
-  <li><a href="#longitudinalna-serijska-studija" id="toc-longitudinalna-serijska-studija" class="nav-link" data-scroll-target="#longitudinalna-serijska-studija"><span class="header-section-number">3.4</span> Longitudinalna (serijska) studija</a></li>
   </ul></li>
-  <li><a href="#studija-slučaj-kontrola" id="toc-studija-slučaj-kontrola" class="nav-link" data-scroll-target="#studija-slučaj-kontrola"><span class="header-section-number">4</span> Studija slučaj-kontrola</a>
+  <li><a href="#longitudinalna-studija" id="toc-longitudinalna-studija" class="nav-link" data-scroll-target="#longitudinalna-studija"><span class="header-section-number">4</span> Longitudinalna studija</a></li>
+  <li><a href="#studija-slučaj-kontrola" id="toc-studija-slučaj-kontrola" class="nav-link" data-scroll-target="#studija-slučaj-kontrola"><span class="header-section-number">5</span> Studija slučaj-kontrola</a>
   <ul class="collapse">
   <li><a href="#pristrasnost-uzorka" id="toc-pristrasnost-uzorka" class="nav-link" data-scroll-target="#pristrasnost-uzorka">Pristrasnost uzorka</a></li>
-  <li><a href="#nested-slučaj-i-kontrole-varijanta" id="toc-nested-slučaj-i-kontrole-varijanta" class="nav-link" data-scroll-target="#nested-slučaj-i-kontrole-varijanta"><span class="header-section-number">4.1</span> Nested slučaj i kontrole (varijanta)</a></li>
-  <li><a href="#gustina-incidence-slučaj-i-kontrola" id="toc-gustina-incidence-slučaj-i-kontrola" class="nav-link" data-scroll-target="#gustina-incidence-slučaj-i-kontrola"><span class="header-section-number">4.2</span> Gustina incidence slučaj i kontrola</a></li>
-  <li><a href="#nested-slučaj-kohorta" id="toc-nested-slučaj-kohorta" class="nav-link" data-scroll-target="#nested-slučaj-kohorta"><span class="header-section-number">4.3</span> Nested slučaj-kohorta</a></li>
+  <li><a href="#nested-slučaj-i-kontrole-varijanta" id="toc-nested-slučaj-i-kontrole-varijanta" class="nav-link" data-scroll-target="#nested-slučaj-i-kontrole-varijanta"><span class="header-section-number">5.1</span> Nested slučaj i kontrole (varijanta)</a></li>
+  <li><a href="#gustina-incidence-slučaj-i-kontrola" id="toc-gustina-incidence-slučaj-i-kontrola" class="nav-link" data-scroll-target="#gustina-incidence-slučaj-i-kontrola"><span class="header-section-number">5.2</span> Gustina incidence slučaj i kontrola</a></li>
+  <li><a href="#nested-slučaj-kohorta" id="toc-nested-slučaj-kohorta" class="nav-link" data-scroll-target="#nested-slučaj-kohorta"><span class="header-section-number">5.3</span> Nested slučaj-kohorta</a></li>
   </ul></li>
-  <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak"><span class="header-section-number">5</span> Zaključak</a></li>
+  <li><a href="#zaključak" id="toc-zaključak" class="nav-link" data-scroll-target="#zaključak"><span class="header-section-number">6</span> Zaključak</a></li>
   </ul>
 </nav>
     </div>
@@ -224,25 +244,70 @@ window.Quarto = {
 
 
 
+<div class="cell">
+<style type="text/css">
+p {
+  text-align: justify
+}
+</style>
+</div>
 <section id="uvod" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Uvod</h1>
-<p>Opservacione studije imaju dva osnovna tipa dizajna, koji su podeljeni na osnovu <strong>vremena</strong> merenja. U <strong>studijama preseka</strong> sva merenja su zabeležena u jednom trenutku (najčešće je to kratak vremenski period). U <strong>kohortnim studijama</strong> merenja se prikupljaju tokom dužeg vremenskog periodu u grupi ispitanika koja je definisana na početku studije (“kohorta”).</p>
-</section>
-<section id="studija-preseka" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Studija preseka</h1>
+<p>Opservacione studije imaju dva osnovna tipa dizajna, koji su podeljeni na osnovu <strong>vremena</strong> u kojem se prikupljanje podataka dešava. U <strong>studijama preseka</strong> sva merenja se beleže u jednom trenutku (najčešće je to kratak vremenski interval koji obuhvata presek). U <strong>kohortnim studijama</strong> merenja se prikupljaju tokom dužeg vremenskog periodu u grupi ispitanika koja je definisana na početku studije (tzv. “kohorta”). <strong>Studija slučaj-kontrola</strong> počinje od ishoda koji se već desio i traži njegove uzroke unazad kroz vreme.</p>
+<p>Usmereni aciklični grafovi (engl. <em>directed acylic graphs</em>) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi <span class="citation" data-cites="gruborcausal2023">(<a href="#ref-gruborcausal2023" role="doc-biblioref">N. Grubor, 2023</a>)</span>. Čvorovi predstavljaju varijable u pretpostavljenom modelu, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije nepretpostavljaju nikakav specijalan odnos, već samo da postoji funckija (<span class="math inline">\(f(x)\)</span>) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (linije) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. <em>confounder</em>) <span class="citation" data-cites="pearlCausalInferenceStatistics2016a">(<a href="#ref-pearlCausalInferenceStatistics2016a" role="doc-biblioref">Pearl i ostali, 2016</a>)</span>.</p>
+<p>Vizualni pristup analiziranja ih čini jako pogodnim didaktičkim alatom. U narednim poglavljima ćemo opistai neke tipične medicinske opservacione studije i ilustrovati zašto mogu biti uspešne u analizi uzroka i posledica.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-csdag" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dag" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-csdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-csdag-1.png" class="img-fluid figure-img" width="576">
+<div aria-describedby="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-dag-1.png" class="img-fluid figure-img" width="384">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-csdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Opis.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Usmereni aciklični graf. Pretpostavljeni uzrok <span class="math inline">\(X\)</span> utiče na pojavu <span class="math inline">\(Y\)</span>, dok pridružena varijabla <span class="math inline">\(C\)</span> svojim efektima utiče na oba. Crvenom bojom je označena linija čiji efekat nas interesuje.
 </figcaption>
 </figure>
 </div>
 </div>
+</div>
+</section>
+<section id="studija-preseka" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Studija preseka</h1>
+<p>Studije preseka se koriste kako bi se ispitale associjacije <span class="citation" data-cites="ClinicalResearch2013a">(<a href="#ref-ClinicalResearch2013a" role="doc-biblioref">Stephen B. Hulley, 2013</a>)</span>. Posto asocijacije same po sebi nemaju kauzalnu strukturu (smer uticaja), na istraživaču je da odredi šta smatra ishodom, a šta prediktorom. Posto je presek u vremenu, ne možemo da se oslonimo na vremenski tok da nam pomogne u određivanju uzroka i posledica. Demografski podaci se ne menjaju u odnosu na druge varijable, te su oni uvek prediktori (starost, pol). Još jedna posledica fiksiranosi tu vremenu je ovaj tip studije ne pruža informacije o incidenci (novonastalim slučajevima), već samo o prevalenci (proporcija trenutnih slučajeva).</p>
+<div id="fig-csdag" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-csdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-csdag" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-csdag-1" class="quarto-figure quarto-figure-center quarto-float anchored" width="432">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-csdag-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-csdag-1.png" id="fig-csdag-1" class="img-fluid figure-img" data-ref-parent="fig-csdag" width="432">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-csdag-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-csdag" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-csdag-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="432">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-csdag-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-csdag-2.png" id="fig-csdag-2" class="img-fluid figure-img" data-ref-parent="fig-csdag" width="432">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-csdag-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-csdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: (a) Osnovna stuktura varijabli u studiji preseka. Istraživač je taj koji definiše model. (b) Primer gde gojaznost utiče da poboljšano preživaljavanje pacijenata sa bubrežnog insuficijencijom. Bez ispravke uticaja gojaznosti na preživljavanje dobićemo precenjen rizik gojaznosti i hronične bubrežne insuficijencije.
+</figcaption>
+</figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -254,7 +319,11 @@ Primer istraživačkog pitanja
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Da li postoji odnos između telesne težine i hipertenzije?</p>
+<ul>
+<li>“Da li postoji odnos između telesne težine i hipertenzije?”</li>
+<li>“Kauzalni efekat telesne težine na nastanak hipertenzije?”</li>
+<li>“Asocijacija <em>prediktora</em> i <em>ishoda</em></li>
+</ul>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -268,8 +337,9 @@ Prednosti
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>…</li>
-<li>…</li>
+<li>Nema čekanja za ishod</li>
+<li>Nema praćenja pacijenata</li>
+<li>Mogu se produžiti u kohortne studije</li>
 </ul>
 </div>
 </div>
@@ -284,21 +354,359 @@ Problemi
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Praćenje kohorte, loss to followup</li>
-<li>Ponovljenja merenja, preciznost</li>
-<li>Cena</li>
+<li>Nepovoljne za retke ishode</li>
+<li>Teže je arugmentovati kauzalnost</li>
+<li>Lako je pomešati uzroke i asocijacije</li>
 </ul>
 </div>
 </div>
-<p>Cross-sectional studies can be used for examining associations, although the choice of which variables to label as predictors and which as outcomes depends on the cause-and-effect hypoth- eses of the investigator rather than on the study design. This choice is easy for constitutional factors such as age, race, and sex; these cannot be altered by other variables and therefore are always predictors. For other variables, however, the choice can go either way.</p>
-<p>DAG as a tool for variable selection.</p>
-<p>cross-sectional studies provide information about prevalence, the proportion who have a disease or condition at one point in time.</p>
-<p>When analyzing cross-sectional studies, the prevalence ofthe outcome can be compared in those with and without an exposure, yielding the relativeprevalence of the outcome, the cross-sectional equivalent of relative risk.</p>
-<p>Sometimes cross-sectional studies describe the prevalence of ever having done something or ever having had a disease or condition. In that case, it is important to make sure that follow-up time is the same in those exposed and unexposed.</p>
-<p>It’s often difficult to establish causal relationships from cross-sectional data. Cross-sectional studies are also impractical for the study of rare diseases, unless the sample is drawn from a population of diseased patients rather than the general population. A case series of this sort is better suited to describing the characteristics of the disease than to analyzing differences between these patients and healthy people, although informal comparisons with prior experience can sometimes identify very strong risk factors.</p>
-<p>Because cross-sectional studies measure only prevalence, rather than incidence, it is impor- tant to be cautious when drawing inferences about the causes, prognosis, or natural history of a disease. A factor that is associated with prevalence of disease may be a cause of the disease but could also just be associated with duration of the disease. For example, the prevalence of chronic renal failure is affected not only by its incidence, but also by survival once it has oc- curred. Given the observation that obesity is associated with greater survival among dialysis pa- tients (4), a cross-sectional study of the predictors of chronic renal failure might overestimate the association between obesity and renal failure.</p>
+<p>Usmereni aciklički graf je alat koji nam služi da odgonetnemo moguće odnose u studijama ovog tipa. Uvek je zahvalno opisati istraživani fenomen kauzalnim dijagramom kako se ne bismo zavarali. Pošto ove studije ne mere incidencu, već samo prevalencu, posebno je bitno izmeriti sve pridružene varijable (videti <a href="#fig-csdag-2" class="quarto-xref">Figura&nbsp;2 (b)</a>).</p>
+<!-- 
+
+Relativna prevalenca ishoda. Rezultat koji dobijamo kada poredimo pisustvo i odsustvo prediktora. Kao relativni rizik.
+
+Isti followup je bitan kada pravimo tvrdnje ever having done seomthing, ever happened
+
+-->
+<div class="cell">
+<div id="tbl-presek" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-presek-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1: <code>ID</code> pacijenta se uvek odnosi na istu jedinicu posmatranja. Uvek je potrebno sakupiti osnovne demografske podatke. Za one podatke koje je skupo prikupljati konstruisati kauzalni graf.
+</figcaption>
+<div aria-describedby="tbl-presek-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_lovomytbutydsv62mek7</title>
+    <style>
+.table td.tinytable_css_9x9lbjgytenm6sempv6q, .table th.tinytable_css_9x9lbjgytenm6sempv6q {    border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_lovomytbutydsv62mek7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">pol</th>
+                <th scope="col">tezina</th>
+                <th scope="col">visina</th>
+                <th scope="col">starost</th>
+                <th scope="col">meren_prediktor</th>
+                <th scope="col">skor_nrs_bol</th>
+                <th scope="col">DM</th>
+                <th scope="col">HTA</th>
+                <th scope="col">Ciroza</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>180</td>
+                  <td>65</td>
+                  <td>2.5</td>
+                  <td>5</td>
+                  <td>Da</td>
+                  <td>Da</td>
+                  <td>Ne</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Z</td>
+                  <td>55</td>
+                  <td>170</td>
+                  <td>70</td>
+                  <td>8.0</td>
+                  <td>4</td>
+                  <td>Ne</td>
+                  <td>Da</td>
+                  <td>Ne</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>M</td>
+                  <td>90</td>
+                  <td>188</td>
+                  <td>45</td>
+                  <td>4.0</td>
+                  <td>6</td>
+                  <td>Da</td>
+                  <td>Da</td>
+                  <td>Ne</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_gbev689mq6qvoxs47bch(i, j, css_id) {
+        var table = document.getElementById("tinytable_lovomytbutydsv62mek7");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_lovomytbutydsv62mek7');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_gbev689mq6qvoxs47bch(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_lovomytbutydsv62mek7");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 0, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 1, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 2, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 3, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 4, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 5, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 6, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 7, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 8, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+window.addEventListener('load', function () { styleCell_tinytable_gbev689mq6qvoxs47bch(0, 9, 'tinytable_css_9x9lbjgytenm6sempv6q') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Ovako napisane baze se mogu lako pretvoriti u dugu formu za dodatnu analizu.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div id="tbl-presek_long" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-presek_long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2: Duga forma tabele. Ključno je upisivati entitete odvojeno. Prikupljanje podataka nije lak posao.
+</figcaption>
+<div aria-describedby="tbl-presek_long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_6pj5tusgjyow139w4o7o</title>
+    <style>
+.table td.tinytable_css_khu56gr6jhsgw11cn2h1, .table th.tinytable_css_khu56gr6jhsgw11cn2h1 {    border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_6pj5tusgjyow139w4o7o" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">pol</th>
+                <th scope="col">tezina</th>
+                <th scope="col">visina</th>
+                <th scope="col">starost</th>
+                <th scope="col">meren_prediktor</th>
+                <th scope="col">skor_nrs_bol</th>
+                <th scope="col">komorbiditet</th>
+                <th scope="col">dijagnoza</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>180</td>
+                  <td>65</td>
+                  <td>2.5</td>
+                  <td>5</td>
+                  <td>DM    </td>
+                  <td>Da</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>180</td>
+                  <td>65</td>
+                  <td>2.5</td>
+                  <td>5</td>
+                  <td>HTA   </td>
+                  <td>Da</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>180</td>
+                  <td>65</td>
+                  <td>2.5</td>
+                  <td>5</td>
+                  <td>Ciroza</td>
+                  <td>Ne</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Z</td>
+                  <td>55</td>
+                  <td>170</td>
+                  <td>70</td>
+                  <td>8.0</td>
+                  <td>4</td>
+                  <td>DM    </td>
+                  <td>Ne</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Z</td>
+                  <td>55</td>
+                  <td>170</td>
+                  <td>70</td>
+                  <td>8.0</td>
+                  <td>4</td>
+                  <td>HTA   </td>
+                  <td>Da</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Z</td>
+                  <td>55</td>
+                  <td>170</td>
+                  <td>70</td>
+                  <td>8.0</td>
+                  <td>4</td>
+                  <td>Ciroza</td>
+                  <td>Ne</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_fmw9o7h8669nmpws9cao(i, j, css_id) {
+        var table = document.getElementById("tinytable_6pj5tusgjyow139w4o7o");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_6pj5tusgjyow139w4o7o');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_fmw9o7h8669nmpws9cao(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_6pj5tusgjyow139w4o7o");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 0, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 1, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 2, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 3, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 4, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 5, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 6, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 7, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+window.addEventListener('load', function () { styleCell_tinytable_fmw9o7h8669nmpws9cao(0, 8, 'tinytable_css_khu56gr6jhsgw11cn2h1') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
 <section id="serijske-studije-preseka-upitnici" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="serijske-studije-preseka-upitnici"><span class="header-section-number">2.1</span> Serijske studije preseka (upitnici)</h2>
+<p>Popis ili demografski upitnici su primeri serijskih studija preseka. U tom slučaju se studija preseka ponavlja na ujednačen period vremena, recimo, svakih 5 godina. Razlikuje se od kohortnih studija jer se svaki put uzima novi uzorak. Kako uzorak potiče iz populacije koja se menja (migracije, rođenja, smrti), promene na podacima će biti uslovljenje promenama u strukturi početne populacije. Analiza prikazana na <a href="#fig-cssdag" class="quarto-xref">Figura&nbsp;3</a> se može odnositi na vremensku seriju preseka ili više različitih populacija uključenih u analizu.</p>
+<p>Nepristrasna analiza uzroka u ovakvim mrežama prevazilazi obim ovog članka. Slobodno nastivite dalje.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cssdag" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -307,17 +715,17 @@ Problemi
 <img src="index_files/figure-html/fig-cssdag-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cssdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Serijske (longitudinalne) studije preseka imaju veoma komplikovanu kauzalnu strukturu. Promene u populaciji utiču na preciznost merenja prediktora (<span class="math inline">\(P\)</span>) i ishoda (<span class="math inline">\(I\)</span>). Zajednička pridružena varijabla <span class="math inline">\(C\)</span>, kao i <span class="math inline">\(P\)</span> i <span class="math inline">\(I\)</span> više nisu merene precizno več sa greškama <span class="math inline">\(e_c, e_p, e_i\)</span>. Pored toga, zaokružene varijable su nisu opservirane direktno, već su funkcija pomenutih greški i njihovih opserviranih vrednosti <span class="math inline">\(C^*, P^*\)</span> i <span class="math inline">\(I^*\)</span>. Mi kao istraživači, imamo samo pristup opserviranim vrednostima koje su merene sa greškom.
+Figura&nbsp;3: Serijske (longitudinalne) studije preseka imaju veoma komplikovanu kauzalnu strukturu. Promene u populaciji utiču na preciznost merenja prediktora (<span class="math inline">\(P\)</span>) i ishoda (<span class="math inline">\(I\)</span>). Zajednička pridružena varijabla <span class="math inline">\(C\)</span>, kao i <span class="math inline">\(P\)</span> i <span class="math inline">\(I\)</span> više nisu merene precizno več sa greškama <span class="math inline">\(e_c, e_p, e_i\)</span>. Pored toga, zaokružene varijable su nisu opservirane direktno, već su funkcija pomenutih greški i njihovih opserviranih vrednosti <span class="math inline">\(C^*, P^*\)</span> i <span class="math inline">\(I^*\)</span>. Mi kao istraživači, imamo samo pristup opserviranim vrednostima koje su merene sa greškom.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Occasionally, investigators perform a series of cross-sectional studies in the same population, say every 5 years. This design can be used to draw inferences about changing patterns over time. Serial cross-sectional surveys have a longitudinal time frame, but they are not the same as a cohort study, because a new sample is drawn each time. As a result, changes within individuals cannot be assessed, and findings may be influenced by people entering or leaving the population (and, thus, the samples) due to births, deaths, and migration.</p>
 </section>
 </section>
 <section id="kohortna-studija" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Kohortna studija</h1>
+<p>Osnovne karakteristike kohortnih studija su <strong>definisanje grupe ispitanika na početku istraživanja</strong> i <strong>longitudinalno praćenje</strong>. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad istim ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda. Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u studijama.</p>
 <div id="fig-kdag" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -361,7 +769,7 @@ Figura&nbsp;2: Serijske (longitudinalne) studije preseka imaju veoma komplikovan
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kdag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora (<span class="math inline">\(P\)</span>) na ishod (<span class="math inline">\(I\)</span>) nije opserviran direktno zbog differencijalnog gubitka pacijenata tokom praćenja. Opserviran je pristrasan ishod (<span class="math inline">\(I^*\)</span>) uslovljen različitim uzrocima.
+Figura&nbsp;4: Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora (<span class="math inline">\(P\)</span>) na ishod (<span class="math inline">\(I\)</span>) nije opserviran direktno zbog differencijalnog gubitka pacijenata tokom praćenja. Opserviran je pristrasan ishod (<span class="math inline">\(I^*\)</span>) uslovljen različitim uzrocima.
 </figcaption>
 </figure>
 </div>
@@ -375,7 +783,12 @@ Primer istraživačkog pitanja
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Da li postoji odnos između telesne težine i hipertenzije?</p>
+<ul>
+<li>Da li postoji odnos između telesne težine i raka dojke?</li>
+<li>Koja je stopa nastanka depresije ukoliko je pacijent izložen hroničnom stresu?</li>
+<li>Kakav je rizik od nastanka leukemije kod dece koja su bila izložena CT skeneru?</li>
+<li>Koji je kauzalni efekat <em>prediktora</em> na prethodno definisan <em>ishod</em></li>
+</ul>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -389,8 +802,8 @@ Prednosti
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>…</li>
-<li>…</li>
+<li>Vremenski odnos prediktora i ishoda omogućava jače kauzalne argumente</li>
+<li>Smanjuje uticaj istraživača na ishod</li>
 </ul>
 </div>
 </div>
@@ -405,30 +818,32 @@ Problemi
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Praćenje kohorte, loss to followup</li>
-<li>Ponovljenja merenja, preciznost</li>
-<li>Cena</li>
+<li>Praćenje kohorte, gubitak pacijanata</li>
+<li>Ponovljenja merenja, preciznost merenja</li>
+<li>Dugo vreme izvođenja studije</li>
 </ul>
 </div>
 </div>
-<p>Osnovne karakteristike kohortnih studija su <strong>definisanje grupe ispitanika na početku istraživanja</strong> i <strong>longitudinalno praćenje</strong>. Postoje prospektivne, retrospektivne i multiple kohortne studije. Česti problemi su retencija kohorte.</p>
-<p>Unlike cohort studies, which have a longitudinal time dimension and can be used to estimate incidence.</p>
 <section id="prospektivna-kohorta" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="prospektivna-kohorta"><span class="header-section-number">3.1</span> Prospektivna kohorta</h2>
-<p>A major advantage of the cohort design is that, unlike cross-sectional designs, it allows the cal- culation of incidence—the number of new cases of a condition occuring over time.</p>
-<p>Measuring levels of the predictor before the outcome occurs establishes the time sequence of the variables, which strengthens the process of inferring the causal basis of an association</p>
-<p>expense and inefficiency for studying rare outcomes</p>
+<p>U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.</p>
 <p>Even diseases we think of as relatively common, such as breast cancer, happen at such a low rate in any given year that large numbers of people must be followed for long periods of time to observe enough outcomes to produce meaningful results.</p>
 <div class="cell">
+<div id="tbl-pk" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;3: Tabela podataka prikupljenih za analizu prospektivne kohorte.
+</figcaption>
+<div aria-describedby="tbl-pk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
  
 
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_uwxqbd8bz96ybprv4kqn</title>
+    <title>tinytable_z9nrhgj8a74s59p8a5vb</title>
     <style>
-.table td.tinytable_css_ereh5x89g2t0sihkfp31, .table th.tinytable_css_ereh5x89g2t0sihkfp31 {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_iqvqt3nr25zt9ozo3eln, .table th.tinytable_css_iqvqt3nr25zt9ozo3eln {    border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -446,7 +861,7 @@ Problemi
 
   
     <div class="container">
-      <table class="table table-borderless" id="tinytable_uwxqbd8bz96ybprv4kqn" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_z9nrhgj8a74s59p8a5vb" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -517,12 +932,12 @@ Problemi
     </div>
 
     <script>
-      function styleCell_tinytable_wnamkyaxz2td1t4djd9x(i, j, css_id) {
-        var table = document.getElementById("tinytable_uwxqbd8bz96ybprv4kqn");
+      function styleCell_tinytable_vpcjjsjt79gha1iccutl(i, j, css_id) {
+        var table = document.getElementById("tinytable_z9nrhgj8a74s59p8a5vb");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_uwxqbd8bz96ybprv4kqn');
+        var table = document.getElementById('tinytable_z9nrhgj8a74s59p8a5vb');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -530,8 +945,8 @@ Problemi
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_wnamkyaxz2td1t4djd9x(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_uwxqbd8bz96ybprv4kqn");
+      function spanCell_tinytable_vpcjjsjt79gha1iccutl(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_z9nrhgj8a74s59p8a5vb");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -558,14 +973,14 @@ Problemi
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 0, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 1, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 2, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 3, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 4, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 5, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 6, 'tinytable_css_ereh5x89g2t0sihkfp31') })
-window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t4djd9x(0, 7, 'tinytable_css_ereh5x89g2t0sihkfp31') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 0, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 1, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 2, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 3, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 4, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 5, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 6, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
+window.addEventListener('load', function () { styleCell_tinytable_vpcjjsjt79gha1iccutl(0, 7, 'tinytable_css_iqvqt3nr25zt9ozo3eln') })
     </script>
 
   
@@ -573,25 +988,69 @@ window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t
 
 </div>
 </div>
+</figure>
+</div>
+</div>
 </section>
 <section id="retrospektivna-kohorta" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="retrospektivna-kohorta"><span class="header-section-number">3.2</span> Retrospektivna kohorta</h2>
-<p>The design of a retrospective cohort study (Figure 7.3) differs from that of a prospective one in that the assembly of the cohort, baseline measurements, and follow-up have all happened in the past. This type of study is only possible if adequate data about the predictors are available on a cohort of subjects that has been assembled for other purposes, such as an electronic clinical or administrative database.</p>
-<p>advantage of being much less costly and time-consuming. disadvantages are the limited control the investigator has over the approach to sampling and follow-up of the population, and over the nature and the quality of the baseline measurements. The existing data may be incomplete, inaccurate, or measured in ways that are not ideal for answering the research question.</p>
+<p>Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori i sastavljanje kohorte <strong>već desili</strong>. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je studija praktično već završena i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom podataka i traženim ishodom, te je moguće da podaci nisu dovoljni za odgovaranje na instraživačko pitanje.</p>
 </section>
 <section id="multipla-kohortna-studija" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="multipla-kohortna-studija"><span class="header-section-number">3.3</span> Multipla kohortna studija</h2>
-<p>The multiple-cohort design may be the only feasible approach for studying rare exposures to potential occupational and environmental hazards. The problem of confounding is accentuated in a multiple-cohort study because the cohorts are assembled from separate populations that can differ in important ways (besides exposure to the predictor variable) that influence the outcomes.</p>
+<p>Multiple kohortna studije je potencijano jedan od retkih dizajnova koji omogućava proučavanje radne i sredinske rizike. Podaci iz administrativnih registara se koriste kao eksterne kontrole kohorti koja je pod praćenjem.</p>
+<div id="fig-kdagmulti" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kdagmulti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kdagmulti" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-kdagmulti-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kdagmulti-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-kdagmulti-1.png" class="img-fluid figure-img" data-ref-parent="fig-kdagmulti" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kdagmulti-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Osnovni kauzalni dijagram multiple kohortne studije.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kdagmulti" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-kdagmulti-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kdagmulti-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-kdagmulti-2.png" class="img-fluid figure-img" data-ref-parent="fig-kdagmulti" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kdagmulti-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Primer kauzalnog dijagrama studije efekta rada u uranijumskim rudnicima na razvitak karcinoma pluća. Populacija radnika i populacije njima sličnim ljudima je praćena za razvitak ishoda.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kdagmulti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Kohorte uzete iz različitih populacija utiču na grešku merenja prediktora (<span class="math inline">\(e_p\)</span>). Pored toga, moguće su i druge pridružene varijable koje otežavaju nepristrasnu analizu.
+</figcaption>
+</figure>
+</div>
+<p>Naravno, raznolike greške merenja su moguće. Jedna od praktčno opasnih je činjenica da drugačije populacije mogu biti izgubljene iz kohorte različitim stopama, te će to izmeniti asocijaciju ukoliko ne budemo pažljivi. To svakako prevazilazi ovaj pregled. Idemo dalje.</p>
 <div class="cell">
+<div id="tbl-multik" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-multik-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;4: Tabela podataka prikupljenih za analizu multiple kohorte.
+</figcaption>
+<div aria-describedby="tbl-multik-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
  
 
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_yxehjy5p9i9wbsfx97ir</title>
+    <title>tinytable_rpgm970f1dbp778w2108</title>
     <style>
-.table td.tinytable_css_abykjd7ielwgqwve239c, .table th.tinytable_css_abykjd7ielwgqwve239c {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_6csjdf6zboqcj9tb76ei, .table th.tinytable_css_6csjdf6zboqcj9tb76ei {    border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -609,7 +1068,7 @@ window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t
 
   
     <div class="container">
-      <table class="table table-borderless" id="tinytable_yxehjy5p9i9wbsfx97ir" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_rpgm970f1dbp778w2108" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -686,12 +1145,12 @@ window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t
     </div>
 
     <script>
-      function styleCell_tinytable_alz750ur767tebfit6pp(i, j, css_id) {
-        var table = document.getElementById("tinytable_yxehjy5p9i9wbsfx97ir");
+      function styleCell_tinytable_xn3smaw2wtx1jdo6yulf(i, j, css_id) {
+        var table = document.getElementById("tinytable_rpgm970f1dbp778w2108");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_yxehjy5p9i9wbsfx97ir');
+        var table = document.getElementById('tinytable_rpgm970f1dbp778w2108');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -699,8 +1158,8 @@ window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_alz750ur767tebfit6pp(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_yxehjy5p9i9wbsfx97ir");
+      function spanCell_tinytable_xn3smaw2wtx1jdo6yulf(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_rpgm970f1dbp778w2108");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -727,15 +1186,319 @@ window.addEventListener('load', function () { styleCell_tinytable_wnamkyaxz2td1t
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 0, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 1, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 2, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 3, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 4, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 5, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 6, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 7, 'tinytable_css_abykjd7ielwgqwve239c') })
-window.addEventListener('load', function () { styleCell_tinytable_alz750ur767tebfit6pp(0, 8, 'tinytable_css_abykjd7ielwgqwve239c') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 0, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 1, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 2, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 3, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 4, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 5, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 6, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 7, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+window.addEventListener('load', function () { styleCell_tinytable_xn3smaw2wtx1jdo6yulf(0, 8, 'tinytable_css_6csjdf6zboqcj9tb76ei') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="longitudinalna-studija" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Longitudinalna studija</h1>
+<p>Longitudinalni podaci su multi-dimenzionalna<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. <strong>Vremenske serije</strong> i <strong>studije preseka</strong> se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <strong>Kohortne studije</strong> su podtip longitudinalne studije gde se <em>definiše kohorta</em> na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika.</p>
+<p>Time series data have a natural temporal ordering. This makes time series analysis distinct from cross-sectional studies, in which there is no natural ordering of the observations (e.g.&nbsp;explaining people’s wages by reference to their respective education levels, where the individuals’ data could be entered in any order).</p>
+<p>A stochastic model for a time series will generally reflect the fact that observations close together in time will be more closely related than observations further apart.</p>
+<div class="cell">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_txhlyt278vutoi1kh925</title>
+    <style>
+.table td.tinytable_css_uwj5lx596gegegktz1bq, .table th.tinytable_css_uwj5lx596gegegktz1bq {    border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_txhlyt278vutoi1kh925" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">patient_id</th>
+                <th scope="col">year</th>
+                <th scope="col">age</th>
+                <th scope="col">weight</th>
+                <th scope="col">cholesterol</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2010</td>
+                  <td>34</td>
+                  <td>70.59910</td>
+                  <td>204.6903</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2011</td>
+                  <td>35</td>
+                  <td>70.59246</td>
+                  <td>215.4429</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2012</td>
+                  <td>36</td>
+                  <td>64.40413</td>
+                  <td>215.3913</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2013</td>
+                  <td>37</td>
+                  <td>69.91848</td>
+                  <td>221.4062</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2014</td>
+                  <td>38</td>
+                  <td>75.29068</td>
+                  <td>215.8410</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2010</td>
+                  <td>40</td>
+                  <td>75.32835</td>
+                  <td>175.5512</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2011</td>
+                  <td>41</td>
+                  <td>79.53471</td>
+                  <td>187.1599</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2012</td>
+                  <td>42</td>
+                  <td>74.65339</td>
+                  <td>186.0062</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_4qibw9uz9erzp7l753fu(i, j, css_id) {
+        var table = document.getElementById("tinytable_txhlyt278vutoi1kh925");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_txhlyt278vutoi1kh925');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_4qibw9uz9erzp7l753fu(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_txhlyt278vutoi1kh925");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_4qibw9uz9erzp7l753fu(0, 0, 'tinytable_css_uwj5lx596gegegktz1bq') })
+window.addEventListener('load', function () { styleCell_tinytable_4qibw9uz9erzp7l753fu(0, 1, 'tinytable_css_uwj5lx596gegegktz1bq') })
+window.addEventListener('load', function () { styleCell_tinytable_4qibw9uz9erzp7l753fu(0, 2, 'tinytable_css_uwj5lx596gegegktz1bq') })
+window.addEventListener('load', function () { styleCell_tinytable_4qibw9uz9erzp7l753fu(0, 3, 'tinytable_css_uwj5lx596gegegktz1bq') })
+window.addEventListener('load', function () { styleCell_tinytable_4qibw9uz9erzp7l753fu(0, 4, 'tinytable_css_uwj5lx596gegegktz1bq') })
+    </script>
+
+  
+
+
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_jj8byrttmymdutrflksv</title>
+    <style>
+.table td.tinytable_css_3b2dtdh9tofcppnuvq9p, .table th.tinytable_css_3b2dtdh9tofcppnuvq9p {    border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_jj8byrttmymdutrflksv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">cohort_id</th>
+                <th scope="col">diagnosis_year</th>
+                <th scope="col">follow_up_year</th>
+                <th scope="col">age_at_diagnosis</th>
+                <th scope="col">current_age</th>
+                <th scope="col">glucose_level</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2010</td>
+                  <td>2010</td>
+                  <td>51</td>
+                  <td>51</td>
+                  <td>187.3741</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2010</td>
+                  <td>2015</td>
+                  <td>51</td>
+                  <td>56</td>
+                  <td>178.4169</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2010</td>
+                  <td>2020</td>
+                  <td>51</td>
+                  <td>61</td>
+                  <td>165.4183</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2010</td>
+                  <td>2010</td>
+                  <td>53</td>
+                  <td>53</td>
+                  <td>126.7328</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2010</td>
+                  <td>2015</td>
+                  <td>53</td>
+                  <td>58</td>
+                  <td>141.2830</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_pexe74htgvjdj1rms6m6(i, j, css_id) {
+        var table = document.getElementById("tinytable_jj8byrttmymdutrflksv");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_jj8byrttmymdutrflksv');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_pexe74htgvjdj1rms6m6(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_jj8byrttmymdutrflksv");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 0, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 1, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 2, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 3, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 4, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
+window.addEventListener('load', function () { styleCell_tinytable_pexe74htgvjdj1rms6m6(0, 5, 'tinytable_css_3b2dtdh9tofcppnuvq9p') })
     </script>
 
   
@@ -744,12 +1507,8 @@ window.addEventListener('load', function () { styleCell_tinytable_alz750ur767teb
 </div>
 </div>
 </section>
-<section id="longitudinalna-serijska-studija" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="longitudinalna-serijska-studija"><span class="header-section-number">3.4</span> Longitudinalna (serijska) studija</h2>
-</section>
-</section>
-<section id="studija-slučaj-kontrola" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Studija slučaj-kontrola</h1>
+<section id="studija-slučaj-kontrola" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Studija slučaj-kontrola</h1>
 <div id="fig-ccbias" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ccbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -761,7 +1520,7 @@ window.addEventListener('load', function () { styleCell_tinytable_alz750ur767teb
 <img src="index_files/figure-html/fig-ccbias-1.png" class="img-fluid figure-img" data-ref-parent="fig-ccbias" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ccbias-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Osnovna stuktura.
+(a) Osnovna kauzalna stuktura studije slučaj-kontrola.
 </figcaption>
 </figure>
 </div>
@@ -787,7 +1546,7 @@ window.addEventListener('load', function () { styleCell_tinytable_alz750ur767teb
 <img src="index_files/figure-html/fig-ccbias-3.png" class="img-fluid figure-img" data-ref-parent="fig-ccbias" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ccbias-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa.
+(c) Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa. Preklapanje faktora rizika moze lažno ublažiti ili preuveličati traženu asocijaciju.
 </figcaption>
 </figure>
 </div>
@@ -799,7 +1558,7 @@ window.addEventListener('load', function () { styleCell_tinytable_alz750ur767teb
 <img src="index_files/figure-html/fig-ccbias-4.png" class="img-fluid figure-img" data-ref-parent="fig-ccbias" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ccbias-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnog populacije registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta.
+(d) Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnost registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta.
 </figcaption>
 </figure>
 </div>
@@ -807,7 +1566,7 @@ window.addEventListener('load', function () { styleCell_tinytable_alz750ur767teb
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4: Opis.
+Figura&nbsp;6: Osnovni kauzalni grafovi studije slučaj-kontrola. Neizmerene pridružene varijable (<span class="math inline">\(U\)</span>) su zaokružene.
 </figcaption>
 </figure>
 </div>
@@ -864,36 +1623,209 @@ Problemi
 <h3 class="anchored" data-anchor-id="pristrasnost-uzorka">Pristrasnost uzorka</h3>
 <p>n case–control studies the cases must be sampled from patients in whom the disease has already been diagnosed and who are available for study. This sample may not be representative of all patients who develop the disease because those who are undiagnosed, misdiagnosed, unavailable for study, or dead are unlikely to be included</p>
 </section>
-<section id="nested-slučaj-i-kontrole-varijanta" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="nested-slučaj-i-kontrole-varijanta"><span class="header-section-number">4.1</span> Nested slučaj i kontrole (varijanta)</h2>
+<section id="nested-slučaj-i-kontrole-varijanta" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="nested-slučaj-i-kontrole-varijanta"><span class="header-section-number">5.1</span> Nested slučaj i kontrole (varijanta)</h2>
 <p>A nested case–control design compares the incident cases nested in a cohort study with controls drawn at random from the rest of the cohort; this design controls sampling and measurement bias and saves money if the predictors are expensive measurements that can be made on stored specimens or images collected at the outset of the cohort study.</p>
 <p>The investigator begins by identifying a cohort of subjects at risk for the outcome that is large enough to yield sufficient numbers of cases to answer the research question, and that provides the ability to measure the exposure variable, either because specimens have been banked or medical records (or subjects) with exposure information are available.</p>
+<div class="cell">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_pj290cecs3qgpdhte9zq</title>
+    <style>
+.table td.tinytable_css_qtys6wleban5s6ddwsvg, .table th.tinytable_css_qtys6wleban5s6ddwsvg {    border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_pj290cecs3qgpdhte9zq" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">patient_id</th>
+                <th scope="col">age</th>
+                <th scope="col">gender</th>
+                <th scope="col">disease_status</th>
+                <th scope="col">smoking_status</th>
+                <th scope="col">exercise_frequency</th>
+                <th scope="col">family_history</th>
+                <th scope="col">cholesterol</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td> 11</td>
+                  <td>30</td>
+                  <td>Female</td>
+                  <td>Case   </td>
+                  <td>Former</td>
+                  <td>Regular</td>
+                  <td>No </td>
+                  <td>254</td>
+                </tr>
+                <tr>
+                  <td>388</td>
+                  <td>34</td>
+                  <td>Female</td>
+                  <td>Control</td>
+                  <td>Never </td>
+                  <td>Regular</td>
+                  <td>Yes</td>
+                  <td>170</td>
+                </tr>
+                <tr>
+                  <td>  1</td>
+                  <td>55</td>
+                  <td>Male  </td>
+                  <td>Case   </td>
+                  <td>Never </td>
+                  <td>None   </td>
+                  <td>No </td>
+                  <td>182</td>
+                </tr>
+                <tr>
+                  <td> 66</td>
+                  <td>45</td>
+                  <td>Male  </td>
+                  <td>Case   </td>
+                  <td>Never </td>
+                  <td>None   </td>
+                  <td>No </td>
+                  <td>211</td>
+                </tr>
+                <tr>
+                  <td>365</td>
+                  <td>60</td>
+                  <td>Female</td>
+                  <td>Control</td>
+                  <td>Former</td>
+                  <td>None   </td>
+                  <td>Yes</td>
+                  <td>247</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_a5ufhgbja9lhzjcfup0r(i, j, css_id) {
+        var table = document.getElementById("tinytable_pj290cecs3qgpdhte9zq");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_pj290cecs3qgpdhte9zq');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_a5ufhgbja9lhzjcfup0r(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_pj290cecs3qgpdhte9zq");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 0, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 1, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 2, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 3, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 4, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 5, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 6, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+window.addEventListener('load', function () { styleCell_tinytable_a5ufhgbja9lhzjcfup0r(0, 7, 'tinytable_css_qtys6wleban5s6ddwsvg') })
+    </script>
+
+  
+
+
+</div>
+</div>
 </section>
-<section id="gustina-incidence-slučaj-i-kontrola" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="gustina-incidence-slučaj-i-kontrola"><span class="header-section-number">4.2</span> Gustina incidence slučaj i kontrola</h2>
+<section id="gustina-incidence-slučaj-i-kontrola" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="gustina-incidence-slučaj-i-kontrola"><span class="header-section-number">5.2</span> Gustina incidence slučaj i kontrola</h2>
 <p>An incidence-density case–control design allows investigators to analyze risk relationships, taking into account changes over time in risk factor levels and loss to follow-up.</p>
 </section>
-<section id="nested-slučaj-kohorta" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="nested-slučaj-kohorta"><span class="header-section-number">4.3</span> Nested slučaj-kohorta</h2>
+<section id="nested-slučaj-kohorta" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="nested-slučaj-kohorta"><span class="header-section-number">5.3</span> Nested slučaj-kohorta</h2>
 <p>And a nested case–cohort design allows a random sample of the entire cohort to serve as the control for several different sets of cases.</p>
 </section>
 </section>
-<section id="zaključak" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Zaključak</h1>
+<section id="zaključak" class="level1" data-number="6">
+
+
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2024,
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 Zaključak</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-gruborcausal2023" class="csl-entry" role="listitem">
+N. Grubor, N. (2023, kolovoz 7). <em>Kauzalno zaključivanje je moguće iz opservacionih studija</em>. <a href="https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje">https://nikola-grubor.github.io/myblog/posts/sr/kauzalno-zakljucivanje</a>
+</div>
+<div id="ref-pearlCausalInferenceStatistics2016a" class="csl-entry" role="listitem">
+Pearl, J., Glymour, M., &amp; Jewell, N. P. (2016). <em>Causal <span>Inference</span> in <span>Statistics</span> - <span>A Primer</span></em> (1st edition). Wiley.
+</div>
+<div id="ref-ClinicalResearch2013a" class="csl-entry" role="listitem">
+Stephen B. Hulley, W. S. B. M., Steven R. Cummings. (2013). <em>Designing <span>Clinical Research</span></em> (Fourth edition). LWW.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Fusnota</h2>
+
+<ol>
+<li id="fn1"><p>Postoje napredne sheme za alternativan unos uz pomoć znakova za razdvajanje <code>DM|HTA</code> vs.&nbsp;<code>DM|HTA|Ciroza</code> unutar jedne kolone. Upitno je koja metoda je brža.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Sadrže jako puno varijabli.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Navođenje</h2><div><div class="quarto-appendix-secondary-label">BibTeX navođenje:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{n. grubor2024,
   author = {N. Grubor, Nikola},
-  title = {Kauzalne strukture čestih medicinskih studija},
+  title = {Kauzalne strukture opservacionih medicinskih studija},
   date = {2024-05-06},
   url = {https://nikola-grubor.github.io/myblog/posts/sr/studije},
   langid = {sr-Latn}
 }
 </code><button title="Kopiraj" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">Za pripisivanje autoru, molimo navedite ovaj rad sa:</div><div id="ref-n. grubor2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-N. Grubor, N. (2024, May 6). <em>Kauzalne strukture čestih medicinskih
-studija</em>. <a href="https://nikola-grubor.github.io/myblog/posts/sr/studije">https://nikola-grubor.github.io/myblog/posts/sr/studije</a>
+N. Grubor, N. (2024, May 6). <em>Kauzalne strukture opservacionih
+medicinskih studija</em>. <a href="https://nikola-grubor.github.io/myblog/posts/sr/studije">https://nikola-grubor.github.io/myblog/posts/sr/studije</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -26,6 +26,12 @@ echo: false
 warning: false
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 # Uvod
 
 Recimo da želimo da iskoristimo naše naučno znanje da objasnimo biološko ponašanje epidemije. Konstruisanje naučno inspirisanog biološkog modela ima velike prednosti, jedna od kojih je predviđanje intervencija na sistemu koji opisuje [@grubor2023]. Kada se infektivni agens uvede u populaciju koje je podložna infekciji, on će se širiti sve do momenta dostizanja kritične tačke gde je malo verovatno da će inficiran čovek sresti nekog ko nije već preležao bolest. U tom trenutku epidemija usporava i agens u toj populaciji izumire (ako nema neki mehanizam dormatnog preživljvanja). Tu kritičnu tačku nazivamo kolektivnim imunitetom, i ona zavisi od mnogih parametara samog agensa. Dodatne komplikacije našem naučnom opisu pretstavljaju prisustvo različitih imunskih sistema kod ljudi, inkubacioni period infektivnog agensa, državne mere prevencije širenja epidemije i programi vakcinacije --- jer menjaju način na koji se stvaraju podaci. Pored komplikovanog biološkog sistema, imamo i statističke probleme, gde je tačan broj inficiranih osoba nepoznat. Poslušaćemo savet matematičara Džordža Polje koji kaže da kad imamo kompleksan problem, probamo da identifikujemo i rešimo njegov najjednostavniji oblik [@polya2015].
@@ -354,6 +360,7 @@ ggplot(smr_y, mapping = aes(x = t)) +
   labs(x = "Vreme (Dani)", y = "Broj inficiranih") +
   theme_minimal()
 ```
+
 ```{r}
 #| label: tbl-summary
 #| tbl-cap: "Parametri iz poslednjeg modela."
@@ -367,6 +374,7 @@ as_tibble(x = pars)) %>%
   
 tinytable::tt(table1)
 ```
+
 # Zaključak
 
 Mehanistički opis fenomena je zapravo naučni cilj. Kada imamo opis koji može dobro da predviđa podatke, i uzgred ima tačnu mehaničku strukturu, možemo da ga iskoristimo da otkrijemo šta će se desiti sa sistemom kada preduzmemo neku intervenciju. Naravno, priroda je kompleksna, i potrebna je interdisciplinarna sinteza znanja kako bismo došli do dobrog biološkog opisa. Neverovatan je akademski napredak omogućiti naučnicima iz svih domena da pišu kompleksme modele. Treba ih iskoristiti.
