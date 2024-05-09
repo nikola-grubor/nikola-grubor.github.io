@@ -24,6 +24,7 @@ bibliography: references.bib
 
 echo: false
 warning: false
+engine: knitr
 ---
 
 ```{css, echo = FALSE}

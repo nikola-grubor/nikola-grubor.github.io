@@ -21,6 +21,7 @@ image: "geocenter.png"
 mermaid: 
   theme: forest
 draft: false
+engine: knitr
 ---
 
 ```{css, echo = FALSE}

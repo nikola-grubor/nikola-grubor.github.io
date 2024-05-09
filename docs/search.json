@@ -4,7 +4,7 @@
     "href": "myblog/posts/sr/uredni-podaci/index.html",
     "title": "Uredni Podaci u Biomedicinskim Naukama",
     "section": "",
-    "text": "Svi uredni podaci su slični, ali svi neuredni podaci su neuredni na svoj način. — Hadley Wickham\n\nUredni podaci su oni podaci koji se mogu analizirati u statističkom softveru bez dodatne obrade. Postoji bezbroj načina da se napravi neuredna baza podataka. Samim tim, sređivanje baze je poduhvat jedinstven za svaku bazu. Neki principi sređivanja se mogu reciklirati, ali uglavnom postoji beskonačan broj načina na koje istraživač može da uneredi svoju bazu podataka čineći je neupotrebljivom. Ovaj članak će preći najbitnije savete za pravljenje urednih baza, sa ciljem da bude funkcionalan podsetnik odgovornim istraživačima. Dobar pregled teorije vezane sa uredne podatke se može pronaći u (Wickham, 2014).\nPravljene urednih tabela podataka podrazumeva obimniji posao na početku rada, ali se on višestruko isplati tokom analize podataka. U suprotnom, većina vremena se potroši na sređivanje podataka, a jako malo na konkretnoj nauci. Kvalitet istraživanja opada ako se nedovoljno vremena posveti analizi.\nPrvi deo članka posvećen je gruboj organizaciji podataka u uredne tabele (Odeljak 2), sa savetima za pravljenje tabela namenjenim različitim funkcijama (npr. praćenje pacijenata). Drugi deo članka posvećen je samom unosu podataka (Odeljak 3), tj. pravilnom imenovanju varijabli, pisanju datuma, kodiranju kategorija i slično. Delovi su nezavisni jedan od drugog ali imaju neke zajedničke koncepte."
+    "text": "p {\n  text-align: justify\n}"
   },
   {
     "objectID": "myblog/posts/sr/uredni-podaci/index.html#pravougaona-forma",

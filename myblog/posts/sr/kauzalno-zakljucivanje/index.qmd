@@ -18,6 +18,7 @@ categories: [statistika, kauzalnost, srpski]
 image: "observation.jpg"
 mermaid: 
   theme: forest
+engine: knitr
 ---
 
 ```{css, echo = FALSE}

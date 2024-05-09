@@ -1,6 +1,6 @@
 ---
 title: "Kauzalne strukture opservacionih medicinskih studija"
-description: "Klasično su se opservacione studije u medicini delile u kategorije na osnovu dizajna, međutim didaktički nije uvek jasno zašto su *baš* ti pristupi poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla."
+description: "Klasično su se opservacione studije u medicini delile po kategorijama na osnovu dizajna, međutim didaktički nije uvek jasno zašto su *baš* takvi pristupi dizajnu poželjni. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz drugog ugla."
 date: 2024-05-06
 date-format: D/MM/YYYY
 number-sections: true
@@ -24,6 +24,7 @@ bibliography: references.bib
 
 echo: false
 warning: false
+engine: knitr
 ---
 
 ```{css, echo = FALSE}
@@ -178,32 +179,24 @@ cross_sectional_data %>%
 
 ```{r}
 #| label: tbl-presek
-#| tbl-cap: "`ID` pacijenta se uvek odnosi na istu jedinicu posmatranja. Uvek je potrebno sakupiti osnovne demografske podatke. Za one podatke koje je skupo prikupljati konstruisati kauzalni graf."
-presek <- tribble(
-  ~id, ~pol, ~tezina, ~visina, ~starost, ~meren_prediktor, ~skor_nrs_bol, ~DM, ~HTA, ~Ciroza,
-  "1", "M", 70, 180, 65, 2.5, 5, "Da", "Da", "Ne",
-  "2", "Z", 55, 170, 70, 8, 4, "Ne", "Da", "Ne",
-  "3", "M", 90, 188, 45, 4, 6, "Da", "Da", "Ne",
+#| tbl-cap: "`ID` pacijenta se uvek odnosi na istu jedinicu posmatranja. Uvek je potrebno sakupiti osnovne demografske podatke. Za one podatke koje je skupo prikupljati konstruisati kauzalni graf. Komorbiditeti se mogu unositi razdvojeni $|$ kao u `komorbiditeti`. Postoje sheme za alternativan unos uz pomoć znakova za razdvajanje $DM|HTA$ vs. $DM|HTA|Ciroza$ unutar jedne kolone. Upitno je koja metoda je brža."
+N <- 5
+cross_sectional <- tibble(
+  id = 1:N,
+  pol = sample(c("M", "Z"), N, replace = TRUE, prob = c(0.5, 0.5)),  
+  starost = round(rnorm(N, mean=50, sd=12)),
+  obrazovanje = sample(c("Primarno", "Sekundarno", "Više"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1)),
+  prihodi_tercil = sample(c(1, 2, 3), N, replace = TRUE, prob = c(0.5, 0.4, 0.1)),
+  sistolni_ta =  round(rnorm(N, mean=120, sd=15)),
+  komorbiditeti = sample(c("DM", "DM|HTA", "DM|HTA|Ciroza"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1)),
+  holesterol = round(truncnorm::rtruncnorm(N, a = 0, b = Inf, mean=5.17, sd=3), 2),
+  faktor_rizika = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.8, 0.2)), 
+  faktor_rizika_2 = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.7, 0.3)),  
+  stadijum = sample(c("Prvi", "Drugi", "Treci"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1))
 )
-tt(presek)
+
+tt(cross_sectional)
 ```
-
-Ovako napisane baze se mogu lako pretvoriti u dugu formu za dodatnu analizu.[^1]
-
-[^1]: Postoje napredne sheme za alternativan unos uz pomoć znakova za razdvajanje `DM|HTA` vs. `DM|HTA|Ciroza` unutar jedne kolone. Upitno je koja metoda je brža.
-
-```{r}
-#| label: tbl-presek_long
-#| tbl-cap: "Duga forma tabele. Ključno je upisivati entitete odvojeno. Prikupljanje podataka nije lak posao."
-presek %>%
-  pivot_longer(
-    names_to = "komorbiditet", values_to = "dijagnoza",
-    cols = DM:Ciroza
-  ) %>%
-  head(6) %>%
-  tt()
-```
-
 
 ## Serijske studije preseka (upitnici)
 
@@ -255,7 +248,7 @@ Osnovne karakteristike kohortnih studija su **definisanje grupe ispitanika na po
 ```{r}
 #| label: fig-kdag
 #| layout-ncol: 3
-#| fig-cap: "Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora ($P$) na ishod ($I$) nije opserviran direktno zbog differencijalnog gubitka pacijenata tokom praćenja. Opserviran je pristrasan ishod ($I^*$) uslovljen različitim uzrocima."
+#| fig-cap: "Osnovni kauzalni dijagram kohortne studije. Uticaj prediktora ($P$) na ishod ($I$) nije opserviran direktno zbog differencijalnog gubitka ($G$) pacijenata tokom praćenja. Opserviran je pristrasan ishod ($I^*$) uslovljen različitim uzrocima."
 #| fig-subcap:
 #|  - "Gubitak pacijenata je nasumičan. ova struktura ima posledica po veličinu uzorka, jer uglavnom možemo da izbacimo slučajeve koji nedostaju ali time smanjujemo uzorak."
 #|  - "Gubitak pacijenata je uslovljen prediktorom (npr. stariji pacijenti neće da nastave lečenje). U ovom slučaju je bitno pogoditi funkcionalnu formu odnosa $P$ i $G$ tačno."
@@ -350,33 +343,63 @@ rethinking::drawdag(cohort_dag_hard)
 - Dugo vreme izvođenja studije
 :::
 
-## Prospektivna kohorta
+## Prospektivna i retrospektivna kohorta
 
-U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu. 
+U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.[^4] Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori i sastavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je studija praktično već završena i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom podataka i traženim ishodom, te je moguće da podaci nisu dovoljni za odgovaranje na instraživačko pitanje.
 
-Even diseases we think of as relatively
-common, such as breast cancer, happen at such a low rate in any given year that large numbers
-of people must be followed for long periods of time to observe enough outcomes to produce
-meaningful results.
+[^4]: Čak i bolesti za koje smatramo da su relativno česte, kao što je rak dojke, predstavljaju problem jer se ispitanici moraju pratiti veoma dugo.
+
+## Ishodi u kohortnim studijama
+
+Ishodi u kohortnim studijama mogu biti Events in Person-Years, Time to Event, Dynamic Exposure Time to Event, Case in nested case-control, Case in nested case-cohort, Repeated Measurement Outcome [@CohortStudy1998].
+
+<!-- Variables: age, calendar period, exposure_i, covariate_i. -->
+
 
 ```{r}
 #| label: tbl-pk
-#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte."
-prospektivna_kohorta <- tribble(
-  ~id, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
-  "1", "M", 70, 180, 65, 400, 0, 5,
-  "1", "M", 70, 180, 65, 400, 6, 3,
-  "2", "F", 55, 170, 70, 200, 0, 4,
-  "2", "F", 55, 170, 70, 400, 6.5, 1,
-  "3", "M", 90, 188, 45, 600, 0, 6
+#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte. Varijabla `grupa` se odnosi na multiple kohorte. `vreme_ishoda` ima jedinice u danima, mesecima, godinama, itd. Varijabla `cenzura` je potrebna kako bismo razlikovali pacijente koji su napustili studiju pre njenog završetka i one koji nisu imali događaj po njenom završetku."
+N <- 5
+cohort <- tibble(
+  id = 1:N,
+  grupa = sample(c("izlozen", "kontrola"), N, replace = TRUE, prob = c(0.5, 0.5)), 
+  datum_start = sample(2010:2015, N, replace = TRUE),
+  duzina_pracenja = round(truncnorm::rtruncnorm(N, a = 0, b = 36, mean=24, sd=3)),
+  cenzura = sample(c(0, 1), N, replace = TRUE, prob = c(0.5, 0.5)),
+  ishod = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.5, 0.5)),
+  faktor_od_interesa = round(truncnorm::rtruncnorm(N, a = 0, b = Inf, mean=5.17, sd=3), 2),
+  starost = round(rnorm(N, mean=50, sd=12)),
+  tezina = round(rnorm(N, 70, 15)),
+  sistolni_ta =  round(rnorm(N, mean=120, sd=15)),
+  stadijum = sample(c("Prvi", "Drugi", "Treci"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1))
 )
-tt(prospektivna_kohorta)
+
+tt(cohort)
 ```
 
+Cohort studies are not usually thought of as repeated measures designs as they are
+often designed with a single endpoint in mind, although once a prospective cohort is
+established it is tempting to examine it in detail from time to time so it may then
+develop into a repeated measures study.
 
-## Retrospektivna kohorta
+```{r}
+#| label: tbl-rk
+#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte. `vreme_ishoda` ima jedinice u danima, mesecima, godinama, itd."
+N <- 5
+r_cohort <- tibble(
+  id = 1:N,
+  vreme_ishoda = round(rnorm(N, 3, 1), 1),
+  ishod = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.5, 0.5)), 
+  starost = round(rnorm(N, mean=50, sd=12)),
+  tezina = round(rnorm(N, 70, 15)),
+  sistolni_ta =  round(rnorm(N, mean=120, sd=15)),
+  holesterol = round(truncnorm::rtruncnorm(N, a = 0, b = Inf, mean=5.17, sd=3), 2),
+  dijabetes = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.8, 0.2)), 
+  stadijum = sample(c("Prvi", "Drugi", "Treci"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1))
+)
 
-Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori i sastavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je studija praktično već završena i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom podataka i traženim ishodom, te je moguće da podaci nisu dovoljni za odgovaranje na instraživačko pitanje.
+tt(r_cohort)
+```
 
 ## Multipla kohortna studija
 
@@ -441,21 +464,26 @@ dag {
 rethinking::drawdag(cohort_multi_dag_ex)
 ```
 
-
 Naravno, raznolike greške merenja su moguće. Jedna od praktčno opasnih je činjenica da drugačije populacije mogu biti izgubljene iz kohorte različitim stopama, te će to izmeniti asocijaciju ukoliko ne budemo pažljivi. To svakako prevazilazi ovaj pregled. Idemo dalje.
 
 ```{r}
-#| label: tbl-multik
-#| tbl-cap: "Tabela podataka prikupljenih za analizu multiple kohorte."
-multipla_kohorta <- tribble(
-  ~id, ~grupa, ~pol, ~tezina, ~visina, ~starost, ~doza_ibuprofen, ~vreme, ~skor_nrs_bol,
-  "1", "izlozen", "M", 70, 180, 65, 400, 0, 5,
-  "1", "izlozen", "M", 70, 180, 65, 400, 6, 3,
-  "2", "kontrola", "F", 55, 170, 70, 200, 0, 4,
-  "2", "kontrola", "F", 55, 170, 70, 400, 6.5, 1,
-  "3", "izlozen", "M", 90, 188, 45, 600, 0, 6
+#| label: tbl-mk
+#| tbl-cap: "Tabela podataka prikupljenih za analizu multiple kohorte. Varijabla `grupa` se odnosi na multiple kohorte. `vreme_ishoda` ima jedinice u danima, mesecima, godinama, itd."
+N <- 5
+m_cohort <- tibble(
+  id = 1:N,
+  grupa = sample(c("izlozen", "kontrola"), N, replace = TRUE, prob = c(0.5, 0.5)), 
+  vreme_ishoda = round(rnorm(N, 3, 1), 1),
+  ishod = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.5, 0.5)), 
+  starost = round(rnorm(N, mean=50, sd=12)),
+  tezina = round(rnorm(N, 70, 15)),
+  sistolni_ta =  round(rnorm(N, mean=120, sd=15)),
+  holesterol = round(truncnorm::rtruncnorm(N, a = 0, b = Inf, mean=5.17, sd=3), 2),
+  dijabetes = sample(c("Ne", "Da"), N, replace = TRUE, prob = c(0.8, 0.2)), 
+  stadijum = sample(c("Prvi", "Drugi", "Treci"), N, replace = TRUE, prob = c(0.5, 0.4, 0.1))
 )
-tt(multipla_kohorta)
+
+tt(m_cohort)
 ```
 
 # Longitudinalna studija
@@ -466,17 +494,13 @@ Longitudinalni podaci su multi-dimenzionalna[^2] merenja u vremenu. Kada se iste
 
 [^3]: Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.
 
-Time series data have a natural temporal ordering. This makes time series analysis distinct from cross-sectional studies, in which there is no natural ordering of the observations (e.g. explaining people's wages by reference to their respective education levels, where the individuals' data could be entered in any order).
-
-A stochastic model for a time series will generally reflect the fact that observations close together in time will be more closely related than observations further apart.
-
 ```{r}
 panel_data <- tibble(
-  patient_id = rep(1:100, each = 5), # 100 patients, 5 years of data each
-  year = rep(2010:2014, times = 100),
-  age = rep(sample(30:60, 100, replace = TRUE), each = 5) + (2010:2014 - 2010),
-  weight = rep(round(runif(100, 60, 100)), each = 5) + rnorm(500, 0, 3),
-  cholesterol = rep(round(runif(100, 150, 240)), each = 5) + rnorm(500, 0, 10)
+  id = rep(1:100, each = 5), # 100 patients, 5 years of data each
+  godina = rep(2010:2014, times = 100),
+  starost = rep(sample(30:60, 100, replace = TRUE), each = 5) + (2010:2014 - 2010),
+  tezina = round(rep(runif(100, 60, 100), each = 5) + rnorm(500, 0, 1.5)),
+  cholesterol = rep(round(truncnorm::rtruncnorm(100, a = 0, b = Inf, mean=5.17, sd=3), 2), each = 5) + rnorm(500, 0, 1)
 )
 
 panel_data %>%
@@ -484,24 +508,9 @@ panel_data %>%
   tt()
 ```
 
-```{r}
-cohort_data <- tibble(
-  cohort_id = rep(1:200, each = 3), # 200 individuals, 3 observations each
-  diagnosis_year = rep(2010, 600),
-  follow_up_year = rep(c(2010, 2015, 2020), times = 200),
-  age_at_diagnosis = rep(sample(40:70, 200, replace = TRUE), each = 3),
-  current_age = age_at_diagnosis + (follow_up_year - diagnosis_year),
-  glucose_level = rep(round(runif(200, 120, 180)), each = 3) + rnorm(600, 0, 15)
-)
-
-cohort_data %>%
-  head(5) %>%
-  tt()
-```
-
 # Studija slučaj-kontrola
 
-
+Studije slučaja i kontrole su nužno **retrospektivne** jer zahtevaju **identifikaciju pacijenata sa ishodom** koji se već desio. To ih čini pogodnim za istraživanje retkih događaja u nedostatku adekvatnih nacionalnih registara. Kada se identifikuje grupa sa ishodom, potrebno je dodeliti njima adekvatnu **kontrolnu grupu**. Sa pronađene obe grupe ispitanika, istraživač onda poredi prisustvo prediktora između dve grupe koji bi mogao objasniti razlike u ishodima. Ono što ih čini različitim od studija preseka, koje ispituje *trenutne* faktore rizike, je što ispituju šta je iz prošlosti dovelo do ravitka ishoda (tj. da ispitanik postane slučaj).
 
 ```{r}
 #| eval: false
@@ -536,7 +545,7 @@ U -> "Dostupnost"
 #| fig-cap: "Osnovni kauzalni grafovi studije slučaj-kontrola. Neizmerene pridružene varijable ($U$) su zaokružene."
 #| fig-subcap:
 #|  - "Osnovna kauzalna stuktura studije slučaj-kontrola."
-#|  - "Kontrole birane u bolnici."
+#|  - "Kontrole birane u bolnici. `Zajednički faktori` su varijable na osnovu kojih smo izvršili uparivanje (engl. matching)."
 #|  - "Kontrole birane u bolnici gde postoji preklapanje u faktoru rizika koji je od interesa. Preklapanje faktora rizika moze lažno ublažiti ili preuveličati traženu asocijaciju."
 #|  - "Kontrole birane na osnovu državnog registra. Kako raste sveobuhvatnost registra, tako studije slučaja-kontrole postaje ugnježđena unutar kohortne studije ili kliničkog eksperimenta."
 #| fig-height: 3
@@ -569,16 +578,15 @@ case_control_dag_sol <- dagitty::dagitty(
 dag {
 bb="-2,-2,2,2"
 
-U [unobserved,pos="0,0"]
-"Druga bolest" [pos="0,0.5"]
+"Zajednički faktori" [pos="0,0"]
+"Druga bolest" [pos="0.25,0.5"]
 "Faktor rizika" [exposure,pos="-0.5,1"]
 Dostupnost [selected,pos="0.5,1"]
 Bolest [outcome,pos="0,1"]
 
-U -> "Druga bolest"
+"Zajednički faktori" -> "Druga bolest"
 "Druga bolest" -> "Dostupnost"
-U -> "Faktor rizika"
-U -> "Dostupnost"
+"Zajednički faktori" -> "Faktor rizika"
 "Faktor rizika" -> "Bolest"
 "Bolest" -> "Dostupnost"
 }
@@ -587,7 +595,7 @@ U -> "Dostupnost"
 )
 
 rethinking::drawdag(case_control_dag_sol)
-# rethinking::drawopenpaths(case_control_dag_sol, Z = list("Dostupnost", "U"))
+# rethinking::drawopenpaths(case_control_dag_sol, Z = list("Dostupnost", "Druga bolest"))
 
 case_control_dag_sol_bias <- dagitty::dagitty(
   '
@@ -595,25 +603,24 @@ dag {
 bb="-2,-2,2,2"
 
 U [unobserved,pos="0,0"]
-"Druga bolest" [pos="0,0.5"]
-"Faktor rizika" [exposure,pos="-0.5,1"]
+"Srčana slabost" [pos="0.25,0.5"]
+"Pušenje" [exposure,pos="-0.5,1"]
 Dostupnost [selected,pos="0.5,1"]
-Bolest [outcome,pos="0,1"]
+"Rak pluća" [outcome,pos="0,1"]
 
-"Faktor rizika" -> "Druga bolest"
-U -> "Druga bolest"
-"Druga bolest" -> "Dostupnost"
-U -> "Faktor rizika"
-U -> "Dostupnost"
-"Faktor rizika" -> "Bolest"
-"Bolest" -> "Dostupnost"
+"Pušenje" -> "Srčana slabost"
+U -> "Srčana slabost"
+"Srčana slabost" -> "Dostupnost"
+U -> "Pušenje"
+"Pušenje" -> "Rak pluća"
+"Rak pluća" -> "Dostupnost"
 }
 
 '
 )
 
 rethinking::drawdag(case_control_dag_sol_bias)
-# rethinking::drawopenpaths(case_control_dag_sol_bias, Z = list("Dostupnost", "U"))
+# rethinking::drawopenpaths(case_control_dag_sol_bias, Z = list("Dostupnost"))
 
 case_control_dag_sol_reg <- dagitty::dagitty(
   '
@@ -621,16 +628,16 @@ dag {
 bb="-2,-2,2,2"
 
 U [unobserved,pos="0,0"]
-"Druga bolest" [pos="0,0.5"]
-"Faktor rizika" [exposure,pos="-0.5,1"]
+"Pneumonija" [pos="0.25,0.5"]
+"Gojaznost" [exposure,pos="-0.5,1"]
 Registar [selected,pos="0.5,1"]
-Bolest [outcome,pos="0,1"]
+Hipertenzija [outcome,pos="0,1"]
 
-U -> "Druga bolest"
-"Druga bolest" -> "Registar"
-U -> "Faktor rizika"
-"Faktor rizika" -> "Bolest"
-"Bolest" -> "Registar"
+U -> "Pneumonija"
+"Pneumonija" -> "Registar"
+U -> "Gojaznost"
+"Gojaznost" -> "Hipertenzija"
+"Hipertenzija" -> "Registar"
 }
 
 '
@@ -643,13 +650,14 @@ rethinking::drawdag(case_control_dag_sol_reg)
 
 ::: {.callout-note}
 ## Primer istraživačkog pitanja
-Da li neonatalna profilaksa vitaminom K utiče na razvoj dečije leukemije?
+- Da li neonatalna profilaksa vitaminom K utiče na razvoj dečije leukemije?
 :::
 
 ::: {.callout-tip}
 ## Prednosti
 - Dobra za retke ili događaje sa dugim latentnim periodom
 - Velika količina informacija za mali broj ispitanika
+- Studija primarno da generisanje hipoteza
 - Laka za izvođenje
 :::
 
@@ -660,20 +668,9 @@ Da li neonatalna profilaksa vitaminom K utiče na razvoj dečije leukemije?
 - Pristrasnost (odvojeno uzorkovanje i retrospektivno merenje)
 :::
 
-Case–control studies are retrospective. The study identifies one group of
-subjects with the disease and another without it, then looks backward to find differences in
-predictor variables that may explain why the cases got the disease and the controls did not.
-
-in a case–control study the investigator
-works backward. She begins by choosing one sample of people with the outcome (the cases)
-and another sample of people without that outcome (the controls);
-
 ### Pristrasnost uzorka
 
-n case–control studies the cases must be sampled
-from patients in whom the disease has already been diagnosed and who are available for study.
-This sample may not be representative of all patients who develop the disease because those
-who are undiagnosed, misdiagnosed, unavailable for study, or dead are unlikely to be included
+Uzorak u studijama slučaja i kontrole se mora napraviti na pacijentima koji već imaju dijagnozu bolesti i dostupni su za uključivanje u studiju. Takav uzorak nije reprezentativan za sve pacijente koji ishod od interesa jer oni koji nisu dijagnostikovani, dostupni za uključenje, ili već mrtvi zbog oboljenja nemaju šanse da se uključe u studiju.
 
 ## Nested slučaj i kontrole (varijanta)
 
@@ -689,14 +686,14 @@ banked or medical records (or subjects) with exposure information are available.
 
 ```{r}
 case_control_data <- tibble(
-  patient_id = 1:400, # 200 cases, 200 controls
-  age = sample(30:70, 400, replace = TRUE),
-  gender = sample(c("Male", "Female"), 400, replace = TRUE, prob = c(0.5, 0.5)),
-  disease_status = rep(c("Case", "Control"), each = 200),
-  smoking_status = sample(c("Never", "Former", "Current"), 400, replace = TRUE, prob = c(0.4, 0.3, 0.3)),
-  exercise_frequency = sample(c("None", "Occasional", "Regular"), 400, replace = TRUE),
-  family_history = sample(c("Yes", "No"), 400, replace = TRUE, prob = c(0.3, 0.7)),
-  cholesterol = sample(160:300, 400, replace = TRUE)
+  id = 1:400, # 200 cases, 200 controls
+  starost = sample(30:70, 400, replace = TRUE),
+  pol = sample(c("M", "Z"), 400, replace = TRUE, prob = c(0.5, 0.5)),
+  grupa = rep(c("Slucaj", "Kontrola"), each = 200),
+  pusac = sample(c("Nikad", "Nekad", "Trenutno"), 400, replace = TRUE, prob = c(0.4, 0.3, 0.3)),
+  fizicka_aktivnost = sample(c("Nikad", "Nekad", "Redovno"), 400, replace = TRUE),
+  nasledno = sample(c("Da", "Ne"), 400, replace = TRUE, prob = c(0.3, 0.7)),
+  holesterol = sample(160:300, 400, replace = TRUE)
 )
 
 set.seed(532)
@@ -704,6 +701,31 @@ case_control_data %>%
   sample_n(5) %>%
   head(5) %>%
   tt()
+```
+
+```{r}
+#| eval: false
+#| label: test data case control
+
+N <- 1000
+test_data <- tibble(
+  id = 1:N,
+  group = rep("case", N),
+  exposure = rbinom(N, 1, prob = 0.5),
+  outcome = rbinom(N, 1, prob = ifelse(exposure == 1, 0.5, 0.1))
+) %>% filter(outcome == 1)
+
+ctrl_data <- tibble(
+  id = 1:nrow(test_data),
+  group = rep("control", nrow(test_data)),
+  exposure = rbinom(nrow(test_data), 1, prob = 0.3),
+  outcome = rep(0, nrow(test_data)))
+
+final_data <- rbind(test_data, ctrl_data)
+
+
+
+glm(data = final_data, formula = outcome ~ exposure, family = "binomial")
 ```
 
 

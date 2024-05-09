@@ -20,6 +20,7 @@ image: ""
 mermaid: 
   theme: forest
 draft: true
+engine: knitr
 ---
 
 ```{css, echo = FALSE}
@@ -31,4 +32,3 @@ draft: true
 # Kauzalnost i predikcija
 
 # Elementarne veze
-

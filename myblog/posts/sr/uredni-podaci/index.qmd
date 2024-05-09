@@ -20,15 +20,17 @@ image: "messy-cover.jpg"
 mermaid: 
   theme: forest
 draft: false
+engine: knitr
 ---
 
 ```{css, echo = FALSE}
+
 p {
   text-align: justify
 }
 ```
 
-# Šta su uredni podaci
+# Šta su uredni podaci {.justify}
 
 > Svi uredni podaci su slični, ali svi neuredni podaci su neuredni na svoj način. --- Hadley Wickham
 

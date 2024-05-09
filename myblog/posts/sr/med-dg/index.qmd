@@ -18,6 +18,7 @@ categories: [medicina, zaključivanje, srpski]
 image: "think.png"
 mermaid: 
   theme: forest
+engine: knitr
 ---
 
 ```{css, echo = FALSE}
