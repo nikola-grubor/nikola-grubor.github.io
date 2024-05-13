@@ -37,7 +37,7 @@ p {
 
 Opservacione studije imaju dva osnovna tipa dizajna na osnovu **vremena** u kojem se prikupljanje podataka dešava. U **studijama preseka** sva merenja se beleže u jednom trenutku (najčešće je to kratak vremenski interval koji obuhvata presek). Dok se u **kohortnim studijama** merenja prikupljaju čekanjem ishoda tokom dužeg vremenskog perioda u grupi ispitanika koja je definisana na početku studije (tzv. "kohorta"). **Studija slučaj-kontrola** počinje od ishoda koji se već desio i traži njegove uzroke unazad (retrospektivno) kroz vreme.
 
-Usmereni aciklični grafovi (engl. *directed acylic graphs*) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi [@gruborcausal2023]. Čvorovi predstavljaju varijable u pretpostavljenom modelu uticaja, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije ne označavaju nikakav specijalan odnos, već samo da postoji funckija ($f(x)$) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (strelice) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. *confounder*) [@pearlCausalInferenceStatistics2016a]. Svaki kauzalni graf ima četiri osnovna gradivna elementa. 
+Usmereni aciklični grafovi (engl. *directed acylic graphs*) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi [@StatisticalRethinking, p. 128]. Čvorovi predstavljaju varijable u pretpostavljenom modelu uticaja, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije ne označavaju nikakav specijalan odnos, već samo da postoji funckija ($f(x)$) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (strelice) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. *confounder*) [@pearlCausalInferenceStatistics2016a]. Svaki kauzalni graf ima četiri osnovna gradivna elementa. 
 
 ```{r}
 #| label: fig-elemental
@@ -116,7 +116,7 @@ rethinking::drawdag(descendant)
 ```
 
 
-Asocijacije mogu slobodno da teku između $X$ i $Y$ preko $Z$ u svim slučajevima osim ako je varijabla *ušće*. Uticaji nepoželjnih varijabli se mogu isključiti metodom statističke stratifikacije i time obezbediti niža sistematska pristrasnost. Vizualni pristup analiziranja ih čini jako pogodnim didaktičkim alatom. U narednim poglavljima ćemo opistai neke tipične medicinske opservacione studije i ilustrovati zašto mogu biti uspešne u analizi uzroka i posledica.
+Asocijacije mogu slobodno da teku između $X$ i $Y$ preko $Z$ u svim slučajevima osim ako je varijabla *ušće*. Uticaji nepoželjnih varijabli se mogu isključiti metodom statističke stratifikacije i time izolovati samo uticaj željene varijable. Vizualni pristup analiziranja ih čini jako pogodnim didaktičkim alatom. U narednim poglavljima ćemo opistai neke tipične medicinske opservacione studije i ilustrovati zašto su uspešne u analizi uzroka i posledica.
 
 ```{r}
 library(tidyverse)
@@ -151,11 +151,11 @@ rethinking::drawopenpaths(dag, Z = list("C"))
 
 # Studija preseka
 
-Studije preseka se koriste kako bi se ispitale associjacije [@ClinicalResearch2013a]. Pošto asocijacije same po sebi nemaju kauzalnu strukturu (smer uticaja), na istraživaču je da odredi šta smatra ishodom, a šta prediktorom. Posto je presek u vremenu, istraživač se ne može osloniti na vremenski tok kao pomoć u određivanju uzroka i posledica. Olakšavajuća okolnost je što se neki demografski podaci se ne menjaju u odnosu na druge varijable, te su oni uvek prediktori (starost, pol). Još jedna posledica fiksiranosi u vremenu je da ovaj tip studije ne pruža informacije o incidenci (novonastalim slučajevima), već samo o prevalenci, proporciji trenutnih slučajeva.
+Studije preseka podrazumevaju prikupljanje željenih podataka u jednom vremskom intervalu kako bi se ispitale associjacije između varijabli [@ClinicalResearch2013a]. Pošto asocijacije same po sebi nemaju kauzalnu strukturu (smer uticaja), na istraživaču je da odredi šta smatra ishodom, a šta prediktorom. Posto je presek u vremenu, istraživač se ne može osloniti na vremenski tok kao pomoć u određivanju uzroka i posledica. Olakšavajuća okolnost je što se neki demografski podaci se ne menjaju u odnosu na druge varijable, te su oni uvek prediktori (starost, pol). Još jedna posledica fiksiranosi u vremenu je da ovaj tip studije ne pruža informacije o incidenci (novonastalim slučajevima), već samo o prevalenci, proporciji trenutnih slučajeva.
 
 ```{r}
 #| label: fig-csdag
-#| fig-cap: "(a\\) Osnovna stuktura varijabli u studiji preseka. Istraživač je taj koji definiše model. (b) Primer gde gojaznost utiče da poboljšano preživaljavanje pacijenata na dijalizi sa hroničnom bubrežnom insuficijencijom. Bez ispravke uticaja gojaznosti na preživljavanje dobićemo nestavrno precenjen odnos gojaznosti i hronične bubrežne insuficijencije."
+#| fig-cap: "(a\\) Osnovna stuktura varijabli u studiji preseka. Istraživač je taj koji definiše model. (b) Primer gde gojaznost utiče na poboljšano preživaljavanje pacijenata na dijalizi sa hroničnom bubrežnom insuficijencijom. Bez eliminacije uticaja gojaznosti na preživljavanje dobićemo nestavrno precenjen odnos gojaznosti i hronične bubrežne insuficijencije."
 #| fig-subcap:
 #|   - ""
 #|   - ""
@@ -224,7 +224,7 @@ rethinking::drawdag(cross_sec_dag_c)
 -   Lako je pomešati uzroke i asocijacije
 :::
 
-Usmereni aciklički graf je alat koji nam služi da odgonetnemo moguće odnose u studijama ovog tipa. Uvek je zahvalno opisati istraživani fenomen kauzalnim dijagramom kako se ne bismo zavarali pri računanju uticaja između varijabli. Pošto ove studije ne mere incidencu, već samo prevalencu, posebno je bitno izmeriti sve pridružene varijable (videti @fig-csdag-2).
+Usmereni aciklički graf je alat koji nam služi da odgonetnemo moguće odnose u studijama ovog tipa. Uvek je zahvalno opisati istraživani fenomen kauzalnim dijagramom (@fig-csdag-2) kako se ne bismo zavarali pri računanju uticaja između varijabli. Pošto ove studije ne mere incidencu, već samo prevalencu, posebno je bitno izmeriti sve pridružene varijable.
 
 
 <!-- 
@@ -277,9 +277,7 @@ tt(cross_sectional)
 
 ## Serijske studije preseka (upitnici)
 
-Popis ili demografski upitnici su primeri serijskih studija preseka. U tom slučaju se studija preseka ponavlja na određen period vremena, recimo, svakih 5 godina. Razlikuje se od kohortnih studija jer se svaki put uzima novi uzorak ispitanika. Kako uzorak potiče iz populacije koja se menja (migracije, rođenja, smrti), promene na podacima će biti uslovljenje promenama u strukturi početne populacije. Analiza prikazana na @fig-cssdag se može odnositi na vremensku seriju preseka ili više različitih populacija uključenih u analizu. Kako god, korisno je uočiti da se osnovni trougao uticaja (prikazan na @fig-csdag-1) i dalje nalazi u sredini grafa, ma koliko njegovo proširenje delovalo komplikovano.
-
-Nepristrasna analiza uzroka u ovakvim mrežama uticaja prevazilazi obim ovog članka. Slobodno nastivite dalje, ali znajte da moguće.
+Popis ili demografski upitnici su primeri serijskih studija preseka. U tom slučaju se studija preseka ponavlja na određen period vremena, recimo, svakih 5 godina. Razlikuje se od kohortnih studija jer se svaki put uzima novi uzorak ispitanika. Kako uzorak potiče iz populacije koja se menja (migracije, rođenja, smrti), promene na podacima će biti uslovljenje promenama u strukturi početne populacije. Analiza prikazana na @fig-cssdag se može odnositi na vremensku seriju preseka ili više različitih populacija uključenih u analizu. Kako god, korisno je uočiti da se osnovni trougao uticaja (prikazan na @fig-csdag-1) i dalje nalazi u sredini grafa, ma koliko njegovo proširenje delovalo komplikovano. Nepristrasna analiza uzroka u ovakvim mrežama uticaja prevazilazi obim ovog članka.
 
 ```{r}
 #| label: fig-cssdag
@@ -320,7 +318,7 @@ rethinking::drawdag(cross_sec_serial_dag)
 
 # Kohortna studija
 
-Osnovne karakteristike kohortnih studija su definisanje grupe ispitanika **na početku istraživanja** i **longitudinalno praćenje**. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad **istim** ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda.[^6] Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u istraživanju.
+Osnovne karakteristike kohortnih studija su definisanje grupe ispitanika **na početku istraživanja** i **longitudinalno praćenje** [@ClinicalResearch2013a]. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad **istim** ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda.[^6] Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u istraživanju (@fig-kdag).
 
 [^6]: Ishodi u kohortnim studijama mogu biti događaji po osobnim-godinama (engl. *event person-years*), vreme-do-događaja (engl. *time-to-event*), dinamična-izloženost i vreme-do-događaja (engl. *dynamic exposure time-to-event*), slučaj za ugnježdenu studiju slučaja i kontrole (engl. *case in nested case-control*), slučaj za ugnježdenu sludiju slučaj-kohorta (engl. *case in nested case-cohort*), kao i ponovljenja merenja ishoda. Za više pogledati @CohortStudy1998.
 
@@ -426,9 +424,7 @@ rethinking::drawdag(cohort_dag_hard)
 
 ## Prospektivna i retrospektivna kohorta
 
-U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.[^1] Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se **već desili** ishod, svi prediktori, kao i uspotavljanje kohorte. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je istraživanje praktično već završeno i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom postojećih podataka i traženim ishodom, te je moguće da podaci nisu dovoljni da odgovare na postavljeno instraživačko pitanje.
-
-
+U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.[^1] Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori, kao i uspotavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je istraživanje praktično već završeno i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom postojećih podataka i traženim ishodom, te je moguće da podaci nisu dovoljni da odgovare na postavljeno instraživačko pitanje.
 
 [^1]: Čak i bolesti za koje smatramo da su relativno česte, kao što je rak dojke, predstavljaju problem jer se ispitanici moraju pratiti veoma dugo.
 
@@ -436,7 +432,7 @@ U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos
 
 ```{r}
 #| label: tbl-pk
-#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte. Varijabla `grupa` se odnosi na multiple kohorte. `datum_pocetka` je potrebno zabeležiti ako praćenje ne počinje u isto vreme za sve ispitanike; takođe omogućava naprednije verzijej ugnježdenih studije slučaja i konrole unutar kohorti. `vreme_ishoda` ima jedinice u danima, mesecima, godinama, itd. Varijabla `cenzura` je potrebna kako bismo razlikovali pacijente koji su napustili studiju pre njenog završetka i one koji nisu imali događaj po njenom završetku."
+#| tbl-cap: "Tabela podataka prikupljenih za analizu prospektivne kohorte. Varijabla `grupa` se odnosi na multiple kohorte. `datum_pocetka` je potrebno zabeležiti ako praćenje ne počinje u isto vreme za sve ispitanike; takođe omogućava naprednije verzije ugnježdenih studije slučaja i konrole unutar kohorti. `vreme_ishoda` ima jedinice u danima, mesecima, godinama, itd. Varijabla `cenzura` je potrebna kako bismo razlikovali pacijente koji su napustili studiju pre njenog završetka i one koji nisu imali događaj po njenom završetku."
 N <- 5
 cohort <- tibble(
   id = 1:N,
@@ -478,7 +474,7 @@ tt(r_cohort)
 
 ## Multipla kohortna studija
 
-Multiple kohortna studije je potencijano jedan od retkih dizajnova koji omogućava proučavanje radne i sredinske rizike. Podaci iz administrativnih registara se koriste kao eksterne kontrole kohorti koja je pod praćenjem.
+Multiple kohortna studije je potencijano jedan od retkih dizajnova koji omogućava proučavanje radnih i sredinskih rizika. Podaci iz administrativnih registara se mogu koristiti kao eksterne kontrole kohorti koja je pod praćenjem.
 
 ```{r}
 #| label: fig-kdagmulti
@@ -563,11 +559,45 @@ tt(m_cohort)
 
 # Longitudinalna studija
 
-Longitudinalni podaci su multidimenzionalna[^2] merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. **Vremenske serije** i **studije preseka** se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).[^3] **Kohortne studije** su podtip longitudinalne studije gde se *definiše kohorta* na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika.
+Longitudinalni podaci su multidimenzionalna[^2] merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. **Vremenske serije** i **studije preseka** se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).[^3] **Kohortne studije** su podtip longitudinalne studije gde se *definiše kohorta* na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika. Njihovi kauzalni grafovi mogu podrazumevati vremenski promenljive uticaje (videti @fig-series).
 
 [^2]: Baze sadrže veliki broj varijabli.
 
 [^3]: Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.
+
+```{r}
+#| label: fig-series
+#| fig-cap: "Kauzalni graf vremenskog praćenja uticaja različitih doza eritropoetina na preživaljavanje pacijenata.$Hg$, hemoglobin; $Epo$, eritropoetin; $Status$, status pacijenta (npr. živ/preminuo). Indeksi označavaju vreme merenja, tako da je $Hg_0$ izmeren hemoglobin u vremenu $t_0$. Neopservirana varijabla $U$ predstavlja pridužene varijable (npr. težina bolesti). Strelica iz $Status_1$ u $Status_2$ je podrazumevana. "
+#| fig-height: 3
+#| fig-width: 6
+
+timeseriesdag <- dagitty::dagitty(
+  '
+dag {
+
+Hg_0 [pos="-1.0,-0.5"]
+Epo_0 [pos="-1,0.5"]
+Status_1 [pos="0,0.5"]
+Hg_1 [pos="0.5,0.5"]
+Epo_1 [pos="1,-0.5"]
+Status_2 [pos="1,0.5"]
+U [unobserved, pos="0,1.5"]
+
+Hg_0 -> Epo_0 -> Status_1
+Hg_0 -> Epo_1 <- Epo_0
+Hg_1 -> Epo_1 -> Status_2
+U -> Epo_0
+U -> Status_1
+U -> Hg_1
+U -> Status_2
+}
+
+'
+)
+
+rethinking::drawdag(timeseriesdag)
+```
+
 
 ```{r}
 panel_data <- tibble(
@@ -585,7 +615,7 @@ panel_data %>%
 
 # Studija slučaja i kontrole
 
-Studije slučaja i kontrole su nužno **retrospektivne** jer zahtevaju **identifikaciju pacijenata sa ishodom** koji se već desio. To ih čini pogodnim za istraživanje retkih događaja u nedostatku adekvatnih nacionalnih registara. Kada se identifikuje grupa sa ishodom, potrebno je dodeliti njima adekvatnu **kontrolnu grupu**. Kada su formirane obe grupe ispitanika, istraživač poredi verovatnoću prisustva prediktora koji objašnjava razlike između grupa. Ono što je čini drugačijim od studije preseka, koje ispituje *trenutne* faktore rizike, je što ispituje faktore rizika iz prošlosti koji bi objasnili razvitak ishoda (tj. da ispitanik postane slučaj).[^5]
+Studije slučaja i kontrole su nužno **retrospektivne** jer zahtevaju **identifikaciju pacijenata sa ishodom** koji se već desio (@ClinicalResearch2013a). To ih čini pogodnim za istraživanje retkih događaja u nedostatku adekvatnih nacionalnih registara. Kada se identifikuje grupa sa ishodom, potrebno je dodeliti njima adekvatnu **kontrolnu grupu**. Kada su formirane obe grupe ispitanika, istraživač poredi verovatnoću prisustva prediktora koji objašnjava razlike između grupa. Ono što je čini drugačijim od studije preseka, koje ispituje *trenutne* faktore rizike, je što ispituje faktore rizika iz prošlosti koji bi objasnili razvitak ishoda (tj. da ispitanik postane slučaj).[^5]
 
 [^5]: Kao bitna napomena je da da su kohortne studije pogodne za istraživanje rizika ($R_{pop} = P(X|Y)$) i odnosa rizika ($RR_{pop} = \frac{P(X|Y)}{P(X|\lnot Y)}$) u populaciji jer imaju reprezentativan uzorak. Pošto studije slučaja i kontrole podrazumevaju selekciju ispitanika $R_{pop}$ i $RR_{pop}$ se ne mogu izračunati jer verovatnoće nisu iste $R_{slučaj-kontrola} = \frac{P(Y|X)}{P(Y|X) + P(Y|\lnot X)} \not = R_{pop}$. Osmišljena mera $OR$ (odnos šansi) je adekvatna za kohortne i studije slučaja i kontrole.
 
