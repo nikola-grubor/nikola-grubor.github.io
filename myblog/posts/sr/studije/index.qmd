@@ -1,7 +1,7 @@
 ---
 title: "Kauzalne strukture opservacionih medicinskih studija"
-description: "Klasično se opservacione studije u medicini delile po kategorijama na osnovu dizajna. Didaktički nije uvek jasno zašto su *baš* takvi pristupi dizajnu poželjni iz kauzalne perspektive. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz ovog drugog ugla."
-date: 2024-05-06
+description: "Klasično se opservacione studije u medicini dele po kategorijama na osnovu dizajna. Didaktički nije uvek jasno zašto su *baš* takvi pristupi dizajnu poželjni iz kauzalne perspektive. Iza svakog dizajna stoji kauzalna struktura koja ih objedinjuje. Teorija identifikacije kauzalnih efekata putem gafova nam omugućava da ih sagledamo iz ovog drugog ugla."
+date: 2024-08-17
 date-format: D/MM/YYYY
 number-sections: true
 number-depth: 2
@@ -16,10 +16,10 @@ author:
     # affiliation-url: https://www.mfub.bg.ac.rs/
 csl: apa.csl
 categories: [dizajn studija, kauzalnost, baze podataka, statistika, medicina, srpski]
-image: ""
+image: "spacetime.jpg"
 mermaid: 
   theme: forest
-draft: true
+draft: false
 bibliography: references.bib
 
 echo: false
@@ -37,7 +37,7 @@ p {
 
 Opservacione studije imaju dva osnovna tipa dizajna na osnovu **vremena** u kojem se prikupljanje podataka dešava. U **studijama preseka** sva merenja se beleže u jednom trenutku (najčešće je to kratak vremenski interval koji obuhvata presek). Dok se u **kohortnim studijama** merenja prikupljaju čekanjem ishoda tokom dužeg vremenskog perioda u grupi ispitanika koja je definisana na početku studije (tzv. "kohorta"). **Studija slučaj-kontrola** počinje od ishoda koji se već desio i traži njegove uzroke unazad (retrospektivno) kroz vreme.
 
-Usmereni aciklični grafovi (engl. *directed acylic graphs*) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi [@StatisticalRethinking, p. 128]. Čvorovi predstavljaju varijable u pretpostavljenom modelu uticaja, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije ne označavaju nikakav specijalan odnos, već samo da postoji funckija ($f(x)$) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (strelice) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. *confounder*) [@pearlCausalInferenceStatistics2016a]. Svaki kauzalni graf ima četiri osnovna gradivna elementa. 
+Usmereni aciklični grafovi (engl. *directed acylic graphs*) predstavljaju grafički metod analiziranja kauzalnih struktura u prirodi [@StatisticalRethinking, p. 128]. Čvorovi predstavljaju varijable u pretpostavljenom modelu uticaja, dok linije sa strelicama pokazuju tok uzroka i efekata među njima. Same linije ne označavaju nikakav specijalan odnos, već samo da postoji funckija ($f(x)$) kojom su te varijable povezane. Uz pomoć teorije koju je postavio Džudea Perl moguće je izolovati samo efekte (strelice) koji nas interesuju, čak i u prisustvu pridruženih varijabli (engl. *confounder*) [@pearlCausalInferenceStatistics2016a]. Svaki kauzalni graf ima četiri osnovna gradivna elementa.
 
 ```{r}
 #| label: fig-elemental
@@ -114,7 +114,6 @@ Z -> A
 
 rethinking::drawdag(descendant)
 ```
-
 
 Asocijacije mogu slobodno da teku između $X$ i $Y$ preko $Z$ u svim slučajevima osim ako je varijabla *ušće*. Uticaji nepoželjnih varijabli se mogu isključiti metodom statističke stratifikacije i time izolovati samo uticaj željene varijable. Vizualni pristup analiziranja ih čini jako pogodnim didaktičkim alatom. U narednim poglavljima ćemo opistai neke tipične medicinske opservacione studije i ilustrovati zašto su uspešne u analizi uzroka i posledica.
 
@@ -226,7 +225,7 @@ rethinking::drawdag(cross_sec_dag_c)
 
 Usmereni aciklički graf je alat koji nam služi da odgonetnemo moguće odnose u studijama ovog tipa. Uvek je zahvalno opisati istraživani fenomen kauzalnim dijagramom (@fig-csdag-2) kako se ne bismo zavarali pri računanju uticaja između varijabli. Pošto ove studije ne mere incidencu, već samo prevalencu, posebno je bitno izmeriti sve pridružene varijable.
 
-
+```{=html}
 <!-- 
 
 Relativna prevalenca ishoda. Rezultat koji dobijamo kada poredimo pisustvo i odsustvo prediktora. Kao relativni rizik.
@@ -234,7 +233,7 @@ Relativna prevalenca ishoda. Rezultat koji dobijamo kada poredimo pisustvo i ods
 Isti followup je bitan kada pravimo tvrdnje ever having done seomthing, ever happened
 
 -->
-
+```
 ```{r}
 #| eval: false
 cross_sectional_data <- tibble(
@@ -318,9 +317,9 @@ rethinking::drawdag(cross_sec_serial_dag)
 
 # Kohortna studija
 
-Osnovne karakteristike kohortnih studija su definisanje grupe ispitanika **na početku istraživanja** i **longitudinalno praćenje** [@ClinicalResearch2013a]. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad **istim** ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda.[^6] Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u istraživanju (@fig-kdag).
+Osnovne karakteristike kohortnih studija su definisanje grupe ispitanika **na početku istraživanja** i **longitudinalno praćenje** [@ClinicalResearch2013a]. Kohortne studije se mogu posmatrati kao više ponovljenih studija preseka nad **istim** ispitanicima (npr. presek u 6, 12, i 24 mesecu). Postoje prospektivne, retrospektivne i multiple kohortne studije. Ključna prednost kohortnih studija je što poseduju vremensku dimenziju te ispitivanje kauzalnih odnosa nosi veću težinu. Pored toga moguće je izračunati incidencu ishoda.[^1] Česti problemi su gubitak informacija usled nemogućnosti zadržavanja cele kohorte u istraživanju (@fig-kdag).
 
-[^6]: Ishodi u kohortnim studijama mogu biti događaji po osobnim-godinama (engl. *event person-years*), vreme-do-događaja (engl. *time-to-event*), dinamična-izloženost i vreme-do-događaja (engl. *dynamic exposure time-to-event*), slučaj za ugnježdenu studiju slučaja i kontrole (engl. *case in nested case-control*), slučaj za ugnježdenu sludiju slučaj-kohorta (engl. *case in nested case-cohort*), kao i ponovljenja merenja ishoda. Za više pogledati @CohortStudy1998.
+[^1]: Ishodi u kohortnim studijama mogu biti događaji po osobnim-godinama (engl. *event person-years*), vreme-do-događaja (engl. *time-to-event*), dinamična-izloženost i vreme-do-događaja (engl. *dynamic exposure time-to-event*), slučaj za ugnježdenu studiju slučaja i kontrole (engl. *case in nested case-control*), slučaj za ugnježdenu sludiju slučaj-kohorta (engl. *case in nested case-cohort*), kao i ponovljenja merenja ishoda. Za više pogledati @CohortStudy1998.
 
 ```{r}
 #| label: fig-kdag
@@ -424,9 +423,9 @@ rethinking::drawdag(cohort_dag_hard)
 
 ## Prospektivna i retrospektivna kohorta
 
-U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.[^1] Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori, kao i uspotavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je istraživanje praktično već završeno i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom postojećih podataka i traženim ishodom, te je moguće da podaci nisu dovoljni da odgovare na postavljeno instraživačko pitanje.
+U prospektivnoj kohorti merenje prediktora pre ishoda uspotavlja vremenski odnos između uzroka i posledice. Ovo ojačava kauzalni argument studije. Međutim, ako je ishod redak, neće se desiti dovoljno puta kako bi omogućio analizu.[^2] Retrospektivna kohorta se razlikuje od prospektivne kohorte jer su se ishod, svi prediktori, kao i uspotavljanje kohorte **već desili**. Ovakva studija je moguća samo ako postoje adekvatni podaci već prikupljeni u nekom administrativnom registru za druge potrebe. Prednost je to što je istraživanje praktično već završeno i potrebno je samo prikupiti podatke. Nedostaci su što istraživač nema kontrolu nad kvalitetom postojećih podataka i traženim ishodom, te je moguće da podaci nisu dovoljni da odgovare na postavljeno instraživačko pitanje.
 
-[^1]: Čak i bolesti za koje smatramo da su relativno česte, kao što je rak dojke, predstavljaju problem jer se ispitanici moraju pratiti veoma dugo.
+[^2]: Čak i bolesti za koje smatramo da su relativno česte, kao što je rak dojke, predstavljaju problem jer se ispitanici moraju pratiti veoma dugo.
 
 <!-- Variables: age, calendar period, exposure_i, covariate_i. -->
 
@@ -559,11 +558,11 @@ tt(m_cohort)
 
 # Longitudinalna studija
 
-Longitudinalni podaci su multidimenzionalna[^2] merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. **Vremenske serije** i **studije preseka** se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).[^3] **Kohortne studije** su podtip longitudinalne studije gde se *definiše kohorta* na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika. Njihovi kauzalni grafovi mogu podrazumevati vremenski promenljive uticaje (videti @fig-series).
+Longitudinalni podaci su multidimenzionalna[^3] merenja u vremenu. Kada se iste opservacione jedinice beleže kroz vreme one se još nazivaju i panel podacima. **Vremenske serije** i **studije preseka** se mogu smatrati specijalnim jednodimenzionalnim oblicima panel podataka (npr. isti pacijenti su praćeni kroz vreme).[^4] **Kohortne studije** su podtip longitudinalne studije gde se *definiše kohorta* na počteku studije. Opšte longitudinalne studije ne moraju pratiti usko definisanu grupu ispitanika. Njihovi kauzalni grafovi mogu podrazumevati vremenski promenljive uticaje (videti @fig-series).
 
-[^2]: Baze sadrže veliki broj varijabli.
+[^3]: Baze sadrže veliki broj varijabli.
 
-[^3]: Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.
+[^4]: Vremenske serije prate iste opservacione jedinice kroz vreme, a studije preseka se dešavaju u samo jednom vremenu.
 
 ```{r}
 #| label: fig-series
@@ -597,7 +596,6 @@ U -> Status_2
 
 rethinking::drawdag(timeseriesdag)
 ```
-
 
 ```{r}
 panel_data <- tibble(
@@ -788,28 +786,39 @@ Uzorak u studijama slučaja i kontrole se mora napraviti na pacijentima koji ve�
 <!-- Ugnježdena studije slučaja i kontrole pronalazi slučajeve u glavnoj kohortnoj studiji. Kontrole se biraju nasumično iz ostatke kohorte. Ova vrsta dizajna kontroliše za uzoračku pristrasnost i pristrastnost merenja. Zgodan je dizajn ako je merenje prediktora skupo, a da postoje zamrznuti uzorci ili slike koje su prikupljenje na početku kohortne studije. -->
 
 <!-- ```{r} -->
+
 <!-- #| eval: false -->
+
 <!-- #| label: test data case control -->
 
 <!-- N <- 1000 -->
+
 <!-- test_data <- tibble( -->
+
 <!--   id = 1:N, -->
+
 <!--   group = rep("case", N), -->
+
 <!--   exposure = rbinom(N, 1, prob = 0.5), -->
+
 <!--   outcome = rbinom(N, 1, prob = ifelse(exposure == 1, 0.5, 0.1)) -->
+
 <!-- ) %>% filter(outcome == 1) -->
 
 <!-- ctrl_data <- tibble( -->
+
 <!--   id = 1:nrow(test_data), -->
+
 <!--   group = rep("control", nrow(test_data)), -->
+
 <!--   exposure = rbinom(nrow(test_data), 1, prob = 0.3), -->
+
 <!--   outcome = rep(0, nrow(test_data))) -->
 
 <!-- final_data <- rbind(test_data, ctrl_data) -->
 
-
-
 <!-- glm(data = final_data, formula = outcome ~ exposure, family = "binomial") -->
+
 <!-- ``` -->
 
 <!-- ### Incidentna-gustina u studijama slučaja i kontrole -->
@@ -819,7 +828,6 @@ Uzorak u studijama slučaja i kontrole se mora napraviti na pacijentima koji ve�
 <!-- ### Ugnježdena studija slučaj-kohorta -->
 
 <!-- Randomizovani uzorak uzet i originalne kohorte služi kao kontrolna grupa za više odabranih slučajeva u ovom dizajnu studije.  -->
-
 
 ```{r}
 #| label: tbl-casecontrol
@@ -920,4 +928,3 @@ Ishod [outcome,pos="0,1"]
 )
 rethinking::drawdag(case_control_dag_sol)
 ```
-

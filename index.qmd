@@ -1,6 +1,6 @@
 ---
 title: "Nikola N. Grubor, M.D."
-subtitle: "Ph.D. Student, Biostatistics TA"
+subtitle: "Radiology Resident, Ph.D. Student, Biostatistics TA"
 about:
   template: solana
   image: avatar.jpg
@@ -23,9 +23,12 @@ about:
     #   href: uploads/resume.pdf
 ---
 
-I am a medical doctor, biostatistics teaching assistant, and PhD student of medical statistics and bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. I aim to make the science of medicine more approachable to the public and help researchers answer interesting questions. Bayesian scientific modeling offers a unique approach to quantifying uncertainty and incorporating prior knowledge via domain expertise elicitation, which can aid small and underfunded research teams in making a more significant impact. I have experience working in large research teams and managing communication with large groups of students. My involvement in patient care has led me to develop skills in making complex topics more approachable.
+I am a radiology resident, biostatistics teaching assistant, and PhD student of medical statistics and bioinformatics at the Belgrade Medical School Institute for Medical Statistics and Bioinformatics. I aim to make the science of medicine more approachable to the public and help researchers answer interesting questions. Bayesian scientific modeling offers a unique approach to quantifying uncertainty and incorporating prior knowledge via domain expertise elicitation, which can aid small and underfunded research teams in making a more significant impact. I have experience working in large research teams and managing communication with large groups of students. My involvement in patient care has led me to develop skills in making complex topics more approachable.
 
 ## Education
+
+-   **Radiology Resident**\
+    University of Belgrade Medical School \| Apr 2024 --- Present\
 
 -   **Ph.D. Student (Medical Statistics and Bioinformatics)**\
     Institute for Statistics and Bioinformatics \| Nov 2022 --- Present\
@@ -45,8 +48,6 @@ I am a medical doctor, biostatistics teaching assistant, and PhD student of medi
 
 -   **Teaching Assistant, Medical Statistics & Informatics**\
     Department for Medical Statistics and Informatics, Belgrade University Medical School \| Apr 2024 --- Present
-
-<!-- -->
 
 -   **Research**\
     Department for Medical Statistics and Informatics, Belgrade University Medical School \| Sept 2022 --- Present
